@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    compileOptions {
+        sourceCompatibility rootProject.ext.sourceCompatibility
+        targetCompatibility rootProject.ext.sourceCompatibility
+    }
+    defaultConfig {
+        applicationId "com.gqfyanshi"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
+        multiDexEnabled true
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
+    }
+    sourceSets {
+        main {
+            res.srcDirs = ['src/main/res']
+            assets.srcDirs = ['src/main/assets']
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            jni.srcDirs = []
+            jniLibs.srcDirs = ['src/main/libs']
+        }
+    }
+    repositories { flatDir { dirs 'libs' } }
+    dataBinding {
+        enabled true
+    }
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+    }
+    productFlavors {
+    }
+    lintOptions {
+        checkReleaseBuilds false
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    api "com.android.support:appcompat-v7:${rootProject.ext.android.VSupportSdk}"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    //框架
+    compile project(':mybaselibrary')
+    //轮播图
+    compile 'com.youth.banner:banner:1.4.10'
+    //圆角imageview
+    compile 'com.makeramen:roundedimageview:2.3.0'
+    //评分
+    compile 'com.hedgehog.ratingbar:app:1.1.2'
+    //图片压缩
+    compile 'top.zibin:Luban:1.1.3'
+}

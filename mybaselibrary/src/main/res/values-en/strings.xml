@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">MyBaseLibrary</string>
+    <string name="ic_Back">#xe643;</string>
+    <string name="str_confirm">Confirm</string>
+    <string name="str_determine">Confirm</string>
+    <string name="str_ago">Before</string>
+    <string name="str_after">After</string>
+    <string name="str_sec">Second</string>
+    <string name="str_min">Minute</string>
+    <string name="str_hrs">Hour</string>
+    <string name="str_yesterday">Yesterday</string>
+    <string name="str_today">Today</string>
+    <string name="str_cancel">Cancel</string>
+    <string name="str_send_again">Send again</string>
+    <string name="str_get_code">Get verification code</string>
+    <string name="read_more">More</string>
+    <string name="read_less">Pack up</string>
+    <string name="str_day">Day</string>
+    <string name="str_week">Week</string>
+
+
+</resources>
