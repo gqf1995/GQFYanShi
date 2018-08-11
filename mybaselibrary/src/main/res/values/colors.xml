@@ -159,11 +159,11 @@ KDJ#73C5FF
     <color name="new_green">#e2fdfa</color>
     <color name="feature">#fceee8</color>
 
-    <color name="color_mark_more">#4259ec</color>
-    <color name="color_mark_dark">#3d53e2</color>
-    <color name="color_mark_dark_more">#0123ff</color>
+    <color name="color_mark_more">#44a1ff</color>
+    <color name="color_mark_dark">#44a1ff</color>
+    <color name="color_mark_dark_more">#44a1ff</color>
 
-    <color name="mark_color">#4A61F6</color>
+    <color name="mark_color">#44a1ff</color>
     <color name="font_color">#A1AED1</color>
     <color name="navigation_color">#208DE3</color>
     <color name="welcome_color">#5F95FD</color>

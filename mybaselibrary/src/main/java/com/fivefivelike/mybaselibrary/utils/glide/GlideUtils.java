@@ -40,7 +40,7 @@ public class GlideUtils {
         }
         int errorId;
         if (icon instanceof CircleImageView) {
-            errorId = R.drawable.touxiang;
+            errorId = R.drawable.loaderor;
         } else {
             errorId = R.drawable.loaderor;
         }
@@ -55,7 +55,7 @@ public class GlideUtils {
         }
         int errorId;
         if (icon instanceof CircleImageView) {
-            errorId = R.drawable.touxiang;
+            errorId = R.drawable.loaderor;
         } else {
             errorId = R.drawable.loaderor;
         }
