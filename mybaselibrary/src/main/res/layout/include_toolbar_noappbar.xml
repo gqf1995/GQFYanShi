@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/trans_90px"
+    android:layout_height="@dimen/trans_44px"
     android:background="#00000000"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp"
@@ -15,19 +15,19 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/trans_90px">
+        android:layout_height="@dimen/trans_44px">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/trans_90px"
+            android:layout_height="@dimen/trans_44px"
             android:layout_gravity="right|center_vertical"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/toolbar_lin_back"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/trans_90px"
+                android:layout_height="@dimen/trans_44px"
                 android:background="?selectableItemBackground"
                 android:clickable="true"
                 android:orientation="horizontal"
@@ -36,14 +36,14 @@
 
                 <FrameLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/trans_90px"
+                    android:layout_height="@dimen/trans_44px"
                     >
 
 
                     <com.fivefivelike.mybaselibrary.view.IconFontTextview
                         android:id="@+id/toolbar_back"
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/trans_90px"
+                        android:layout_height="@dimen/trans_44px"
                         android:layout_gravity="left|center_vertical"
                         android:layout_marginLeft="@dimen/trans_40px"
                         android:gravity="center"
@@ -65,7 +65,7 @@
                 <TextView
                     android:id="@+id/toolbar_back_txt"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/trans_90px"
+                    android:layout_height="@dimen/trans_44px"
                     android:layout_gravity="left|center_vertical"
                     android:gravity="center"
                     android:paddingLeft="@dimen/trans_10px"
@@ -78,7 +78,7 @@
             <FrameLayout
                 android:id="@+id/fl_content"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/trans_90px"
+                android:layout_height="@dimen/trans_44px"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:focusable="true">
@@ -87,14 +87,14 @@
 
             <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/trans_90px"
+                android:layout_height="@dimen/trans_44px"
                 android:layout_gravity="right|center_vertical">
 
                 <com.fivefivelike.mybaselibrary.view.IconFontTextview
                     android:id="@+id/toolbar_subtitle"
                     style="@style/toolbar_subtitle"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/trans_90px"
+                    android:layout_height="@dimen/trans_44px"
                     android:layout_gravity="right|center_vertical"
                     android:gravity="center"
                     android:maxLines="1"
@@ -114,7 +114,7 @@
 
             <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/trans_90px"
+                android:layout_height="@dimen/trans_44px"
                 android:layout_gravity="right|center_vertical">
 
                 <com.fivefivelike.mybaselibrary.view.IconFontTextview
@@ -141,7 +141,7 @@
 
             <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/trans_90px"
+                android:layout_height="@dimen/trans_44px"
                 android:layout_gravity="right|center_vertical">
 
                 <com.fivefivelike.mybaselibrary.view.IconFontTextview
@@ -168,7 +168,7 @@
 
             <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/trans_90px"
+                android:layout_height="@dimen/trans_44px"
                 android:paddingRight="@dimen/trans_20px"
                 android:layout_gravity="right|center_vertical">
 

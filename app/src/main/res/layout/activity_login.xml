@@ -134,16 +134,16 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:adjustViewBounds="true"
-                                    android:padding="15px"
+                                    android:padding="@dimen/trans_15px"
                                     android:scaleType="fitXY"
                                     android:src="@drawable/user"
                                     />
 
                                 <View
-                                    android:layout_width="2px"
+                                    android:layout_width="@dimen/trans_2px"
                                     android:layout_height="match_parent"
-                                    android:layout_marginBottom="5px"
-                                    android:layout_marginTop="5px"
+                                    android:layout_marginBottom="@dimen/trans_5px"
+                                    android:layout_marginTop="@dimen/trans_5px"
                                     android:background="@color/base_mask"/>
 
                                 <EditText
@@ -152,10 +152,10 @@
                                     android:layout_height="match_parent"
                                     android:background="@null"
                                     android:hint="请输入您的账号"
-                                    android:padding="15px"
+                                    android:paddingLeft="@dimen/trans_15px"
                                     android:textColor="@color/color_font1"
                                     android:textColorHint="@color/color_font3"
-                                    android:textSize="16px"/>
+                                    android:textSize="@dimen/text_trans_16px"/>
 
 
                             </LinearLayout>
@@ -174,7 +174,7 @@
                                 <LinearLayout
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
+                                    android:layout_weight="1.3"
                                     android:background="@color/white"
                                     android:orientation="horizontal">
 
@@ -182,16 +182,16 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
                                         android:adjustViewBounds="true"
-                                        android:padding="15px"
+                                        android:padding="@dimen/trans_15px"
                                         android:scaleType="fitXY"
                                         android:src="@drawable/locked"
                                         />
 
                                     <View
-                                        android:layout_width="2px"
+                                        android:layout_width="@dimen/trans_2px"
                                         android:layout_height="match_parent"
-                                        android:layout_marginBottom="5px"
-                                        android:layout_marginTop="5px"
+                                        android:layout_marginBottom="@dimen/trans_5px"
+                                        android:layout_marginTop="@dimen/trans_5px"
                                         android:background="@color/base_mask"/>
 
                                     <EditText
@@ -200,14 +200,14 @@
                                         android:layout_height="match_parent"
                                         android:background="@null"
                                         android:hint="手机验证码"
-                                        android:padding="15px"
+                                        android:paddingLeft="@dimen/trans_15px"
                                         android:textColor="@color/color_font1"
                                         android:textColorHint="@color/color_font3"
-                                        android:textSize="16px"/>
+                                        android:textSize="@dimen/text_trans_16px"/>
                                 </LinearLayout>
 
                                 <Space
-                                    android:layout_width="10px"
+                                    android:layout_width="@dimen/trans_10px"
                                     android:layout_height="wrap_content"/>
 
                                 <com.fivefivelike.mybaselibrary.view.RoundButton
@@ -218,10 +218,10 @@
                                     android:gravity="center"
                                     android:text="发送验证码"
                                     android:textColor="@color/white"
-                                    android:textSize="16px"
-                                    app:btnCornerRadius="10px"
+                                    android:textSize="@dimen/text_trans_16px"
+                                    app:btnCornerRadius="@dimen/trans_10px"
                                     app:btnSolidColor="@color/mark_color"
-                                    app:btnStrokeWidth="2px"
+                                    app:btnStrokeWidth="@dimen/trans_2px"
                                     />
 
                             </LinearLayout>
@@ -240,7 +240,7 @@
                                 <LinearLayout
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1"
+                                    android:layout_weight="1.3"
                                     android:background="@color/white"
                                     android:orientation="horizontal">
 
@@ -248,16 +248,16 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
                                         android:adjustViewBounds="true"
-                                        android:padding="15px"
+                                        android:padding="@dimen/trans_15px"
                                         android:scaleType="fitXY"
                                         android:src="@drawable/write"
                                         />
 
                                     <View
-                                        android:layout_width="2px"
+                                        android:layout_width="@dimen/trans_2px"
                                         android:layout_height="match_parent"
-                                        android:layout_marginBottom="5px"
-                                        android:layout_marginTop="5px"
+                                        android:layout_marginBottom="@dimen/trans_5px"
+                                        android:layout_marginTop="@dimen/trans_5px"
                                         android:background="@color/base_mask"/>
 
                                     <EditText
@@ -266,17 +266,18 @@
                                         android:layout_height="match_parent"
                                         android:background="@null"
                                         android:hint="图形验证码"
-                                        android:padding="15px"
+                                        android:paddingLeft="@dimen/trans_15px"
                                         android:textColor="@color/color_font1"
                                         android:textColorHint="@color/color_font3"
-                                        android:textSize="16px"/>
+                                        android:textSize="@dimen/text_trans_16px"/>
                                 </LinearLayout>
 
                                 <Space
-                                    android:layout_width="10px"
+                                    android:layout_width="@dimen/trans_10px"
                                     android:layout_height="wrap_content"/>
 
                                 <LinearLayout
+                                    android:id="@+id/lin_change"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
@@ -293,14 +294,13 @@
 
 
                                     <TextView
-                                        android:id="@+id/tv_change"
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
-                                        android:paddingLeft="5px"
+                                        android:paddingLeft="@dimen/trans_5px"
                                         android:gravity="center"
                                         android:text="换一张"
                                         android:textColor="@color/color_font1"
-                                        android:textSize="14px"/>
+                                        android:textSize="@dimen/text_trans_14px"/>
 
 
                                 </LinearLayout>
@@ -314,10 +314,29 @@
                                 android:layout_weight="10"/>
 
                             <LinearLayout
+                                android:id="@+id/lin_select"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="40"
-                                android:orientation="vertical">
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/iv_select"
+                                    android:layout_width="@dimen/trans_16px"
+                                    android:layout_height="@dimen/trans_16px"
+                                    android:src="@drawable/weigouxuan"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="记住账号"
+                                    android:paddingLeft="@dimen/trans_7px"
+                                    android:textColor="@color/color_font1"
+                                    android:textSize="@dimen/text_trans_14px" />
+
                             </LinearLayout>
 
                             <LinearLayout
@@ -325,6 +344,18 @@
                                 android:layout_height="0dp"
                                 android:layout_weight="50"
                                 android:orientation="vertical">
+
+                                <com.fivefivelike.mybaselibrary.view.RoundButton
+                                    android:id="@+id/tv_login"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="登陆"
+                                    android:textColor="@color/color_Primary"
+                                    app:btnCornerRadius="@dimen/trans_10px"
+                                    app:btnSolidColor="@color/mark_color"
+                                    android:textSize="@dimen/text_trans_22px" />
+
                             </LinearLayout>
 
                             <Space

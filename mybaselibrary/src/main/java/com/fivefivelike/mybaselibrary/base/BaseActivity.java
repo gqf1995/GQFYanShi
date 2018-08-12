@@ -15,8 +15,6 @@ import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.mvp.presenter.ActivityPresenter;
 import com.fivefivelike.mybaselibrary.utils.ActUtil;
 import com.fivefivelike.mybaselibrary.utils.ToastUtil;
-import com.umeng.analytics.MobclickAgent;
-import com.umeng.message.PushAgent;
 
 /**
  * Created by 郭青枫 on 2017/7/7.
@@ -75,7 +73,7 @@ public abstract class BaseActivity<T extends BaseDelegate> extends ActivityPrese
         //ActUtil.getInstance().addActivity(this);
         setStatusBarLightOrNight();
         //友盟推送
-        PushAgent.getInstance(this).onAppStart();
+
         super.onCreate(savedInstanceState);
     }
 
@@ -189,13 +187,13 @@ public abstract class BaseActivity<T extends BaseDelegate> extends ActivityPrese
     @Override
     protected void onPause() {
         super.onPause();
-        MobclickAgent.onPause(this);
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        MobclickAgent.onResume(this);
+
         if (WindowManagerLayoutParams != 0) {
             getWindow().setSoftInputMode(WindowManagerLayoutParams);
         }

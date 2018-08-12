@@ -20,7 +20,6 @@ import com.yanzhenjie.nohttp.NoHttp;
 import com.yanzhenjie.nohttp.OkHttpNetworkExecutor;
 import com.yanzhenjie.nohttp.cache.DBCacheStore;
 import com.yanzhenjie.nohttp.cookie.DBCookieStore;
-import com.yanzhenjie.nohttp.ssl.SSLUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -29,7 +28,6 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.Locale;
 
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocketFactory;
 
 import skin.support.SkinCompatManager;
 import skin.support.app.SkinCardViewInflater;
@@ -99,9 +97,9 @@ public class Application extends BaseApp  {
 
     private void initNohttp() {
         SSLContext sslContext = SSLContextUtil.getSSLContext();
-        SSLSocketFactory socketFactory = sslContext.getSocketFactory();
+        //SSLSocketFactory socketFactory = sslContext.getSocketFactory();
         //修复在Android4.x系统中不支持TLSv1.1、TLSv1.2协议的问题
-        socketFactory = SSLUtils.fixSSLLowerThanLollipop(socketFactory);
+        //socketFactory = SSLUtils.fixSSLLowerThanLollipop(socketFactory);
         InitializationConfig config = InitializationConfig.newBuilder(this)
                 // 全局连接服务器超时时间，单位毫秒，默认10s。
                 .connectionTimeout(30 * 1000)
@@ -119,7 +117,7 @@ public class Application extends BaseApp  {
                 )
                 // 配置网络层，默认URLConnectionNetworkExecutor，如果想用OkHttp：OkHttpNetworkExecutor。
                 .networkExecutor(new OkHttpNetworkExecutor())
-                .sslSocketFactory(AppConst.isSSL ? socketFactory : null)
+                //.sslSocketFactory(AppConst.isSSL ? socketFactory : null)
                 .retry(1) // 全局重试次数，配置后每个请求失败都会重试x次。
                 .build();
         Logger.setDebug(false);

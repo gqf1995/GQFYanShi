@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">YanShi</string>
+
+    <string name="ic_Back">&#xe643;</string>
+    <string name="ic_daohang">&#xe8fb;</string>
+    <string name="ic_tixing">&#xe626;</string>
+
 </resources>

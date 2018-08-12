@@ -23,7 +23,6 @@ import com.fivefivelike.mybaselibrary.dsbridge.OnReturnValue;
 import com.fivefivelike.mybaselibrary.sonicx5.SonicImpl;
 import com.fivefivelike.mybaselibrary.utils.AndroidUtil;
 import com.fivefivelike.mybaselibrary.utils.CommonUtils;
-import com.fivefivelike.mybaselibrary.utils.GlobleContext;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.SaveUtil;
 import com.fivefivelike.mybaselibrary.utils.UiHeplUtils;
@@ -33,7 +32,6 @@ import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebViewClient;
 import com.tencent.sonic.sdk.SonicSession;
-import com.umeng.analytics.MobclickAgent;
 import com.wang.avi.AVLoadingIndicatorView;
 import com.wang.avi.indicators.LineSpinFadeLoaderIndicator;
 import com.yanzhenjie.album.Action;
@@ -162,7 +160,7 @@ public class BaseX5WebFragment extends BaseFragment<BaseX5WebViewDelegate> {
                 //埋点
                 String parameters = GsonUtil.getInstance().getValue(data, "parameters");
                 String name = GsonUtil.getInstance().getValue(parameters, "name");
-                MobclickAgent.onEvent(GlobleContext.getInstance().getApplicationContext(), name);
+
             } else {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
