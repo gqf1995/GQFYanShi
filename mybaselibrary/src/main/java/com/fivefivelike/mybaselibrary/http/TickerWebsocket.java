@@ -84,6 +84,15 @@ public abstract class TickerWebsocket extends WebSocketClient {
         }
     }
 
+    @Override
+    public void sendFragmentedFrame(Framedata.Opcode op, ByteBuffer buffer, boolean fin) {
+        try {
+            super.sendFragmentedFrame(op, buffer, fin);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public void onClose(int code, String reason, boolean remote) {

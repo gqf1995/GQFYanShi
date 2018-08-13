@@ -53,14 +53,36 @@
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
         </activity>
-        <activity android:name=".mvp.activity.LoginActivity">
+        <activity android:name=".mvp.activity.main.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.activity.MainActivity"/>
+        <activity android:name=".mvp.activity.main.MainActivity"/>
+        <activity android:name=".mvp.activity.main.MsgActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeMeetingActivity"/>
+        <activity android:name=".mvp.fragment.NoticeListFragment"/>
+        <activity android:name=".mvp.fragment.NoticeTopSearchFragment"/>
+        <activity android:name=".mvp.activity.notice.NoticeDefaultActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeInboxActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeEmergencyActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeDecisionMakingActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeMgsStatisticalActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeAddressBookActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeSendOfficialDocumentActivity"/>
+        <activity android:name=".mvp.activity.add.AddActivity"/>
+        <activity android:name=".mvp.activity.add.AddDynamicLeadershipActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeInspectorSendActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeInboxInspectorActivity"/>
+        <activity android:name=".mvp.activity.add.AddInspectorNoticeActivity"/>
+        <activity android:name=".mvp.activity.add.AddPublicInformationActivity"/>
+        <activity android:name=".mvp.activity.add.AddSendMailActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticePublicMsgSendActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticePublicMsgReceiveActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeInspectorReceiveActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeConferenceRoomReservationActivity"/>
     </application>
 
 </manifest>

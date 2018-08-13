@@ -68,7 +68,7 @@ public class Test {
             dimen = 1f / density * hei / 1136;//1136设计稿高度
         }
         buffer.append("<resources>\n");
-        for (int i = 1; i < 501; i++) {
+        for (int i = 1; i < 1000; i++) {
            // if(i<=50||(i>50&&i<=100&&i%5==0)||(i%10==0&&i>100)) {
 //                buffer.append("<dimen name=\"trans_" + i + "px\">");
 //                buffer.append(dimen * i + "dp");

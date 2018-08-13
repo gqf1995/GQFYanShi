@@ -1,4 +1,4 @@
-package com.gqfyanshi.mvp.activity;
+package com.gqfyanshi.mvp.activity.main;
 
 import android.content.Intent;
 import android.view.View;

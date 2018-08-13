@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar_with_statusbar"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/trans_10px"/>
+
+    <LinearLayout
+        android:id="@+id/lin_msg1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/trans_60px"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/trans_18px"
+        android:paddingRight="@dimen/trans_20px">
+
+
+        <TextView
+            android:id="@+id/tv_title1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="会议通知"
+            android:textColor="@color/color_font1"
+            android:textSize="@dimen/text_trans_18px"/>
+
+
+        <com.fivefivelike.mybaselibrary.view.RoundButton
+            android:id="@+id/tv_num1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="1"
+            android:paddingLeft="@dimen/trans_5px"
+            android:paddingRight="@dimen/trans_5px"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_trans_17px"
+            app:btnCornerRadius="@dimen/trans_499px"
+            app:btnSolidColor="@color/increasing_color"/>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/xiangqing"
+            android:layout_marginLeft="@dimen/trans_10px"
+            />
+
+
+    </LinearLayout>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/trans_10px"/>
+
+    <LinearLayout
+        android:id="@+id/lin_msg2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/trans_60px"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/trans_18px"
+        android:paddingRight="@dimen/trans_20px">
+
+
+        <TextView
+            android:id="@+id/tv_title2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="一般性公告"
+            android:textColor="@color/color_font1"
+            android:textSize="@dimen/text_trans_18px"/>
+
+
+        <com.fivefivelike.mybaselibrary.view.RoundButton
+            android:id="@+id/tv_num2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="1"
+            android:paddingLeft="@dimen/trans_5px"
+            android:paddingRight="@dimen/trans_5px"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_trans_17px"
+            app:btnCornerRadius="@dimen/trans_499px"
+            app:btnSolidColor="@color/increasing_color"/>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/xiangqing"
+            android:layout_marginLeft="@dimen/trans_10px"
+            />
+
+
+    </LinearLayout>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/trans_10px"/>
+
+    <LinearLayout
+        android:id="@+id/lin_msg3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/trans_60px"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/trans_18px"
+        android:paddingRight="@dimen/trans_20px">
+
+
+        <TextView
+            android:id="@+id/tv_title3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="公文接收"
+            android:textColor="@color/color_font1"
+            android:textSize="@dimen/text_trans_18px"/>
+
+
+        <com.fivefivelike.mybaselibrary.view.RoundButton
+            android:id="@+id/tv_num3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="1"
+            android:paddingLeft="@dimen/trans_5px"
+            android:paddingRight="@dimen/trans_5px"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_trans_17px"
+            app:btnCornerRadius="@dimen/trans_499px"
+            app:btnSolidColor="@color/increasing_color"/>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/xiangqing"
+            android:layout_marginLeft="@dimen/trans_10px"
+            />
+
+
+    </LinearLayout>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/trans_10px"/>
+
+    <LinearLayout
+        android:id="@+id/lin_msg4"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/trans_60px"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/trans_18px"
+        android:paddingRight="@dimen/trans_20px">
+
+
+        <TextView
+            android:id="@+id/tv_title4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="公文签批"
+            android:textColor="@color/color_font1"
+            android:textSize="@dimen/text_trans_18px"/>
+
+
+        <com.fivefivelike.mybaselibrary.view.RoundButton
+            android:id="@+id/tv_num4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="1"
+            android:paddingLeft="@dimen/trans_5px"
+            android:paddingRight="@dimen/trans_5px"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_trans_17px"
+            app:btnCornerRadius="@dimen/trans_499px"
+            app:btnSolidColor="@color/increasing_color"/>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/xiangqing"
+            android:layout_marginLeft="@dimen/trans_10px"
+            />
+
+
+    </LinearLayout>
+</LinearLayout>

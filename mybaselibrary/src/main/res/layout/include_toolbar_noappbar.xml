@@ -5,7 +5,7 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="@dimen/trans_44px"
-    android:background="#00000000"
+    android:background="@color/mark_color"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp"
     app:layout_scrollFlags="scroll|enterAlways"
@@ -48,7 +48,7 @@
                         android:layout_marginLeft="@dimen/trans_40px"
                         android:gravity="center"
                         android:text="@string/ic_Back"
-                        android:textSize="@dimen/text_trans_32px"
+                        android:textSize="@dimen/text_trans_20px"
                         />
 
                     <FrameLayout
@@ -70,7 +70,7 @@
                     android:gravity="center"
                     android:paddingLeft="@dimen/trans_10px"
                     android:text=""
-                    android:textSize="@dimen/text_trans_28px"
+                    android:textSize="@dimen/text_trans_18px"
                     />
 
             </LinearLayout>
@@ -99,7 +99,7 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="subtitle"
-                    android:textSize="@dimen/text_trans_28px"
+                    android:textSize="@dimen/text_trans_18px"
                     android:visibility="gone"/>
 
                 <FrameLayout
@@ -124,7 +124,7 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="subtitle"
-                    android:textSize="@dimen/text_trans_32px"
+                    android:textSize="@dimen/text_trans_20px"
                     android:visibility="gone"
                     />
 
@@ -151,7 +151,7 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="subtitle"
-                    android:textSize="@dimen/text_trans_32px"
+                    android:textSize="@dimen/text_trans_20px"
                     android:visibility="gone"
                     />
 
@@ -179,7 +179,7 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="subtitle"
-                    android:textSize="@dimen/text_trans_32px"
+                    android:textSize="@dimen/text_trans_20px"
                     android:visibility="gone"
                     />
 
@@ -204,7 +204,7 @@
             android:ellipsize="end"
             android:lines="1"
             android:text="title"
-            android:textSize="@dimen/text_trans_32px"/>
+            android:textSize="@dimen/text_trans_24px"/>
 
     </FrameLayout>
 
