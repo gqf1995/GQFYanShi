@@ -1,0 +1,273 @@
+package com.gqfyanshi.mvp.fragment;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import com.fivefivelike.mybaselibrary.base.BaseDataBindFragment;
+import com.gqfyanshi.R;
+import com.gqfyanshi.mvp.activity.add.AddDynamicLeadershipActivity;
+import com.gqfyanshi.mvp.activity.add.AddInspectorNoticeActivity;
+import com.gqfyanshi.mvp.activity.add.AddPublicInformationActivity;
+import com.gqfyanshi.mvp.activity.main.MainLinsener;
+import com.gqfyanshi.mvp.activity.notice.NoticeAddressBookActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeConferenceRoomReservationActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeDecisionMakingActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeDefaultActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeEmergencyActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeInboxActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeInspectorReceiveActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeInspectorSendActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeLeadershipViewActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeManuscriptsReceiveActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeManuscriptsSendActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeMayorActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeMeetingActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeMgsStatisticalActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeOutboxActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticePublicMsgReceiveActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticePublicMsgSendActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeSendMsgActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeSendOfficialDocumentActivity;
+import com.gqfyanshi.mvp.databinder.UserDrawerBinder;
+import com.gqfyanshi.mvp.delegate.UserDrawerDelegate;
+
+public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate, UserDrawerBinder> {
+
+    @Override
+    protected Class<UserDrawerDelegate> getDelegateClass() {
+        return UserDrawerDelegate.class;
+    }
+
+    @Override
+    public UserDrawerBinder getDataBinder(UserDrawerDelegate viewDelegate) {
+        return new UserDrawerBinder(viewDelegate);
+    }
+
+    MainLinsener mainLinsener;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mainLinsener = (MainLinsener) activity;
+    }
+
+    @Override
+    protected void bindEvenListener() {
+        super.bindEvenListener();
+        viewDelegate.setOnClickListener(this,
+                R.id.lin_module1,//通知公告
+                R.id.lin_mod1_content1,//--会议通知
+                R.id.lin_mod1_content2,//--一般性公告
+                R.id.lin_module2,//公文流转
+                R.id.lin_mod2_content1,//--公文发送
+                R.id.lin_mod2_content2,//--公文接收
+                R.id.lin_mod2_content3,//--请假
+                R.id.lin_module3,//文件柜
+                R.id.lin_module4,//市委信息工作
+                R.id.lin_mod4_content1,//--约稿性发送
+                R.id.lin_mod4_content2,//--约稿性接收
+                R.id.lin_mod4_content3,//--信息统计
+                R.id.lin_mod4_content4,//--信息发送
+                R.id.lin_mod4_content5,//--工作信息发布
+                R.id.lin_mod4_content6,//--要情汇报
+                R.id.lin_mod4_content7,//--领导参阅
+                R.id.lin_mod4_content8,//--紧急信息
+                R.id.lin_module5,//政府信息工作
+                R.id.lin_mod5_content1,//--约稿性发送
+                R.id.lin_mod5_content2,//--约稿性接收
+                R.id.lin_mod5_content3,//--信息统计
+                R.id.lin_mod5_content4,//--信息发送
+                R.id.lin_mod5_content5,//--市长专报
+                R.id.lin_mod5_content6,//--决策参考
+                R.id.lin_mod5_content7,//--紧急信息
+                R.id.lin_module6,//市委督查工作
+                R.id.lin_mod6_content1,//--公开信息发布
+                R.id.lin_mod6_content2,//--公开信息发送
+                R.id.lin_mod6_content3,//--公开信息接收
+                R.id.lin_mod6_content4,//--督查通知发布
+                R.id.lin_mod6_content5,//--督查通知发送
+                R.id.lin_mod6_content6,//--督查通知接收
+                R.id.lin_module7,//政府督查工作
+                R.id.lin_mod7_content1,//--公开信息发布
+                R.id.lin_mod7_content2,//--公开信息发送
+                R.id.lin_mod7_content3,//--公开信息接收
+                R.id.lin_mod7_content4,//--督查通知发送
+                R.id.lin_mod7_content5,//--督查通知接收
+                R.id.lin_module8,//领导动态
+                R.id.lin_module9,//邮件发送
+                R.id.lin_mod9_content1,//--邮件发送
+                R.id.lin_mod9_content2,//--发件箱
+                R.id.lin_mod9_content3,//--收件箱
+                R.id.lin_module10,//会议室预约
+                R.id.lin_module11,//电子通讯录
+                R.id.lin_module12//意见箱
+        );
+    }
+
+    private void showAndHide(LinearLayout lin_content, ImageView imageView) {
+        if (lin_content.getVisibility() == View.VISIBLE) {
+            imageView.setImageResource(R.drawable.xiangqing);
+            lin_content.setVisibility(View.GONE);
+        } else {
+            imageView.setImageResource(R.drawable.xiala2);
+            lin_content.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()) {
+            case R.id.lin_module1:
+                showAndHide(viewDelegate.viewHolder.lin_content1,
+                        viewDelegate.viewHolder.iv_module1);
+                break;//通知公告
+            case R.id.lin_mod1_content1:
+                startActivity(new Intent(getActivity(),NoticeMeetingActivity.class));
+                break;//--会议通知
+            case R.id.lin_mod1_content2:
+                startActivity(new Intent(getActivity(),NoticeDefaultActivity.class));
+                break;//--一般性公告
+            case R.id.lin_module2:
+                showAndHide(viewDelegate.viewHolder.lin_content2,
+                        viewDelegate.viewHolder.iv_module2);
+                break;//公文流转
+            case R.id.lin_mod2_content1:
+                startActivity(new Intent(getActivity(),NoticeSendOfficialDocumentActivity.class));
+                break;//--公文发送
+            case R.id.lin_mod2_content2:
+                break;//--公文接收
+            case R.id.lin_mod2_content3:
+                startActivity(new Intent(getActivity(),NoticeDefaultActivity.class));
+                break;//--请假
+            case R.id.lin_module3:
+                break;//文件柜
+            case R.id.lin_module4:
+                showAndHide(viewDelegate.viewHolder.lin_content4,
+                        viewDelegate.viewHolder.iv_module4);
+                break;//市委信息工作
+            case R.id.lin_mod4_content1:
+                startActivity(new Intent(getActivity(),NoticeManuscriptsSendActivity.class));
+                break;//--约稿性发送
+            case R.id.lin_mod4_content2:
+                startActivity(new Intent(getActivity(),NoticeManuscriptsReceiveActivity.class));
+                break;//--约稿性接收
+            case R.id.lin_mod4_content3:
+                startActivity(new Intent(getActivity(),NoticeMgsStatisticalActivity.class));
+                break;//--信息统计
+            case R.id.lin_mod4_content4:
+                startActivity(new Intent(getActivity(),NoticeMgsStatisticalActivity.class));
+                break;//--信息发送
+            case R.id.lin_mod4_content5:
+                startActivity(new Intent(getActivity(),NoticeSendMsgActivity.class));
+                break;//--工作信息发布
+            case R.id.lin_mod4_content6:
+                startActivity(new Intent(getActivity(),NoticeEmergencyActivity.class));
+                break;//--要情汇报
+            case R.id.lin_mod4_content7:
+                startActivity(new Intent(getActivity(),NoticeLeadershipViewActivity.class));
+                break;//--领导参阅
+            case R.id.lin_mod4_content8:
+                startActivity(new Intent(getActivity(),NoticeEmergencyActivity.class));
+                break;//--紧急信息
+            case R.id.lin_module5:
+                showAndHide(viewDelegate.viewHolder.lin_content5,
+                        viewDelegate.viewHolder.iv_module5);
+                break;//政府信息工作
+            case R.id.lin_mod5_content1:
+                startActivity(new Intent(getActivity(),NoticeManuscriptsSendActivity.class));
+                break;//--约稿性发送
+            case R.id.lin_mod5_content2:
+                startActivity(new Intent(getActivity(),NoticeManuscriptsReceiveActivity.class));
+                break;//--约稿性接收
+            case R.id.lin_mod5_content3:
+                startActivity(new Intent(getActivity(),NoticeMgsStatisticalActivity.class));
+                break;//--信息统计
+            case R.id.lin_mod5_content4:
+                startActivity(new Intent(getActivity(),NoticeMgsStatisticalActivity.class));
+                break;//--信息发送
+            case R.id.lin_mod5_content5:
+                startActivity(new Intent(getActivity(),NoticeMayorActivity.class));
+                break;//--市长专报
+            case R.id.lin_mod5_content6:
+                startActivity(new Intent(getActivity(),NoticeDecisionMakingActivity.class));
+                break;//--决策参考
+            case R.id.lin_mod5_content7:
+                break;//--紧急信息
+            case R.id.lin_module6:
+                showAndHide(viewDelegate.viewHolder.lin_content6,
+                        viewDelegate.viewHolder.iv_module6);
+                break;//市委督查工作
+            case R.id.lin_mod6_content1:
+                startActivity(new Intent(getActivity(),NoticePublicMsgSendActivity.class));
+                break;//--公开信息发布
+            case R.id.lin_mod6_content2:
+                startActivity(new Intent(getActivity(),AddPublicInformationActivity.class));
+                break;//--公开信息发送
+            case R.id.lin_mod6_content3:
+                startActivity(new Intent(getActivity(),NoticePublicMsgReceiveActivity.class));
+                break;//--公开信息接收
+            case R.id.lin_mod6_content4:
+                startActivity(new Intent(getActivity(),AddInspectorNoticeActivity.class));
+                break;//--督查通知发布
+            case R.id.lin_mod6_content5:
+                startActivity(new Intent(getActivity(),NoticeInspectorSendActivity.class));
+                break;//--督查通知发送
+            case R.id.lin_mod6_content6:
+                startActivity(new Intent(getActivity(),NoticeInspectorReceiveActivity.class));
+                break;//--督查通知接收
+            case R.id.lin_module7:
+                showAndHide(viewDelegate.viewHolder.lin_content7,
+                        viewDelegate.viewHolder.iv_module7);
+                break;//政府督查工作
+            case R.id.lin_mod7_content1:
+                startActivity(new Intent(getActivity(),AddPublicInformationActivity.class));
+                break;//--公开信息发布
+            case R.id.lin_mod7_content2:
+                startActivity(new Intent(getActivity(),AddPublicInformationActivity.class));
+                break;//--公开信息发送
+            case R.id.lin_mod7_content3:
+                startActivity(new Intent(getActivity(),NoticePublicMsgReceiveActivity.class));
+                break;//--公开信息接收
+            case R.id.lin_mod7_content4:
+                startActivity(new Intent(getActivity(),NoticeInspectorSendActivity.class));
+                break;//--督查通知发送
+            case R.id.lin_mod7_content5:
+                startActivity(new Intent(getActivity(),NoticeInspectorReceiveActivity.class));
+                break;//--督查通知接收
+            case R.id.lin_module8:
+                startActivity(new Intent(getActivity(),AddDynamicLeadershipActivity.class));
+                break;//领导动态
+            case R.id.lin_module9:
+                showAndHide(viewDelegate.viewHolder.lin_content9,
+                        viewDelegate.viewHolder.iv_module9);
+                break;//邮件发送
+            case R.id.lin_mod9_content1:
+                break;//--邮件发送
+            case R.id.lin_mod9_content2:
+                startActivity(new Intent(getActivity(),NoticeOutboxActivity.class));
+                break;//--发件箱
+            case R.id.lin_mod9_content3:
+                startActivity(new Intent(getActivity(),NoticeInboxActivity.class));
+                break;//--收件箱
+            case R.id.lin_module10:
+                startActivity(new Intent(getActivity(),NoticeConferenceRoomReservationActivity.class));
+                break;//会议室预约
+            case R.id.lin_module11:
+                startActivity(new Intent(getActivity(),NoticeAddressBookActivity.class));
+                break;//电子通讯录
+            case R.id.lin_module12:
+                break;//意见箱
+        }
+    }
+
+    @Override
+    protected void onServiceSuccess(String data, String info, int status, int requestCode) {
+        switch (requestCode) {
+        }
+    }
+
+}

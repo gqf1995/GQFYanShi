@@ -15,6 +15,7 @@ import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.gqfyanshi.R;
 import com.gqfyanshi.mvp.databinder.MainBinder;
 import com.gqfyanshi.mvp.delegate.MainDelegate;
+import com.gqfyanshi.mvp.fragment.UserDrawerFragment;
 
 public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder> implements MainLinsener {
 
