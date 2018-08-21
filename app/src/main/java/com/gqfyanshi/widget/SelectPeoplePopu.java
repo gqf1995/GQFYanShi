@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.fivefivelike.mybaselibrary.utils.CommonUtils;
+import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.view.popupWindow.BasePopupWindow;
 import com.gqfyanshi.R;
 import com.unnamed.b.atv.model.TreeNode;
@@ -32,6 +33,7 @@ public class SelectPeoplePopu extends BasePopupWindow {
     }
 
     public void show(View view) {
+        contentView.setMinimumWidth(view.getMeasuredWidth());
         showAsDropDown(view);
     }
 
@@ -119,12 +121,14 @@ public class SelectPeoplePopu extends BasePopupWindow {
             tvValue.setText(value.text);
 
             final ImageView iconView = (ImageView) view.findViewById(R.id.icon);
-            iconView.setVisibility(value.isSelect ? View.VISIBLE : View.INVISIBLE);
+            iconView.setWillNotDraw(!value.isSelect);
             iconView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     value.isSelect = !value.isSelect;
-                    v.setVisibility(value.isSelect ? View.VISIBLE : View.INVISIBLE);
+                    v.setWillNotDraw(!value.isSelect);
+                    select(node, value.isSelect);
+                    selectFather(node, value.isSelect);
                 }
             });
             iconView.getParent().requestDisallowInterceptTouchEvent(true);
@@ -138,6 +142,46 @@ public class SelectPeoplePopu extends BasePopupWindow {
             return view;
         }
 
+        private void selectFather(TreeNode node, boolean isSelect) {
+            TreeNode parent = node.getParent();
+            if (parent != null) {
+                boolean isSelectAll = true;
+                for (int i = 0; i < parent.getChildren().size(); i++) {
+                    Object value = parent.getChildren().get(i).getValue();
+                    if (value instanceof IconTreeItem) {
+                        if (!((IconTreeItem) value).isSelect) {
+                            isSelectAll = false;
+                        }
+                    }
+                }
+                Object value = parent.getValue();
+                if (value instanceof IconTreeItem) {
+                    ((IconTreeItem) value).isSelect = isSelectAll;
+                    parent.getViewHolder().getView().findViewById(R.id.icon).setWillNotDraw(!((IconTreeItem) value).isSelect);
+                    selectFather(parent, isSelectAll);
+                }
+            }else {
+                Object value = node.getValue();
+                if (value instanceof IconTreeItem) {
+                    ((IconTreeItem) value).isSelect = isSelect;
+                    node.getViewHolder().getView().findViewById(R.id.icon).setWillNotDraw(!((IconTreeItem) value).isSelect);
+                }
+            }
+        }
+
+
+        private void select(TreeNode node, boolean isSelect) {
+            if (!ListUtils.isEmpty(node.getChildren())) {
+                for (int i = 0; i < node.getChildren().size(); i++) {
+                    Object value = node.getChildren().get(i).getValue();
+                    if (value instanceof IconTreeItem) {
+                        ((IconTreeItem) value).isSelect = isSelect;
+                        node.getChildren().get(i).getViewHolder().getView().findViewById(R.id.icon).setWillNotDraw(!((IconTreeItem) value).isSelect);
+                    }
+                    select(node.getChildren().get(i), isSelect);
+                }
+            }
+        }
 
         @Override
         public void toggle(boolean active) {
@@ -155,9 +199,8 @@ public class SelectPeoplePopu extends BasePopupWindow {
 
         @Override
         public int getContainerStyle() {
-            return R.style.TreeNodeStyle;
+            return R.style.MyTreeNodeStyle;
         }
-
 
     }
 

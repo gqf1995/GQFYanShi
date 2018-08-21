@@ -26,7 +26,7 @@
 
 
 
-    <ImageView
+    <com.gqfyanshi.widget.SelectImageView
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,5 +35,6 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/trans_10px"
         android:layout_toRightOf="@id/node_value"
-        android:src="@drawable/xuanzhongkaobei" />
+        android:src="@drawable/xuanzhongkaobei"
+        />
 </RelativeLayout>
