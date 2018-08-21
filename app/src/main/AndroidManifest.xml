@@ -67,7 +67,7 @@
         <activity android:name=".mvp.fragment.NoticeTopSearchFragment"/>
         <activity android:name=".mvp.activity.notice.NoticeDefaultActivity"/>
         <activity android:name=".mvp.activity.notice.NoticeInboxActivity"/>
-        <activity android:name=".mvp.activity.notice.NoticeEmergencyActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeEmergencyCityActivity"/>
         <activity android:name=".mvp.activity.notice.NoticeDecisionMakingActivity"/>
         <activity android:name=".mvp.activity.notice.NoticeMgsStatisticalActivity"/>
         <activity android:name=".mvp.activity.notice.NoticeAddressBookActivity"/>
@@ -83,6 +83,11 @@
         <activity android:name=".mvp.activity.notice.NoticePublicMsgReceiveActivity"/>
         <activity android:name=".mvp.activity.notice.NoticeInspectorReceiveActivity"/>
         <activity android:name=".mvp.activity.notice.NoticeConferenceRoomReservationActivity"/>
+        <activity android:name=".mvp.activity.askleave.AskForLeaveAActivity"/>
+        <activity android:name=".mvp.activity.ReceivinOofficialDocumentsActivity"/>
+        <activity android:name=".mvp.activity.file.FileCupboardActivity"/>
+        <activity android:name=".mvp.activity.file.AddSharerActivity"/>
+        <activity android:name=".mvp.fragment.ReceivinOofficialDocumentsFragment"/>
     </application>
 
 </manifest>

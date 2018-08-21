@@ -114,39 +114,12 @@
             android:textColor="@color/color_font1"
             android:textSize="@dimen/text_trans_18px"/>
 
-        <LinearLayout
-            android:id="@+id/lin_select"
+        <com.gqfyanshi.widget.SelectPeopleLayout
+            android:id="@+id/selectPeopleLayout1"
             android:layout_width="@dimen/trans_190px"
-            android:layout_height="@dimen/trans_35px"
-            android:background="@drawable/shape_grey_border_radiu5"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_height="@dimen/trans_35px">
 
-            <EditText
-                android:id="@+id/et_select"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@null"
-                android:enabled="false"
-                android:gravity="center_vertical"
-                android:hint="请选择"
-                android:paddingLeft="@dimen/trans_5px"
-                android:text=""
-                android:textColor="@color/color_font1"
-                android:textColorHint="@color/color_font3"
-                android:textSize="@dimen/text_trans_16px"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/trans_5px"
-                android:rotation="90"
-                android:src="@drawable/xiangqing"
-                />
-
-
-        </LinearLayout>
+        </com.gqfyanshi.widget.SelectPeopleLayout>
 
         <Space
             android:layout_width="0dp"

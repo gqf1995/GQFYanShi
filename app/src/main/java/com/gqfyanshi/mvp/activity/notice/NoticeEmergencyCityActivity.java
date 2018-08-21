@@ -5,7 +5,7 @@ import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.gqfyanshi.mvp.databinder.NoticeEmergencyBinder;
 import com.gqfyanshi.mvp.delegate.NoticeEmergencyDelegate;
 
-public class NoticeEmergencyActivity extends BaseDataBindActivity<NoticeEmergencyDelegate, NoticeEmergencyBinder> {
+public class NoticeEmergencyCityActivity extends BaseDataBindActivity<NoticeEmergencyDelegate, NoticeEmergencyBinder> {
 
     @Override
     protected Class<NoticeEmergencyDelegate> getDelegateClass() {

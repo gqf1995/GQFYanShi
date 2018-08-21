@@ -38,10 +38,6 @@ public class NoticeDelegate extends BaseDelegate {
             this.rootView = rootView;
             this.et_attributes = (EditText) rootView.findViewById(R.id.et_attributes);
             this.lin_attributes = (LinearLayout) rootView.findViewById(R.id.lin_attributes);
-            this.et_time1 = (EditText) rootView.findViewById(R.id.et_time1);
-            this.lin_select_time1 = (LinearLayout) rootView.findViewById(R.id.lin_select_time1);
-            this.et_time2 = (EditText) rootView.findViewById(R.id.et_time2);
-            this.lin_select_time2 = (LinearLayout) rootView.findViewById(R.id.lin_select_time2);
             this.tv_search = (RoundButton) rootView.findViewById(R.id.tv_search);
             this.pageChangeView = (PageChangeView) rootView.findViewById(R.id.pageChangeView);
         }

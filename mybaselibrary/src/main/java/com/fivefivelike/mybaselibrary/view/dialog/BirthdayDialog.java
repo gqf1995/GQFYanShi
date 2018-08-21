@@ -1,6 +1,6 @@
 package com.fivefivelike.mybaselibrary.view.dialog;
 
-import android.app.Activity;
+import android.content.Context;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -28,7 +28,7 @@ public class BirthdayDialog extends BaseDialog implements OnWheelChangedListener
     private WheelView day;
     private String yearStr, monthStr, dayStr;
     private  OnTimeChooseListener listener;
-    public BirthdayDialog(Activity context, OnTimeChooseListener listener) {
+    public BirthdayDialog(Context context, OnTimeChooseListener listener) {
         super(context);
         this.listener=listener;
     }
@@ -74,11 +74,16 @@ public class BirthdayDialog extends BaseDialog implements OnWheelChangedListener
                 dismiss();
             }
         });
+        year.setOnWheelChangedListener(this);
+        month.setOnWheelChangedListener(this);
+        day.setOnWheelChangedListener(this);
         getView(R.id.confirm).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                listener.setOnTimeChooseListener(yearStr.substring(0,yearStr.length()-1) + "-" + monthStr.substring(0,monthStr.length()-1) + "-"
+                listener.setOnTimeChooseListener(
+                        yearStr.substring(0,yearStr.length()-1) + "-" +
+                                monthStr.substring(0,monthStr.length()-1) + "-"
                         + dayStr);
                 dismiss();
             }
@@ -94,7 +99,7 @@ public class BirthdayDialog extends BaseDialog implements OnWheelChangedListener
     public BirthdayDialog setDefaultDate(String dateStr) {
         Date date;
         if (TextUtils.isEmpty(dateStr)) {
-            dateStr = "1990-1-1";
+            dateStr = "2018-01-01";
         }
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
         try {

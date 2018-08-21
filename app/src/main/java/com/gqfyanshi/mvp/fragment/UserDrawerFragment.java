@@ -8,15 +8,20 @@ import android.widget.LinearLayout;
 
 import com.fivefivelike.mybaselibrary.base.BaseDataBindFragment;
 import com.gqfyanshi.R;
+import com.gqfyanshi.mvp.activity.file.FileCupboardActivity;
+import com.gqfyanshi.mvp.activity.ReceivinOofficialDocumentsActivity;
 import com.gqfyanshi.mvp.activity.add.AddDynamicLeadershipActivity;
 import com.gqfyanshi.mvp.activity.add.AddInspectorNoticeActivity;
 import com.gqfyanshi.mvp.activity.add.AddPublicInformationActivity;
+import com.gqfyanshi.mvp.activity.add.AddSendMailActivity;
+import com.gqfyanshi.mvp.activity.askleave.AskForLeaveAActivity;
 import com.gqfyanshi.mvp.activity.main.MainLinsener;
 import com.gqfyanshi.mvp.activity.notice.NoticeAddressBookActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeConferenceRoomReservationActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeDecisionMakingActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeDefaultActivity;
-import com.gqfyanshi.mvp.activity.notice.NoticeEmergencyActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeEmergencyCityActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeEmergencyGovernmentActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeInboxActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeInspectorReceiveActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeInspectorSendActivity;
@@ -139,11 +144,13 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                 startActivity(new Intent(getActivity(),NoticeSendOfficialDocumentActivity.class));
                 break;//--公文发送
             case R.id.lin_mod2_content2:
+                startActivity(new Intent(getActivity(),ReceivinOofficialDocumentsActivity.class));
                 break;//--公文接收
             case R.id.lin_mod2_content3:
-                startActivity(new Intent(getActivity(),NoticeDefaultActivity.class));
+                startActivity(new Intent(getActivity(),AskForLeaveAActivity.class));
                 break;//--请假
             case R.id.lin_module3:
+                startActivity(new Intent(getActivity(),FileCupboardActivity.class));
                 break;//文件柜
             case R.id.lin_module4:
                 showAndHide(viewDelegate.viewHolder.lin_content4,
@@ -165,13 +172,13 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                 startActivity(new Intent(getActivity(),NoticeSendMsgActivity.class));
                 break;//--工作信息发布
             case R.id.lin_mod4_content6:
-                startActivity(new Intent(getActivity(),NoticeEmergencyActivity.class));
+                startActivity(new Intent(getActivity(),NoticeEmergencyCityActivity.class));
                 break;//--要情汇报
             case R.id.lin_mod4_content7:
                 startActivity(new Intent(getActivity(),NoticeLeadershipViewActivity.class));
                 break;//--领导参阅
             case R.id.lin_mod4_content8:
-                startActivity(new Intent(getActivity(),NoticeEmergencyActivity.class));
+                startActivity(new Intent(getActivity(),NoticeEmergencyCityActivity.class));
                 break;//--紧急信息
             case R.id.lin_module5:
                 showAndHide(viewDelegate.viewHolder.lin_content5,
@@ -196,6 +203,7 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                 startActivity(new Intent(getActivity(),NoticeDecisionMakingActivity.class));
                 break;//--决策参考
             case R.id.lin_mod5_content7:
+                startActivity(new Intent(getActivity(),NoticeEmergencyGovernmentActivity.class));
                 break;//--紧急信息
             case R.id.lin_module6:
                 showAndHide(viewDelegate.viewHolder.lin_content6,
@@ -246,6 +254,7 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                         viewDelegate.viewHolder.iv_module9);
                 break;//邮件发送
             case R.id.lin_mod9_content1:
+                startActivity(new Intent(getActivity(),AddSendMailActivity.class));
                 break;//--邮件发送
             case R.id.lin_mod9_content2:
                 startActivity(new Intent(getActivity(),NoticeOutboxActivity.class));
