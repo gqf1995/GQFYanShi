@@ -5,8 +5,8 @@ import android.view.View;
 
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
 import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
-import com.gqfyanshi.mvp.activity.notice.NoticeDefaultActivity;
-import com.gqfyanshi.mvp.activity.notice.NoticeMeetingActivity;
+import com.gqfyanshi.mvp.activity.notice.announcement.NoticeDefaultActivity;
+import com.gqfyanshi.mvp.activity.notice.announcement.NoticeMeetingActivity;
 import com.gqfyanshi.mvp.databinder.MsgBinder;
 import com.gqfyanshi.mvp.delegate.MsgDelegate;
 

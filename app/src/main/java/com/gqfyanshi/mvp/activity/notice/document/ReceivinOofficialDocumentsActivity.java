@@ -1,4 +1,4 @@
-package com.gqfyanshi.mvp.activity;
+package com.gqfyanshi.mvp.activity.notice.document;
 
 import android.os.Bundle;
 
