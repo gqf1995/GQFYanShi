@@ -8,23 +8,29 @@ import android.widget.LinearLayout;
 
 import com.fivefivelike.mybaselibrary.base.BaseDataBindFragment;
 import com.gqfyanshi.R;
-import com.gqfyanshi.mvp.activity.file.FileCupboardActivity;
 import com.gqfyanshi.mvp.activity.ReceivinOofficialDocumentsActivity;
 import com.gqfyanshi.mvp.activity.add.AddDynamicLeadershipActivity;
 import com.gqfyanshi.mvp.activity.add.AddInspectorNoticeActivity;
 import com.gqfyanshi.mvp.activity.add.AddPublicInformationActivity;
 import com.gqfyanshi.mvp.activity.add.AddSendMailActivity;
 import com.gqfyanshi.mvp.activity.askleave.AskForLeaveAActivity;
+import com.gqfyanshi.mvp.activity.file.FileCupboardActivity;
 import com.gqfyanshi.mvp.activity.main.MainLinsener;
 import com.gqfyanshi.mvp.activity.notice.NoticeAddressBookActivity;
+import com.gqfyanshi.mvp.activity.notice.city.NoticeCityInspectorReceiveActivity;
+import com.gqfyanshi.mvp.activity.notice.city.NoticeCityInspectorSendActivity;
+import com.gqfyanshi.mvp.activity.notice.city.NoticeCityPublicMsgReceiveActivity;
+import com.gqfyanshi.mvp.activity.notice.city.NoticeCitySendMsgActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeConferenceRoomReservationActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeDecisionMakingActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeDefaultActivity;
-import com.gqfyanshi.mvp.activity.notice.NoticeEmergencyCityActivity;
-import com.gqfyanshi.mvp.activity.notice.NoticeEmergencyGovernmentActivity;
+import com.gqfyanshi.mvp.activity.notice.city.NoticeEmergencyCityActivity;
+import com.gqfyanshi.mvp.activity.notice.government.NoticeEmergencyGovernmentActivity;
+import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentInspectorReceiveActivity;
+import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentInspectorSendActivity;
+import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentPublicMsgReceiveActivity;
+import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentSendMsgActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeInboxActivity;
-import com.gqfyanshi.mvp.activity.notice.NoticeInspectorReceiveActivity;
-import com.gqfyanshi.mvp.activity.notice.NoticeInspectorSendActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeLeadershipViewActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeManuscriptsReceiveActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeManuscriptsSendActivity;
@@ -32,10 +38,10 @@ import com.gqfyanshi.mvp.activity.notice.NoticeMayorActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeMeetingActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeMgsStatisticalActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeOutboxActivity;
-import com.gqfyanshi.mvp.activity.notice.NoticePublicMsgReceiveActivity;
-import com.gqfyanshi.mvp.activity.notice.NoticePublicMsgSendActivity;
-import com.gqfyanshi.mvp.activity.notice.NoticeSendMsgActivity;
+import com.gqfyanshi.mvp.activity.notice.city.NoticePublicMsgSendActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeReportActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeSendOfficialDocumentActivity;
+import com.gqfyanshi.mvp.activity.notice.NoticeWorkMsgActivity;
 import com.gqfyanshi.mvp.databinder.UserDrawerBinder;
 import com.gqfyanshi.mvp.delegate.UserDrawerDelegate;
 
@@ -166,13 +172,13 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                 startActivity(new Intent(getActivity(),NoticeMgsStatisticalActivity.class));
                 break;//--信息统计
             case R.id.lin_mod4_content4:
-                startActivity(new Intent(getActivity(),NoticeMgsStatisticalActivity.class));
+                startActivity(new Intent(getActivity(),NoticeCitySendMsgActivity.class));
                 break;//--信息发送
             case R.id.lin_mod4_content5:
-                startActivity(new Intent(getActivity(),NoticeSendMsgActivity.class));
+                startActivity(new Intent(getActivity(),NoticeWorkMsgActivity.class));
                 break;//--工作信息发布
             case R.id.lin_mod4_content6:
-                startActivity(new Intent(getActivity(),NoticeEmergencyCityActivity.class));
+                startActivity(new Intent(getActivity(),NoticeReportActivity.class));
                 break;//--要情汇报
             case R.id.lin_mod4_content7:
                 startActivity(new Intent(getActivity(),NoticeLeadershipViewActivity.class));
@@ -194,7 +200,7 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                 startActivity(new Intent(getActivity(),NoticeMgsStatisticalActivity.class));
                 break;//--信息统计
             case R.id.lin_mod5_content4:
-                startActivity(new Intent(getActivity(),NoticeMgsStatisticalActivity.class));
+                startActivity(new Intent(getActivity(),NoticeGovernmentSendMsgActivity.class));
                 break;//--信息发送
             case R.id.lin_mod5_content5:
                 startActivity(new Intent(getActivity(),NoticeMayorActivity.class));
@@ -216,16 +222,16 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                 startActivity(new Intent(getActivity(),AddPublicInformationActivity.class));
                 break;//--公开信息发送
             case R.id.lin_mod6_content3:
-                startActivity(new Intent(getActivity(),NoticePublicMsgReceiveActivity.class));
+                startActivity(new Intent(getActivity(),NoticeCityPublicMsgReceiveActivity.class));
                 break;//--公开信息接收
             case R.id.lin_mod6_content4:
                 startActivity(new Intent(getActivity(),AddInspectorNoticeActivity.class));
                 break;//--督查通知发布
             case R.id.lin_mod6_content5:
-                startActivity(new Intent(getActivity(),NoticeInspectorSendActivity.class));
+                startActivity(new Intent(getActivity(),NoticeCityInspectorSendActivity.class));
                 break;//--督查通知发送
             case R.id.lin_mod6_content6:
-                startActivity(new Intent(getActivity(),NoticeInspectorReceiveActivity.class));
+                startActivity(new Intent(getActivity(),NoticeCityInspectorReceiveActivity.class));
                 break;//--督查通知接收
             case R.id.lin_module7:
                 showAndHide(viewDelegate.viewHolder.lin_content7,
@@ -238,13 +244,13 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                 startActivity(new Intent(getActivity(),AddPublicInformationActivity.class));
                 break;//--公开信息发送
             case R.id.lin_mod7_content3:
-                startActivity(new Intent(getActivity(),NoticePublicMsgReceiveActivity.class));
+                startActivity(new Intent(getActivity(),NoticeGovernmentPublicMsgReceiveActivity.class));
                 break;//--公开信息接收
             case R.id.lin_mod7_content4:
-                startActivity(new Intent(getActivity(),NoticeInspectorSendActivity.class));
+                startActivity(new Intent(getActivity(),NoticeGovernmentInspectorSendActivity.class));
                 break;//--督查通知发送
             case R.id.lin_mod7_content5:
-                startActivity(new Intent(getActivity(),NoticeInspectorReceiveActivity.class));
+                startActivity(new Intent(getActivity(),NoticeGovernmentInspectorReceiveActivity.class));
                 break;//--督查通知接收
             case R.id.lin_module8:
                 startActivity(new Intent(getActivity(),AddDynamicLeadershipActivity.class));

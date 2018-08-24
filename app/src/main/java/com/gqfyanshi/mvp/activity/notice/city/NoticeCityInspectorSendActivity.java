@@ -1,11 +1,11 @@
-package com.gqfyanshi.mvp.activity.notice;
+package com.gqfyanshi.mvp.activity.notice.city;
 
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
 import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.gqfyanshi.mvp.databinder.NoticeInspectorBinder;
 import com.gqfyanshi.mvp.delegate.NoticeInspectorDelegate;
 
-public class NoticeInspectorSendActivity extends BaseDataBindActivity<NoticeInspectorDelegate, NoticeInspectorBinder> {
+public class NoticeCityInspectorSendActivity extends BaseDataBindActivity<NoticeInspectorDelegate, NoticeInspectorBinder> {
 
     @Override
     protected Class<NoticeInspectorDelegate> getDelegateClass() {

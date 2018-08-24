@@ -1,11 +1,11 @@
-package com.gqfyanshi.mvp.activity.notice;
+package com.gqfyanshi.mvp.activity.notice.government;
 
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
 import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.gqfyanshi.mvp.databinder.NoticeEmergencyBinder;
 import com.gqfyanshi.mvp.delegate.NoticeEmergencyDelegate;
 
-public class NoticeSendMsgActivity extends BaseDataBindActivity<NoticeEmergencyDelegate, NoticeEmergencyBinder> {
+public class NoticeEmergencyGovernmentActivity extends BaseDataBindActivity<NoticeEmergencyDelegate, NoticeEmergencyBinder> {
 
     @Override
     protected Class<NoticeEmergencyDelegate> getDelegateClass() {
@@ -21,7 +21,7 @@ public class NoticeSendMsgActivity extends BaseDataBindActivity<NoticeEmergencyD
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
-        initToolbar(new ToolbarBuilder().setTitle("信息发送"));
+        initToolbar(new ToolbarBuilder().setTitle("紧急信息"));
 
     }
 

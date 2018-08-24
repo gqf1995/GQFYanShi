@@ -63,31 +63,42 @@
         <activity android:name=".mvp.activity.main.MainActivity"/>
         <activity android:name=".mvp.activity.main.MsgActivity"/>
         <activity android:name=".mvp.activity.notice.NoticeMeetingActivity"/>
-        <activity android:name=".mvp.fragment.NoticeListFragment"/>
-        <activity android:name=".mvp.fragment.NoticeTopSearchFragment"/>
         <activity android:name=".mvp.activity.notice.NoticeDefaultActivity"/>
         <activity android:name=".mvp.activity.notice.NoticeInboxActivity"/>
-        <activity android:name=".mvp.activity.notice.NoticeEmergencyCityActivity"/>
+        <activity android:name=".mvp.activity.notice.city.NoticeEmergencyCityActivity"/>
         <activity android:name=".mvp.activity.notice.NoticeDecisionMakingActivity"/>
         <activity android:name=".mvp.activity.notice.NoticeMgsStatisticalActivity"/>
         <activity android:name=".mvp.activity.notice.NoticeAddressBookActivity"/>
         <activity android:name=".mvp.activity.notice.NoticeSendOfficialDocumentActivity"/>
         <activity android:name=".mvp.activity.add.AddActivity"/>
         <activity android:name=".mvp.activity.add.AddDynamicLeadershipActivity"/>
-        <activity android:name=".mvp.activity.notice.NoticeInspectorSendActivity"/>
+        <activity android:name=".mvp.activity.notice.government.NoticeGovernmentInspectorSendActivity"/>
         <activity android:name=".mvp.activity.notice.NoticeInboxInspectorActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeLeadershipViewActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeManuscriptsReceiveActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeManuscriptsSendActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeMayorActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeOutboxActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeReportActivity"/>
+        <activity android:name=".mvp.activity.notice.government.NoticeGovernmentSendMsgActivity"/>
+        <activity android:name=".mvp.activity.notice.city.NoticeCitySendMsgActivity"/>
+        <activity android:name=".mvp.activity.notice.NoticeWorkMsgActivity"/>
         <activity android:name=".mvp.activity.add.AddInspectorNoticeActivity"/>
         <activity android:name=".mvp.activity.add.AddPublicInformationActivity"/>
         <activity android:name=".mvp.activity.add.AddSendMailActivity"/>
-        <activity android:name=".mvp.activity.notice.NoticePublicMsgSendActivity"/>
-        <activity android:name=".mvp.activity.notice.NoticePublicMsgReceiveActivity"/>
-        <activity android:name=".mvp.activity.notice.NoticeInspectorReceiveActivity"/>
+        <activity android:name=".mvp.activity.notice.city.NoticePublicMsgSendActivity"/>
+        <activity android:name=".mvp.activity.notice.government.NoticeGovernmentPublicMsgReceiveActivity"/>
+        <activity android:name=".mvp.activity.notice.government.NoticeGovernmentInspectorReceiveActivity"/>
+        <activity android:name=".mvp.activity.notice.government.NoticeEmergencyGovernmentActivity"/>
         <activity android:name=".mvp.activity.notice.NoticeConferenceRoomReservationActivity"/>
         <activity android:name=".mvp.activity.askleave.AskForLeaveAActivity"/>
         <activity android:name=".mvp.activity.ReceivinOofficialDocumentsActivity"/>
         <activity android:name=".mvp.activity.file.FileCupboardActivity"/>
         <activity android:name=".mvp.activity.file.AddSharerActivity"/>
-        <activity android:name=".mvp.fragment.ReceivinOofficialDocumentsFragment"/>
+        <activity android:name=".mvp.activity.askleave.AskForLeaveCActivity"/>
+        <activity android:name=".mvp.activity.askleave.AskForLeaveBActivity"/>
+        <activity android:name=".mvp.activity.askleave.AskForLeaveDActivity"/>
+
     </application>
 
 </manifest>
