@@ -1,0 +1,191 @@
+{
+	"id": "f421941d-f41a-4b39-a474-148993c32353",
+	"name": "Municipal",
+	"description": null,
+	"auth": null,
+	"events": null,
+	"variables": null,
+	"order": [
+		"6a5be565-ce62-4518-b2f6-71585a51b636",
+		"9b37e353-5268-4b53-a1d8-f89281bbd16d",
+		"b20317ce-1737-410d-b3ad-2e533c2600f5",
+		"a1031bd1-b3de-4739-9107-a2bbd035191e",
+		"705daf25-243d-48c5-ba81-1c53323bab81",
+		"5442a82b-b916-44ed-8c96-9c39259d6ef1",
+		"6c5efc32-e139-4b09-8128-f6a6156fc5fa",
+		"079f92e2-24dc-42c3-b8de-090b9ec00b68"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "079f92e2-24dc-42c3-b8de-090b9ec00b68",
+			"name": "上传文件",
+			"url": "{{host}}{{port}}/document/saveFile",
+			"description": "",
+			"data": [
+				{
+					"key": "img",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "5442a82b-b916-44ed-8c96-9c39259d6ef1",
+			"name": "获取保存用户时的用户字典数据",
+			"url": "{{host}}{{port}}/user/getUserDict",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "6a5be565-ce62-4518-b2f6-71585a51b636",
+			"name": "获取验证码",
+			"url": "{{host}}{{port}}/pictureCheckCode",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "6c5efc32-e139-4b09-8128-f6a6156fc5fa",
+			"name": "展示子级部门",
+			"url": "{{host}}{{port}}/user/showChildDepartment",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n\t\"parentId\":2\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "705daf25-243d-48c5-ba81-1c53323bab81",
+			"name": "获取用户展示列表",
+			"url": "{{host}}{{port}}/user/getUserList",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n\t\"pageSize\":10,\n\t\"pageNumber\":2\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "9b37e353-5268-4b53-a1d8-f89281bbd16d",
+			"name": "发送手机短信验证码",
+			"url": "{{host}}{{port}}/sendPhoneCode",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": ""
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n\t\"phoneNum\":\"15896559159\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "a1031bd1-b3de-4739-9107-a2bbd035191e",
+			"name": "退出登录",
+			"url": "{{host}}{{port}}/logOut",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "b20317ce-1737-410d-b3ad-2e533c2600f5",
+			"name": "登陆",
+			"url": "{{host}}{{port}}/doLogin",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n\t\"phoneNum\":\"15896559159\",\n\t\"randomCode\":\"FEX9\",\n\t\"loginNum\":\"314830\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		}
+	]
+}
