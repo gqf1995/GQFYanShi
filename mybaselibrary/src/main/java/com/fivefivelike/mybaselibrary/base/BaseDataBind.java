@@ -188,9 +188,9 @@ public abstract class BaseDataBind<T extends IDelegate> implements IDataBind<T> 
 
     public Map<String, Object> getBaseMapWithUid() {
         getBaseMap();
-        String token = SaveUtil.getInstance().getString("token");
-        baseMap.put("token", token);
-        KLog.i("getBaseMapWithUid", "token" + token);
+        String token = SaveUtil.getInstance().getString("uid");
+        baseMap.put("userId", token);
+        KLog.i("getBaseMapWithUid", "userId" + token);
 
         //        String language = SaveUtil.getInstance().getString("language");
         //        if (TextUtils.isEmpty(language)) {

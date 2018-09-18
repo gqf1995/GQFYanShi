@@ -37,6 +37,7 @@ public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder>
         initToolbar(new ToolbarBuilder().setTitle("偃师市党政办公平台")
                 .setmRightImg1(CommonUtils.getString(R.string.ic_tixing))
                 .setmRightImg2(CommonUtils.getString(R.string.ic_tixing)));
+        addRequest(binder.getLoginedUserInfo(this));
         viewDelegate.getmToolbarBack().setText(CommonUtils.getString(R.string.ic_daohang));
         viewDelegate.getmToolbarBackLin().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,8 +46,10 @@ public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder>
             }
         });
     }
+
     ReceivinOofficialDocumentsFragment receivinOofficialDocumentsFragment;
-    private void initFragment(boolean isInit){
+
+    private void initFragment(boolean isInit) {
         viewDelegate.initAddFragment(R.id.fl_root, getSupportFragmentManager());
         if (isInit && ListUtils.isEmpty(getSupportFragmentManager().getFragments())) {
             viewDelegate.addFragment(receivinOofficialDocumentsFragment = new ReceivinOofficialDocumentsFragment(), "ReceivinOofficialDocumentsFragment", 0);
@@ -102,13 +105,13 @@ public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder>
     @Override
     protected void clickRightIv() {
         super.clickRightIv();
-        startActivity(new Intent(viewDelegate.getActivity(),MsgActivity.class));
+        startActivity(new Intent(viewDelegate.getActivity(), MsgActivity.class));
     }
 
     @Override
     protected void clickRightIv1() {
         super.clickRightIv1();
-        startActivity(new Intent(viewDelegate.getActivity(),Scrawl.class));
+        startActivity(new Intent(viewDelegate.getActivity(), Scrawl.class));
     }
 
     @Override
