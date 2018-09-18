@@ -5,4 +5,24 @@
     <string name="ic_daohang">&#xe8fb;</string>
     <string name="ic_tixing">&#xe626;</string>
 
+
+
+    <string name="insert_image">insert image</string>
+    <string name="replay">replay</string>
+    <string name="export_bitmap">export bitmap</string>
+    <string name="insert_textbox">insert textbox</string>
+    <string name="save">save</string>
+    <string name="load">load</string>
+    <string name="stroke_color">stroke color</string>
+    <string name="stroke_width">stroke width</string>
+    <string name="undo">undo</string>
+    <string name="redo">redo</string>
+    <string name="clear">clear</string>
+    <string name="share">share</string>
+    <string name="pen_setting">pen settings</string>
+    <string name="side_key">side key enable</string>
+    <string name="eraser_mode">eraser mode</string>
+    <string name="selection_mode">selection mode</string>
+    <string name="recognizer">recognizer</string>
+    <string name="transform">transform</string>
 </resources>

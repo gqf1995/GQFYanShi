@@ -9,7 +9,13 @@
         <item name="android:windowBackground">@color/color_f5f5f5</item>
         <item name="android:windowIsTranslucent">false</item>
     </style>
-
+    <style name="AppBaseThemeShouxie" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
     <style name="SplashTheme" parent="AppTheme">
         <!-- 欢迎页背景引用刚才写好的 -->
         <item name="android:windowBackground">@drawable/splash</item>

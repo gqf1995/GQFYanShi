@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item 
+        android:id="@+id/stroke_color"
+        android:title="@string/stroke_color"
+        app:showAsAction="ifRoom|withText"/>
+    <item
+        android:id="@+id/stroke_width"
+        android:title="@string/stroke_width"
+        app:showAsAction="ifRoom|withText"/>
+    <item
+        android:id="@+id/show_Pennable"
+        android:title="show_Pennable"
+        app:showAsAction="ifRoom|withText"/>
+    <item 
+        android:id="@+id/insert_image"
+        android:title="@string/insert_image"
+        app:showAsAction="ifRoom|withText"/>
+    <item 
+        android:id="@+id/replay"
+        android:title="@string/replay"
+        app:showAsAction="ifRoom|withText"/>
+    <item 
+        android:id="@+id/export_bitmap"
+        android:title="@string/export_bitmap"
+        app:showAsAction="ifRoom|withText" />
+    <item 
+        android:id="@+id/save"
+        android:title="@string/save"
+        app:showAsAction="ifRoom|withText" />
+    <item 
+        android:id="@+id/load"
+        android:title="@string/load"
+        app:showAsAction="ifRoom|withText" />
+    <item 
+        android:id="@+id/undo"
+        android:title="@string/undo"
+        app:showAsAction="ifRoom|withText" />
+    <item 
+        android:id="@+id/redo"
+        android:title="@string/redo"
+        app:showAsAction="ifRoom|withText" />
+    <item 
+        android:id="@+id/insert_textbox"
+        android:title="@string/insert_textbox"
+        app:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/clear" android:title="@string/clear"/>
+    <item android:id="@+id/transform" android:title="@string/transform"/>
+    <item android:id="@+id/share" android:title="@string/share"/>
+    <item android:id="@+id/pen_setting" android:title="@string/pen_setting"/>
+    <item android:id="@+id/side_key" android:title="@string/side_key" android:checkable="true" android:checked="true"/>
+    <item android:id="@+id/eraser_mode" android:title="@string/eraser_mode" android:checkable="true" />
+    <item android:id="@+id/selection_mode" android:title="@string/selection_mode" android:checkable="true"/>
+    <item android:id="@+id/recognizer" android:title="@string/recognizer"/>
+
+</menu>

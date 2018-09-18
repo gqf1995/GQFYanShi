@@ -63,4 +63,10 @@ dependencies {
     //图片压缩
     compile 'top.zibin:Luban:1.1.3'
     compile 'com.github.bmelnychuk:atv:1.2.+'
+    compile(name:'and42', ext:'aar')
+    compile(name:'inkapi', ext:'aar')
+    compile(name:'inkframework', ext:'aar')
+    compile(name:'inkutils', ext:'aar')
+    compile(name:'recognizer', ext:'aar')
+    compile(name:'utils', ext:'aar')
 }
