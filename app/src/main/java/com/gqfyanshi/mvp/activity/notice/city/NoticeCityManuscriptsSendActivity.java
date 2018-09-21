@@ -17,14 +17,19 @@ public class NoticeCityManuscriptsSendActivity extends BaseDataBindActivity<Noti
         return new NoticeEmergencyBinder(viewDelegate);
     }
 
+    int pageNumber = 1;
 
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
         initToolbar(new ToolbarBuilder().setTitle("约稿性发送"));
-
+        onRefush();
     }
 
+
+    private void onRefush() {
+        addRequest(binder.conventional_sendList(pageNumber, this));
+    }
 
     @Override
     protected void onServiceSuccess(String data, String info, int status, int requestCode) {

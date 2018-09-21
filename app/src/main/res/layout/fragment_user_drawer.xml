@@ -6,9 +6,17 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <RelativeLayout
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
 
         <LinearLayout
@@ -260,8 +268,8 @@
                     android:layout_height="@dimen/trans_15px"
                     android:layout_marginRight="@dimen/trans_10px"
                     android:scaleType="centerInside"
-                    android:visibility="invisible"
                     android:src="@drawable/xiangqing"
+                    android:visibility="invisible"
                     />
 
                 <TextView

@@ -7,8 +7,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.fivefivelike.mybaselibrary.base.BaseDataBindFragment;
+import com.fivefivelike.mybaselibrary.utils.GsonUtil;
+import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.gqfyanshi.R;
-import com.gqfyanshi.mvp.activity.notice.document.ReceivinOofficialDocumentsActivity;
+import com.gqfyanshi.adapter.MainLeftTreeItemHolder;
+import com.gqfyanshi.entity.bean.MainLeftBean;
 import com.gqfyanshi.mvp.activity.add.AddDynamicLeadershipActivity;
 import com.gqfyanshi.mvp.activity.add.AddInspectorNoticeActivity;
 import com.gqfyanshi.mvp.activity.add.AddPublicInformationActivity;
@@ -19,24 +22,23 @@ import com.gqfyanshi.mvp.activity.main.MainLinsener;
 import com.gqfyanshi.mvp.activity.notice.NoticeAddressBookActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeConferenceRoomReservationActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeDecisionMakingActivity;
-import com.gqfyanshi.mvp.activity.notice.announcement.NoticeDefaultActivity;
-import com.gqfyanshi.mvp.activity.notice.mail.NoticeInboxActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeLeadershipViewActivity;
-import com.gqfyanshi.mvp.activity.notice.city.NoticeCityManuscriptsReceiveActivity;
-import com.gqfyanshi.mvp.activity.notice.city.NoticeCityManuscriptsSendActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeMayorActivity;
-import com.gqfyanshi.mvp.activity.notice.announcement.NoticeMeetingActivity;
-import com.gqfyanshi.mvp.activity.notice.mail.NoticeOutboxActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeReportActivity;
-import com.gqfyanshi.mvp.activity.notice.document.NoticeSendOfficialDocumentActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeWorkMsgActivity;
+import com.gqfyanshi.mvp.activity.notice.announcement.NoticeDefaultActivity;
+import com.gqfyanshi.mvp.activity.notice.announcement.NoticeMeetingActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticeCityInspectorReceiveActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticeCityInspectorSendActivity;
+import com.gqfyanshi.mvp.activity.notice.city.NoticeCityManuscriptsReceiveActivity;
+import com.gqfyanshi.mvp.activity.notice.city.NoticeCityManuscriptsSendActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticeCityMgsStatisticalActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticeCityPublicMsgReceiveActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticeCitySendMsgActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticeEmergencyCityActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticePublicMsgSendActivity;
+import com.gqfyanshi.mvp.activity.notice.document.NoticeSendOfficialDocumentActivity;
+import com.gqfyanshi.mvp.activity.notice.document.ReceivinOofficialDocumentsActivity;
 import com.gqfyanshi.mvp.activity.notice.government.NoticeEmergencyGovernmentActivity;
 import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentInspectorReceiveActivity;
 import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentInspectorSendActivity;
@@ -45,8 +47,14 @@ import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentMgsStatistic
 import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentPublicMsgReceiveActivity;
 import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentSendActivity;
 import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentSendMsgActivity;
+import com.gqfyanshi.mvp.activity.notice.mail.NoticeInboxActivity;
+import com.gqfyanshi.mvp.activity.notice.mail.NoticeOutboxActivity;
 import com.gqfyanshi.mvp.databinder.UserDrawerBinder;
 import com.gqfyanshi.mvp.delegate.UserDrawerDelegate;
+import com.unnamed.b.atv.model.TreeNode;
+import com.unnamed.b.atv.view.AndroidTreeView;
+
+import java.util.List;
 
 public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate, UserDrawerBinder> {
 
@@ -71,6 +79,8 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
+        addRequest(binder.getLoginedUserInfo(this));
+
         viewDelegate.setOnClickListener(this,
                 R.id.lin_module1,//通知公告
                 R.id.lin_mod1_content1,//--会议通知
@@ -101,7 +111,7 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                 R.id.lin_mod6_content1,//--公开信息发布
                 R.id.lin_mod6_content2,//--公开信息发送
                 R.id.lin_mod6_content3,//--公开信息接收
-                R.id.lin_mod6_content4,//--督查通知发布
+                R.id.lin_mod6_content4,//--督查通知发布  //
                 R.id.lin_mod6_content5,//--督查通知发送
                 R.id.lin_mod6_content6,//--督查通知接收
                 R.id.lin_module7,//政府督查工作
@@ -131,6 +141,209 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
         }
     }
 
+
+
+    List<MainLeftBean> leftBeans;
+
+    @Override
+    protected void onServiceSuccess(String data, String info, int status, int requestCode) {
+        switch (requestCode) {
+            case 0x123:
+                leftBeans = GsonUtil.getInstance().toList(data, "userRights", MainLeftBean.class);
+                String normalMsg = GsonUtil.getInstance().getValue(data, "normalMsg");
+                String docMsg = GsonUtil.getInstance().getValue(data, "docMsg");
+                String meetMsg = GsonUtil.getInstance().getValue(data, "meetMsg");
+                initAllView();
+                break;
+        }
+    }
+
+    TreeNode root;
+
+    private void initAllView() {
+        root = TreeNode.root();
+        for (int i = 0; i < leftBeans.size(); i++) {
+            if (leftBeans.get(i).getPid() == 0) {
+                //父
+                TreeNode parent1 = new TreeNode(leftBeans.get(i));
+                initTree(parent1, leftBeans.get(i));
+                root.addChild(parent1);
+            }
+        }
+        AndroidTreeView treeView = new AndroidTreeView(getActivity(), root);
+        treeView.setDefaultAnimation(true);
+        treeView.setDefaultViewHolder(MainLeftTreeItemHolder.class);
+        treeView.setDefaultNodeClickListener(new TreeNode.TreeNodeClickListener() {
+            @Override
+            public void onClick(TreeNode node, Object value) {
+                if (value instanceof MainLeftBean) {
+                    if (ListUtils.isEmpty(node.getChildren())) {
+                        //通知公告
+                        if ("/notice/noticeIndex/0".equals(((MainLeftBean) value).getUrl())) {
+                            //会议通知
+                            startActivity(new Intent(getActivity(), NoticeMeetingActivity.class));
+                        } else if ("/notice/noticeIndex/1".equals(((MainLeftBean) value).getUrl())) {
+                            //一般性公告
+                            startActivity(new Intent(getActivity(), NoticeDefaultActivity.class));
+                        }
+                        //公文流转
+                        else if ("/document/docIndex/0".equals(((MainLeftBean) value).getUrl())) {
+                            //公文发送
+                            startActivity(new Intent(getActivity(), NoticeSendOfficialDocumentActivity.class));
+                        } else if ("/document/docIndex/1".equals(((MainLeftBean) value).getUrl())) {
+                            //公文接收
+                            startActivity(new Intent(getActivity(), ReceivinOofficialDocumentsActivity.class));
+                        }
+                        //市委信息工作
+                        else if ("/conventional/conventionalIndex/0".equals(((MainLeftBean) value).getUrl())) {
+                            //约稿性发送
+                            startActivity(new Intent(getActivity(), NoticeCityManuscriptsSendActivity.class));
+                        } else if ("/conventional/conventionalIndex/1".equals(((MainLeftBean) value).getUrl())) {
+                            //约稿性接收
+                            startActivity(new Intent(getActivity(), NoticeCityManuscriptsReceiveActivity.class));
+                        } else if ("/information/informationlIndex/1".equals(((MainLeftBean) value).getUrl())) {
+                            //信息统计
+                            startActivity(new Intent(getActivity(), NoticeCityMgsStatisticalActivity.class));
+                        } else if ("/information/informationlIndex/0".equals(((MainLeftBean) value).getUrl())) {
+                            //信息发送
+                            startActivity(new Intent(getActivity(), NoticeCitySendMsgActivity.class));
+                        } else if ("/jobinfo/jobInfoIndex/0".equals(((MainLeftBean) value).getUrl())) {
+                            //工作信息发布
+                            startActivity(new Intent(getActivity(), NoticeWorkMsgActivity.class));
+                        } else if ("/threeinfo/threeInfoIndex/0".equals(((MainLeftBean) value).getUrl())) {
+                            //要情汇报
+                            startActivity(new Intent(getActivity(), NoticeReportActivity.class));
+                        } else if ("/threeinfo/threeInfoIndex/1".equals(((MainLeftBean) value).getUrl())) {
+                            //领导参阅
+                            startActivity(new Intent(getActivity(), NoticeLeadershipViewActivity.class));
+                        } else if ("/threeinfo/threeInfoIndex/2".equals(((MainLeftBean) value).getUrl())) {
+                            //紧急信息
+                            startActivity(new Intent(getActivity(), NoticeEmergencyCityActivity.class));
+                        }
+                        //政府信息工作
+                        else if ("/conventional/govConventionalIndex/0".equals(((MainLeftBean) value).getUrl())) {
+                            //约稿性发送
+                            startActivity(new Intent(getActivity(), NoticeGovernmentSendActivity.class));
+                        } else if ("/conventional/govConventionalIndex/1".equals(((MainLeftBean) value).getUrl())) {
+                            //约稿性接收
+                            startActivity(new Intent(getActivity(), NoticeGovernmentManuscriptsReceiveActivity.class));
+                        } else if ("/information/govInformationlIndex/1".equals(((MainLeftBean) value).getUrl())) {
+                            //信息统计
+                            startActivity(new Intent(getActivity(), NoticeGovernmentMgsStatisticalActivity.class));
+                        } else if ("/information/govInformationlIndex/0".equals(((MainLeftBean) value).getUrl())) {
+                            //信息发送
+                            startActivity(new Intent(getActivity(), NoticeGovernmentSendMsgActivity.class));
+                        } else if ("/threeinfo/govThreeInfoIndex/0".equals(((MainLeftBean) value).getUrl())) {
+                            //市长专报
+                            startActivity(new Intent(getActivity(), NoticeMayorActivity.class));
+                        } else if ("/threeinfo/govThreeInfoIndex/1".equals(((MainLeftBean) value).getUrl())) {
+                            //决策参考
+                            startActivity(new Intent(getActivity(), NoticeDecisionMakingActivity.class));
+                        } else if ("/threeinfo/govThreeInfoIndex/2".equals(((MainLeftBean) value).getUrl())) {
+                            //紧急信息
+                            startActivity(new Intent(getActivity(), NoticeEmergencyGovernmentActivity.class));
+                        }
+                        //市委督查工作
+                        else if ("/workInfo/cityWorkInfoForm".equals(((MainLeftBean) value).getUrl())) {
+                            //公开信息发布
+                            startActivity(new Intent(getActivity(), NoticePublicMsgSendActivity.class));
+                        } else if ("/workInfo/cityWorkInfoSend".equals(((MainLeftBean) value).getUrl())) {
+                            //公开信息发送
+                            startActivity(new Intent(getActivity(), AddPublicInformationActivity.class));
+                        } else if ("/workInfo/cityWorkInfoReceive".equals(((MainLeftBean) value).getUrl())) {
+                            //公开信息接收
+                            startActivity(new Intent(getActivity(), NoticeCityPublicMsgReceiveActivity.class));
+                        } else if ("/overSeer/cityOverSeerSend".equals(((MainLeftBean) value).getUrl())) {
+                            //督查通知发送
+                            startActivity(new Intent(getActivity(), NoticeCityInspectorSendActivity.class));
+                        } else if ("/overSeer/cityOverSeerReceive".equals(((MainLeftBean) value).getUrl())) {
+                            //督查通知接收
+                            startActivity(new Intent(getActivity(), NoticeCityInspectorReceiveActivity.class));
+                        }
+                        //政府督查工作
+                        else if ("/workInfo/govWorkInfoForm".equals(((MainLeftBean) value).getUrl())) {
+                            //公开信息发布
+                            startActivity(new Intent(getActivity(), AddPublicInformationActivity.class));
+                        } else if ("/workInfo/govWorkInfoSend".equals(((MainLeftBean) value).getUrl())) {
+                            //公开信息发送
+                            startActivity(new Intent(getActivity(), AddPublicInformationActivity.class));
+                        } else if ("/workInfo/govWorkInfoReceive".equals(((MainLeftBean) value).getUrl())) {
+                            //公开信息接收
+                            startActivity(new Intent(getActivity(), NoticeGovernmentPublicMsgReceiveActivity.class));
+                        } else if ("/overSeer/govOverSeerSend".equals(((MainLeftBean) value).getUrl())) {
+                            //督查通知发送
+                            startActivity(new Intent(getActivity(), NoticeGovernmentInspectorSendActivity.class));
+                        }else if ("/overSeer/govOverSeerReceive".equals(((MainLeftBean) value).getUrl())) {
+                            //督查通知接收
+                            startActivity(new Intent(getActivity(), NoticeGovernmentInspectorReceiveActivity.class));
+                        }
+                        //领导动态
+                        else if ("/leader/addIndex".equals(((MainLeftBean) value).getUrl())) {
+                            //领导动态
+                            startActivity(new Intent(getActivity(), AddDynamicLeadershipActivity.class));
+                        }
+                        //邮件发送
+                        else if ("/email/emailForm".equals(((MainLeftBean) value).getUrl())) {
+                            //邮件发送
+                            startActivity(new Intent(getActivity(), AddSendMailActivity.class));
+                        } else if ("/email/emailSend".equals(((MainLeftBean) value).getUrl())) {
+                            //发件箱
+                            startActivity(new Intent(getActivity(), NoticeOutboxActivity.class));
+                        } else if ("/email/emailReceive".equals(((MainLeftBean) value).getUrl())) {
+                            //收件箱
+                            startActivity(new Intent(getActivity(), NoticeInboxActivity.class));
+                        }
+                        //会议室预约
+                        else if ("/conference".equals(((MainLeftBean) value).getUrl())) {
+                            //会议室预约
+                            startActivity(new Intent(getActivity(), NoticeConferenceRoomReservationActivity.class));
+                        }
+                        //电子通讯录
+                        else if ("/addressBook/list".equals(((MainLeftBean) value).getUrl())) {
+                            //电子通讯录
+                            startActivity(new Intent(getActivity(), NoticeAddressBookActivity.class));
+                        }
+                        //意见箱
+                        else if ("/receipt".equals(((MainLeftBean) value).getUrl())) {
+                            //反馈意见
+                        }
+
+
+
+
+
+                        //用户管理
+                        else if ("/user/list".equals(((MainLeftBean) value).getUrl())) {
+                            //用户管理
+                        } else if ("/role/list".equals(((MainLeftBean) value).getUrl())) {
+                            //角色管理
+                        } else if ("/group/list".equals(((MainLeftBean) value).getUrl())) {
+                            //分组管理
+                        } else if ("/jobinfo/jobInfoIndex/1".equals(((MainLeftBean) value).getUrl())) {
+                            //工作信息接收
+                        } else if ("/overSeer/cityOverSeerForm".equals(((MainLeftBean) value).getUrl())) {
+                            //督查通知发布
+                        } else if ("/overSeer/govOverSeerForm".equals(((MainLeftBean) value).getUrl())) {
+                            //督查通知发布
+                        } else if ("/notice/noticeInfoIndex/0".equals(((MainLeftBean) value).getUrl())) {
+                            //通知公告
+                        } else if ("/jobinfo/govJobInfoIndex/0".equals(((MainLeftBean) value).getUrl())) {
+                            //工作信息发布
+                        } else if ("/jobinfo/govJobInfoIndex/1".equals(((MainLeftBean) value).getUrl())) {
+                            //工作信息接收
+                        } else if ("/notice/noticeInfoIndex/1".equals(((MainLeftBean) value).getUrl())) {
+                            //通知公告
+                        }
+                        //信息公告
+                        else if ("/infoNotice".equals(((MainLeftBean) value).getUrl())) {
+                            //信息公告发送
+                        }
+                    }
+                }
+            }
+        });
+        viewDelegate.viewHolder.contentView.addView(treeView.getView());
+    }
     @Override
     public void onClick(View v) {
         super.onClick(v);
@@ -282,9 +495,13 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
         }
     }
 
-    @Override
-    protected void onServiceSuccess(String data, String info, int status, int requestCode) {
-        switch (requestCode) {
+    private void initTree(TreeNode parent1, MainLeftBean mainLeftBean) {
+        for (int i = 0; i < leftBeans.size(); i++) {
+            if (leftBeans.get(i).getPid() == mainLeftBean.getId()) {
+                TreeNode child = new TreeNode(leftBeans.get(i))
+                        .setViewHolder(new MainLeftTreeItemHolder(getActivity()));
+                parent1.addChild(child);
+            }
         }
     }
 

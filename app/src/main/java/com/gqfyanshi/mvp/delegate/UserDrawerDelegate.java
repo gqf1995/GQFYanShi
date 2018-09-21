@@ -3,6 +3,7 @@ package com.gqfyanshi.mvp.delegate;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.fivefivelike.mybaselibrary.base.BaseDelegate;
@@ -24,6 +25,7 @@ public class UserDrawerDelegate extends BaseDelegate {
 
     public static class ViewHolder {
         public View rootView;
+        public RelativeLayout contentView;
         public ImageView iv_module1;
         public TextView tv_module1;
         public LinearLayout lin_module1;
@@ -104,6 +106,7 @@ public class UserDrawerDelegate extends BaseDelegate {
 
         public ViewHolder(View rootView) {
             this.rootView = rootView;
+            this.contentView = (RelativeLayout) rootView.findViewById(R.id.contentView);
             this.iv_module1 = (ImageView) rootView.findViewById(R.id.iv_module1);
             this.tv_module1 = (TextView) rootView.findViewById(R.id.tv_module1);
             this.lin_module1 = (LinearLayout) rootView.findViewById(R.id.lin_module1);

@@ -292,13 +292,18 @@ public class HttpRequest {
                 mRequest.addHeader("token", map.get("token").toString());
             }
         }
+        if (map.containsKey("userId")) {
+            if (mParameterMode != ParameterMode.Rest) {
+                mRequest.addHeader("userId", map.get("userId").toString());
+            }
+        }
         KLog.i(REQUEST_TAG, "请求方式: " + (mRequest.getRequestMethod() == com.yanzhenjie.nohttp.RequestMethod.POST ? "post" : "get"));
         if (mParameterMode == ParameterMode.KeyValue) {
             for (Map.Entry<String, Object> entry : map.entrySet()) {
                 String key = entry.getKey().toString().trim();
                 String value = entry.getValue().toString().trim();
                 KLog.i(REQUEST_TAG, "提交参数: " + key + " = " + value);
-                if (!key.equals("token") && !key.equals("language") && !key.equals("unit")) {
+                if (!key.equals("userId") &&!key.equals("token") && !key.equals("language") && !key.equals("unit")) {
                     sb.append(key + "=" + value);
                     sb.append("&");
                     if (null != value && !"null".equals(value)) {
@@ -310,6 +315,7 @@ public class HttpRequest {
             setRestUrl();
         } else if (mRequest.getRequestMethod() == RequestMethod.POST && mParameterMode == ParameterMode.Json) {
             map.remove("token");
+            map.remove("userId");
             String json = GsonUtil.getInstance().toJson(map);
             try {
                 //将字符串转换成jsonObject对象

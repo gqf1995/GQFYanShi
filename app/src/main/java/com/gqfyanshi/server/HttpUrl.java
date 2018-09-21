@@ -43,6 +43,9 @@ public class HttpUrl {
      * 约稿发送列表
      */
     public String conventional_sendList = AppConst.app2BaseUrl + "/conventional/sendList";
-
+    /**
+     * 公文发送
+     */
+    public String document_sendList = AppConst.app2BaseUrl + "/document/sendList";
 
 }

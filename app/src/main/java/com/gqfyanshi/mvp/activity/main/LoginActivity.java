@@ -34,7 +34,8 @@ public class LoginActivity extends BaseDataBindActivity<LoginDelegate, LoginBind
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
-        viewDelegate.viewHolder.tv_phone.setText("15896559159");
+        //viewDelegate.viewHolder.tv_phone.setText("15896559159");
+        viewDelegate.viewHolder.tv_phone.setText("17396360301");
         GlideUtils.loadImage(
                 HttpUrl.getIntance().pictureCheckCode,
                 viewDelegate.viewHolder.iv_img_code,
