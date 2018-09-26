@@ -102,7 +102,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/trans_760px"
+        android:layout_height="@dimen/trans_660px"
         android:layout_marginLeft="@dimen/trans_20px"
         android:layout_marginRight="@dimen/trans_20px"
         android:orientation="vertical">

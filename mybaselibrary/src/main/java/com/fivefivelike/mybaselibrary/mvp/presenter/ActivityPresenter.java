@@ -32,6 +32,8 @@ public abstract class ActivityPresenter<T extends IDelegate> extends AppCompatAc
         super.onCreate(savedInstanceState);
         viewDelegate.create(getLayoutInflater(), null, savedInstanceState);
         setContentView(viewDelegate.getRootView());
+        viewDelegate.getRootView().setFocusableInTouchMode(true);
+        viewDelegate.getRootView().setFocusable(true);
         viewDelegate.initView();
         intentHelper = new IntentHelper(this);
         bindEvenListenerBuyState(savedInstanceState);

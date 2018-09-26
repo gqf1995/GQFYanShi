@@ -34,9 +34,9 @@ import com.gqfyanshi.mvp.activity.notice.city.NoticeCityManuscriptsReceiveActivi
 import com.gqfyanshi.mvp.activity.notice.city.NoticeCityManuscriptsSendActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticeCityMgsStatisticalActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticeCityPublicMsgReceiveActivity;
+import com.gqfyanshi.mvp.activity.notice.city.NoticeCityPublicMsgSendActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticeCitySendMsgActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticeEmergencyCityActivity;
-import com.gqfyanshi.mvp.activity.notice.city.NoticePublicMsgSendActivity;
 import com.gqfyanshi.mvp.activity.notice.document.NoticeSendOfficialDocumentActivity;
 import com.gqfyanshi.mvp.activity.notice.document.ReceivinOofficialDocumentsActivity;
 import com.gqfyanshi.mvp.activity.notice.government.NoticeEmergencyGovernmentActivity;
@@ -45,6 +45,7 @@ import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentInspectorSen
 import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentManuscriptsReceiveActivity;
 import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentMgsStatisticalActivity;
 import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentPublicMsgReceiveActivity;
+import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentPublicMsgSendActivity;
 import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentSendActivity;
 import com.gqfyanshi.mvp.activity.notice.government.NoticeGovernmentSendMsgActivity;
 import com.gqfyanshi.mvp.activity.notice.mail.NoticeInboxActivity;
@@ -184,6 +185,7 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                             startActivity(new Intent(getActivity(), NoticeMeetingActivity.class));
                         } else if ("/notice/noticeIndex/1".equals(((MainLeftBean) value).getUrl())) {
                             //一般性公告
+                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), NoticeDefaultActivity.class));
                         }
                         //公文流转
@@ -212,12 +214,15 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                             startActivity(new Intent(getActivity(), NoticeWorkMsgActivity.class));
                         } else if ("/threeinfo/threeInfoIndex/0".equals(((MainLeftBean) value).getUrl())) {
                             //要情汇报
+                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), NoticeReportActivity.class));
                         } else if ("/threeinfo/threeInfoIndex/1".equals(((MainLeftBean) value).getUrl())) {
                             //领导参阅
+                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), NoticeLeadershipViewActivity.class));
                         } else if ("/threeinfo/threeInfoIndex/2".equals(((MainLeftBean) value).getUrl())) {
                             //紧急信息
+                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), NoticeEmergencyCityActivity.class));
                         }
                         //政府信息工作
@@ -235,20 +240,24 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                             startActivity(new Intent(getActivity(), NoticeGovernmentSendMsgActivity.class));
                         } else if ("/threeinfo/govThreeInfoIndex/0".equals(((MainLeftBean) value).getUrl())) {
                             //市长专报
+                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), NoticeMayorActivity.class));
                         } else if ("/threeinfo/govThreeInfoIndex/1".equals(((MainLeftBean) value).getUrl())) {
                             //决策参考
+                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), NoticeDecisionMakingActivity.class));
                         } else if ("/threeinfo/govThreeInfoIndex/2".equals(((MainLeftBean) value).getUrl())) {
                             //紧急信息
+                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), NoticeEmergencyGovernmentActivity.class));
                         }
                         //市委督查工作
                         else if ("/workInfo/cityWorkInfoForm".equals(((MainLeftBean) value).getUrl())) {
                             //公开信息发布
-                            startActivity(new Intent(getActivity(), NoticePublicMsgSendActivity.class));
+                            startActivity(new Intent(getActivity(), NoticeCityPublicMsgSendActivity.class));
                         } else if ("/workInfo/cityWorkInfoSend".equals(((MainLeftBean) value).getUrl())) {
                             //公开信息发送
+                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), AddPublicInformationActivity.class));
                         } else if ("/workInfo/cityWorkInfoReceive".equals(((MainLeftBean) value).getUrl())) {
                             //公开信息接收
@@ -263,9 +272,10 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                         //政府督查工作
                         else if ("/workInfo/govWorkInfoForm".equals(((MainLeftBean) value).getUrl())) {
                             //公开信息发布
-                            startActivity(new Intent(getActivity(), AddPublicInformationActivity.class));
+                            startActivity(new Intent(getActivity(), NoticeGovernmentPublicMsgSendActivity.class));
                         } else if ("/workInfo/govWorkInfoSend".equals(((MainLeftBean) value).getUrl())) {
                             //公开信息发送
+                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), AddPublicInformationActivity.class));
                         } else if ("/workInfo/govWorkInfoReceive".equals(((MainLeftBean) value).getUrl())) {
                             //公开信息接收
@@ -280,11 +290,13 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                         //领导动态
                         else if ("/leader/addIndex".equals(((MainLeftBean) value).getUrl())) {
                             //领导动态
+                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), AddDynamicLeadershipActivity.class));
                         }
                         //邮件发送
                         else if ("/email/emailForm".equals(((MainLeftBean) value).getUrl())) {
                             //邮件发送
+                            // TODO: 2018/9/23
                             startActivity(new Intent(getActivity(), AddSendMailActivity.class));
                         } else if ("/email/emailSend".equals(((MainLeftBean) value).getUrl())) {
                             //发件箱
@@ -432,7 +444,7 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                         viewDelegate.viewHolder.iv_module6);
                 break;//市委督查工作
             case R.id.lin_mod6_content1:
-                startActivity(new Intent(getActivity(), NoticePublicMsgSendActivity.class));
+                startActivity(new Intent(getActivity(), NoticeCityPublicMsgSendActivity.class));
                 break;//--公开信息发布
             case R.id.lin_mod6_content2:
                 startActivity(new Intent(getActivity(), AddPublicInformationActivity.class));

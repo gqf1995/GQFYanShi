@@ -5,7 +5,16 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/trans_20px"
+        android:paddingLeft="@dimen/trans_30px"
+        android:paddingTop="@dimen/trans_60px"
+        android:text="更多"
+        android:textColor="@color/color_font1"
+        android:textSize="@dimen/text_trans_30px"/>
     <RelativeLayout
         android:id="@+id/contentView"
         android:layout_width="match_parent"

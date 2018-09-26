@@ -1,9 +1,10 @@
 package com.gqfyanshi.mvp.databinder;
 
-import com.gqfyanshi.mvp.delegate.NoticeInspectorReceiveDelegate;
 import com.fivefivelike.mybaselibrary.base.BaseDataBind;
 import com.fivefivelike.mybaselibrary.http.HttpRequest;
 import com.fivefivelike.mybaselibrary.http.RequestCallback;
+import com.gqfyanshi.mvp.delegate.NoticeInspectorReceiveDelegate;
+import com.gqfyanshi.server.HttpUrl;
 
 import io.reactivex.disposables.Disposable;
 
@@ -13,5 +14,23 @@ public class NoticeInspectorReceiveBinder extends BaseDataBind<NoticeInspectorRe
         super(viewDelegate);
     }
 
-
+    public Disposable overSeer_getOverSeerReceiveList(
+            int pageNumber,
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        baseMap.put("pageSize", 10);
+        baseMap.put("pageNumber", pageNumber);
+        return new HttpRequest.Builder()
+                .setRequestCode(0x123)
+                .setRequestUrl(HttpUrl.getIntance().overSeer_getOverSeerReceiveList)
+                .setShowDialog(true)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("获取督查通知接收的列表数据")
+                .setRequestMode(HttpRequest.RequestMode.POST)
+                .setParameterMode(HttpRequest.ParameterMode.Json)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
 }

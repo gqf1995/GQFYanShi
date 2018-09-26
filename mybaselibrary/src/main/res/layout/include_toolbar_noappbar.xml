@@ -47,7 +47,7 @@
                         android:layout_gravity="left|center_vertical"
                         android:layout_marginLeft="@dimen/trans_40px"
                         android:gravity="center"
-                        android:text="@string/ic_Back"
+                        android:text="#xe643;"
                         android:textSize="@dimen/text_trans_20px"
                         />
 

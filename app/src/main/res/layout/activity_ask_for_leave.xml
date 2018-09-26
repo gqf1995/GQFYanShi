@@ -94,11 +94,16 @@
                             android:textSize="@dimen/text_trans_16px"/>
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/trans_5px"
+                            android:layout_width="@dimen/trans_8px"
+                            android:layout_height="@dimen/trans_15px"
                             android:rotation="90"
                             android:src="@drawable/xiangqing"
+                            android:scaleType="fitXY"
+                            />
+
+                        <View
+                            android:layout_width="@dimen/trans_10px"
+                            android:layout_height="@dimen/trans_1px"
                             />
 
 

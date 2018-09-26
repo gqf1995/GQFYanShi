@@ -40,12 +40,63 @@ public class HttpUrl {
      */
     public String getLoginedUserInfo = AppConst.app2BaseUrl + "/getLoginedUserInfo";
     /**
-     * 约稿发送列表
+     * 市委约稿发送列表
      */
     public String conventional_sendList = AppConst.app2BaseUrl + "/conventional/sendList";
+    /**
+     * 市委约稿接收列表
+     */
+    public String conventional_receiveList = AppConst.app2BaseUrl + "/conventional/receiveList";
     /**
      * 公文发送
      */
     public String document_sendList = AppConst.app2BaseUrl + "/document/sendList";
-
+    /**
+     * 会议通知信息列表
+     */
+    public String notice_sendList = AppConst.app2BaseUrl + "/notice/sendList";
+    /**
+     * 市委信息统计
+     */
+    public String infoNotice_sendList = AppConst.app2BaseUrl + "/infoNotice/sendList";
+    /**
+     * 信息发送列表
+     */
+    public String information_sendList = AppConst.app2BaseUrl + "/information/sendList";
+    /**
+     * 工作信息发布
+     */
+    public String jobinfo_sendList = AppConst.app2BaseUrl + "/jobinfo/sendList";
+    /**
+     * 获取公开信息列表
+     */
+    public String workInfo_getWorkInfoSendList = AppConst.app2BaseUrl + "/workInfo/getWorkInfoSendList";
+    /**
+     * 获取公开信息接收的列表数据
+     */
+    public String workInfo_getWorkInfoReceiveList = AppConst.app2BaseUrl + "/workInfo/getWorkInfoReceiveList";
+    /**
+     * 获取督查通知列表
+     */
+    public String overSeer_getOverSeerSendList = AppConst.app2BaseUrl + "/overSeer/getOverSeerSendList";
+    /**
+     * 获取督查通知接收的列表数据
+     */
+    public String overSeer_getOverSeerReceiveList = AppConst.app2BaseUrl + "/overSeer/getOverSeerReceiveList";
+    /**
+     * 邮件发送列表
+     */
+    public String email_getEmailSendList = AppConst.app2BaseUrl + "/email/getEmailSendList";
+    /**
+     * 邮件接收列表
+     */
+    public String email_getEmailReceiveList = AppConst.app2BaseUrl + "/email/getEmailReceiveList";
+    /**
+     * 会议室预约
+     */
+    public String conference_getAppointmentInfoList = AppConst.app2BaseUrl + "/conference/getAppointmentInfoList";
+    /**
+     * 获取电子通讯录列表数据
+     */
+    public String addressBook_getAddressBookList = AppConst.app2BaseUrl + "/addressBook/getAddressBookList";
 }

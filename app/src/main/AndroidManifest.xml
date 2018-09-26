@@ -86,8 +86,9 @@
         <activity android:name=".mvp.activity.add.AddInspectorNoticeActivity"/>
         <activity android:name=".mvp.activity.add.AddPublicInformationActivity"/>
         <activity android:name=".mvp.activity.add.AddSendMailActivity"/>
-        <activity android:name=".mvp.activity.notice.city.NoticePublicMsgSendActivity"/>
+        <activity android:name=".mvp.activity.notice.city.NoticeCityPublicMsgSendActivity"/>
         <activity android:name=".mvp.activity.notice.government.NoticeGovernmentPublicMsgReceiveActivity"/>
+        <activity android:name=".mvp.activity.notice.government.NoticeGovernmentPublicMsgSendActivity"/>
         <activity android:name=".mvp.activity.notice.government.NoticeGovernmentInspectorReceiveActivity"/>
         <activity android:name=".mvp.activity.notice.government.NoticeEmergencyGovernmentActivity"/>
         <activity android:name=".mvp.activity.notice.government.NoticeGovernmentManuscriptsReceiveActivity"/>
