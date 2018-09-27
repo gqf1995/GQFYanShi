@@ -33,6 +33,12 @@ public class DropDownPopu {
         this.adapter = adapter;
     }
 
+    public void dimess() {
+        if (popupWindow != null) {
+            popupWindow.dismiss();
+        }
+    }
+
     public void show(List<String> data, View anchor, Context context,
                      MultiItemTypeAdapter.OnItemClickListener onItemClickListener) {
         if (popupWindow == null) {

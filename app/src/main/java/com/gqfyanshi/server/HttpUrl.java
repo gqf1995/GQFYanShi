@@ -99,4 +99,27 @@ public class HttpUrl {
      * 获取电子通讯录列表数据
      */
     public String addressBook_getAddressBookList = AppConst.app2BaseUrl + "/addressBook/getAddressBookList";
+    /**
+     * 跳转公文发送页面
+     */
+    public String document_docIndex = AppConst.app2BaseUrl + "/document/docIndex/1";
+    /**
+     * 删除公文
+     */
+    public String document_delDocument = AppConst.app2BaseUrl + "/document/delDocument";
+    /**
+     * 公文详情
+     */
+    public String document_detailDocumnet = AppConst.app2BaseUrl + "/document/detailDocumnet";
+    /**
+     * 邮件详情
+     */
+    public String email_emailInfo = AppConst.app2BaseUrl + "/email/emailInfo";
+    /**
+     * 邮件删除
+     */
+    public String email_emailDel = AppConst.app2BaseUrl + "/email/emailDel";
+
+
+
 }

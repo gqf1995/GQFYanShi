@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.fivefivelike.mybaselibrary.utils.CommonUtils;
-import com.fivefivelike.mybaselibrary.utils.ToastUtil;
+import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.R;
 import com.gqfyanshi.entity.bean.NoticaInOutBoxBean;
 import com.zhy.adapter.recyclerview.CommonAdapter;
@@ -28,6 +28,12 @@ public class NoticeInBoxAdapter extends CommonAdapter<NoticaInOutBoxBean> {
     private TextView tv4;
     private TextView tv5;
     private TextView tv6;
+    private TextView tv7;
+    DefaultClickLinsener defaultClickLinsener;
+
+    public void setDefaultClickLinsener(DefaultClickLinsener defaultClickLinsener) {
+        this.defaultClickLinsener = defaultClickLinsener;
+    }
 
     public NoticeInBoxAdapter(Context context, List<NoticaInOutBoxBean> datas) {
         super(context, R.layout.adapter_notice_inbox, datas);
@@ -50,16 +56,24 @@ public class NoticeInBoxAdapter extends CommonAdapter<NoticaInOutBoxBean> {
         tv4 = holder.getView(R.id.tv4);
         tv5 = holder.getView(R.id.tv5);
         tv6 = holder.getView(R.id.tv6);
+        tv7 = holder.getView(R.id.tv7);
 
-        tv1.setText(s.getId()+"");
+        tv1.setText(s.getId() + "");
         tv2.setText(s.getTitle());
         tv3.setText(s.getName());
         tv4.setText(s.getCreatetime());
-        tv5.setText(s.getStatus());
-        lin_root.setOnClickListener(new View.OnClickListener() {
+        tv5.setText(s.getIsRead());
+
+        tv6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtil.show(getDatas().get(position).toString());
+                defaultClickLinsener.onClick(v, position, null);
+            }
+        });
+        tv7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultClickLinsener.onClick(v, position, null);
             }
         });
 

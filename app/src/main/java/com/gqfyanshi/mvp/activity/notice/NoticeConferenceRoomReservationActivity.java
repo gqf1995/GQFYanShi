@@ -9,6 +9,7 @@ import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.adapter.NoticeConferenceRoomReservationAdapter;
+import com.gqfyanshi.entity.bean.NoticeConferenceRoomReservationBean;
 import com.gqfyanshi.mvp.databinder.NoticeConferenceRoomReservationBinder;
 import com.gqfyanshi.mvp.delegate.NoticeConferenceRoomReservationDelegate;
 
@@ -34,7 +35,7 @@ public class NoticeConferenceRoomReservationActivity extends BaseDataBindActivit
         onRefush(1);
     }
 
-    Class zlass = String.class;
+    Class zlass = NoticeConferenceRoomReservationBean.class;
 
     private void onRefush(int pageNumber) {
         addRequest(binder.conference_getAppointmentInfoList(pageNumber, this));

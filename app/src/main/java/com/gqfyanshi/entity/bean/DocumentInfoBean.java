@@ -1,29 +1,29 @@
 package com.gqfyanshi.entity.bean;
 
 /**
- * Created by 郭青枫 on 2018/9/23.
+ * Created by 郭青枫 on 2018/9/27 0027.
  */
 
-public class NoticaInOutBoxBean {
+public class DocumentInfoBean {
     /**
      * summary : null
-     * receipt_time : 2018-02-26 18:03:00
+     * receipt_time : 2017-08-14 09:26:20
      * thumbnail : null
-     * createtime : 2018-02-26 18:03:00
+     * createtime : 2017-08-14 09:26:20
      * file_name : null
      * file_address : null
-     * readed_record : 74,152,44,67,18,154,30,120
-     * model_id : 40
-     * title : 工作督办函
-     * type : null
-     * content : <p style="line-height: 16px;"><img src="/municipal/Widget/ueditor/1.4.3/dialogs/attachment/fileTypeImages/icon_pdf.gif"/><a title="工作督办函.pdf" style="color: rgb(0, 102, 204); font-size: 12px;" href="http://1.194.225.66:15968/upload/file/20180226/1519639344832050838.pdf">工作督办函.pdf</a></p><p>请各单位抓紧时间查收。</p>
-     * user_id : 74
+     * readed_record : 10
+     * model_id : 7
+     * title : 要情汇报
+     * type : 07
+     * content : <p><span style="color: rgb(51, 51, 51); font-family: &quot;Microsoft YaHei&quot;, Arial, Helvetica, sans-serif; font-size: 13px; background-color: rgb(245, 245, 245);">要情汇报</span></p>
+     * user_id : 10
      * parent_id : null
-     * sendee_id : 1,9,121,122,123,124,125,126,127,128,129,130,131,132,133
+     * sendee_id : 1,2,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,3,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,4,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,5,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,6,91,92,93,94,95,96,97,98,99,100,101,7,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,8,118,119,120,121,9,122,123,124,125,126,127,128,129,130,131,132,133,134,135
      * name : null
-     * sendee_group_id : null
-     * id : 520
-     * updatetime : 2018-03-28 10:10:41
+     * sendee_group_id :
+     * id : 133
+     * updatetime : 2017-08-14 14:07:50
      * status : 00
      */
 
@@ -46,46 +46,6 @@ public class NoticaInOutBoxBean {
     private int id;
     private String updatetime;
     private String status;
-    /**
-     * summary : null
-     * thumbnail : null
-     * sendName : 偃师市国家密码管理局
-     * file_name : null
-     * file_address : null
-     * isRead : 未读
-     * type : null
-     * parent_id : null
-     * name : null
-     * sendee_group_id : null
-     */
-
-    private String sendName;
-    private String isRead;
-
-    @Override
-    public String toString() {
-        return "NoticaOutBoxBean{" +
-                "summary='" + summary + '\'' +
-                ", receipt_time='" + receipt_time + '\'' +
-                ", thumbnail='" + thumbnail + '\'' +
-                ", createtime='" + createtime + '\'' +
-                ", file_name='" + file_name + '\'' +
-                ", file_address='" + file_address + '\'' +
-                ", readed_record='" + readed_record + '\'' +
-                ", model_id=" + model_id +
-                ", title='" + title + '\'' +
-                ", type='" + type + '\'' +
-                ", content='" + content + '\'' +
-                ", user_id=" + user_id +
-                ", parent_id='" + parent_id + '\'' +
-                ", sendee_id='" + sendee_id + '\'' +
-                ", name='" + name + '\'' +
-                ", sendee_group_id='" + sendee_group_id + '\'' +
-                ", id=" + id +
-                ", updatetime='" + updatetime + '\'' +
-                ", status='" + status + '\'' +
-                '}';
-    }
 
     public String getSummary() {
         return summary;
@@ -237,21 +197,5 @@ public class NoticaInOutBoxBean {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getSendName() {
-        return sendName;
-    }
-
-    public void setSendName(String sendName) {
-        this.sendName = sendName;
-    }
-
-    public String getIsRead() {
-        return isRead;
-    }
-
-    public void setIsRead(String isRead) {
-        this.isRead = isRead;
     }
 }

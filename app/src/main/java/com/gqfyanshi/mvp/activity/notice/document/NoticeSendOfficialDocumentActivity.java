@@ -1,5 +1,7 @@
 package com.gqfyanshi.mvp.activity.notice.document;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
@@ -8,11 +10,14 @@ import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
+import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.NoticeSendOfficialDocumentAdapter;
 import com.gqfyanshi.entity.bean.NoticeSendOfficialDocumentBean;
+import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticeSendOfficialDocumentBinder;
 import com.gqfyanshi.mvp.delegate.NoticeSendOfficialDocumentDelegate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<NoticeSendOfficialDocumentDelegate, NoticeSendOfficialDocumentBinder> {
@@ -32,14 +37,89 @@ public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<Not
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
+        getIntentData();
         initToolbar(new ToolbarBuilder().setTitle("公文发送"));
         onRefush(1);
     }
 
+    //        文件字号： name
+    //        文件名称：title
+    //        发布时间：createtime/updatetime
+    //        文件属性：type （01 党委 02 党群口 03 政府文件 04 政府部门文件）
+    public static void startAct(Activity activity,
+                                String type) {
+        Intent intent = new Intent(activity, NoticeSendOfficialDocumentActivity.class);
+        intent.putExtra("type", type);
+        activity.startActivity(intent);
+    }
+
+    public static void startAct(Activity activity,
+                                String name,
+                                String title,
+                                String createtime,
+                                String updatetime,
+                                String type) {
+        Intent intent = new Intent(activity, NoticeSendOfficialDocumentActivity.class);
+        intent.putExtra("name", name);
+        intent.putExtra("title", title);
+        intent.putExtra("createtime", createtime);
+        intent.putExtra("updatetime", updatetime);
+        intent.putExtra("type", type);
+        activity.startActivity(intent);
+    }
+
+
+    private String name = "";
+    private String title = "";
+    private String createtime = "";
+    private String updatetime = "";
+    private String type = "";
+
+    private void getIntentData() {
+        Intent intent = getIntent();
+        name = intent.getStringExtra("name");
+        title = intent.getStringExtra("title");
+        createtime = intent.getStringExtra("createtime");
+        updatetime = intent.getStringExtra("updatetime");
+        type = intent.getStringExtra("type");
+        List<String> datas = new ArrayList<>();
+        datas.add("全部");
+        datas.add("党委");
+        datas.add("党委文件");
+        datas.add("政府文件");
+        datas.add("政府部门文件");
+        viewDelegate.viewHolder.selectPeopleLayout1.setDatas(datas,
+                "".equals(type) ? 0 : (Integer.parseInt(type.replace("0", "")))
+        );
+        viewDelegate.viewHolder.selectPeopleLayout1.setDefaultClickLinsener(new DefaultClickLinsener() {
+            @Override
+            public void onClick(View view, int position, Object item) {
+                if (position == 0) {
+                    type = "";
+                } else {
+                    type = "0" + position;
+                }
+            }
+        });
+
+
+        viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                name = viewDelegate.viewHolder.et_attributes.getText().toString();
+                title = viewDelegate.viewHolder.et_attributes2.getText().toString();
+                createtime = viewDelegate.viewHolder.selectTimeLayout1.getSelectTime();
+                updatetime = viewDelegate.viewHolder.selectTimeLayout2.getSelectTime();
+                onRefush(1);
+            }
+        });
+    }
+
+
     Class zlass = NoticeSendOfficialDocumentBean.class;
 
     private void onRefush(int pageNumber) {
-        addRequest(binder.document_sendList(pageNumber, this));
+        addRequest(binder.document_sendList(name, title, createtime, updatetime, type, pageNumber, this));
     }
 
     NoticeSendOfficialDocumentAdapter adapter;
@@ -59,6 +139,25 @@ public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<Not
                 }
             });
             adapter = new NoticeSendOfficialDocumentAdapter(this, list);
+            adapter.setDefaultClickLinsener(new DefaultClickLinsener() {
+                @Override
+                public void onClick(View view, int position, Object item) {
+                    if (view.getId() == R.id.tv5) {
+                        //详情
+                        DocumentInfoActivity.startAct(
+                                viewDelegate.getActivity(),
+                                adapter.getDatas().get(position).getId(),
+                                ""
+                        );
+                    } else {
+                        //删除
+                        addRequest(binder.document_delDocument(
+                                adapter.getDatas().get(position).getId(),
+                                NoticeSendOfficialDocumentActivity.this
+                        ));
+                    }
+                }
+            });
             viewDelegate.viewHolder.recycler_view.setAdapter(adapter);
         } else {
             adapter.setData(list);
@@ -75,6 +174,9 @@ public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<Not
                 initList(list);
                 int total = Integer.parseInt(GsonUtil.getInstance().getValue(data, "total"));
                 viewDelegate.viewHolder.pageChangeView.setMaxPage(total);
+                break;
+            case 0x124:
+                onRefush(viewDelegate.viewHolder.pageChangeView.getNowPage());
                 break;
         }
     }

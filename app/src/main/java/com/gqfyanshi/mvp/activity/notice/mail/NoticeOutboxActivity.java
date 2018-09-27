@@ -8,8 +8,10 @@ import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
+import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.NoticeOutBoxAdapter;
 import com.gqfyanshi.entity.bean.NoticaInOutBoxBean;
+import com.gqfyanshi.mvp.activity.file.EmailInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticeInboxBinder;
 import com.gqfyanshi.mvp.delegate.NoticeInboxDelegate;
 
@@ -58,6 +60,23 @@ public class NoticeOutboxActivity extends BaseDataBindActivity<NoticeInboxDelega
                 }
             });
             adapter = new NoticeOutBoxAdapter(this, list);
+            adapter.setDefaultClickLinsener(new DefaultClickLinsener() {
+                @Override
+                public void onClick(View view, int position, Object item) {
+                    if (view.getId() == R.id.tv6) {
+                        //详情
+                        EmailInfoActivity.startAct(viewDelegate.getActivity(),
+                                adapter.getDatas().get(position).getId(),
+                                "");
+                    } else {
+                        //删除
+                        addRequest(binder.email_emailDel(
+                                adapter.getDatas().get(position).getId(),
+                                NoticeOutboxActivity.this
+                        ));
+                    }
+                }
+            });
             viewDelegate.viewHolder.recycler_view.setAdapter(adapter);
         } else {
             adapter.setData(list);

@@ -8,8 +8,10 @@ import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
+import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.NoticeInBoxAdapter;
 import com.gqfyanshi.entity.bean.NoticaInOutBoxBean;
+import com.gqfyanshi.mvp.activity.file.EmailInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticeInboxBinder;
 import com.gqfyanshi.mvp.delegate.NoticeInboxDelegate;
 
@@ -34,6 +36,7 @@ public class NoticeInboxActivity extends BaseDataBindActivity<NoticeInboxDelegat
         initToolbar(new ToolbarBuilder().setTitle("收件箱"));
         onRefush(1);
     }
+
     Class zlass = NoticaInOutBoxBean.class;
 
     private void onRefush(int pageNumber) {
@@ -57,6 +60,23 @@ public class NoticeInboxActivity extends BaseDataBindActivity<NoticeInboxDelegat
                 }
             });
             adapter = new NoticeInBoxAdapter(this, list);
+            adapter.setDefaultClickLinsener(new DefaultClickLinsener() {
+                @Override
+                public void onClick(View view, int position, Object item) {
+                    if (view.getId() == R.id.tv6) {
+                        //详情
+                        EmailInfoActivity.startAct(viewDelegate.getActivity(),
+                                adapter.getDatas().get(position).getId(),
+                                "");
+                    } else {
+                        //删除
+                        addRequest(binder.email_emailDel(
+                                adapter.getDatas().get(position).getId(),
+                                NoticeInboxActivity.this
+                        ));
+                    }
+                }
+            });
             viewDelegate.viewHolder.recycler_view.setAdapter(adapter);
         } else {
             adapter.setData(list);
@@ -73,6 +93,9 @@ public class NoticeInboxActivity extends BaseDataBindActivity<NoticeInboxDelegat
                 initList(list);
                 int total = Integer.parseInt(GsonUtil.getInstance().getValue(data, "total"));
                 viewDelegate.viewHolder.pageChangeView.setMaxPage(total);
+                break;
+            case 0x124:
+                onRefush(viewDelegate.viewHolder.pageChangeView.getNowPage());
                 break;
         }
     }

@@ -51,4 +51,21 @@ public class NoticeInboxBinder extends BaseDataBind<NoticeInboxDelegate> {
                 .build()
                 .RxSendRequest();
     }
+    public Disposable email_emailDel(
+            int id,
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        return new HttpRequest.Builder()
+                .setRequestCode(0x124)
+                .setRequestUrl(HttpUrl.getIntance().email_emailDel+"/"+id)
+                .setShowDialog(true)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("邮件删除")
+                .setRequestMode(HttpRequest.RequestMode.POST)
+                .setParameterMode(HttpRequest.ParameterMode.KeyValue)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
 }

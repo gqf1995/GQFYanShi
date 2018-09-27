@@ -11,16 +11,12 @@ import android.view.View;
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
 import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.CommonUtils;
-import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.gqfyanshi.R;
-import com.gqfyanshi.entity.bean.MainLeftBean;
 import com.gqfyanshi.mvp.databinder.MainBinder;
 import com.gqfyanshi.mvp.delegate.MainDelegate;
 import com.gqfyanshi.mvp.fragment.ReceivinOofficialDocumentsFragment;
 import com.gqfyanshi.mvp.fragment.UserDrawerFragment;
-
-import java.util.List;
 
 public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder> implements MainLinsener {
 
@@ -120,7 +116,10 @@ public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder>
     @Override
     protected void onServiceSuccess(String data, String info, int status, int requestCode) {
         switch (requestCode) {
+            case 0x123:
 
+
+                break;
         }
     }
 

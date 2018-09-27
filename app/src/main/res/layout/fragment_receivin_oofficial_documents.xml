@@ -112,12 +112,12 @@
             android:textColor="@color/color_font1"
             android:textSize="@dimen/text_trans_18px"/>
 
-        <com.gqfyanshi.widget.SelectPeopleLayout
+        <com.gqfyanshi.widget.SelectAttrLayout
             android:id="@+id/selectPeopleLayout1"
             android:layout_width="@dimen/trans_130px"
             android:layout_height="@dimen/trans_35px">
 
-        </com.gqfyanshi.widget.SelectPeopleLayout>
+        </com.gqfyanshi.widget.SelectAttrLayout>
 
         <Space
             android:layout_width="0dp"
@@ -287,7 +287,7 @@
                             android:gravity="center"
                             android:paddingLeft="@dimen/trans_10px"
                             android:paddingRight="@dimen/trans_10px"
-                            android:text="党委"
+                            android:text="党群口文件"
                             android:textColor="@color/color_font1"
                             android:textSize="@dimen/text_trans_18px"/>
 
@@ -363,7 +363,7 @@
                             android:gravity="center"
                             android:paddingLeft="@dimen/trans_10px"
                             android:paddingRight="@dimen/trans_10px"
-                            android:text="党委"
+                            android:text="政府文件"
                             android:textColor="@color/color_font1"
                             android:textSize="@dimen/text_trans_18px"/>
 
@@ -432,7 +432,7 @@
                             android:gravity="center"
                             android:paddingLeft="@dimen/trans_10px"
                             android:paddingRight="@dimen/trans_10px"
-                            android:text="党委"
+                            android:text="政府部门文件"
                             android:textColor="@color/color_font1"
                             android:textSize="@dimen/text_trans_18px"/>
 

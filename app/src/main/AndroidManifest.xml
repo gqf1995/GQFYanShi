@@ -106,10 +106,11 @@
         <activity android:name=".mvp.activity.notice.city.NoticeCityPublicMsgReceiveActivity"/>
         <activity android:name=".mvp.activity.notice.city.NoticeCityMgsStatisticalActivity"/>
         <activity android:name=".mvp.activity.file.TBSActivity"/>
-        <activity android:name=".mvp.activity.main.Scrawl"
-                  android:theme="@style/AppBaseThemeShouxie"
-                  android:configChanges="orientation|keyboardHidden|screenSize|mcc|mnc|touchscreen|keyboard|navigation|screenLayout|fontScale|uiMode"/>
-
+        <activity
+            android:name=".mvp.activity.main.Scrawl"
+            android:configChanges="orientation|keyboardHidden|screenSize|mcc|mnc|touchscreen|keyboard|navigation|screenLayout|fontScale|uiMode"
+            android:theme="@style/AppBaseThemeShouxie"/>
+        <activity android:name=".mvp.activity.file.DocumentInfoActivity"/>
     </application>
 
 </manifest>

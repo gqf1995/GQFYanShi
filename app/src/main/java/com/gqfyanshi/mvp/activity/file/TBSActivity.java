@@ -20,6 +20,7 @@ import com.fivefivelike.mybaselibrary.utils.CommonUtils;
 import com.fivefivelike.mybaselibrary.utils.ToastUtil;
 import com.fivefivelike.mybaselibrary.utils.UiHeplUtils;
 import com.fivefivelike.mybaselibrary.view.dialog.NetWorkDialog;
+import com.gqfyanshi.base.AppConst;
 import com.gqfyanshi.mvp.databinder.TBSBinder;
 import com.gqfyanshi.mvp.delegate.TBSDelegate;
 import com.gqfyanshi.utils.OpenFileUtil;
@@ -127,6 +128,9 @@ public class TBSActivity extends BaseDataBindActivity<TBSDelegate, TBSBinder> im
         Intent intent = getIntent();
         fileName = intent.getStringExtra("fileName");
         url = intent.getStringExtra("url");
+        if (!url.contains("http")) {
+            url = AppConst.app2BaseUrl + url;
+        }
     }
 
     NetWorkDialog netWorkDialog;
@@ -187,11 +191,11 @@ public class TBSActivity extends BaseDataBindActivity<TBSDelegate, TBSBinder> im
         } else {
             CircleDialogHelper.initDefaultDialog(this,
                     "是否跳转系统工具打开?",
-                    "文件地址:" + fileFolder +"/"+ fileName,
+                    "文件地址:" + fileFolder + "/" + fileName,
                     new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            OpenFileUtil.openFile(TBSActivity.this, fileFolder +"/"+ fileName);
+                            OpenFileUtil.openFile(TBSActivity.this, fileFolder + "/" + fileName);
                         }
                     }).show();
         }
