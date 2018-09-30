@@ -517,5 +517,37 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
             }
         }
     }
+//    /notice/sendList
+//    一般性公告type 02 modelId 3 会议通知 model 2 type 01
+//            /document/sendList
+//    公文发送 type 02 modelId 5
+//            /document/receiveList
+//    公文接收 ModelId 6 type 01
+//            /conventional/sendList
+//    约稿性发送列表 model 8 type 01
+//            /conventional/receiveList
+//    约稿性接收 ModelId 9 type 01
+//            /information/receiveList
+//    信息统计 model 11 type 04
+//            /threeinfo/sendList
+//    信息发送列表 model 11 type 04
+//            /jobinfo/sendList
+//    工作信息发布 model 12 type 05
+//            /threeinfo/sendList
+//    要请汇报 model 7 type 07
+//            /threeinfo/sendList
+//    领导参阅 model 7 type 08
+//            /threeinfo/threeInfoIndex/2
+//    紧急信息 model 7 type 09
+//            /conventional/sendList
+//    约稿性发送 model 8 type 01
+//            /conventional/receiveList
+//    约稿性接收 model 8 type 01
+//            /document/receiveList
+//    信息统计 model 20 type 04
+//            /information/sendList
+//    信息发送 model 20 type 04
+//            /threeinfo/govThreeInfoIndex/0
+//    市长专报
 
 }
