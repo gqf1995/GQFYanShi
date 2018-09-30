@@ -6,11 +6,16 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.fivefivelike.mybaselibrary.utils.ListUtils;
+import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.R;
+import com.gqfyanshi.entity.bean.TreeBean;
+
+import java.util.List;
 
 /**
  * Created by 郭青枫 on 2018/8/21 0021.
@@ -19,6 +24,18 @@ import com.gqfyanshi.R;
 public class SelectPeopleLayout extends FrameLayout {
     Context mContext;
     SelectPeoplePopu selectPeoplePopu;
+    List<TreeBean> treeBean;
+    StringBuffer selectPeople;
+
+    public void setTreeBean(List<TreeBean> treeBean) {
+        this.treeBean = treeBean;
+    }
+
+    int selectType = 0;//0 组选+单选 1 单选
+
+    public void setSelectType(int selectType) {
+        this.selectType = selectType;
+    }
 
     public SelectPeopleLayout(@NonNull Context context) {
         super(context);
@@ -35,25 +52,52 @@ public class SelectPeopleLayout extends FrameLayout {
         initView(context);
     }
 
-    public EditText et_attributes1;
+    public TextView et_attributes1;
     public LinearLayout lin_attributes1;
 
     private void initView(Context context) {
         mContext = context;
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rootView = layoutInflater.inflate(R.layout.layout_select_people, null);
-        this.et_attributes1 = (EditText) rootView.findViewById(R.id.et_attributes1);
+        this.et_attributes1 = (TextView) rootView.findViewById(R.id.et_attributes1);
         this.lin_attributes1 = (LinearLayout) rootView.findViewById(R.id.lin_attributes1);
         lin_attributes1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (selectPeoplePopu == null) {
-                    selectPeoplePopu = new SelectPeoplePopu(mContext);
+                if (treeBean != null) {
+                    if (selectPeoplePopu == null) {
+                        selectPeoplePopu = new SelectPeoplePopu(mContext);
+                        selectPeoplePopu.setSelectType(selectType);
+                        selectPeoplePopu.setTreeBean(treeBean);
+                        selectPeoplePopu.setDefaultClickLinsener(new DefaultClickLinsener() {
+                            @Override
+                            public void onClick(View view, int position, Object item) {
+                                showSelect();
+                            }
+                        });
+                    }
+                    selectPeoplePopu.show(v);
                 }
-                selectPeoplePopu.show(v);
             }
         });
         this.addView(rootView);
+    }
+
+    private void showSelect() {
+        selectPeople = new StringBuffer();
+        for (int i = 0; i < treeBean.size(); i++) {
+            getSelect(treeBean.get(i));
+        }
+        et_attributes1.setText(selectPeople.toString());
+    }
+
+    private void getSelect(TreeBean treeBean) {
+        if (treeBean.isSelect && ListUtils.isEmpty(treeBean.getChildNodes())) {
+            selectPeople.append(treeBean.getText());
+        }
+        for (int i = 0; i < treeBean.getChildNodes().size(); i++) {
+            getSelect(treeBean.getChildNodes().get(i));
+        }
     }
 
 }

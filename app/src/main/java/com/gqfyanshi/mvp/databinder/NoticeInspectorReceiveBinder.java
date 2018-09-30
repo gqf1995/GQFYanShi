@@ -3,6 +3,7 @@ package com.gqfyanshi.mvp.databinder;
 import com.fivefivelike.mybaselibrary.base.BaseDataBind;
 import com.fivefivelike.mybaselibrary.http.HttpRequest;
 import com.fivefivelike.mybaselibrary.http.RequestCallback;
+import com.gqfyanshi.entity.bean.QueryJsonBean;
 import com.gqfyanshi.mvp.delegate.NoticeInspectorReceiveDelegate;
 import com.gqfyanshi.server.HttpUrl;
 
@@ -15,6 +16,7 @@ public class NoticeInspectorReceiveBinder extends BaseDataBind<NoticeInspectorRe
     }
 
     public Disposable overSeer_getOverSeerReceiveList(
+            QueryJsonBean queryJsonBean,
             int pageNumber,
             RequestCallback requestCallback) {
         getBaseMapWithUid();

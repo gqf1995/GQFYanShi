@@ -33,6 +33,12 @@ public class NoticeAddressBookActivity extends BaseDataBindActivity<NoticeAddres
         super.bindEvenListener();
         initToolbar(new ToolbarBuilder().setTitle("电子通讯录"));
         onRefush(1);
+        viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRefush(1);
+            }
+        });
     }
 
     Class zlass = DocumentBean.class;

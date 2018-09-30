@@ -3,6 +3,7 @@ package com.gqfyanshi.mvp.activity.notice.document;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
@@ -38,6 +39,7 @@ public class NoticeReceiveOfficialDocumentActivity extends BaseDataBindActivity<
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
+        // TODO: 2018/9/30 0030
         getIntentData();
         initToolbar(new ToolbarBuilder().setTitle("公文接收"));
         onRefush(1);
@@ -90,7 +92,7 @@ public class NoticeReceiveOfficialDocumentActivity extends BaseDataBindActivity<
         datas.add("政府文件");
         datas.add("政府部门文件");
         viewDelegate.viewHolder.selectPeopleLayout1.setDatas(datas,
-                "".equals(type) ? 0 : (Integer.parseInt(type.replace("0", "")))
+                TextUtils.isEmpty(type) ? 0 : (Integer.parseInt(type.replace("0", "")))
         );
         viewDelegate.viewHolder.selectPeopleLayout1.setDefaultClickLinsener(new DefaultClickLinsener() {
             @Override
@@ -121,7 +123,7 @@ public class NoticeReceiveOfficialDocumentActivity extends BaseDataBindActivity<
 
     private void onRefush(int pageNumber) {
         QueryJsonBean queryJsonBean = new QueryJsonBean();
-        queryJsonBean.setModelId("5");
+        queryJsonBean.setModelId("6");
         queryJsonBean.setName(name);
         queryJsonBean.setTitle(title);
         queryJsonBean.setType(type);

@@ -59,9 +59,11 @@ public class NoticeEmergencyBinder extends BaseDataBind<NoticeEmergencyDelegate>
                 .RxSendRequest();
     }
     public Disposable information_sendList(
+            QueryJsonBean queryJsonBean,
             int pageNumber,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
+        baseMap.put("queryJsonBean", queryJsonBean);
         baseMap.put("pageSize", 10);
         baseMap.put("pageNumber", pageNumber);
         return new HttpRequest.Builder()
@@ -91,6 +93,27 @@ public class NoticeEmergencyBinder extends BaseDataBind<NoticeEmergencyDelegate>
                 .setShowDialog(true)
                 .setDialog(viewDelegate.getNetConnectDialog())
                 .setRequestName("工作信息发布")
+                .setRequestMode(HttpRequest.RequestMode.POST)
+                .setParameterMode(HttpRequest.ParameterMode.Json)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
+    public Disposable threeinfo_sendList(
+            QueryJsonBean queryJsonBean,
+            int pageNumber,
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        baseMap.put("queryJsonBean", queryJsonBean);
+        baseMap.put("pageSize", 10);
+        baseMap.put("pageNumber", pageNumber);
+        return new HttpRequest.Builder()
+                .setRequestCode(0x123)
+                .setRequestUrl(HttpUrl.getIntance().threeinfo_sendList)
+                .setShowDialog(true)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("要情汇报")
                 .setRequestMode(HttpRequest.RequestMode.POST)
                 .setParameterMode(HttpRequest.ParameterMode.Json)
                 .setRequestObj(baseMap)

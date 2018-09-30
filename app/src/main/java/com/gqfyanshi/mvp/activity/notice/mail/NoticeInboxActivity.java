@@ -1,5 +1,6 @@
 package com.gqfyanshi.mvp.activity.notice.mail;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
@@ -11,6 +12,7 @@ import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.NoticeInBoxAdapter;
 import com.gqfyanshi.entity.bean.DocumentBean;
+import com.gqfyanshi.mvp.activity.add.AddEmailActivity;
 import com.gqfyanshi.mvp.activity.file.EmailInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticeInboxBinder;
 import com.gqfyanshi.mvp.delegate.NoticeInboxDelegate;
@@ -33,8 +35,20 @@ public class NoticeInboxActivity extends BaseDataBindActivity<NoticeInboxDelegat
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
+        viewDelegate.viewHolder.tv_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(viewDelegate.getActivity(), AddEmailActivity.class));
+            }
+        });
         initToolbar(new ToolbarBuilder().setTitle("收件箱"));
         onRefush(1);
+        viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRefush(1);
+            }
+        });
     }
 
     Class zlass = DocumentBean.class;

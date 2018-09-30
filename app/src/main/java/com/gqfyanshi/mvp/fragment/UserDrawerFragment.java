@@ -13,6 +13,7 @@ import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.MainLeftTreeItemHolder;
 import com.gqfyanshi.entity.bean.MainLeftBean;
 import com.gqfyanshi.mvp.activity.add.AddDynamicLeadershipActivity;
+import com.gqfyanshi.mvp.activity.add.AddEmailActivity;
 import com.gqfyanshi.mvp.activity.add.AddInspectorNoticeActivity;
 import com.gqfyanshi.mvp.activity.add.AddPublicInformationActivity;
 import com.gqfyanshi.mvp.activity.add.AddSendMailActivity;
@@ -144,7 +145,6 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
     }
 
 
-
     List<MainLeftBean> leftBeans;
 
     @Override
@@ -186,7 +186,6 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                             startActivity(new Intent(getActivity(), NoticeMeetingActivity.class));
                         } else if ("/notice/noticeIndex/1".equals(((MainLeftBean) value).getUrl())) {
                             //一般性公告
-                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), NoticeDefaultActivity.class));
                         }
                         //公文流转
@@ -215,15 +214,12 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                             startActivity(new Intent(getActivity(), NoticeWorkMsgActivity.class));
                         } else if ("/threeinfo/threeInfoIndex/0".equals(((MainLeftBean) value).getUrl())) {
                             //要情汇报
-                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), NoticeReportActivity.class));
                         } else if ("/threeinfo/threeInfoIndex/1".equals(((MainLeftBean) value).getUrl())) {
                             //领导参阅
-                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), NoticeLeadershipViewActivity.class));
                         } else if ("/threeinfo/threeInfoIndex/2".equals(((MainLeftBean) value).getUrl())) {
                             //紧急信息
-                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), NoticeEmergencyCityActivity.class));
                         }
                         //政府信息工作
@@ -241,15 +237,12 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                             startActivity(new Intent(getActivity(), NoticeGovernmentSendMsgActivity.class));
                         } else if ("/threeinfo/govThreeInfoIndex/0".equals(((MainLeftBean) value).getUrl())) {
                             //市长专报
-                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), NoticeMayorActivity.class));
                         } else if ("/threeinfo/govThreeInfoIndex/1".equals(((MainLeftBean) value).getUrl())) {
                             //决策参考
-                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), NoticeDecisionMakingActivity.class));
                         } else if ("/threeinfo/govThreeInfoIndex/2".equals(((MainLeftBean) value).getUrl())) {
                             //紧急信息
-                            // TODO: 2018/9/23  
                             startActivity(new Intent(getActivity(), NoticeEmergencyGovernmentActivity.class));
                         }
                         //市委督查工作
@@ -284,7 +277,7 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                         } else if ("/overSeer/govOverSeerSend".equals(((MainLeftBean) value).getUrl())) {
                             //督查通知发送
                             startActivity(new Intent(getActivity(), NoticeGovernmentInspectorSendActivity.class));
-                        }else if ("/overSeer/govOverSeerReceive".equals(((MainLeftBean) value).getUrl())) {
+                        } else if ("/overSeer/govOverSeerReceive".equals(((MainLeftBean) value).getUrl())) {
                             //督查通知接收
                             startActivity(new Intent(getActivity(), NoticeGovernmentInspectorReceiveActivity.class));
                         }
@@ -297,8 +290,7 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                         //邮件发送
                         else if ("/email/emailForm".equals(((MainLeftBean) value).getUrl())) {
                             //邮件发送
-                            // TODO: 2018/9/23
-                            startActivity(new Intent(getActivity(), AddSendMailActivity.class));
+                            startActivity(new Intent(getActivity(), AddEmailActivity.class));
                         } else if ("/email/emailSend".equals(((MainLeftBean) value).getUrl())) {
                             //发件箱
                             startActivity(new Intent(getActivity(), NoticeOutboxActivity.class));
@@ -320,9 +312,6 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                         else if ("/receipt".equals(((MainLeftBean) value).getUrl())) {
                             //反馈意见
                         }
-
-
-
 
 
                         //用户管理
@@ -357,6 +346,7 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
         });
         viewDelegate.viewHolder.contentView.addView(treeView.getView());
     }
+
     @Override
     public void onClick(View v) {
         super.onClick(v);
@@ -517,37 +507,37 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
             }
         }
     }
-//    /notice/sendList
-//    一般性公告type 02 modelId 3 会议通知 model 2 type 01
-//            /document/sendList
-//    公文发送 type 02 modelId 5
-//            /document/receiveList
-//    公文接收 ModelId 6 type 01
-//            /conventional/sendList
-//    约稿性发送列表 model 8 type 01
-//            /conventional/receiveList
-//    约稿性接收 ModelId 9 type 01
-//            /information/receiveList
-//    信息统计 model 11 type 04
-//            /threeinfo/sendList
-//    信息发送列表 model 11 type 04
-//            /jobinfo/sendList
-//    工作信息发布 model 12 type 05
-//            /threeinfo/sendList
-//    要请汇报 model 7 type 07
-//            /threeinfo/sendList
-//    领导参阅 model 7 type 08
-//            /threeinfo/threeInfoIndex/2
-//    紧急信息 model 7 type 09
-//            /conventional/sendList
-//    约稿性发送 model 8 type 01
-//            /conventional/receiveList
-//    约稿性接收 model 8 type 01
-//            /document/receiveList
-//    信息统计 model 20 type 04
-//            /information/sendList
-//    信息发送 model 20 type 04
-//            /threeinfo/govThreeInfoIndex/0
-//    市长专报
+    //    /notice/sendList
+    //    一般性公告type 02 modelId 3 会议通知 model 2 type 01
+    //            /document/sendList
+    //    公文发送 type 02 modelId 5
+    //            /document/receiveList
+    //    公文接收 ModelId 6 type 01
+    //            /conventional/sendList
+    //    约稿性发送列表 model 8 type 01
+    //            /conventional/receiveList
+    //    约稿性接收 ModelId 9 type 01
+    //            /information/receiveList
+    //    信息统计 model 11 type 04
+    //            /threeinfo/sendList
+    //    信息发送列表 model 11 type 04
+    //            /jobinfo/sendList
+    //    工作信息发布 model 12 type 05
+    //            /threeinfo/sendList
+    //    要请汇报 model 7 type 07
+    //            /threeinfo/sendList
+    //    领导参阅 model 7 type 08
+    //            /threeinfo/threeInfoIndex/2
+    //    紧急信息 model 7 type 09
+    //            /conventional/sendList
+    //    约稿性发送 model 8 type 01
+    //            /conventional/receiveList
+    //    约稿性接收 model 8 type 01
+    //            /document/receiveList
+    //    信息统计 model 20 type 04
+    //            /information/sendList
+    //    信息发送 model 20 type 04
+    //            /threeinfo/govThreeInfoIndex/0
+    //    市长专报
 
 }

@@ -18,8 +18,11 @@
 要请汇报 model 7 type 07
 /threeinfo/sendList
 领导参阅 model 7 type 08
-/threeinfo/threeInfoIndex/2
+/threeinfo/sendList
 紧急信息 model 7 type 09
+
+
+
 /conventional/sendList
 约稿性发送 model 8 type 01
 /conventional/receiveList

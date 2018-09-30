@@ -11,6 +11,7 @@ import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.NoticeInspectorReceiveAdapter;
 import com.gqfyanshi.entity.bean.DocumentBean;
+import com.gqfyanshi.entity.bean.QueryJsonBean;
 import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticeInspectorReceiveBinder;
 import com.gqfyanshi.mvp.delegate.NoticeInspectorReceiveDelegate;
@@ -33,14 +34,24 @@ public class NoticeGovernmentInspectorReceiveActivity extends BaseDataBindActivi
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
+
         initToolbar(new ToolbarBuilder().setTitle("督查通知接收"));
         onRefush(1);
+        viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRefush(1);
+            }
+        });
     }
 
     Class zlass = DocumentBean.class;
 
     private void onRefush(int pageNumber) {
-        addRequest(binder.overSeer_getOverSeerReceiveList(pageNumber, this));
+        QueryJsonBean queryJsonBean=new QueryJsonBean();
+        queryJsonBean.setModelId("32");
+        queryJsonBean.setTitle(viewDelegate.viewHolder.et_attributes.getText().toString());
+        addRequest(binder.overSeer_getOverSeerReceiveList(queryJsonBean,pageNumber, this));
     }
 
     NoticeInspectorReceiveAdapter adapter;

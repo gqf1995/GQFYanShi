@@ -27,6 +27,7 @@ public class NoticeInboxInspectorDelegate extends BaseDelegate {
 
     public static class ViewHolder {
         public View rootView;
+
         public EditText et_attributes;
         public LinearLayout lin_attributes;
         public RoundButton tv_search;
@@ -36,6 +37,7 @@ public class NoticeInboxInspectorDelegate extends BaseDelegate {
 
         public ViewHolder(View rootView) {
             this.rootView = rootView;
+
             this.et_attributes = (EditText) rootView.findViewById(R.id.et_attributes);
             this.lin_attributes = (LinearLayout) rootView.findViewById(R.id.lin_attributes);
             this.tv_search = (RoundButton) rootView.findViewById(R.id.tv_search);

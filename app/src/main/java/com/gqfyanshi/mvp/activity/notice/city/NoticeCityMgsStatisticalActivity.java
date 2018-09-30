@@ -10,6 +10,8 @@ import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.adapter.NoticeMsgStatisticalAdapter;
 import com.gqfyanshi.entity.bean.DocumentBean;
+import com.gqfyanshi.entity.bean.QueryJsonBean;
+import com.gqfyanshi.mvp.activity.add.AddDocumentActivity;
 import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticeMgsStatisticalBinder;
 import com.gqfyanshi.mvp.delegate.NoticeMgsStatisticalDelegate;
@@ -32,14 +34,34 @@ public class NoticeCityMgsStatisticalActivity extends BaseDataBindActivity<Notic
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
+        viewDelegate.viewHolder.tv_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddDocumentActivity.startAct(viewDelegate.getActivity(),
+                        "11","04"
+                );
+            }
+        });
         initToolbar(new ToolbarBuilder().setTitle("信息统计"));
         onRefush(1);
+        viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRefush(1);
+            }
+        });
     }
 
     Class zlass = DocumentBean.class;
 
     private void onRefush(int pageNumber) {
-        addRequest(binder.infoNotice_sendList(pageNumber, this));
+        QueryJsonBean queryJsonBean = new QueryJsonBean();
+        queryJsonBean.setModelId("11");
+        queryJsonBean.setType("04");
+        // TODO: 2018/9/30 0030
+        queryJsonBean.setCreatetime(viewDelegate.viewHolder.selectTimeLayout1.getSelectTime());
+        queryJsonBean.setUpdatetime(viewDelegate.viewHolder.selectTimeLayout2.getSelectTime());
+        addRequest(binder.infoNotice_sendList(queryJsonBean,pageNumber, this));
     }
 
     NoticeMsgStatisticalAdapter adapter;

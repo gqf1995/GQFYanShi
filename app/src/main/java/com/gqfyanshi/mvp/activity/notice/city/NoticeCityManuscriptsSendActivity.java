@@ -11,6 +11,7 @@ import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.adapter.NoticeCityManuscriptsSendAdapter;
 import com.gqfyanshi.entity.bean.DocumentBean;
 import com.gqfyanshi.entity.bean.QueryJsonBean;
+import com.gqfyanshi.mvp.activity.add.AddDocumentActivity;
 import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticeEmergencyBinder;
 import com.gqfyanshi.mvp.delegate.NoticeEmergencyDelegate;
@@ -34,6 +35,14 @@ public class NoticeCityManuscriptsSendActivity extends BaseDataBindActivity<Noti
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
+        viewDelegate.viewHolder.tv_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddDocumentActivity.startAct(viewDelegate.getActivity(),
+                        "8","01"
+                );
+            }
+        });
         initToolbar(new ToolbarBuilder().setTitle("约稿性发送"));
         onRefush(1);
         viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {

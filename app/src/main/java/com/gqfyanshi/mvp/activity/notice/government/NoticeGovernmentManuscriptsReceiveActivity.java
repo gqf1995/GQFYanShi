@@ -11,6 +11,7 @@ import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.adapter.NoticeCityManuscriptsReceiveAdapter;
 import com.gqfyanshi.entity.bean.DocumentBean;
 import com.gqfyanshi.entity.bean.QueryJsonBean;
+import com.gqfyanshi.mvp.activity.add.AddDocumentActivity;
 import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticeEmergencyBinder;
 import com.gqfyanshi.mvp.delegate.NoticeEmergencyDelegate;
@@ -33,15 +34,29 @@ public class NoticeGovernmentManuscriptsReceiveActivity extends BaseDataBindActi
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
+        viewDelegate.viewHolder.tv_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddDocumentActivity.startAct(viewDelegate.getActivity(),
+                        "9","01"
+                );
+            }
+        });
         initToolbar(new ToolbarBuilder().setTitle("约稿性接收"));
         onRefush(1);
+        viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRefush(1);
+            }
+        });
     }
 
     Class zlass = DocumentBean.class;
 
     private void onRefush(int pageNumber) {
         QueryJsonBean queryJsonBean = new QueryJsonBean();
-        queryJsonBean.setModelId("8");
+        queryJsonBean.setModelId("9");
         queryJsonBean.setType("01");
         queryJsonBean.setTitle(viewDelegate.viewHolder.et_attributes.getText().toString());
         queryJsonBean.setCreatetime(viewDelegate.viewHolder.selectTimeLayout1.getSelectTime());

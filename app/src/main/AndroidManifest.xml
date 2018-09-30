@@ -112,6 +112,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize|mcc|mnc|touchscreen|keyboard|navigation|screenLayout|fontScale|uiMode"
             android:theme="@style/AppBaseThemeShouxie"/>
         <activity android:name=".mvp.activity.file.DocumentInfoActivity"/>
+        <activity android:name=".mvp.activity.add.AddDocumentActivity"/>
     </application>
 
 </manifest>

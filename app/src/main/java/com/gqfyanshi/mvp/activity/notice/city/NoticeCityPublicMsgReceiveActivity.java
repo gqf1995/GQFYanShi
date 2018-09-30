@@ -11,6 +11,7 @@ import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.NoticePublicMsgReceiveAdapter;
 import com.gqfyanshi.entity.bean.DocumentBean;
+import com.gqfyanshi.entity.bean.QueryJsonBean;
 import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticePublicMsgReceiveBinder;
 import com.gqfyanshi.mvp.delegate.NoticePublicMsgReceiveDelegate;
@@ -33,14 +34,24 @@ public class NoticeCityPublicMsgReceiveActivity extends BaseDataBindActivity<Not
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
+
         initToolbar(new ToolbarBuilder().setTitle("公开信息接收"));
         onRefush(1);
+        viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRefush(1);
+            }
+        });
     }
 
     Class zlass = DocumentBean.class;
 
     private void onRefush(int pageNumber) {
-        addRequest(binder.workInfo_getWorkInfoReceiveList(pageNumber, this));
+        QueryJsonBean queryJsonBean=new QueryJsonBean();
+        queryJsonBean.setModelId("26");
+        queryJsonBean.setTitle(viewDelegate.viewHolder.et_attributes.getText().toString());
+        addRequest(binder.workInfo_getWorkInfoReceiveList(queryJsonBean,pageNumber, this));
     }
 
     NoticePublicMsgReceiveAdapter adapter;

@@ -1,5 +1,6 @@
 package com.gqfyanshi.mvp.activity.notice.city;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
@@ -11,6 +12,7 @@ import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.adapter.NoticePublicMsgSendAdapter;
 import com.gqfyanshi.entity.bean.DocumentBean;
 import com.gqfyanshi.entity.bean.QueryJsonBean;
+import com.gqfyanshi.mvp.activity.add.AddPublicInformationActivity;
 import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticePublicMsgSendBinder;
 import com.gqfyanshi.mvp.delegate.NoticePublicMsgSendDelegate;
@@ -33,6 +35,12 @@ public class NoticeCityPublicMsgSendActivity extends BaseDataBindActivity<Notice
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
+        viewDelegate.viewHolder.tv_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(viewDelegate.getActivity(), AddPublicInformationActivity.class));
+            }
+        });
         initToolbar(new ToolbarBuilder().setTitle("公开信息发送"));
         onRefush(1);
         viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +55,9 @@ public class NoticeCityPublicMsgSendActivity extends BaseDataBindActivity<Notice
 
     private void onRefush(int pageNumber) {
         QueryJsonBean queryJsonBean=new QueryJsonBean();
-        addRequest(binder.workInfo_getWorkInfoSendList(pageNumber, this));
+        queryJsonBean.setModelId("26");
+        queryJsonBean.setTitle(viewDelegate.viewHolder.et_attributes.getText().toString());
+        addRequest(binder.workInfo_getWorkInfoSendList(queryJsonBean,pageNumber, this));
     }
 
     NoticePublicMsgSendAdapter adapter;

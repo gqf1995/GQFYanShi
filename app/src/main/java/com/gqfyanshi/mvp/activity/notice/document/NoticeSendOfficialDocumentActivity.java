@@ -39,6 +39,7 @@ public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<Not
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
+        // TODO: 2018/9/30 0030
         getIntentData();
         initToolbar(new ToolbarBuilder().setTitle("公文发送"));
         onRefush(1);

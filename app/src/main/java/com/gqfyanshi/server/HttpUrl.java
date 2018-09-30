@@ -72,6 +72,10 @@ public class HttpUrl {
      */
     public String jobinfo_sendList = AppConst.app2BaseUrl + "/jobinfo/sendList";
     /**
+     * 要情汇报
+     */
+    public String threeinfo_sendList = AppConst.app2BaseUrl + "/threeinfo/sendList";
+    /**
      * 获取公开信息列表
      */
     public String workInfo_getWorkInfoSendList = AppConst.app2BaseUrl + "/workInfo/getWorkInfoSendList";
@@ -132,5 +136,20 @@ public class HttpUrl {
      */
     public String overSeer_overSeerDel = AppConst.app2BaseUrl + "/overSeer/overSeerDel";
 
-
+    /**
+     * 保存文章
+     */
+    public String document_saveDocument = AppConst.app2BaseUrl + "/document/saveDocument";
+    /**
+     * 上传文件
+     */
+    public String document_saveFile = AppConst.app2BaseUrl + "/document/saveFile";
+    /**
+     * 发送邮件
+     */
+    public String email_emailForm = AppConst.app2BaseUrl + "/email/emailForm";
+    /**
+     * 获取部门信息树型对象
+     */
+    public String leader_getModelTree = AppConst.app2BaseUrl + "/leader/getModelTree";
 }

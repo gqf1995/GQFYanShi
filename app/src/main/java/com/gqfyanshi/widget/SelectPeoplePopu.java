@@ -10,10 +10,14 @@ import android.widget.TextView;
 
 import com.fivefivelike.mybaselibrary.utils.CommonUtils;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
+import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.fivefivelike.mybaselibrary.view.popupWindow.BasePopupWindow;
 import com.gqfyanshi.R;
+import com.gqfyanshi.entity.bean.TreeBean;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
+
+import java.util.List;
 
 /**
  * Created by 郭青枫 on 2017/8/17.
@@ -22,9 +26,48 @@ import com.unnamed.b.atv.view.AndroidTreeView;
 public class SelectPeoplePopu extends BasePopupWindow {
 
     public RelativeLayout contentView;
+    int selectType = 0;//0 组选+单选 1 单选
+
+    public void setSelectType(int selectType) {
+        this.selectType = selectType;
+    }
 
     public SelectPeoplePopu(Context context) {
         super(context);
+    }
+
+    DefaultClickLinsener defaultClickLinsener;
+
+    public void setDefaultClickLinsener(DefaultClickLinsener defaultClickLinsener) {
+        this.defaultClickLinsener = defaultClickLinsener;
+    }
+
+    List<TreeBean>  treeBean;
+
+    public void setTreeBean(  List<TreeBean> treeBean) {
+        this.treeBean = treeBean;
+        TreeNode root = TreeNode.root();
+
+        for (int i = 0, n = treeBean.size(); i < n; ++i) {
+            TreeNode parent = new TreeNode(treeBean.get(i))
+                    .setViewHolder(new BookMarkTreeItemHolder(context)
+                            .setSelectType(selectType)
+                            .setDefaultClickLinsener(new DefaultClickLinsener() {
+                                @Override
+                                public void onClick(View view, int position, Object item) {
+                                    if(defaultClickLinsener!=null){
+                                        defaultClickLinsener.onClick(view,position,item);
+                                    }
+                                }
+                            }));
+            getTree(treeBean.get(i).getChildNodes(), parent);//递归获取所有书签
+            root.addChild(parent);
+        }
+
+        AndroidTreeView treeView = new AndroidTreeView(context, root);
+        treeView.setDefaultAnimation(true);
+        treeView.setDefaultViewHolder(BookMarkTreeItemHolder.class);
+        contentView.addView(treeView.getView());
     }
 
     @Override
@@ -42,79 +85,54 @@ public class SelectPeoplePopu extends BasePopupWindow {
         setHeight((int) CommonUtils.getDimensionPixelSize(R.dimen.trans_350px));
         setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
         this.contentView = (RelativeLayout) findViewById(R.id.contentView);
-        TreeNode root = TreeNode.root();
-        //        for (int i = 0, n = bookMarks.size(); i < n; ++i) {
-        //            TreeNode parent = new TreeNode(new IconTreeItem(
-        //                    bookMarks.get(i).getChildren().size() > 0 ? false : true,
-        //                    bookMarks.get(i).getPageIdx(),
-        //                    bookMarks.get(i).getTitle()))
-        //                    .setViewHolder(new BookMarkTreeItemHolder(context));
-        //            getTree(bookMarks.get(i).getChildren(), parent);//递归获取所有书签
-        //            root.addChild(parent);
-        //        }
 
-        TreeNode parent1 = new TreeNode(new IconTreeItem(
-                false,
-                "gqf1"));
-        TreeNode child = new TreeNode(new IconTreeItem(
-                true,
-                "123"))
-                .setViewHolder(new BookMarkTreeItemHolder(context));
-        parent1.addChild(child);
-        root.addChild(parent1);
-        TreeNode parent2 = new TreeNode(new IconTreeItem(
-                false,
-                "gqf2"));
-        TreeNode child2 = new TreeNode(new IconTreeItem(
-                true,
-                "123"))
-                .setViewHolder(new BookMarkTreeItemHolder(context));
-        parent2.addChild(child2);
-        root.addChild(parent2);
-        TreeNode parent3 = new TreeNode(new IconTreeItem(
-                false,
-                "gqf3"));
-        TreeNode child3 = new TreeNode(new IconTreeItem(
-                false,
-                "123"))
-                .setViewHolder(new BookMarkTreeItemHolder(context));
-        TreeNode child4 = new TreeNode(new IconTreeItem(
-                true,
-                "123"))
-                .setViewHolder(new BookMarkTreeItemHolder(context));
-        child3.addChild(child4);
-        parent3.addChild(child3);
-        root.addChild(parent3);
-        AndroidTreeView treeView = new AndroidTreeView(context, root);
-        treeView.setDefaultAnimation(true);
-        treeView.setDefaultViewHolder(BookMarkTreeItemHolder.class);
-        contentView.addView(treeView.getView());
     }
 
 
-    //    //递归获取所有书签节点
-    //    public void getTree(List<PdfDocument.Bookmark> bookmarks, TreeNode parent) {
-    //        for (int i = 0, n = bookmarks.size(); i < n; ++i) {
-    //            TreeNode child = new TreeNode(new IconTreeItem(
-    //                    bookmarks.get(i).hasChildren() ? false : true,
-    //                    bookmarks.get(i).getPageIdx(), bookmarks.get(i).getTitle()))
-    //                    .setViewHolder(new BookMarkTreeItemHolder(context));
-    //            if (bookmarks.get(i).hasChildren()) {
-    //                getTree(bookmarks.get(i).getChildren(), child);
-    //            }
-    //            parent.addChild(child);
-    //        }
-    //    }
-    public static class BookMarkTreeItemHolder extends TreeNode.BaseNodeViewHolder<IconTreeItem> {
+    //递归获取所有书签节点
+    public void getTree(List<TreeBean> bookmarks, TreeNode parent) {
+        for (int i = 0, n = bookmarks.size(); i < n; ++i) {
+            TreeNode child = new TreeNode(bookmarks.get(i))
+                    .setViewHolder(new BookMarkTreeItemHolder(context)
+                            .setSelectType(selectType)
+                            .setDefaultClickLinsener(new DefaultClickLinsener() {
+                                @Override
+                                public void onClick(View view, int position, Object item) {
+                                    if(defaultClickLinsener!=null){
+                                        defaultClickLinsener.onClick(view,position,item);
+                                    }
+                                }
+                            }));
+            if (!ListUtils.isEmpty(bookmarks.get(i).getChildNodes())) {
+                getTree(bookmarks.get(i).getChildNodes(), child);
+            }
+            parent.addChild(child);
+        }
+    }
+
+    public static class BookMarkTreeItemHolder extends TreeNode.BaseNodeViewHolder<TreeBean> {
         private TextView tvValue;
         private ImageView arrowView;
+
+        int selectType = 0;//0 组选+单选 1 单选
+        DefaultClickLinsener defaultClickLinsener;
+
+        public BookMarkTreeItemHolder setDefaultClickLinsener(DefaultClickLinsener defaultClickLinsener) {
+            this.defaultClickLinsener = defaultClickLinsener;
+            return this;
+        }
+
+        public BookMarkTreeItemHolder setSelectType(int selectType) {
+            this.selectType = selectType;
+            return this;
+        }
 
         public BookMarkTreeItemHolder(Context context) {
             super(context);
         }
 
         @Override
-        public View createNodeView(final TreeNode node, final IconTreeItem value) {
+        public View createNodeView(final TreeNode node, final TreeBean value) {
             final LayoutInflater inflater = LayoutInflater.from(context);
             final View view = inflater.inflate(R.layout.layout_select_people_node, null, false);
             tvValue = (TextView) view.findViewById(R.id.node_value);
@@ -125,10 +143,24 @@ public class SelectPeoplePopu extends BasePopupWindow {
             iconView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    value.isSelect = !value.isSelect;
-                    v.setWillNotDraw(!value.isSelect);
-                    select(node, value.isSelect);
-                    selectFather(node, value.isSelect);
+                    if (selectType == 0) {
+                        value.isSelect = !value.isSelect;
+                        v.setWillNotDraw(!value.isSelect);
+                        select(node, value.isSelect);
+                        selectFather(node, value.isSelect);
+                        if (defaultClickLinsener != null) {
+                            defaultClickLinsener.onClick(v, 0, value);
+                        }
+                    } else if (selectType == 1) {
+                        if (ListUtils.isEmpty(value.getChildNodes())) {
+                            value.isSelect = !value.isSelect;
+                            v.setWillNotDraw(!value.isSelect);
+                            select(node, value.isSelect);
+                            if (defaultClickLinsener != null) {
+                                defaultClickLinsener.onClick(v, 0, value);
+                            }
+                        }
+                    }
                 }
             });
             iconView.getParent().requestDisallowInterceptTouchEvent(true);
@@ -148,23 +180,23 @@ public class SelectPeoplePopu extends BasePopupWindow {
                 boolean isSelectAll = true;
                 for (int i = 0; i < parent.getChildren().size(); i++) {
                     Object value = parent.getChildren().get(i).getValue();
-                    if (value instanceof IconTreeItem) {
-                        if (!((IconTreeItem) value).isSelect) {
+                    if (value instanceof TreeBean) {
+                        if (!((TreeBean) value).isSelect) {
                             isSelectAll = false;
                         }
                     }
                 }
                 Object value = parent.getValue();
-                if (value instanceof IconTreeItem) {
-                    ((IconTreeItem) value).isSelect = isSelectAll;
-                    parent.getViewHolder().getView().findViewById(R.id.icon).setWillNotDraw(!((IconTreeItem) value).isSelect);
+                if (value instanceof TreeBean) {
+                    ((TreeBean) value).isSelect = isSelectAll;
+                    parent.getViewHolder().getView().findViewById(R.id.icon).setWillNotDraw(!((TreeBean) value).isSelect);
                     selectFather(parent, isSelectAll);
                 }
-            }else {
+            } else {
                 Object value = node.getValue();
-                if (value instanceof IconTreeItem) {
-                    ((IconTreeItem) value).isSelect = isSelect;
-                    node.getViewHolder().getView().findViewById(R.id.icon).setWillNotDraw(!((IconTreeItem) value).isSelect);
+                if (value instanceof TreeBean) {
+                    ((TreeBean) value).isSelect = isSelect;
+                    node.getViewHolder().getView().findViewById(R.id.icon).setWillNotDraw(!((TreeBean) value).isSelect);
                 }
             }
         }
@@ -174,9 +206,9 @@ public class SelectPeoplePopu extends BasePopupWindow {
             if (!ListUtils.isEmpty(node.getChildren())) {
                 for (int i = 0; i < node.getChildren().size(); i++) {
                     Object value = node.getChildren().get(i).getValue();
-                    if (value instanceof IconTreeItem) {
-                        ((IconTreeItem) value).isSelect = isSelect;
-                        node.getChildren().get(i).getViewHolder().getView().findViewById(R.id.icon).setWillNotDraw(!((IconTreeItem) value).isSelect);
+                    if (value instanceof TreeBean) {
+                        ((TreeBean) value).isSelect = isSelect;
+                        node.getChildren().get(i).getViewHolder().getView().findViewById(R.id.icon).setWillNotDraw(!((TreeBean) value).isSelect);
                     }
                     select(node.getChildren().get(i), isSelect);
                 }
@@ -204,17 +236,5 @@ public class SelectPeoplePopu extends BasePopupWindow {
 
     }
 
-    /**
-     * 书签节点类
-     */
-    public static class IconTreeItem {
-        public boolean isLeaf;//是否是叶节点
-        public boolean isSelect = false;//是否选中节点
-        public String text;//节点内容
 
-        public IconTreeItem(boolean isLeaf, String text) {
-            this.isLeaf = isLeaf;
-            this.text = text;
-        }
-    }
 }
