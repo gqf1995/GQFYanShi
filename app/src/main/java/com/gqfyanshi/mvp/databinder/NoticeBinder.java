@@ -3,6 +3,7 @@ package com.gqfyanshi.mvp.databinder;
 import com.fivefivelike.mybaselibrary.base.BaseDataBind;
 import com.fivefivelike.mybaselibrary.http.HttpRequest;
 import com.fivefivelike.mybaselibrary.http.RequestCallback;
+import com.gqfyanshi.entity.bean.QueryJsonBean;
 import com.gqfyanshi.mvp.delegate.NoticeDelegate;
 import com.gqfyanshi.server.HttpUrl;
 
@@ -29,9 +30,11 @@ public class NoticeBinder extends BaseDataBind<NoticeDelegate> {
      * @return
      */
     public Disposable notice_sendList(
+            QueryJsonBean queryJsonBean,
             int pageNumber,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
+        baseMap.put("queryJsonBean",queryJsonBean);
         baseMap.put("pageSize",10);
         baseMap.put("pageNumber",pageNumber);
         return new HttpRequest.Builder()

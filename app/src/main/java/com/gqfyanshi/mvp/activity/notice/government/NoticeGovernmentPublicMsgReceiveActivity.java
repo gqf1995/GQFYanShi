@@ -8,7 +8,10 @@ import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
-import com.gqfyanshi.adapter.NoticeCityManuscriptsReceiveAdapter;
+import com.gqfyanshi.R;
+import com.gqfyanshi.adapter.NoticePublicMsgReceiveAdapter;
+import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
+import com.gqfyanshi.mvp.activity.notice.city.NoticeCityPublicMsgReceiveActivity;
 import com.gqfyanshi.mvp.databinder.NoticePublicMsgReceiveBinder;
 import com.gqfyanshi.mvp.delegate.NoticePublicMsgReceiveDelegate;
 
@@ -40,7 +43,7 @@ public class NoticeGovernmentPublicMsgReceiveActivity extends BaseDataBindActivi
         addRequest(binder.workInfo_getWorkInfoReceiveList(pageNumber, this));
     }
 
-    NoticeCityManuscriptsReceiveAdapter adapter;
+    NoticePublicMsgReceiveAdapter adapter;
 
     private void initList(List list) {
         if (adapter == null) {
@@ -56,7 +59,21 @@ public class NoticeGovernmentPublicMsgReceiveActivity extends BaseDataBindActivi
                     onRefush(position);
                 }
             });
-            adapter = new NoticeCityManuscriptsReceiveAdapter(this, list);
+            adapter = new NoticePublicMsgReceiveAdapter(this, list);
+            adapter.setDefaultClickLinsener(new DefaultClickLinsener() {
+                @Override
+                public void onClick(View view, int position, Object item) {
+                    if (view.getId() == R.id.tv5) {
+                        DocumentInfoActivity.startAct(viewDelegate.getActivity(),
+                                adapter.getDatas().get(position).getId());
+                    } else {
+                        addRequest(binder.workInfo_workInfoDel(
+                                adapter.getDatas().get(position).getId(),
+                                NoticeGovernmentPublicMsgReceiveActivity.this
+                        ));
+                    }
+                }
+            });
             viewDelegate.viewHolder.recycler_view.setAdapter(adapter);
         } else {
             adapter.setData(list);
@@ -73,6 +90,9 @@ public class NoticeGovernmentPublicMsgReceiveActivity extends BaseDataBindActivi
                 initList(list);
                 int total = Integer.parseInt(GsonUtil.getInstance().getValue(data, "total"));
                 viewDelegate.viewHolder.pageChangeView.setMaxPage(total);
+                break;
+            case 0x124:
+                onRefush(viewDelegate.viewHolder.pageChangeView.getNowPage());
                 break;
         }
     }

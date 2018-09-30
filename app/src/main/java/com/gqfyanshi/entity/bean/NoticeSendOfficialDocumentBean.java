@@ -34,6 +34,15 @@ public class NoticeSendOfficialDocumentBean {
     private String name;
     private int id;
     private String status;
+    /**
+     * repceipt : 0
+     * departId : 145
+     * depart : 文书科
+     */
+
+    private int repceipt;
+    private int departId;
+    private String depart;
 
     public String getSummary() {
         return summary;
@@ -137,5 +146,29 @@ public class NoticeSendOfficialDocumentBean {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getRepceipt() {
+        return repceipt;
+    }
+
+    public void setRepceipt(int repceipt) {
+        this.repceipt = repceipt;
+    }
+
+    public int getDepartId() {
+        return departId;
+    }
+
+    public void setDepartId(int departId) {
+        this.departId = departId;
+    }
+
+    public String getDepart() {
+        return depart;
+    }
+
+    public void setDepart(String depart) {
+        this.depart = depart;
     }
 }

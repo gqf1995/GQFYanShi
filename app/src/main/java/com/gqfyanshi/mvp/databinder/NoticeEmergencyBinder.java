@@ -3,6 +3,7 @@ package com.gqfyanshi.mvp.databinder;
 import com.fivefivelike.mybaselibrary.base.BaseDataBind;
 import com.fivefivelike.mybaselibrary.http.HttpRequest;
 import com.fivefivelike.mybaselibrary.http.RequestCallback;
+import com.gqfyanshi.entity.bean.QueryJsonBean;
 import com.gqfyanshi.mvp.delegate.NoticeEmergencyDelegate;
 import com.gqfyanshi.server.HttpUrl;
 
@@ -15,9 +16,11 @@ public class NoticeEmergencyBinder extends BaseDataBind<NoticeEmergencyDelegate>
     }
 
     public Disposable conventional_sendList(
+            QueryJsonBean queryJsonBean,
             int pageNumber,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
+        baseMap.put("queryJsonBean", queryJsonBean);
         baseMap.put("pageSize", 10);
         baseMap.put("pageNumber", pageNumber);
         return new HttpRequest.Builder()
@@ -35,9 +38,11 @@ public class NoticeEmergencyBinder extends BaseDataBind<NoticeEmergencyDelegate>
     }
 
     public Disposable conventional_receiveList(
+            QueryJsonBean queryJsonBean,
             int pageNumber,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
+        baseMap.put("queryJsonBean", queryJsonBean);
         baseMap.put("pageSize", 10);
         baseMap.put("pageNumber", pageNumber);
         return new HttpRequest.Builder()
@@ -73,9 +78,11 @@ public class NoticeEmergencyBinder extends BaseDataBind<NoticeEmergencyDelegate>
                 .RxSendRequest();
     }
     public Disposable jobinfo_sendList(
+            QueryJsonBean queryJsonBean,
             int pageNumber,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
+        baseMap.put("queryJsonBean", queryJsonBean);
         baseMap.put("pageSize", 10);
         baseMap.put("pageNumber", pageNumber);
         return new HttpRequest.Builder()

@@ -8,7 +8,11 @@ import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
+import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.NoticeInspectorAdapter;
+import com.gqfyanshi.entity.bean.DocumentBean;
+import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
+import com.gqfyanshi.mvp.activity.notice.city.NoticeCityInspectorSendActivity;
 import com.gqfyanshi.mvp.databinder.NoticeInspectorBinder;
 import com.gqfyanshi.mvp.delegate.NoticeInspectorDelegate;
 
@@ -34,7 +38,7 @@ public class NoticeGovernmentInspectorSendActivity extends BaseDataBindActivity<
         onRefush(1);
     }
 
-    Class zlass = String.class;
+    Class zlass = DocumentBean.class;
 
     private void onRefush(int pageNumber) {
         addRequest(binder.overSeer_getOverSeerSendList(pageNumber, this));
@@ -57,6 +61,20 @@ public class NoticeGovernmentInspectorSendActivity extends BaseDataBindActivity<
                 }
             });
             adapter = new NoticeInspectorAdapter(this, list);
+            adapter.setDefaultClickLinsener(new DefaultClickLinsener() {
+                @Override
+                public void onClick(View view, int position, Object item) {
+                    if (view.getId() == R.id.tv5) {
+                        DocumentInfoActivity.startAct(viewDelegate.getActivity(),
+                                adapter.getDatas().get(position).getId());
+                    } else {
+                        addRequest(binder.overSeer_overSeerDel(
+                                adapter.getDatas().get(position).getId(),
+                                NoticeGovernmentInspectorSendActivity.this
+                        ));
+                    }
+                }
+            });
             viewDelegate.viewHolder.recycler_view.setAdapter(adapter);
         } else {
             adapter.setData(list);
@@ -73,6 +91,9 @@ public class NoticeGovernmentInspectorSendActivity extends BaseDataBindActivity<
                 initList(list);
                 int total = Integer.parseInt(GsonUtil.getInstance().getValue(data, "total"));
                 viewDelegate.viewHolder.pageChangeView.setMaxPage(total);
+                break;
+            case 0x124:
+                onRefush(viewDelegate.viewHolder.pageChangeView.getNowPage());
                 break;
         }
     }

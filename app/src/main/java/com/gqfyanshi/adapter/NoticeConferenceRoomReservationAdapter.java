@@ -1,12 +1,14 @@
 package com.gqfyanshi.adapter;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.fivefivelike.mybaselibrary.utils.CommonUtils;
+import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.R;
-import com.gqfyanshi.entity.bean.NoticeConferenceRoomReservationBean;
+import com.gqfyanshi.entity.bean.DocumentBean;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -16,7 +18,7 @@ import java.util.List;
  * Created by 郭青枫 on 2018/1/10 0010.
  */
 
-public class NoticeConferenceRoomReservationAdapter extends CommonAdapter<NoticeConferenceRoomReservationBean> {
+public class NoticeConferenceRoomReservationAdapter extends CommonAdapter<DocumentBean> {
 
 
     private LinearLayout lin_root;
@@ -27,20 +29,25 @@ public class NoticeConferenceRoomReservationAdapter extends CommonAdapter<Notice
     private TextView tv5;
     private TextView tv6;
     private TextView tv7;
+    DefaultClickLinsener defaultClickLinsener;
 
-    public NoticeConferenceRoomReservationAdapter(Context context, List<NoticeConferenceRoomReservationBean> datas) {
+    public void setDefaultClickLinsener(DefaultClickLinsener defaultClickLinsener) {
+        this.defaultClickLinsener = defaultClickLinsener;
+    }
+
+    public NoticeConferenceRoomReservationAdapter(Context context, List<DocumentBean> datas) {
         super(context, R.layout.adapter_notice_conference_room_reservation, datas);
 
     }
 
-    public void setData(List<NoticeConferenceRoomReservationBean> datas) {
+    public void setData(List<DocumentBean> datas) {
         this.mDatas.clear();
         this.mDatas.addAll(datas);
         this.notifyDataSetChanged();
     }
 
     @Override
-    protected void convert(ViewHolder holder, NoticeConferenceRoomReservationBean s, final int position) {
+    protected void convert(ViewHolder holder, DocumentBean s, final int position) {
         lin_root = holder.getView(R.id.lin_root);
         lin_root.setBackgroundColor(CommonUtils.getColor(position % 2 == 0 ? R.color.white : R.color.transparent));
         tv1 = holder.getView(R.id.tv1);
@@ -51,7 +58,20 @@ public class NoticeConferenceRoomReservationAdapter extends CommonAdapter<Notice
         tv6 = holder.getView(R.id.tv6);
         tv7 = holder.getView(R.id.tv7);
 
-
+        tv1.setText(s.getId());
+        tv2.setText(s.getDepartmentName());
+        tv3.setText(s.getUsername());
+        tv4.setText(s.getPurpose());
+        tv5.setText(s.getBegin_time() + "-" + s.getEnd_time());
+        tv6.setText(s.getStatus());
+        tv7.setText("详情");
+        tv7.setTextColor(CommonUtils.getColor(R.color.mark_color));
+        tv7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultClickLinsener.onClick(v, position, null);
+            }
+        });
     }
 
 }

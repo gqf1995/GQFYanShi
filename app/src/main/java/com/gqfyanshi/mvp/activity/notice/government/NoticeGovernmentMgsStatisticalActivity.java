@@ -9,6 +9,8 @@ import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.adapter.NoticeMsgStatisticalAdapter;
+import com.gqfyanshi.entity.bean.DocumentBean;
+import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticeMgsStatisticalBinder;
 import com.gqfyanshi.mvp.delegate.NoticeMgsStatisticalDelegate;
 
@@ -34,7 +36,7 @@ public class NoticeGovernmentMgsStatisticalActivity extends BaseDataBindActivity
         onRefush(1);
     }
 
-    Class zlass = String.class;
+    Class zlass = DocumentBean.class;
 
     private void onRefush(int pageNumber) {
         addRequest(binder.infoNotice_sendList(pageNumber, this));
@@ -57,6 +59,13 @@ public class NoticeGovernmentMgsStatisticalActivity extends BaseDataBindActivity
                 }
             });
             adapter = new NoticeMsgStatisticalAdapter(this, list);
+            adapter.setDefaultClickLinsener(new DefaultClickLinsener() {
+                @Override
+                public void onClick(View view, int position, Object item) {
+                    DocumentInfoActivity.startAct(viewDelegate.getActivity(),
+                            adapter.getDatas().get(position).getId());
+                }
+            });
             viewDelegate.viewHolder.recycler_view.setAdapter(adapter);
         } else {
             adapter.setData(list);

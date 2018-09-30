@@ -10,7 +10,7 @@ import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.NoticeOutBoxAdapter;
-import com.gqfyanshi.entity.bean.NoticaInOutBoxBean;
+import com.gqfyanshi.entity.bean.DocumentBean;
 import com.gqfyanshi.mvp.activity.file.EmailInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticeInboxBinder;
 import com.gqfyanshi.mvp.delegate.NoticeInboxDelegate;
@@ -37,7 +37,7 @@ public class NoticeOutboxActivity extends BaseDataBindActivity<NoticeInboxDelega
         onRefush(1);
     }
 
-    Class zlass = NoticaInOutBoxBean.class;
+    Class zlass = DocumentBean.class;
 
     private void onRefush(int pageNumber) {
         addRequest(binder.email_getEmailSendList(pageNumber, this));
@@ -66,8 +66,7 @@ public class NoticeOutboxActivity extends BaseDataBindActivity<NoticeInboxDelega
                     if (view.getId() == R.id.tv6) {
                         //详情
                         EmailInfoActivity.startAct(viewDelegate.getActivity(),
-                                adapter.getDatas().get(position).getId(),
-                                "");
+                                adapter.getDatas().get(position).getId());
                     } else {
                         //删除
                         addRequest(binder.email_emailDel(
@@ -93,6 +92,9 @@ public class NoticeOutboxActivity extends BaseDataBindActivity<NoticeInboxDelega
                 initList(list);
                 int total = Integer.parseInt(GsonUtil.getInstance().getValue(data, "total"));
                 viewDelegate.viewHolder.pageChangeView.setMaxPage(total);
+                break;
+            case 0x124:
+                onRefush(viewDelegate.viewHolder.pageChangeView.getNowPage());
                 break;
         }
     }

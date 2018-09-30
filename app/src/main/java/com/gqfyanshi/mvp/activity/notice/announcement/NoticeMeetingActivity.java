@@ -9,6 +9,9 @@ import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.adapter.NoticeMeetingAdapter;
+import com.gqfyanshi.entity.bean.DocumentBean;
+import com.gqfyanshi.entity.bean.QueryJsonBean;
+import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticeBinder;
 import com.gqfyanshi.mvp.delegate.NoticeDelegate;
 
@@ -32,12 +35,24 @@ public class NoticeMeetingActivity extends BaseDataBindActivity<NoticeDelegate, 
         super.bindEvenListener();
         initToolbar(new ToolbarBuilder().setTitle("会议通知"));
         onRefush(1);
+        viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRefush(1);
+            }
+        });
     }
 
-    Class zlass = String.class;
+    Class zlass = DocumentBean.class;
 
     private void onRefush(int pageNumber) {
-        addRequest(binder.notice_sendList(pageNumber, this));
+        QueryJsonBean queryJsonBean = new QueryJsonBean();
+        queryJsonBean.setModelId("3");
+        queryJsonBean.setType("02");
+        queryJsonBean.setTitle(viewDelegate.viewHolder.et_attributes.getText().toString());
+        queryJsonBean.setCreatetime(viewDelegate.viewHolder.selectTimeLayout1.getSelectTime());
+        queryJsonBean.setUpdatetime(viewDelegate.viewHolder.selectTimeLayout2.getSelectTime());
+        addRequest(binder.notice_sendList(queryJsonBean, pageNumber, this));
     }
 
     NoticeMeetingAdapter adapter;
@@ -57,6 +72,15 @@ public class NoticeMeetingActivity extends BaseDataBindActivity<NoticeDelegate, 
                 }
             });
             adapter = new NoticeMeetingAdapter(this, list);
+            adapter.setDefaultClickLinsener(new DefaultClickLinsener() {
+                @Override
+                public void onClick(View view, int position, Object item) {
+                    DocumentInfoActivity.startAct(
+                            viewDelegate.getActivity(),
+                            adapter.getDatas().get(position).getId()
+                    );
+                }
+            });
             viewDelegate.viewHolder.recycler_view.setAdapter(adapter);
         } else {
             adapter.setData(list);

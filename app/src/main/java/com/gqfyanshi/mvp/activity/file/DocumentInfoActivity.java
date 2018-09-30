@@ -8,7 +8,7 @@ import android.view.View;
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
 import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
-import com.gqfyanshi.entity.bean.DocumentInfoBean;
+import com.gqfyanshi.entity.bean.DocumentBean;
 import com.gqfyanshi.mvp.databinder.DocumentInfoBinder;
 import com.gqfyanshi.mvp.delegate.DocumentInfoDelegate;
 
@@ -34,32 +34,37 @@ public class DocumentInfoActivity extends BaseDataBindActivity<DocumentInfoDeleg
     }
 
     public static void startAct(Activity activity,
-                                int id,
+                                String id,
                                 String type
     ) {
         Intent intent = new Intent(activity, DocumentInfoActivity.class);
         intent.putExtra("id", id);
-        intent.putExtra("type", type);
         activity.startActivity(intent);
     }
 
-    private int id;
-    private String type;
+    public static void startAct(Activity activity,
+                                String id
+    ) {
+        Intent intent = new Intent(activity, DocumentInfoActivity.class);
+        intent.putExtra("id", id);
+        activity.startActivity(intent);
+    }
+
+    private String id;
 
     private void getIntentData() {
         Intent intent = getIntent();
-        id = intent.getIntExtra("id", 0);
-        type = intent.getStringExtra("type");
-        addRequest(binder.document_detailDocumnet(id, type, this));
+        id = intent.getStringExtra("id");
+        addRequest(binder.document_detailDocumnet(id, "", this));
     }
 
-    DocumentInfoBean documentInfoBean;
+    DocumentBean documentInfoBean;
 
     @Override
     protected void onServiceSuccess(String data, String info, int status, int requestCode) {
         switch (requestCode) {
             case 0x123:
-                documentInfoBean = GsonUtil.getInstance().toObj(data, "doc", DocumentInfoBean.class);
+                documentInfoBean = GsonUtil.getInstance().toObj(data, "doc", DocumentBean.class);
 
                 String departName = GsonUtil.getInstance().getValue(data, "departName");
                 viewDelegate.viewHolder.lin_content.setVisibility(TextUtils.isEmpty(departName) ? View.GONE : View.VISIBLE);

@@ -9,7 +9,8 @@ import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.adapter.DocumentListAdapter;
 import com.gqfyanshi.entity.bean.DocumentListBean;
-import com.gqfyanshi.mvp.activity.notice.document.NoticeSendOfficialDocumentActivity;
+import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
+import com.gqfyanshi.mvp.activity.notice.document.NoticeReceiveOfficialDocumentActivity;
 import com.gqfyanshi.mvp.databinder.ReceivinOofficialDocumentsFragmentBinder;
 import com.gqfyanshi.mvp.delegate.ReceivinOofficialDocumentsFragmentDelegate;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
@@ -86,7 +87,7 @@ public class ReceivinOofficialDocumentsFragment extends BaseDataBindFragment<Rec
         viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NoticeSendOfficialDocumentActivity.startAct(getActivity(),
+                NoticeReceiveOfficialDocumentActivity.startAct(getActivity(),
                         viewDelegate.viewHolder.et_num.getText().toString(),
                         viewDelegate.viewHolder.et_name.getText().toString(),
                         viewDelegate.viewHolder.selectTimeLayout1.getSelectTime(),
@@ -107,25 +108,25 @@ public class ReceivinOofficialDocumentsFragment extends BaseDataBindFragment<Rec
         viewDelegate.viewHolder.lin_title1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NoticeSendOfficialDocumentActivity.startAct(getActivity(), "01");
+                NoticeReceiveOfficialDocumentActivity.startAct(getActivity(), "01");
             }
         });
         viewDelegate.viewHolder.lin_title2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NoticeSendOfficialDocumentActivity.startAct(getActivity(), "02");
+                NoticeReceiveOfficialDocumentActivity.startAct(getActivity(), "02");
             }
         });
         viewDelegate.viewHolder.lin_title3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NoticeSendOfficialDocumentActivity.startAct(getActivity(), "03");
+                NoticeReceiveOfficialDocumentActivity.startAct(getActivity(), "03");
             }
         });
         viewDelegate.viewHolder.lin_title4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NoticeSendOfficialDocumentActivity.startAct(getActivity(), "04");
+                NoticeReceiveOfficialDocumentActivity.startAct(getActivity(), "04");
             }
         });
     }
@@ -154,7 +155,10 @@ public class ReceivinOofficialDocumentsFragment extends BaseDataBindFragment<Rec
                 adapter1.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-
+                        DocumentInfoActivity.startAct(
+                                viewDelegate.getActivity(),
+                                adapter1.getDatas().get(position).getId()
+                        );
                     }
 
                     @Override
@@ -165,6 +169,10 @@ public class ReceivinOofficialDocumentsFragment extends BaseDataBindFragment<Rec
                 adapter2.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                        DocumentInfoActivity.startAct(
+                                viewDelegate.getActivity(),
+                                adapter2.getDatas().get(position).getId()
+                        );
 
                     }
 
@@ -176,6 +184,10 @@ public class ReceivinOofficialDocumentsFragment extends BaseDataBindFragment<Rec
                 adapter3.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                        DocumentInfoActivity.startAct(
+                                viewDelegate.getActivity(),
+                                adapter3.getDatas().get(position).getId()
+                        );
 
                     }
 
@@ -187,6 +199,10 @@ public class ReceivinOofficialDocumentsFragment extends BaseDataBindFragment<Rec
                 adapter4.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                        DocumentInfoActivity.startAct(
+                                viewDelegate.getActivity(),
+                                adapter4.getDatas().get(position).getId()
+                        );
 
                     }
 

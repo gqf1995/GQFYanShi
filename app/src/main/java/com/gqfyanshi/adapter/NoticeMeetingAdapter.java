@@ -6,8 +6,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.fivefivelike.mybaselibrary.utils.CommonUtils;
-import com.fivefivelike.mybaselibrary.utils.ToastUtil;
+import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.R;
+import com.gqfyanshi.entity.bean.DocumentBean;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -17,7 +18,7 @@ import java.util.List;
  * Created by 郭青枫 on 2018/1/10 0010.
  */
 
-public class NoticeMeetingAdapter extends CommonAdapter<String> {
+public class NoticeMeetingAdapter extends CommonAdapter<DocumentBean> {
 
 
     private LinearLayout lin_root;
@@ -26,20 +27,27 @@ public class NoticeMeetingAdapter extends CommonAdapter<String> {
     private TextView tv3;
     private TextView tv4;
     private TextView tv5;
+    private TextView tv6;
 
-    public NoticeMeetingAdapter(Context context, List<String> datas) {
+    DefaultClickLinsener defaultClickLinsener;
+
+    public void setDefaultClickLinsener(DefaultClickLinsener defaultClickLinsener) {
+        this.defaultClickLinsener = defaultClickLinsener;
+    }
+
+    public NoticeMeetingAdapter(Context context, List<DocumentBean> datas) {
         super(context, R.layout.adapter_notice_send_official_document, datas);
 
     }
 
-    public void setData(List<String> datas) {
+    public void setData(List<DocumentBean> datas) {
         this.mDatas.clear();
         this.mDatas.addAll(datas);
         this.notifyDataSetChanged();
     }
 
     @Override
-    protected void convert(ViewHolder holder, String s, final int position) {
+    protected void convert(ViewHolder holder, DocumentBean s, final int position) {
         lin_root = holder.getView(R.id.lin_root);
         lin_root.setBackgroundColor(CommonUtils.getColor(position % 2 == 0 ? R.color.white : R.color.transparent));
         tv1 = holder.getView(R.id.tv1);
@@ -47,12 +55,18 @@ public class NoticeMeetingAdapter extends CommonAdapter<String> {
         tv3 = holder.getView(R.id.tv3);
         tv4 = holder.getView(R.id.tv4);
         tv5 = holder.getView(R.id.tv5);
+        tv6 = holder.getView(R.id.tv6);
 
-        tv1.setText(s);
-        lin_root.setOnClickListener(new View.OnClickListener() {
+        tv1.setText(s.getId());
+        tv2.setText(s.getTitle());
+        tv3.setText(s.getUsername());
+        tv4.setText(s.getCreatetime());
+
+        tv6.setVisibility(View.GONE);
+        tv5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtil.show(getDatas().get(position));
+                defaultClickLinsener.onClick(v, position, null);
             }
         });
 

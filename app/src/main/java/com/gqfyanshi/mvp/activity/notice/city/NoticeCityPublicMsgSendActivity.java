@@ -9,6 +9,9 @@ import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.adapter.NoticePublicMsgSendAdapter;
+import com.gqfyanshi.entity.bean.DocumentBean;
+import com.gqfyanshi.entity.bean.QueryJsonBean;
+import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticePublicMsgSendBinder;
 import com.gqfyanshi.mvp.delegate.NoticePublicMsgSendDelegate;
 
@@ -32,11 +35,18 @@ public class NoticeCityPublicMsgSendActivity extends BaseDataBindActivity<Notice
         super.bindEvenListener();
         initToolbar(new ToolbarBuilder().setTitle("公开信息发送"));
         onRefush(1);
+        viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRefush(1);
+            }
+        });
     }
 
-    Class zlass = String.class;
+    Class zlass = DocumentBean.class;
 
     private void onRefush(int pageNumber) {
+        QueryJsonBean queryJsonBean=new QueryJsonBean();
         addRequest(binder.workInfo_getWorkInfoSendList(pageNumber, this));
     }
 
@@ -57,6 +67,13 @@ public class NoticeCityPublicMsgSendActivity extends BaseDataBindActivity<Notice
                 }
             });
             adapter = new NoticePublicMsgSendAdapter(this, list);
+            adapter.setDefaultClickLinsener(new DefaultClickLinsener() {
+                @Override
+                public void onClick(View view, int position, Object item) {
+                    DocumentInfoActivity.startAct(viewDelegate.getActivity(),
+                            adapter.getDatas().get(position).getId());
+                }
+            });
             viewDelegate.viewHolder.recycler_view.setAdapter(adapter);
         } else {
             adapter.setData(list);

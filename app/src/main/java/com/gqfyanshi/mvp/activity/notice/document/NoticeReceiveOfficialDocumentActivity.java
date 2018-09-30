@@ -3,7 +3,6 @@ package com.gqfyanshi.mvp.activity.notice.document;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
-import android.text.TextUtils;
 import android.view.View;
 
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
@@ -12,7 +11,7 @@ import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.R;
-import com.gqfyanshi.adapter.NoticeSendOfficialDocumentAdapter;
+import com.gqfyanshi.adapter.NoticeReceiveOfficialDocumentAdapter;
 import com.gqfyanshi.entity.bean.DocumentBean;
 import com.gqfyanshi.entity.bean.QueryJsonBean;
 import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
@@ -22,7 +21,7 @@ import com.gqfyanshi.mvp.delegate.NoticeSendOfficialDocumentDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<NoticeSendOfficialDocumentDelegate, NoticeSendOfficialDocumentBinder> {
+public class NoticeReceiveOfficialDocumentActivity extends BaseDataBindActivity<NoticeSendOfficialDocumentDelegate, NoticeSendOfficialDocumentBinder> {
 
     @Override
     protected Class<NoticeSendOfficialDocumentDelegate> getDelegateClass() {
@@ -40,7 +39,7 @@ public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<Not
     protected void bindEvenListener() {
         super.bindEvenListener();
         getIntentData();
-        initToolbar(new ToolbarBuilder().setTitle("公文发送"));
+        initToolbar(new ToolbarBuilder().setTitle("公文接收"));
         onRefush(1);
     }
 
@@ -50,7 +49,7 @@ public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<Not
     //        文件属性：type （01 党委 02 党群口 03 政府文件 04 政府部门文件）
     public static void startAct(Activity activity,
                                 String type) {
-        Intent intent = new Intent(activity, NoticeSendOfficialDocumentActivity.class);
+        Intent intent = new Intent(activity, NoticeReceiveOfficialDocumentActivity.class);
         intent.putExtra("type", type);
         activity.startActivity(intent);
     }
@@ -61,7 +60,7 @@ public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<Not
                                 String createtime,
                                 String updatetime,
                                 String type) {
-        Intent intent = new Intent(activity, NoticeSendOfficialDocumentActivity.class);
+        Intent intent = new Intent(activity, NoticeReceiveOfficialDocumentActivity.class);
         intent.putExtra("name", name);
         intent.putExtra("title", title);
         intent.putExtra("createtime", createtime);
@@ -91,7 +90,7 @@ public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<Not
         datas.add("政府文件");
         datas.add("政府部门文件");
         viewDelegate.viewHolder.selectPeopleLayout1.setDatas(datas,
-                TextUtils.isEmpty(type) ? 0 : (Integer.parseInt(type.replace("0", "")))
+                "".equals(type) ? 0 : (Integer.parseInt(type.replace("0", "")))
         );
         viewDelegate.viewHolder.selectPeopleLayout1.setDefaultClickLinsener(new DefaultClickLinsener() {
             @Override
@@ -128,10 +127,10 @@ public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<Not
         queryJsonBean.setType(type);
         queryJsonBean.setCreatetime(createtime);
         queryJsonBean.setUpdatetime(updatetime);
-        addRequest(binder.document_sendList(queryJsonBean, pageNumber, this));
+        addRequest(binder.document_receiveList(queryJsonBean, pageNumber, this));
     }
 
-    NoticeSendOfficialDocumentAdapter adapter;
+    NoticeReceiveOfficialDocumentAdapter adapter;
 
     private void initList(List list) {
         if (adapter == null) {
@@ -147,7 +146,7 @@ public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<Not
                     onRefush(position);
                 }
             });
-            adapter = new NoticeSendOfficialDocumentAdapter(this, list);
+            adapter = new NoticeReceiveOfficialDocumentAdapter(this, list);
             adapter.setDefaultClickLinsener(new DefaultClickLinsener() {
                 @Override
                 public void onClick(View view, int position, Object item) {
@@ -155,14 +154,13 @@ public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<Not
                         //详情
                         DocumentInfoActivity.startAct(
                                 viewDelegate.getActivity(),
-                                adapter.getDatas().get(position).getId(),
-                                ""
+                                adapter.getDatas().get(position).getId()
                         );
                     } else {
                         //删除
                         addRequest(binder.document_delDocument(
                                 adapter.getDatas().get(position).getId(),
-                                NoticeSendOfficialDocumentActivity.this
+                                NoticeReceiveOfficialDocumentActivity.this
                         ));
                     }
                 }

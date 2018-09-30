@@ -105,6 +105,7 @@
         <activity android:name=".mvp.activity.notice.city.NoticeCityInspectorSendActivity"/>
         <activity android:name=".mvp.activity.notice.city.NoticeCityPublicMsgReceiveActivity"/>
         <activity android:name=".mvp.activity.notice.city.NoticeCityMgsStatisticalActivity"/>
+        <activity android:name=".mvp.activity.notice.document.NoticeReceiveOfficialDocumentActivity"/>
         <activity android:name=".mvp.activity.file.TBSActivity"/>
         <activity
             android:name=".mvp.activity.main.Scrawl"

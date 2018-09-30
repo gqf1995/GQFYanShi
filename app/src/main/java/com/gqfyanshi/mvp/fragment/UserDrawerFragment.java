@@ -37,6 +37,7 @@ import com.gqfyanshi.mvp.activity.notice.city.NoticeCityPublicMsgReceiveActivity
 import com.gqfyanshi.mvp.activity.notice.city.NoticeCityPublicMsgSendActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticeCitySendMsgActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticeEmergencyCityActivity;
+import com.gqfyanshi.mvp.activity.notice.document.NoticeReceiveOfficialDocumentActivity;
 import com.gqfyanshi.mvp.activity.notice.document.NoticeSendOfficialDocumentActivity;
 import com.gqfyanshi.mvp.activity.notice.document.ReceivinOofficialDocumentsActivity;
 import com.gqfyanshi.mvp.activity.notice.government.NoticeEmergencyGovernmentActivity;
@@ -194,7 +195,7 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                             startActivity(new Intent(getActivity(), NoticeSendOfficialDocumentActivity.class));
                         } else if ("/document/docIndex/1".equals(((MainLeftBean) value).getUrl())) {
                             //公文接收
-                            startActivity(new Intent(getActivity(), ReceivinOofficialDocumentsActivity.class));
+                            startActivity(new Intent(getActivity(), NoticeReceiveOfficialDocumentActivity.class));
                         }
                         //市委信息工作
                         else if ("/conventional/conventionalIndex/0".equals(((MainLeftBean) value).getUrl())) {

@@ -3,6 +3,7 @@ package com.gqfyanshi.mvp.databinder;
 import com.fivefivelike.mybaselibrary.base.BaseDataBind;
 import com.fivefivelike.mybaselibrary.http.HttpRequest;
 import com.fivefivelike.mybaselibrary.http.RequestCallback;
+import com.gqfyanshi.entity.bean.QueryJsonBean;
 import com.gqfyanshi.mvp.delegate.NoticeSendOfficialDocumentDelegate;
 import com.gqfyanshi.server.HttpUrl;
 
@@ -19,25 +20,17 @@ public class NoticeSendOfficialDocumentBinder extends BaseDataBind<NoticeSendOff
     //        发布时间：createtime/updatetime
     //        文件属性：type （01 党委 02 党群口 03 政府文件 04 政府部门文件）
     public Disposable document_sendList(
-            String name,
-            String title,
-            String createtime,
-            String updatetime,
-            String type,
+            QueryJsonBean queryJson,
             int pageNumber,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
-        baseMap.put("name", name);
-        baseMap.put("title", title);
-        baseMap.put("createtime", createtime);
-        baseMap.put("updatetime", updatetime);
-        baseMap.put("type", type);
+        baseMap.put("queryJson", queryJson);
         baseMap.put("pageSize", 10);
         baseMap.put("pageNumber", pageNumber);
         return new HttpRequest.Builder()
                 .setRequestCode(0x123)
                 .setRequestUrl(HttpUrl.getIntance().document_sendList)
-                .setShowDialog(false)
+                .setShowDialog(true)
                 .setDialog(viewDelegate.getNetConnectDialog())
                 .setRequestName("公文发送")
                 .setRequestMode(HttpRequest.RequestMode.POST)
@@ -48,8 +41,30 @@ public class NoticeSendOfficialDocumentBinder extends BaseDataBind<NoticeSendOff
                 .RxSendRequest();
     }
 
+    public Disposable document_receiveList(
+            QueryJsonBean queryJson,
+            int pageNumber,
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        baseMap.put("queryJson", queryJson);
+        baseMap.put("pageSize", 10);
+        baseMap.put("pageNumber", pageNumber);
+        return new HttpRequest.Builder()
+                .setRequestCode(0x123)
+                .setRequestUrl(HttpUrl.getIntance().document_receiveList)
+                .setShowDialog(true)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("公文接收")
+                .setRequestMode(HttpRequest.RequestMode.POST)
+                .setParameterMode(HttpRequest.ParameterMode.Json)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
+
     public Disposable document_delDocument(
-            int id,
+            String id,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
         return new HttpRequest.Builder()

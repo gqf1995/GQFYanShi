@@ -32,5 +32,21 @@ public class NoticePublicMsgReceiveBinder extends BaseDataBind<NoticePublicMsgRe
                 .build()
                 .RxSendRequest();
     }
-
+    public Disposable workInfo_workInfoDel(
+            String id,
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        return new HttpRequest.Builder()
+                .setRequestCode(0x124)
+                .setRequestUrl(HttpUrl.getIntance().workInfo_workInfoDel+"/"+id)
+                .setShowDialog(true)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("公开信息删除")
+                .setRequestMode(HttpRequest.RequestMode.GET)
+                .setParameterMode(HttpRequest.ParameterMode.KeyValue)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
 }

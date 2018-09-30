@@ -8,7 +8,10 @@ import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
+import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.NoticeInspectorReceiveAdapter;
+import com.gqfyanshi.entity.bean.DocumentBean;
+import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticeInspectorReceiveBinder;
 import com.gqfyanshi.mvp.delegate.NoticeInspectorReceiveDelegate;
 
@@ -34,7 +37,7 @@ public class NoticeGovernmentInspectorReceiveActivity extends BaseDataBindActivi
         onRefush(1);
     }
 
-    Class zlass = String.class;
+    Class zlass = DocumentBean.class;
 
     private void onRefush(int pageNumber) {
         addRequest(binder.overSeer_getOverSeerReceiveList(pageNumber, this));
@@ -57,6 +60,20 @@ public class NoticeGovernmentInspectorReceiveActivity extends BaseDataBindActivi
                 }
             });
             adapter = new NoticeInspectorReceiveAdapter(this, list);
+            adapter.setDefaultClickLinsener(new DefaultClickLinsener() {
+                @Override
+                public void onClick(View view, int position, Object item) {
+                    if (view.getId() == R.id.tv5) {
+                        DocumentInfoActivity.startAct(viewDelegate.getActivity(),
+                                adapter.getDatas().get(position).getId());
+                    } else {
+                        addRequest(binder.overSeer_overSeerDel(
+                                adapter.getDatas().get(position).getId(),
+                                NoticeGovernmentInspectorReceiveActivity.this
+                        ));
+                    }
+                }
+            });
             viewDelegate.viewHolder.recycler_view.setAdapter(adapter);
         } else {
             adapter.setData(list);
@@ -73,6 +90,9 @@ public class NoticeGovernmentInspectorReceiveActivity extends BaseDataBindActivi
                 initList(list);
                 int total = Integer.parseInt(GsonUtil.getInstance().getValue(data, "total"));
                 viewDelegate.viewHolder.pageChangeView.setMaxPage(total);
+                break;
+            case 0x124:
+                onRefush(viewDelegate.viewHolder.pageChangeView.getNowPage());
                 break;
         }
     }

@@ -15,7 +15,7 @@ public class DocumentInfoBinder extends BaseDataBind<DocumentInfoDelegate> {
     }
 
     public Disposable document_detailDocumnet(
-            int id,
+            String id,
             String url,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
@@ -36,7 +36,7 @@ public class DocumentInfoBinder extends BaseDataBind<DocumentInfoDelegate> {
     }
 
     public Disposable email_emailInfo(
-            int id,
+            String id,
             String url,
             RequestCallback requestCallback) {
         getBaseMapWithUid();

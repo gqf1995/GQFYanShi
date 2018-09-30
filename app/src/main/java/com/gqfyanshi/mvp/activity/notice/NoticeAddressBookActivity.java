@@ -9,6 +9,7 @@ import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.adapter.NoticeAddressBookAdapter;
+import com.gqfyanshi.entity.bean.DocumentBean;
 import com.gqfyanshi.mvp.databinder.NoticeAddressBookBinder;
 import com.gqfyanshi.mvp.delegate.NoticeAddressBookDelegate;
 
@@ -34,7 +35,7 @@ public class NoticeAddressBookActivity extends BaseDataBindActivity<NoticeAddres
         onRefush(1);
     }
 
-    Class zlass = String.class;
+    Class zlass = DocumentBean.class;
 
     private void onRefush(int pageNumber) {
         addRequest(binder.addressBook_getAddressBookList(pageNumber, this));

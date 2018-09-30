@@ -52,6 +52,10 @@ public class HttpUrl {
      */
     public String document_sendList = AppConst.app2BaseUrl + "/document/sendList";
     /**
+     * 公文接收
+     */
+    public String document_receiveList = AppConst.app2BaseUrl + "/document/receiveList";
+    /**
      * 会议通知信息列表
      */
     public String notice_sendList = AppConst.app2BaseUrl + "/notice/sendList";
@@ -119,7 +123,14 @@ public class HttpUrl {
      * 邮件删除
      */
     public String email_emailDel = AppConst.app2BaseUrl + "/email/emailDel";
-
+    /**
+     * 公开信息删除
+     */
+    public String workInfo_workInfoDel = AppConst.app2BaseUrl + "/workInfo/workInfoDel";
+    /**
+     * 督查通知删除
+     */
+    public String overSeer_overSeerDel = AppConst.app2BaseUrl + "/overSeer/overSeerDel";
 
 
 }

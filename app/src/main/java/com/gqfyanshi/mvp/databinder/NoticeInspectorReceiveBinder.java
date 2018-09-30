@@ -33,4 +33,21 @@ public class NoticeInspectorReceiveBinder extends BaseDataBind<NoticeInspectorRe
                 .build()
                 .RxSendRequest();
     }
+    public Disposable overSeer_overSeerDel(
+            String pageNumber,
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        return new HttpRequest.Builder()
+                .setRequestCode(0x124)
+                .setRequestUrl(HttpUrl.getIntance().overSeer_overSeerDel + "/" + pageNumber)
+                .setShowDialog(true)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("督查通知删除")
+                .setRequestMode(HttpRequest.RequestMode.GET)
+                .setParameterMode(HttpRequest.ParameterMode.KeyValue)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
 }

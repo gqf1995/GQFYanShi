@@ -18,7 +18,7 @@ import java.util.List;
  * Created by 郭青枫 on 2018/1/10 0010.
  */
 
-public class NoticeInspectorReceiveAdapter extends CommonAdapter<DocumentBean> {
+public class NoticeReceiveOfficialDocumentAdapter extends CommonAdapter<DocumentBean> {
 
 
     private LinearLayout lin_root;
@@ -35,8 +35,8 @@ public class NoticeInspectorReceiveAdapter extends CommonAdapter<DocumentBean> {
         this.defaultClickLinsener = defaultClickLinsener;
     }
 
-    public NoticeInspectorReceiveAdapter(Context context, List<DocumentBean> datas) {
-        super(context, R.layout.adapter_notice_inspector_receive, datas);
+    public NoticeReceiveOfficialDocumentAdapter(Context context, List<DocumentBean> datas) {
+        super(context, R.layout.adapter_notice_send_official_document, datas);
 
     }
 
@@ -56,21 +56,22 @@ public class NoticeInspectorReceiveAdapter extends CommonAdapter<DocumentBean> {
         tv4 = holder.getView(R.id.tv4);
         tv5 = holder.getView(R.id.tv5);
         tv6 = holder.getView(R.id.tv6);
-        tv1.setText(s.getId());
 
+        tv1.setText(s.getId() + "");
         tv2.setText(s.getTitle());
-        tv3.setText(s.getCreatetime());
+        tv3.setText(s.getName());
+        tv4.setText(s.getCreatetime());
 
         tv5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                defaultClickLinsener.onClick(v,position,null);
+                defaultClickLinsener.onClick(v, position, null);
             }
         });
         tv6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                defaultClickLinsener.onClick(v,position,null);
+                defaultClickLinsener.onClick(v, position, null);
             }
         });
     }

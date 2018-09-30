@@ -8,7 +8,7 @@ import android.view.View;
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
 import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
-import com.gqfyanshi.entity.bean.DocumentInfoBean;
+import com.gqfyanshi.entity.bean.DocumentBean;
 import com.gqfyanshi.mvp.databinder.DocumentInfoBinder;
 import com.gqfyanshi.mvp.delegate.DocumentInfoDelegate;
 
@@ -34,32 +34,28 @@ public class EmailInfoActivity extends BaseDataBindActivity<DocumentInfoDelegate
     }
 
     public static void startAct(Activity activity,
-                                int id,
-                                String type
+                                String id
     ) {
         Intent intent = new Intent(activity, EmailInfoActivity.class);
         intent.putExtra("id", id);
-        intent.putExtra("type", type);
         activity.startActivity(intent);
     }
 
-    private int id;
-    private String type;
+    private String id;
 
     private void getIntentData() {
         Intent intent = getIntent();
-        id = intent.getIntExtra("id", 0);
-        type = intent.getStringExtra("type");
-        addRequest(binder.email_emailInfo(id, type, this));
+        id = intent.getStringExtra("id");
+        addRequest(binder.email_emailInfo(id, "", this));
     }
 
-    DocumentInfoBean documentInfoBean;
+    DocumentBean documentInfoBean;
 
     @Override
     protected void onServiceSuccess(String data, String info, int status, int requestCode) {
         switch (requestCode) {
             case 0x123:
-                documentInfoBean = GsonUtil.getInstance().toObj(data, "doc", DocumentInfoBean.class);
+                documentInfoBean = GsonUtil.getInstance().toObj(data, "doc", DocumentBean.class);
 
                 String departName = GsonUtil.getInstance().getValue(data, "departName");
                 viewDelegate.viewHolder.lin_content.setVisibility(TextUtils.isEmpty(departName) ? View.GONE : View.VISIBLE);

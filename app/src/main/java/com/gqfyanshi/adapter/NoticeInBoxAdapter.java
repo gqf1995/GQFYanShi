@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.fivefivelike.mybaselibrary.utils.CommonUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.R;
-import com.gqfyanshi.entity.bean.NoticaInOutBoxBean;
+import com.gqfyanshi.entity.bean.DocumentBean;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -18,7 +18,7 @@ import java.util.List;
  * Created by 郭青枫 on 2018/1/10 0010.
  */
 
-public class NoticeInBoxAdapter extends CommonAdapter<NoticaInOutBoxBean> {
+public class NoticeInBoxAdapter extends CommonAdapter<DocumentBean> {
 
 
     private LinearLayout lin_root;
@@ -35,19 +35,19 @@ public class NoticeInBoxAdapter extends CommonAdapter<NoticaInOutBoxBean> {
         this.defaultClickLinsener = defaultClickLinsener;
     }
 
-    public NoticeInBoxAdapter(Context context, List<NoticaInOutBoxBean> datas) {
+    public NoticeInBoxAdapter(Context context, List<DocumentBean> datas) {
         super(context, R.layout.adapter_notice_inbox, datas);
 
     }
 
-    public void setData(List<NoticaInOutBoxBean> datas) {
+    public void setData(List<DocumentBean> datas) {
         this.mDatas.clear();
         this.mDatas.addAll(datas);
         this.notifyDataSetChanged();
     }
 
     @Override
-    protected void convert(ViewHolder holder, NoticaInOutBoxBean s, final int position) {
+    protected void convert(ViewHolder holder, DocumentBean s, final int position) {
         lin_root = holder.getView(R.id.lin_root);
         lin_root.setBackgroundColor(CommonUtils.getColor(position % 2 == 0 ? R.color.white : R.color.transparent));
         tv1 = holder.getView(R.id.tv1);

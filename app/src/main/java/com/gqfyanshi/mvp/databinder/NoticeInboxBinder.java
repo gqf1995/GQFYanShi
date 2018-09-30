@@ -52,7 +52,7 @@ public class NoticeInboxBinder extends BaseDataBind<NoticeInboxDelegate> {
                 .RxSendRequest();
     }
     public Disposable email_emailDel(
-            int id,
+            String id,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
         return new HttpRequest.Builder()
