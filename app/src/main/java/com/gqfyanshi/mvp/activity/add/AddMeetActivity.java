@@ -14,12 +14,10 @@ import com.fivefivelike.mybaselibrary.utils.ToastUtil;
 import com.gqfyanshi.entity.bean.TreeBean;
 import com.gqfyanshi.mvp.databinder.AddDocumentBinder;
 import com.gqfyanshi.mvp.delegate.AddDocumentDelegate;
-import com.leon.lfilepickerlibrary.LFilePicker;
-import com.leon.lfilepickerlibrary.utils.Constant;
 
 import java.util.List;
 
-public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegate, AddDocumentBinder> {
+public class AddMeetActivity extends BaseDataBindActivity<AddDocumentDelegate, AddDocumentBinder> {
 
     @Override
     protected Class<AddDocumentDelegate> getDelegateClass() {
@@ -36,8 +34,7 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
     protected void bindEvenListener() {
         super.bindEvenListener();
         initToolbar(new ToolbarBuilder().setTitle("添加"));
-        viewDelegate.viewHolder.lin3.setVisibility(View.GONE);
-        viewDelegate.viewHolder.lin_selectAttr.setVisibility(View.GONE);
+        viewDelegate.viewHolder.lin4.setVisibility(View.VISIBLE);
 
         getIntentData();
         addRequest(binder.leader_getModelTree(this));
@@ -57,7 +54,7 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
                     saveDocument();
                 } else {
                     //上传文章 文件
-                    addRequest(binder.document_saveFile(filePath, AddDocumentActivity.this));
+                    addRequest(binder.document_saveFile(filePath, AddMeetActivity.this));
                 }
             }
         });
@@ -65,23 +62,17 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
         viewDelegate.viewHolder.lin_attributes2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                //                intent.setType("*/*");//无类型限制
-                //                intent.addCategory(Intent.CATEGORY_OPENABLE);
-                //                startActivityForResult(intent, 1);
-                new LFilePicker()
-                        .withActivity(viewDelegate.getActivity())
-                        .withRequestCode(1000)
-                        .withMutilyMode(false)
-                        .withChooseMode(true)
-                        .start();
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("*/*");//无类型限制
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                startActivityForResult(intent, 1);
             }
         });
     }
 
     String img = "";
-    String oldFileName = "";
     String filePath;
+    String oldFileName = "";
 
     private void saveDocument() {
         addRequest(binder.notice_sendList(
@@ -94,7 +85,7 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
                 viewDelegate.viewHolder.et_input.getText().toString(),
                 id,
                 oldFileName,
-                AddDocumentActivity.this
+                AddMeetActivity.this
         ));
     }
 
@@ -106,14 +97,14 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
     public static void startAct(Activity activity,
                                 String id,
                                 String type) {
-        Intent intent = new Intent(activity, AddDocumentActivity.class);
+        Intent intent = new Intent(activity, AddMeetActivity.class);
         intent.putExtra("id", id);
         intent.putExtra("type", type);
         activity.startActivity(intent);
     }
 
-    private String id;
-    private String type;
+    private String id="";
+    private String type="";
 
     private void getIntentData() {
         Intent intent = getIntent();
@@ -145,23 +136,18 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == 1000) {
-                List<String> list = data.getStringArrayListExtra(Constant.RESULT_INFO);
-                changeHeader(list.get(0));
-            } else {
-                Uri uri = data.getData();
-                if ("file".equalsIgnoreCase(uri.getScheme())) {//使用第三方应用打开
-                    path = uri.getPath();
-                    changeHeader(path);
-                    return;
-                }
-                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {//4.4以后
-                    path = viewDelegate.getPath(this, uri);
-                } else {//4.4以下下系统调用方法
-                    path = viewDelegate.getRealPathFromURI(uri);
-                }
+            Uri uri = data.getData();
+            if ("file".equalsIgnoreCase(uri.getScheme())) {//使用第三方应用打开
+                path = uri.getPath();
                 changeHeader(path);
+                return;
             }
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {//4.4以后
+                path = viewDelegate.getPath(this, uri);
+            } else {//4.4以下下系统调用方法
+                path = viewDelegate.getRealPathFromURI(uri);
+            }
+            changeHeader(path);
         }
     }
 

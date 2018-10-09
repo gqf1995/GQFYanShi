@@ -12,6 +12,7 @@ import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.MainLeftTreeItemHolder;
 import com.gqfyanshi.entity.bean.MainLeftBean;
+import com.gqfyanshi.mvp.activity.add.AddDocumentActivity;
 import com.gqfyanshi.mvp.activity.add.AddDynamicLeadershipActivity;
 import com.gqfyanshi.mvp.activity.add.AddEmailActivity;
 import com.gqfyanshi.mvp.activity.add.AddInspectorNoticeActivity;
@@ -251,8 +252,10 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                             startActivity(new Intent(getActivity(), NoticeCityPublicMsgSendActivity.class));
                         } else if ("/workInfo/cityWorkInfoSend".equals(((MainLeftBean) value).getUrl())) {
                             //公开信息发送
-                            // TODO: 2018/9/23  
-                            startActivity(new Intent(getActivity(), AddPublicInformationActivity.class));
+                            AddDocumentActivity.startAct(viewDelegate.getActivity(),
+                                    "26", "");
+
+
                         } else if ("/workInfo/cityWorkInfoReceive".equals(((MainLeftBean) value).getUrl())) {
                             //公开信息接收
                             startActivity(new Intent(getActivity(), NoticeCityPublicMsgReceiveActivity.class));
@@ -270,7 +273,8 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                         } else if ("/workInfo/govWorkInfoSend".equals(((MainLeftBean) value).getUrl())) {
                             //公开信息发送
                             // TODO: 2018/9/23  
-                            startActivity(new Intent(getActivity(), AddPublicInformationActivity.class));
+                            AddDocumentActivity.startAct(viewDelegate.getActivity(),
+                                    "32", "");
                         } else if ("/workInfo/govWorkInfoReceive".equals(((MainLeftBean) value).getUrl())) {
                             //公开信息接收
                             startActivity(new Intent(getActivity(), NoticeGovernmentPublicMsgReceiveActivity.class));
@@ -325,8 +329,12 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                             //工作信息接收
                         } else if ("/overSeer/cityOverSeerForm".equals(((MainLeftBean) value).getUrl())) {
                             //督查通知发布
+                            AddDocumentActivity.startAct(viewDelegate.getActivity(),
+                                    "26", "");
                         } else if ("/overSeer/govOverSeerForm".equals(((MainLeftBean) value).getUrl())) {
                             //督查通知发布
+                            AddDocumentActivity.startAct(viewDelegate.getActivity(),
+                                    "32", "");
                         } else if ("/notice/noticeInfoIndex/0".equals(((MainLeftBean) value).getUrl())) {
                             //通知公告
                         } else if ("/jobinfo/govJobInfoIndex/0".equals(((MainLeftBean) value).getUrl())) {

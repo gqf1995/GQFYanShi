@@ -4,137 +4,180 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@color/white"
               android:orientation="vertical">
 
     <include layout="@layout/include_toolbar_with_statusbar"/>
 
-    <android.support.v4.widget.NestedScrollView
+    <FrameLayout
+        android:id="@+id/fl_root"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:background="@color/base_mask"
+        android:layout_height="match_parent"
+        >
 
 
-        <LinearLayout
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/trans_40px"
-                android:gravity="center"
-                android:text=""
-                android:textColor="@color/color_font1"
-                android:textSize="@dimen/text_trans_20px"/>
-
-            <TextView
-                android:id="@+id/tv_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/trans_18px"
-                android:gravity="center"
-                android:text="发文时间: "
-                android:textColor="@color/color_font3"
-                android:textSize="@dimen/text_trans_16px"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/trans_28px"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/trans_20px"
-                android:paddingRight="@dimen/trans_20px">
-
-                <LinearLayout
-                    android:id="@+id/lin_file"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="附件:"
-                        android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
-
-                    <TextView
-                        android:id="@+id/tv_file"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/trans_10px"
-                        android:gravity="center"
-                        android:text=""
-                        android:textColor="@color/mark_color"
-                        android:textSize="@dimen/text_trans_16px"/>
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/trans_40px"/>
-
-                <LinearLayout
-                    android:id="@+id/lin_content"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="收文单位:"
-                        android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
-
-                    <TextView
-                        android:id="@+id/tv_content"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lin_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/trans_50px"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/trans_20px"
-                android:paddingRight="@dimen/trans_20px"
-                android:visibility="gone">
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/trans_40px"
                     android:gravity="center"
-                    android:text="手写签批区"
-                    android:textColor="@color/mark_color"
-                    android:textSize="@dimen/text_trans_16px"/>
+                    android:text=""
+                    android:textColor="@color/color_font1"
+                    android:textSize="@dimen/text_trans_20px"/>
 
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/trans_18px"
+                    android:gravity="center"
+                    android:text="发文时间: "
+                    android:textColor="@color/color_font3"
+                    android:textSize="@dimen/text_trans_16px"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/trans_260px"
-                    android:layout_marginTop="@dimen/trans_10px"
-                    android:background="@drawable/shape_grey_border_radiu5"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/trans_28px"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/trans_20px"
+                    android:paddingRight="@dimen/trans_20px">
 
+                    <LinearLayout
+                        android:id="@+id/lin_file"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="附件:"
+                            android:textColor="@color/color_font2"
+                            android:textSize="@dimen/text_trans_16px"/>
+
+                        <TextView
+                            android:id="@+id/tv_file"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/trans_10px"
+                            android:gravity="center"
+                            android:text=""
+                            android:textColor="@color/mark_color"
+                            android:textSize="@dimen/text_trans_16px"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/trans_40px"/>
+
+                    <LinearLayout
+                        android:id="@+id/lin_content_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="正文:"
+                            android:textColor="@color/color_font2"
+                            android:textSize="@dimen/text_trans_16px"/>
+
+                        <TextView
+                            android:id="@+id/tv_content_info"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="@color/color_font2"
+                            android:textSize="@dimen/text_trans_16px"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/trans_40px"/>
+
+                    <LinearLayout
+                        android:id="@+id/lin_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="收文单位:"
+                            android:textColor="@color/color_font2"
+                            android:textSize="@dimen/text_trans_16px"/>
+
+                        <TextView
+                            android:id="@+id/tv_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="@color/color_font2"
+                            android:textSize="@dimen/text_trans_16px"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/trans_50px"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/trans_20px"
+                    android:paddingRight="@dimen/trans_20px"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="手写签批区"
+                        android:textColor="@color/mark_color"
+                        android:textSize="@dimen/text_trans_16px"/>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/trans_260px"
+                        android:layout_marginTop="@dimen/trans_10px"
+                        android:background="@drawable/shape_grey_border_radiu5"
+                        android:orientation="vertical">
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
 
+        </android.support.v4.widget.NestedScrollView>
 
-    </android.support.v4.widget.NestedScrollView>
+        <com.ebensz.eink.api.PennableLayout
+            android:id="@+id/ink"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+    </FrameLayout>
 
 </LinearLayout>

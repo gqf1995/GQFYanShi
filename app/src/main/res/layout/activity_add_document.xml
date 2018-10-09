@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:paddingRight="@dimen/trans_10px"
-            android:text="信息接收人"
+            android:text="接收人"
             android:textColor="@color/color_font1"
             android:textSize="@dimen/text_trans_18px"/>
 
@@ -78,104 +78,349 @@
 
     </LinearLayout>
 
+
     <Space
         android:layout_width="wrap_content"
         android:layout_height="@dimen/trans_30px"/>
 
     <LinearLayout
+        android:id="@+id/lin2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/trans_20px"
-        android:paddingRight="@dimen/trans_20px">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingRight="@dimen/trans_10px"
-            android:text="附件"
-            android:textColor="@color/color_font1"
-            android:textSize="@dimen/text_trans_18px"/>
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <LinearLayout
-            android:id="@+id/lin_attributes2"
-            android:layout_width="@dimen/trans_410px"
-            android:layout_height="@dimen/trans_35px"
-            android:background="@drawable/shape_grey_border_radiu5"
-            android:clickable="true"
-            android:descendantFocusability="blocksDescendants"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/trans_20px"
+            android:paddingRight="@dimen/trans_20px">
 
             <TextView
-                android:id="@+id/et_attributes2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@null"
-                android:enabled="false"
-                android:clickable="false"
-                android:gravity="center_vertical"
-                android:hint="点击添加附件"
-                android:paddingLeft="@dimen/trans_5px"
-                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingRight="@dimen/trans_10px"
+                android:text="字号"
                 android:textColor="@color/color_font1"
-                android:textColorHint="@color/color_font3"
-                android:textSize="@dimen/text_trans_16px"/>
+                android:textSize="@dimen/text_trans_18px"/>
+
+            <LinearLayout
+                android:id="@+id/lin_attributes3"
+                android:layout_width="@dimen/trans_210px"
+                android:layout_height="@dimen/trans_35px"
+                android:background="@drawable/shape_grey_border_radiu5"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_attributes3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="输入文件字号"
+                    android:paddingLeft="@dimen/trans_5px"
+                    android:text=""
+                    android:textColor="@color/color_font1"
+                    android:textColorHint="@color/color_font3"
+                    android:textSize="@dimen/text_trans_16px"/>
+
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <LinearLayout
+                android:id="@+id/lin_selectAttr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingRight="@dimen/trans_10px"
+                    android:text="文件属性"
+                    android:textColor="@color/color_font1"
+                    android:textSize="@dimen/text_trans_18px"/>
+
+                <com.gqfyanshi.widget.SelectAttrLayout
+                    android:id="@+id/selectAttrLayout"
+                    android:layout_width="@dimen/trans_190px"
+                    android:layout_height="@dimen/trans_35px">
+
+                </com.gqfyanshi.widget.SelectAttrLayout>
+            </LinearLayout>
 
 
         </LinearLayout>
 
+
         <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-
-
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/trans_30px"/>
     </LinearLayout>
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/trans_30px"/>
 
-    <EditText
-        android:id="@+id/et_input"
+    <LinearLayout
+        android:id="@+id/lin3"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/trans_500px"
-        android:layout_marginLeft="@dimen/trans_20px"
-        android:layout_marginRight="@dimen/trans_20px"
-        android:background="@drawable/shape_white_radiu_t10"
-        android:gravity="left"
-        android:hint="请输入信息内容..."
-        android:padding="@dimen/trans_20px"
-        android:text=""
-        android:textColor="@color/color_font1"
-        android:textColorHint="@color/color_font3"
-        android:textSize="@dimen/text_trans_16px"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/trans_20px"
+            android:paddingRight="@dimen/trans_20px">
 
-    <com.fivefivelike.mybaselibrary.view.RoundButton
-        android:id="@+id/tv_send"
-        android:layout_width="@dimen/trans_130px"
-        android:layout_height="@dimen/trans_40px"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="发送"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_trans_18px"
-        app:btnCornerRadius="@dimen/trans_5px"
-        app:btnSolidColor="@color/mark_color"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingRight="@dimen/trans_10px"
+                android:text="栏目"
+                android:textColor="@color/color_font1"
+                android:textSize="@dimen/text_trans_18px"/>
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+            <com.gqfyanshi.widget.SelectAttrLayout
+                android:id="@+id/selectAttrLayout2"
+                android:layout_width="@dimen/trans_210px"
+                android:layout_height="@dimen/trans_35px">
+
+            </com.gqfyanshi.widget.SelectAttrLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingRight="@dimen/trans_10px"
+                android:text="反馈时间"
+                android:textColor="@color/color_font1"
+                android:textSize="@dimen/text_trans_18px"/>
+
+            <com.gqfyanshi.widget.SelectTimeLayout
+                android:id="@+id/selectTimeLayout"
+                android:layout_width="@dimen/trans_190px"
+                android:layout_height="@dimen/trans_35px">
+
+            </com.gqfyanshi.widget.SelectTimeLayout>
+
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/trans_30px"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/trans_30px"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lin4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/trans_20px"
+            android:paddingRight="@dimen/trans_20px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingRight="@dimen/trans_10px"
+                android:text="会议室"
+                android:textColor="@color/color_font1"
+                android:textSize="@dimen/text_trans_18px"/>
+
+            <com.gqfyanshi.widget.SelectAttrLayout
+                android:id="@+id/selectAttrLayout3"
+                android:layout_width="@dimen/trans_190px"
+                android:layout_height="@dimen/trans_35px">
+
+            </com.gqfyanshi.widget.SelectAttrLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingRight="@dimen/trans_10px"
+                android:text="使用时间"
+                android:textColor="@color/color_font1"
+                android:textSize="@dimen/text_trans_18px"/>
+
+            <com.gqfyanshi.widget.SelectTimeLayout
+                android:id="@+id/selectTimeLayout1"
+                android:layout_width="@dimen/trans_120px"
+                android:layout_height="@dimen/trans_35px">
+
+            </com.gqfyanshi.widget.SelectTimeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingRight="@dimen/trans_10px"
+                android:text=" 至 "
+                android:textColor="@color/color_font1"
+                android:textSize="@dimen/text_trans_16px"/>
+
+            <com.gqfyanshi.widget.SelectTimeLayout
+                android:id="@+id/selectTimeLayout2"
+                android:layout_width="@dimen/trans_120px"
+                android:layout_height="@dimen/trans_35px">
+
+            </com.gqfyanshi.widget.SelectTimeLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/trans_30px"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/trans_30px"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/lin_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/trans_20px"
+                android:paddingRight="@dimen/trans_20px">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingRight="@dimen/trans_10px"
+                    android:text="附件"
+                    android:textColor="@color/color_font1"
+                    android:textSize="@dimen/text_trans_18px"/>
+
+                <LinearLayout
+                    android:id="@+id/lin_attributes2"
+                    android:layout_width="@dimen/trans_410px"
+                    android:layout_height="@dimen/trans_35px"
+                    android:background="@drawable/shape_grey_border_radiu5"
+                    android:clickable="true"
+                    android:descendantFocusability="blocksDescendants"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/et_attributes2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:clickable="false"
+                        android:enabled="false"
+                        android:gravity="center_vertical"
+                        android:hint="点击添加附件"
+                        android:paddingLeft="@dimen/trans_5px"
+                        android:text=""
+                        android:textColor="@color/color_font1"
+                        android:textColorHint="@color/color_font3"
+                        android:textSize="@dimen/text_trans_16px"/>
+
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/trans_30px"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_input"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/trans_500px"
+            android:layout_marginLeft="@dimen/trans_20px"
+            android:layout_marginRight="@dimen/trans_20px"
+            android:background="@drawable/shape_white_radiu_t10"
+            android:gravity="left"
+            android:hint="请输入信息内容..."
+            android:padding="@dimen/trans_20px"
+            android:text=""
+            android:textColor="@color/color_font1"
+            android:textColorHint="@color/color_font3"
+            android:textSize="@dimen/text_trans_16px"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <com.fivefivelike.mybaselibrary.view.RoundButton
+            android:id="@+id/tv_send"
+            android:layout_width="@dimen/trans_130px"
+            android:layout_height="@dimen/trans_40px"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/trans_30px"
+            android:gravity="center"
+            android:text="发送"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_trans_18px"
+            app:btnCornerRadius="@dimen/trans_5px"
+            app:btnSolidColor="@color/mark_color"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
 </LinearLayout>

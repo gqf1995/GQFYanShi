@@ -62,6 +62,7 @@ public class NoticeEmergencyGovernmentActivity extends BaseDataBindActivity<Noti
         queryJsonBean.setCreatetime(viewDelegate.viewHolder.selectTimeLayout1.getSelectTime());
         queryJsonBean.setUpdatetime(viewDelegate.viewHolder.selectTimeLayout2.getSelectTime());
         addRequest(binder.threeinfo_sendList(queryJsonBean, pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticeWorkMsgAdapter adapter;

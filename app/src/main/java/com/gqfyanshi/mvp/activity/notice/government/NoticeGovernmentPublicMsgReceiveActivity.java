@@ -33,7 +33,6 @@ public class NoticeGovernmentPublicMsgReceiveActivity extends BaseDataBindActivi
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
-
         initToolbar(new ToolbarBuilder().setTitle("公开信息接收"));
         onRefush(1);
         viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +50,7 @@ public class NoticeGovernmentPublicMsgReceiveActivity extends BaseDataBindActivi
         queryJsonBean.setModelId("32");
         queryJsonBean.setTitle(viewDelegate.viewHolder.et_attributes.getText().toString());
         addRequest(binder.workInfo_getWorkInfoReceiveList(queryJsonBean,pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticePublicMsgReceiveAdapter adapter;

@@ -47,6 +47,9 @@ public class PageChangeView extends FrameLayout {
 
     public void setNowPage(int nowPage) {
         this.nowPage = nowPage;
+        if (tag_pages != null) {
+            initPageTags();
+        }
     }
 
     public int getMaxPage() {
@@ -54,7 +57,7 @@ public class PageChangeView extends FrameLayout {
     }
 
     public void setMaxPage(int maxPage) {
-        maxPage=maxPage/10 +(maxPage%10>0?1:0);
+        maxPage = maxPage / 10 + (maxPage % 10 > 0 ? 1 : 0);
         this.maxPage = maxPage;
         if (tag_pages != null) {
             initPageTags();
@@ -100,7 +103,7 @@ public class PageChangeView extends FrameLayout {
                 defaultClickLinsener.onClick(view, nowPage, null);
             }
         });
-        tv_page.setText("当前"+nowPage+"页,共"+maxPage+"页");
+        tv_page.setText("当前" + nowPage + "页,共" + maxPage + "页");
     }
 
 

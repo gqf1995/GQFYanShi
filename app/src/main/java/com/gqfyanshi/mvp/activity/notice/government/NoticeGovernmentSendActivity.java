@@ -61,6 +61,7 @@ public class NoticeGovernmentSendActivity extends BaseDataBindActivity<NoticeEme
         queryJsonBean.setCreatetime(viewDelegate.viewHolder.selectTimeLayout1.getSelectTime());
         queryJsonBean.setUpdatetime(viewDelegate.viewHolder.selectTimeLayout2.getSelectTime());
         addRequest(binder.conventional_sendList(queryJsonBean, pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticeCityManuscriptsSendAdapter adapter;

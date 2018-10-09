@@ -55,6 +55,7 @@ public class NoticeOutboxActivity extends BaseDataBindActivity<NoticeInboxDelega
 
     private void onRefush(int pageNumber) {
         addRequest(binder.email_getEmailSendList(pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticeOutBoxAdapter adapter;

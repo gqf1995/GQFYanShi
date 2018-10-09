@@ -15,6 +15,7 @@ import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.NoticeSendOfficialDocumentAdapter;
 import com.gqfyanshi.entity.bean.DocumentBean;
 import com.gqfyanshi.entity.bean.QueryJsonBean;
+import com.gqfyanshi.mvp.activity.add.AddAttrDocumentActivity;
 import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticeSendOfficialDocumentBinder;
 import com.gqfyanshi.mvp.delegate.NoticeSendOfficialDocumentDelegate;
@@ -39,7 +40,13 @@ public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<Not
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
-        // TODO: 2018/9/30 0030
+        viewDelegate.viewHolder.tv_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddAttrDocumentActivity.startAct(viewDelegate.getActivity(),
+                        "5");
+            }
+        });
         getIntentData();
         initToolbar(new ToolbarBuilder().setTitle("公文发送"));
         onRefush(1);
@@ -130,6 +137,7 @@ public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<Not
         queryJsonBean.setCreatetime(createtime);
         queryJsonBean.setUpdatetime(updatetime);
         addRequest(binder.document_sendList(queryJsonBean, pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticeSendOfficialDocumentAdapter adapter;

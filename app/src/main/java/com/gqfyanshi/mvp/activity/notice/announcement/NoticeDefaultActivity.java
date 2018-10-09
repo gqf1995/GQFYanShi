@@ -62,6 +62,7 @@ public class NoticeDefaultActivity extends BaseDataBindActivity<NoticeDefaultDel
         queryJsonBean.setCreatetime(viewDelegate.viewHolder.selectTimeLayout1.getSelectTime());
         queryJsonBean.setUpdatetime(viewDelegate.viewHolder.selectTimeLayout2.getSelectTime());
         addRequest(binder.notice_sendList(queryJsonBean, pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticeMeetingAdapter adapter;

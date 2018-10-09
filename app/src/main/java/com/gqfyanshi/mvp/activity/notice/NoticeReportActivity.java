@@ -62,6 +62,7 @@ public class NoticeReportActivity extends BaseDataBindActivity<NoticeEmergencyDe
         queryJsonBean.setCreatetime(viewDelegate.viewHolder.selectTimeLayout1.getSelectTime());
         queryJsonBean.setUpdatetime(viewDelegate.viewHolder.selectTimeLayout2.getSelectTime());
         addRequest(binder.threeinfo_sendList(queryJsonBean, pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticeWorkMsgAdapter adapter;

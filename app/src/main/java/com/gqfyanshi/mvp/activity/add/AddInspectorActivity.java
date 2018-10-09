@@ -19,7 +19,7 @@ import com.leon.lfilepickerlibrary.utils.Constant;
 
 import java.util.List;
 
-public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegate, AddDocumentBinder> {
+public class AddInspectorActivity extends BaseDataBindActivity<AddDocumentDelegate, AddDocumentBinder> {
 
     @Override
     protected Class<AddDocumentDelegate> getDelegateClass() {
@@ -36,8 +36,7 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
     protected void bindEvenListener() {
         super.bindEvenListener();
         initToolbar(new ToolbarBuilder().setTitle("添加"));
-        viewDelegate.viewHolder.lin3.setVisibility(View.GONE);
-        viewDelegate.viewHolder.lin_selectAttr.setVisibility(View.GONE);
+        viewDelegate.viewHolder.lin3.setVisibility(View.VISIBLE);
 
         getIntentData();
         addRequest(binder.leader_getModelTree(this));
@@ -57,7 +56,7 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
                     saveDocument();
                 } else {
                     //上传文章 文件
-                    addRequest(binder.document_saveFile(filePath, AddDocumentActivity.this));
+                    addRequest(binder.document_saveFile(filePath, AddInspectorActivity.this));
                 }
             }
         });
@@ -65,10 +64,6 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
         viewDelegate.viewHolder.lin_attributes2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                //                intent.setType("*/*");//无类型限制
-                //                intent.addCategory(Intent.CATEGORY_OPENABLE);
-                //                startActivityForResult(intent, 1);
                 new LFilePicker()
                         .withActivity(viewDelegate.getActivity())
                         .withRequestCode(1000)
@@ -80,8 +75,7 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
     }
 
     String img = "";
-    String oldFileName = "";
-    String filePath;
+    String filePath;String oldFileName = "";
 
     private void saveDocument() {
         addRequest(binder.notice_sendList(
@@ -94,7 +88,7 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
                 viewDelegate.viewHolder.et_input.getText().toString(),
                 id,
                 oldFileName,
-                AddDocumentActivity.this
+                AddInspectorActivity.this
         ));
     }
 
@@ -106,7 +100,7 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
     public static void startAct(Activity activity,
                                 String id,
                                 String type) {
-        Intent intent = new Intent(activity, AddDocumentActivity.class);
+        Intent intent = new Intent(activity, AddInspectorActivity.class);
         intent.putExtra("id", id);
         intent.putExtra("type", type);
         activity.startActivity(intent);

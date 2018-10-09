@@ -27,10 +27,11 @@ public class BirthdayDialog extends BaseDialog implements OnWheelChangedListener
     private WheelView month;
     private WheelView day;
     private String yearStr, monthStr, dayStr;
-    private  OnTimeChooseListener listener;
+    private OnTimeChooseListener listener;
+
     public BirthdayDialog(Context context, OnTimeChooseListener listener) {
         super(context);
-        this.listener=listener;
+        this.listener = listener;
     }
 
     @Override
@@ -45,7 +46,7 @@ public class BirthdayDialog extends BaseDialog implements OnWheelChangedListener
         year = (WheelView) findViewById(R.id.year);
         month = (WheelView) findViewById(R.id.month);
         day = (WheelView) findViewById(R.id.day);
-        int textsize=  mContext.getResources().getDimensionPixelSize(R.dimen.trans_28px);
+        int textsize = mContext.getResources().getDimensionPixelSize(R.dimen.trans_28px);
         year.setTextSize(textsize);
         month.setTextSize(textsize);
         day.setTextSize(textsize);
@@ -55,7 +56,7 @@ public class BirthdayDialog extends BaseDialog implements OnWheelChangedListener
         int currentyear = Integer.parseInt(DateUtils.getCurrYear());
         int currMonth = DateUtils.getCurrMonth();
         int currDay = DateUtils.getCurrDay();
-        year.setAdapter(new NumberWheelAdapter(1900, currentyear,"%s年"));
+        year.setAdapter(new NumberWheelAdapter(1900, currentyear, "%s年"));
         month.setAdapter(new NumberWheelAdapter(1, 12, "%02d月"));
         year.setOnClickListener(this);
         month.setOnClickListener(this);
@@ -64,8 +65,8 @@ public class BirthdayDialog extends BaseDialog implements OnWheelChangedListener
         yearStr = year.getAdapter().getItem(currentyear - 1900);
         monthStr = month.getAdapter().getItem(currMonth - 1);
         day.setOnClickListener(this);
-        day.setAdapter(new NumberWheelAdapter(1,getDayNum()));
-        day.setCurrentIndex(currDay-1);
+        day.setAdapter(new NumberWheelAdapter(1, getDayNum()));
+        day.setCurrentIndex(currDay - 1);
         dayStr = day.getAdapter().getItem(currDay - 1);
         getView(R.id.cancel).setOnClickListener(new View.OnClickListener() {
 
@@ -81,10 +82,13 @@ public class BirthdayDialog extends BaseDialog implements OnWheelChangedListener
 
             @Override
             public void onClick(View v) {
+                String substring = monthStr.substring(0, monthStr.length() - 1);
+                substring = substring.length() == 1 ? ("0" + substring) : substring;
+                String s = dayStr.length() == 1 ? ("0" + dayStr) : dayStr;
                 listener.setOnTimeChooseListener(
-                        yearStr.substring(0,yearStr.length()-1) + "-" +
-                                monthStr.substring(0,monthStr.length()-1) + "-"
-                        + dayStr);
+                        yearStr.substring(0, yearStr.length() - 1) + "-" +
+                                substring + "-"
+                                + s);
                 dismiss();
             }
         });
@@ -114,15 +118,15 @@ public class BirthdayDialog extends BaseDialog implements OnWheelChangedListener
     }
 
     private int getDayNum() {
-        int m=monthStr.length()-1;
-        int y=yearStr.length()-1;
+        int m = monthStr.length() - 1;
+        int y = yearStr.length() - 1;
 
-        String month=monthStr.substring(0,m);
-        String year=yearStr.substring(0,y);
-        if (month.equals("01")||month.equals("03")||month.equals("05")||
-                month.equals("07")||month.equals("08")||month.equals("10")||month.equals("12")) {
+        String month = monthStr.substring(0, m);
+        String year = yearStr.substring(0, y);
+        if (month.equals("01") || month.equals("03") || month.equals("05") ||
+                month.equals("07") || month.equals("08") || month.equals("10") || month.equals("12")) {
             return 31;
-        } else if (month.equals("04")||month.equals("06")||month.equals("09")||month.equals("11")) {
+        } else if (month.equals("04") || month.equals("06") || month.equals("09") || month.equals("11")) {
             return 30;
         } else {
             if ((Integer.parseInt(year) % 4 == 0 && Integer
@@ -136,8 +140,9 @@ public class BirthdayDialog extends BaseDialog implements OnWheelChangedListener
         }
 
     }
+
     public interface OnTimeChooseListener {
-         void setOnTimeChooseListener(String time);
+        void setOnTimeChooseListener(String time);
     }
 
     @Override
@@ -147,8 +152,8 @@ public class BirthdayDialog extends BaseDialog implements OnWheelChangedListener
         }
         if (wheel == month) {
             monthStr = month.getAdapter().getItem(newValue);
-            if(!StringUtil.isBlank(dayStr)){
-                day.setAdapter(new NumberWheelAdapter(1,getDayNum(),"%02d"));
+            if (!StringUtil.isBlank(dayStr)) {
+                day.setAdapter(new NumberWheelAdapter(1, getDayNum(), "%02d"));
                 day.setCurrentIndex(0);
             }
         }

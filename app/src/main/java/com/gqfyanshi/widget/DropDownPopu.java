@@ -5,6 +5,7 @@ import android.os.Build;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.PopupWindow;
 
 import com.fivefivelike.mybaselibrary.utils.CommonUtils;
@@ -68,6 +69,8 @@ public class DropDownPopu {
             });
             recyclerview.setAdapter(adapter);
             adapter.setOnItemClickListener(onItemClickListener);
+            popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+            popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
         }
         popupWindow.showAsDropDown(anchor);
     }

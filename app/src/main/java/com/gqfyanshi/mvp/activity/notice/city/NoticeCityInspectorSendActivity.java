@@ -52,6 +52,7 @@ public class NoticeCityInspectorSendActivity extends BaseDataBindActivity<Notice
         queryJsonBean.setModelId("26");
         queryJsonBean.setTitle(viewDelegate.viewHolder.et_attributes.getText().toString());
         addRequest(binder.overSeer_getOverSeerSendList(queryJsonBean,pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticeInspectorAdapter adapter;

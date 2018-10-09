@@ -16,6 +16,7 @@ import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticeMgsStatisticalBinder;
 import com.gqfyanshi.mvp.delegate.NoticeMgsStatisticalDelegate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NoticeCityMgsStatisticalActivity extends BaseDataBindActivity<NoticeMgsStatisticalDelegate, NoticeMgsStatisticalBinder> {
@@ -30,15 +31,43 @@ public class NoticeCityMgsStatisticalActivity extends BaseDataBindActivity<Notic
         return new NoticeMgsStatisticalBinder(viewDelegate);
     }
 
+    private String type = "";
 
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
+
+
+        List<String> datas = new ArrayList<>();
+        datas.add("全部");
+        datas.add("约稿性发送");
+        datas.add("约稿性接收");
+        datas.add("信息统计");
+        datas.add("信息发送");
+        datas.add("工作信息发布");
+        datas.add("工作信息接收");
+        datas.add("要情汇报");
+        datas.add("领导参阅");
+        datas.add("紧急信息");
+        datas.add("通知公告");
+        viewDelegate.viewHolder.selectPeopleLayout1.setDatas(datas);
+        viewDelegate.viewHolder.selectPeopleLayout1.setDefaultClickLinsener(new DefaultClickLinsener() {
+            @Override
+            public void onClick(View view, int position, Object item) {
+                if (position == 0) {
+                    type = "";
+                } else {
+                    type = "0" + position;
+                }
+            }
+        });
+
+
         viewDelegate.viewHolder.tv_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AddDocumentActivity.startAct(viewDelegate.getActivity(),
-                        "11","04"
+                        "11", "04"
                 );
             }
         });
@@ -61,7 +90,8 @@ public class NoticeCityMgsStatisticalActivity extends BaseDataBindActivity<Notic
         // TODO: 2018/9/30 0030
         queryJsonBean.setCreatetime(viewDelegate.viewHolder.selectTimeLayout1.getSelectTime());
         queryJsonBean.setUpdatetime(viewDelegate.viewHolder.selectTimeLayout2.getSelectTime());
-        addRequest(binder.infoNotice_sendList(queryJsonBean,pageNumber, this));
+        addRequest(binder.infoNotice_sendList(queryJsonBean, pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticeMsgStatisticalAdapter adapter;

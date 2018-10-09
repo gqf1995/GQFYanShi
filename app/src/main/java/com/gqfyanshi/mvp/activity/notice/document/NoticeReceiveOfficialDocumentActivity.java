@@ -15,6 +15,7 @@ import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.NoticeReceiveOfficialDocumentAdapter;
 import com.gqfyanshi.entity.bean.DocumentBean;
 import com.gqfyanshi.entity.bean.QueryJsonBean;
+import com.gqfyanshi.mvp.activity.add.AddAttrDocumentActivity;
 import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticeSendOfficialDocumentBinder;
 import com.gqfyanshi.mvp.delegate.NoticeSendOfficialDocumentDelegate;
@@ -39,7 +40,13 @@ public class NoticeReceiveOfficialDocumentActivity extends BaseDataBindActivity<
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
-        // TODO: 2018/9/30 0030
+        viewDelegate.viewHolder.tv_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddAttrDocumentActivity.startAct(viewDelegate.getActivity(),
+                        "5");
+            }
+        });
         getIntentData();
         initToolbar(new ToolbarBuilder().setTitle("公文接收"));
         onRefush(1);
@@ -85,6 +92,13 @@ public class NoticeReceiveOfficialDocumentActivity extends BaseDataBindActivity<
         createtime = intent.getStringExtra("createtime");
         updatetime = intent.getStringExtra("updatetime");
         type = intent.getStringExtra("type");
+
+        if(!TextUtils.isEmpty(createtime)){
+            viewDelegate.viewHolder.selectTimeLayout1.setSelectTime(createtime);
+        }
+        if(!TextUtils.isEmpty(updatetime)){
+            viewDelegate.viewHolder.selectTimeLayout2.setSelectTime(updatetime);
+        }
         List<String> datas = new ArrayList<>();
         datas.add("全部");
         datas.add("党委");
@@ -130,6 +144,7 @@ public class NoticeReceiveOfficialDocumentActivity extends BaseDataBindActivity<
         queryJsonBean.setCreatetime(createtime);
         queryJsonBean.setUpdatetime(updatetime);
         addRequest(binder.document_receiveList(queryJsonBean, pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticeReceiveOfficialDocumentAdapter adapter;

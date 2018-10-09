@@ -113,6 +113,8 @@ public class CommonUtils {
     public static String[] getStringArray(int resId) {
         return getResources().getStringArray(resId);
     }
+
+
 }
 
 

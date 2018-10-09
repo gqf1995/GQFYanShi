@@ -32,6 +32,15 @@ public class DocumentBean {
     String departmentName;
     String begin_time;
     String end_time;
+    String postilTime;
+
+    public String getPostilTime() {
+        return postilTime;
+    }
+
+    public void setPostilTime(String postilTime) {
+        this.postilTime = postilTime;
+    }
 
     public String getBegin_time() {
         return begin_time;

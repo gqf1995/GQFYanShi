@@ -52,6 +52,7 @@ public class NoticeCityPublicMsgReceiveActivity extends BaseDataBindActivity<Not
         queryJsonBean.setModelId("26");
         queryJsonBean.setTitle(viewDelegate.viewHolder.et_attributes.getText().toString());
         addRequest(binder.workInfo_getWorkInfoReceiveList(queryJsonBean,pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticePublicMsgReceiveAdapter adapter;

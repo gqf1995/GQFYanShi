@@ -36,7 +36,7 @@ public class CircleDialogHelper {
                                                               View.OnClickListener onClickListener) {
         return new CircleDialog.Builder(activity)
                 .setText(title)
-                .setWidth(0.7f)
+                .setWidth(0.5f)
                 .configDialog(new ConfigDialog() {
                     @Override
                     public void onConfig(DialogParams params) {
@@ -47,7 +47,7 @@ public class CircleDialogHelper {
                     @Override
                     public void onConfig(TextParams params) {
                         params.gravity = Gravity.CENTER;
-                        params.padding = new int[]{30, 30, 30, 30};
+                        params.padding = new int[]{15, 15, 15, 15};
                         params.backgroundColor = CommonUtils.getColor(R.color.color_Primary);
                     }
                 })
@@ -66,7 +66,7 @@ public class CircleDialogHelper {
                                                          View.OnClickListener onClickListener) {
         return new CircleDialog.Builder(activity)
                 .setCanceledOnTouchOutside(false)
-                .setWidth(0.7f)
+                .setWidth(0.5f)
                 .setCancelable(false)
                 .setText(title)
                 .configDialog(new ConfigDialog() {
@@ -78,7 +78,7 @@ public class CircleDialogHelper {
                 .configText(new ConfigText() {
                     @Override
                     public void onConfig(TextParams params) {
-                        params.padding = new int[]{30, 30, 30, 30};
+                        params.padding = new int[]{15, 15, 15, 15};
                         params.textColor = CommonUtils.getColor(R.color.color_font1);
                         params.backgroundColor = CommonUtils.getColor(R.color.color_Primary);
                     }
@@ -107,7 +107,7 @@ public class CircleDialogHelper {
                                                          View.OnClickListener onClickListener) {
         return new CircleDialog.Builder(activity)
                 .setCanceledOnTouchOutside(false)
-                .setWidth(0.7f)
+                .setWidth(0.5f)
                 .setCancelable(false)
                 .setTitle(title)
                 .setText(content)
@@ -120,7 +120,7 @@ public class CircleDialogHelper {
                 .configText(new ConfigText() {
                     @Override
                     public void onConfig(TextParams params) {
-                        params.padding = new int[]{30, 10, 30, 40};
+                        params.padding = new int[]{15, 5, 15, 20};
                         params.textColor = CommonUtils.getColor(R.color.color_font1);
                         params.backgroundColor = CommonUtils.getColor(R.color.color_Primary);
                     }

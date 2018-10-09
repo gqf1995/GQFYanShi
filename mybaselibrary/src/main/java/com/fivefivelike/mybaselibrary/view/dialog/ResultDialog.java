@@ -90,13 +90,13 @@ public class ResultDialog {
                                 params.textColor = Color.parseColor(resultDialogEntity.getContentColor());
                             }
                             params.gravity = Gravity.CENTER;
-                            params.padding = new int[]{30, TextUtils.isEmpty(resultDialogEntity.getContent()) ? 30 : 0, 30, 30};
+                            params.padding = new int[]{15, TextUtils.isEmpty(resultDialogEntity.getContent()) ? 15 : 0, 15, 15};
                         } else {
-                            params.padding = new int[]{30, 30, 30, 0};
+                            params.padding = new int[]{15, 15, 15, 0};
                         }
                     }
                 });
-        builder.setWidth(0.7f)
+        builder.setWidth(0.5f)
                 .setPositive(TextUtils.isEmpty(resultDialogEntity.getConfirmBtn()) ? CommonUtils.getString(R.string.str_determine) : resultDialogEntity.getConfirmBtn(), new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -144,13 +144,13 @@ public class ResultDialog {
                                 params.textColor = Color.parseColor(resultDialogEntity.getContentColor());
                             }
                             params.gravity = Gravity.CENTER;
-                            params.padding = new int[]{30, TextUtils.isEmpty(resultDialogEntity.getContent()) ? 30 : 0, 30, 30};
+                            params.padding = new int[]{15, TextUtils.isEmpty(resultDialogEntity.getContent()) ? 15 : 0, 15, 15};
                         } else {
-                            params.padding = new int[]{30, 30, 30, 0};
+                            params.padding = new int[]{15, 15, 15, 0};
                         }
                     }
                 });
-        builder.setWidth(0.7f)
+        builder.setWidth(0.5f)
                 .setPositive(TextUtils.isEmpty(resultDialogEntity.getConfirmBtn()) ? CommonUtils.getString(R.string.str_determine) : resultDialogEntity.getConfirmBtn(), new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

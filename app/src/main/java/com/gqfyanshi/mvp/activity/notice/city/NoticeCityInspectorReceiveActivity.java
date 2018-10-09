@@ -34,6 +34,7 @@ public class NoticeCityInspectorReceiveActivity extends BaseDataBindActivity<Not
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
+
         initToolbar(new ToolbarBuilder().setTitle("督查通知接收"));
         onRefush(1);
         viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +52,7 @@ public class NoticeCityInspectorReceiveActivity extends BaseDataBindActivity<Not
         queryJsonBean.setModelId("26");
         queryJsonBean.setTitle(viewDelegate.viewHolder.et_attributes.getText().toString());
         addRequest(binder.overSeer_getOverSeerReceiveList(queryJsonBean,pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticeInspectorReceiveAdapter adapter;

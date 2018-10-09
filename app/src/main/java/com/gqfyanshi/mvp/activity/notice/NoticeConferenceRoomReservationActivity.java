@@ -51,6 +51,7 @@ public class NoticeConferenceRoomReservationActivity extends BaseDataBindActivit
         queryJsonBean.setBeginTime(viewDelegate.viewHolder.selectTimeLayout1.getSelectTime());
         queryJsonBean.setEndTime(viewDelegate.viewHolder.selectTimeLayout2.getSelectTime());
         addRequest(binder.conference_getAppointmentInfoList(pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticeConferenceRoomReservationAdapter adapter;

@@ -11,15 +11,17 @@ import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
 import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ToastUtil;
+import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.entity.bean.TreeBean;
 import com.gqfyanshi.mvp.databinder.AddDocumentBinder;
 import com.gqfyanshi.mvp.delegate.AddDocumentDelegate;
 import com.leon.lfilepickerlibrary.LFilePicker;
 import com.leon.lfilepickerlibrary.utils.Constant;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegate, AddDocumentBinder> {
+public class AddAttrDocumentActivity extends BaseDataBindActivity<AddDocumentDelegate, AddDocumentBinder> {
 
     @Override
     protected Class<AddDocumentDelegate> getDelegateClass() {
@@ -36,9 +38,7 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
     protected void bindEvenListener() {
         super.bindEvenListener();
         initToolbar(new ToolbarBuilder().setTitle("添加"));
-        viewDelegate.viewHolder.lin3.setVisibility(View.GONE);
-        viewDelegate.viewHolder.lin_selectAttr.setVisibility(View.GONE);
-
+        viewDelegate.viewHolder.lin2.setVisibility(View.VISIBLE);
         getIntentData();
         addRequest(binder.leader_getModelTree(this));
         viewDelegate.viewHolder.tv_send.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +57,7 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
                     saveDocument();
                 } else {
                     //上传文章 文件
-                    addRequest(binder.document_saveFile(filePath, AddDocumentActivity.this));
+                    addRequest(binder.document_saveFile(filePath, AddAttrDocumentActivity.this));
                 }
             }
         });
@@ -65,10 +65,6 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
         viewDelegate.viewHolder.lin_attributes2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                //                intent.setType("*/*");//无类型限制
-                //                intent.addCategory(Intent.CATEGORY_OPENABLE);
-                //                startActivityForResult(intent, 1);
                 new LFilePicker()
                         .withActivity(viewDelegate.getActivity())
                         .withRequestCode(1000)
@@ -80,8 +76,8 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
     }
 
     String img = "";
-    String oldFileName = "";
     String filePath;
+    String oldFileName = "";
 
     private void saveDocument() {
         addRequest(binder.notice_sendList(
@@ -94,8 +90,9 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
                 viewDelegate.viewHolder.et_input.getText().toString(),
                 id,
                 oldFileName,
-                AddDocumentActivity.this
+                AddAttrDocumentActivity.this
         ));
+
     }
 
     private void changeHeader(String path) {
@@ -104,11 +101,9 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
     }
 
     public static void startAct(Activity activity,
-                                String id,
-                                String type) {
-        Intent intent = new Intent(activity, AddDocumentActivity.class);
+                                String id) {
+        Intent intent = new Intent(activity, AddAttrDocumentActivity.class);
         intent.putExtra("id", id);
-        intent.putExtra("type", type);
         activity.startActivity(intent);
     }
 
@@ -118,7 +113,23 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
     private void getIntentData() {
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
-        type = intent.getStringExtra("type");
+        List<String> datas = new ArrayList<>();
+        datas.add("全部");
+        datas.add("党委");
+        datas.add("党委文件");
+        datas.add("政府文件");
+        datas.add("政府部门文件");
+        viewDelegate.viewHolder.selectAttrLayout.setDatas(datas);
+        viewDelegate.viewHolder.selectAttrLayout.setDefaultClickLinsener(new DefaultClickLinsener() {
+            @Override
+            public void onClick(View view, int position, Object item) {
+                if (position == 0) {
+                    type = "";
+                } else {
+                    type = "0" + position;
+                }
+            }
+        });
     }
 
     @Override
@@ -149,19 +160,18 @@ public class AddDocumentActivity extends BaseDataBindActivity<AddDocumentDelegat
                 List<String> list = data.getStringArrayListExtra(Constant.RESULT_INFO);
                 changeHeader(list.get(0));
             } else {
-                Uri uri = data.getData();
-                if ("file".equalsIgnoreCase(uri.getScheme())) {//使用第三方应用打开
-                    path = uri.getPath();
-                    changeHeader(path);
-                    return;
-                }
-                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {//4.4以后
-                    path = viewDelegate.getPath(this, uri);
-                } else {//4.4以下下系统调用方法
-                    path = viewDelegate.getRealPathFromURI(uri);
-                }
+            Uri uri = data.getData();
+            if ("file".equalsIgnoreCase(uri.getScheme())) {//使用第三方应用打开
+                path = uri.getPath();
                 changeHeader(path);
+                return;
             }
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {//4.4以后
+                path = viewDelegate.getPath(this, uri);
+            } else {//4.4以下下系统调用方法
+                path = viewDelegate.getRealPathFromURI(uri);
+            }
+            changeHeader(path);}
         }
     }
 

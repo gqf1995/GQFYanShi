@@ -52,6 +52,7 @@ public class NoticeGovernmentInspectorReceiveActivity extends BaseDataBindActivi
         queryJsonBean.setModelId("32");
         queryJsonBean.setTitle(viewDelegate.viewHolder.et_attributes.getText().toString());
         addRequest(binder.overSeer_getOverSeerReceiveList(queryJsonBean,pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticeInspectorReceiveAdapter adapter;

@@ -45,6 +45,7 @@ public class NoticeAddressBookActivity extends BaseDataBindActivity<NoticeAddres
 
     private void onRefush(int pageNumber) {
         addRequest(binder.addressBook_getAddressBookList(pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticeAddressBookAdapter adapter;

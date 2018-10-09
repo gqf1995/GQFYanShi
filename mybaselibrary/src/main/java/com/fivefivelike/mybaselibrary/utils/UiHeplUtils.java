@@ -1205,7 +1205,7 @@ public class UiHeplUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
+        mBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOut);
         try {
             fOut.flush();
         } catch (IOException e) {

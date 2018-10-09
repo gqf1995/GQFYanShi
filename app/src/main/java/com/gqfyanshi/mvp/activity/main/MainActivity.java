@@ -35,8 +35,7 @@ public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder>
     protected void bindEvenListener() {
         super.bindEvenListener();
         initToolbar(new ToolbarBuilder().setTitle("偃师市党政办公平台")
-                .setmRightImg1(CommonUtils.getString(R.string.ic_tixing))
-                .setmRightImg2(CommonUtils.getString(R.string.ic_tixing)));
+                .setmRightImg1(CommonUtils.getString(R.string.ic_tixing)));
         viewDelegate.getmToolbarBack().setText(CommonUtils.getString(R.string.ic_daohang));
         viewDelegate.getmToolbarBackLin().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,11 +106,7 @@ public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder>
         startActivity(new Intent(viewDelegate.getActivity(), MsgActivity.class));
     }
 
-    @Override
-    protected void clickRightIv1() {
-        super.clickRightIv1();
-        startActivity(new Intent(viewDelegate.getActivity(), Scrawl.class));
-    }
+
 
     @Override
     protected void onServiceSuccess(String data, String info, int status, int requestCode) {

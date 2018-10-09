@@ -10,7 +10,7 @@ import com.fivefivelike.mybaselibrary.base.BaseDelegate;
 import com.fivefivelike.mybaselibrary.view.RoundButton;
 import com.gqfyanshi.R;
 import com.gqfyanshi.widget.PageChangeView;
-import com.gqfyanshi.widget.SelectPeopleLayout;
+import com.gqfyanshi.widget.SelectAttrLayout;
 import com.gqfyanshi.widget.SelectTimeLayout;
 
 public class NoticeMgsStatisticalDelegate extends BaseDelegate {
@@ -34,7 +34,7 @@ public class NoticeMgsStatisticalDelegate extends BaseDelegate {
         public LinearLayout lin_attributes;
         public SelectTimeLayout selectTimeLayout1;
         public SelectTimeLayout selectTimeLayout2;
-        public SelectPeopleLayout selectPeopleLayout1;
+        public SelectAttrLayout selectPeopleLayout1;
         public RoundButton tv_search;
         public TextView tv_add;
         public RecyclerView recycler_view;
@@ -48,7 +48,7 @@ public class NoticeMgsStatisticalDelegate extends BaseDelegate {
             this.lin_attributes = (LinearLayout) rootView.findViewById(R.id.lin_attributes);
             this.selectTimeLayout1 = (SelectTimeLayout) rootView.findViewById(R.id.selectTimeLayout1);
             this.selectTimeLayout2 = (SelectTimeLayout) rootView.findViewById(R.id.selectTimeLayout2);
-            this.selectPeopleLayout1 = (SelectPeopleLayout) rootView.findViewById(R.id.selectPeopleLayout1);
+            this.selectPeopleLayout1 = (SelectAttrLayout) rootView.findViewById(R.id.selectPeopleLayout1);
             this.tv_search = (RoundButton) rootView.findViewById(R.id.tv_search);
             this.tv_add = (TextView) rootView.findViewById(R.id.tv_add);
             this.recycler_view = (RecyclerView) rootView.findViewById(R.id.recycler_view);

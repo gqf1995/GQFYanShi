@@ -7,6 +7,7 @@ import android.view.View;
 import com.bumptech.glide.request.RequestOptions;
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
+import com.fivefivelike.mybaselibrary.utils.SaveUtil;
 import com.fivefivelike.mybaselibrary.utils.ToastUtil;
 import com.fivefivelike.mybaselibrary.utils.UiHeplUtils;
 import com.fivefivelike.mybaselibrary.utils.glide.GlideUtils;
@@ -36,6 +37,13 @@ public class LoginActivity extends BaseDataBindActivity<LoginDelegate, LoginBind
         super.bindEvenListener();
         viewDelegate.viewHolder.tv_phone.setText("15896559159");
         //viewDelegate.viewHolder.tv_phone.setText("17396360301");
+        isSelect = SaveUtil.getInstance().getBoolean("login_save");
+        if (!isSelect) {
+            viewDelegate.viewHolder.iv_select.setImageResource(R.drawable.weigouxuan);
+        } else {
+            viewDelegate.viewHolder.iv_select.setImageResource(R.drawable.gouxuan);
+            viewDelegate.viewHolder.tv_phone.setText(SaveUtil.getInstance().getString("login_phone"));
+        }
         GlideUtils.loadImage(
                 HttpUrl.getIntance().pictureCheckCode,
                 viewDelegate.viewHolder.iv_img_code,
@@ -95,6 +103,12 @@ public class LoginActivity extends BaseDataBindActivity<LoginDelegate, LoginBind
                 UserLoginBean userLoginBean = GsonUtil.getInstance().toObj(data, UserLoginBean.class);
                 UserLoginBean.addNewLoginInfo(userLoginBean);
                 startActivity(new Intent(this, MainActivity.class));
+                if (isSelect) {
+                    SaveUtil.getInstance().saveString("login_phone", viewDelegate.viewHolder.tv_phone.getText().toString());
+                } else {
+                    SaveUtil.getInstance().saveString("login_phone", "");
+                }
+                SaveUtil.getInstance().saveBoolean("login_save", isSelect);
                 break;
             case 0x125:
                 addRequest(UiHeplUtils.getCode(viewDelegate.viewHolder.tv_send_code, 60));

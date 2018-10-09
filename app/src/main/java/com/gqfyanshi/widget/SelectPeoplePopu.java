@@ -42,9 +42,9 @@ public class SelectPeoplePopu extends BasePopupWindow {
         this.defaultClickLinsener = defaultClickLinsener;
     }
 
-    List<TreeBean>  treeBean;
+    List<TreeBean> treeBean;
 
-    public void setTreeBean(  List<TreeBean> treeBean) {
+    public void setTreeBean(List<TreeBean> treeBean) {
         this.treeBean = treeBean;
         TreeNode root = TreeNode.root();
 
@@ -55,8 +55,8 @@ public class SelectPeoplePopu extends BasePopupWindow {
                             .setDefaultClickLinsener(new DefaultClickLinsener() {
                                 @Override
                                 public void onClick(View view, int position, Object item) {
-                                    if(defaultClickLinsener!=null){
-                                        defaultClickLinsener.onClick(view,position,item);
+                                    if (defaultClickLinsener != null) {
+                                        defaultClickLinsener.onClick(view, position, item);
                                     }
                                 }
                             }));
@@ -98,8 +98,8 @@ public class SelectPeoplePopu extends BasePopupWindow {
                             .setDefaultClickLinsener(new DefaultClickLinsener() {
                                 @Override
                                 public void onClick(View view, int position, Object item) {
-                                    if(defaultClickLinsener!=null){
-                                        defaultClickLinsener.onClick(view,position,item);
+                                    if (defaultClickLinsener != null) {
+                                        defaultClickLinsener.onClick(view, position, item);
                                     }
                                 }
                             }));
@@ -140,6 +140,8 @@ public class SelectPeoplePopu extends BasePopupWindow {
 
             final ImageView iconView = (ImageView) view.findViewById(R.id.icon);
             iconView.setWillNotDraw(!value.isSelect);
+
+
             iconView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -208,7 +210,8 @@ public class SelectPeoplePopu extends BasePopupWindow {
                     Object value = node.getChildren().get(i).getValue();
                     if (value instanceof TreeBean) {
                         ((TreeBean) value).isSelect = isSelect;
-                        node.getChildren().get(i).getViewHolder().getView().findViewById(R.id.icon).setWillNotDraw(!((TreeBean) value).isSelect);
+                        node.getChildren().get(i).getViewHolder().getView().findViewById(R.id.icon)
+                                .setWillNotDraw(!((TreeBean) value).isSelect);
                     }
                     select(node.getChildren().get(i), isSelect);
                 }

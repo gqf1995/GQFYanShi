@@ -1,6 +1,5 @@
 package com.gqfyanshi.mvp.activity.notice.government;
 
-import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
@@ -11,7 +10,7 @@ import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.adapter.NoticePublicMsgSendAdapter;
 import com.gqfyanshi.entity.bean.QueryJsonBean;
-import com.gqfyanshi.mvp.activity.add.AddPublicInformationActivity;
+import com.gqfyanshi.mvp.activity.add.AddDocumentActivity;
 import com.gqfyanshi.mvp.databinder.NoticePublicMsgSendBinder;
 import com.gqfyanshi.mvp.delegate.NoticePublicMsgSendDelegate;
 
@@ -36,7 +35,8 @@ public class NoticeGovernmentPublicMsgSendActivity extends BaseDataBindActivity<
         viewDelegate.viewHolder.tv_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(viewDelegate.getActivity(), AddPublicInformationActivity.class));
+                AddDocumentActivity.startAct(viewDelegate.getActivity(),
+                        "32","");
             }
         });
         initToolbar(new ToolbarBuilder().setTitle("公开信息发送"));
@@ -56,6 +56,7 @@ public class NoticeGovernmentPublicMsgSendActivity extends BaseDataBindActivity<
         queryJsonBean.setModelId("32");
         queryJsonBean.setTitle(viewDelegate.viewHolder.et_attributes.getText().toString());
         addRequest(binder.workInfo_getWorkInfoSendList(queryJsonBean,pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticePublicMsgSendAdapter adapter;

@@ -26,7 +26,6 @@ public class TreeBean {
     private String img;
     private boolean isexpand;
     private String parentnodes;
-    private Object childNodes;
     private boolean hasChildren;
     private String id;
     private boolean showcheck;
@@ -39,14 +38,36 @@ public class TreeBean {
     public String text;//节点内容
 
 
-
-
     public List<TreeBean> getChildNodes() {
         return ChildNodes;
     }
 
-    public void setChildNodes(Object childNodes) {
-        this.childNodes = childNodes;
+    public void setChildNodes(List<TreeBean> childNodes) {
+        ChildNodes = childNodes;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public boolean isIsexpand() {
+        return isexpand;
+    }
+
+    public void setIsexpand(boolean isexpand) {
+        this.isexpand = isexpand;
+    }
+
+    public String getParentnodes() {
+        return parentnodes;
+    }
+
+    public void setParentnodes(String parentnodes) {
+        this.parentnodes = parentnodes;
     }
 
     public boolean isHasChildren() {
@@ -119,33 +140,5 @@ public class TreeBean {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public void setChildNodes(List<TreeBean> childNodes) {
-        ChildNodes = childNodes;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    public boolean isIsexpand() {
-        return isexpand;
-    }
-
-    public void setIsexpand(boolean isexpand) {
-        this.isexpand = isexpand;
-    }
-
-    public String getParentnodes() {
-        return parentnodes;
-    }
-
-    public void setParentnodes(String parentnodes) {
-        this.parentnodes = parentnodes;
     }
 }

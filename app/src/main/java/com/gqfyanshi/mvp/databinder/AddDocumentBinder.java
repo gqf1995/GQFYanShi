@@ -17,6 +17,7 @@ public class AddDocumentBinder extends BaseDataBind<AddDocumentDelegate> {
     public AddDocumentBinder(AddDocumentDelegate viewDelegate) {
         super(viewDelegate);
     }
+
     public Disposable notice_sendList(
             String name,
             String title,
@@ -25,15 +26,18 @@ public class AddDocumentBinder extends BaseDataBind<AddDocumentDelegate> {
             String img,
             String content,
             String modelId,
+            String fileName,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
-        baseMap.put("name",name);
-        baseMap.put("title",title);
-        baseMap.put("type",type);
-        baseMap.put("sendeeGroupId",sendeeGroupId);
-        baseMap.put("img",img);
-        baseMap.put("content",content);
-        baseMap.put("modelId",modelId);
+        baseMap.put("name", name);
+        baseMap.put("title", title);
+        baseMap.put("type", type);
+        baseMap.put("sendeeGroupId", sendeeGroupId);
+        baseMap.put("img", img);
+        baseMap.put("fileAddress", img);
+        baseMap.put("content", content);
+        baseMap.put("modelId", modelId);
+        baseMap.put("fileName", fileName);
         return new HttpRequest.Builder()
                 .setRequestCode(0x124)
                 .setRequestUrl(HttpUrl.getIntance().document_saveDocument)
@@ -47,19 +51,23 @@ public class AddDocumentBinder extends BaseDataBind<AddDocumentDelegate> {
                 .build()
                 .RxSendRequest();
     }
+
     public Disposable email_emailForm(
             String name,
             String title,
             String sendeeGroupId,
             String img,
             String content,
+            String fileName,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
-        baseMap.put("name",name);
-        baseMap.put("title",title);
-        baseMap.put("sendeeGroupId",sendeeGroupId);
-        baseMap.put("img",img);
-        baseMap.put("content",content);
+        baseMap.put("name", name);
+        baseMap.put("title", title);
+        baseMap.put("sendeeGroupId", sendeeGroupId);
+        baseMap.put("img", img);
+        baseMap.put("fileAddress", img);
+        baseMap.put("content", content);
+        baseMap.put("fileName", fileName);
         return new HttpRequest.Builder()
                 .setRequestCode(0x124)
                 .setRequestUrl(HttpUrl.getIntance().email_emailForm)
@@ -73,6 +81,7 @@ public class AddDocumentBinder extends BaseDataBind<AddDocumentDelegate> {
                 .build()
                 .RxSendRequest();
     }
+
     public Disposable document_saveFile(
             String file,
             RequestCallback requestCallback) {
@@ -93,6 +102,7 @@ public class AddDocumentBinder extends BaseDataBind<AddDocumentDelegate> {
                 .build()
                 .RxSendRequest();
     }
+
     public Disposable leader_getModelTree(
             RequestCallback requestCallback) {
         getBaseMapWithUid();

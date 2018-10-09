@@ -62,6 +62,7 @@ public class NoticeGovernmentMgsStatisticalActivity extends BaseDataBindActivity
         queryJsonBean.setCreatetime(viewDelegate.viewHolder.selectTimeLayout1.getSelectTime());
         queryJsonBean.setUpdatetime(viewDelegate.viewHolder.selectTimeLayout2.getSelectTime());
         addRequest(binder.infoNotice_sendList(queryJsonBean,pageNumber, this));
+        viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
 
     NoticeMsgStatisticalAdapter adapter;

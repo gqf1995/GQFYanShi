@@ -111,8 +111,14 @@
             android:name=".mvp.activity.main.Scrawl"
             android:configChanges="orientation|keyboardHidden|screenSize|mcc|mnc|touchscreen|keyboard|navigation|screenLayout|fontScale|uiMode"
             android:theme="@style/AppBaseThemeShouxie"/>
-        <activity android:name=".mvp.activity.file.DocumentInfoActivity"/>
+        <activity
+            android:name=".mvp.activity.file.DocumentInfoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|mcc|mnc|touchscreen|keyboard|navigation|screenLayout|fontScale|uiMode"
+            />
         <activity android:name=".mvp.activity.add.AddDocumentActivity"/>
+        <activity android:name=".mvp.activity.add.AddInspectorActivity"/>
+        <activity android:name=".mvp.activity.add.AddAttrDocumentActivity"/>
+        <activity android:name=".mvp.activity.add.AddEmailActivity"/>
     </application>
 
 </manifest>

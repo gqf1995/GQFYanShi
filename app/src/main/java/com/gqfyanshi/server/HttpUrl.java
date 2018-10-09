@@ -152,4 +152,8 @@ public class HttpUrl {
      * 获取部门信息树型对象
      */
     public String leader_getModelTree = AppConst.app2BaseUrl + "/leader/getModelTree";
+    /**
+     * 签批图片上传
+     */
+    public String document_postil = AppConst.app2BaseUrl + "/document/postil";
 }

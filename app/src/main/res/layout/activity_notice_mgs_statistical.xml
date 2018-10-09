@@ -142,12 +142,12 @@
             android:textColor="@color/color_font1"
             android:textSize="@dimen/text_trans_18px"/>
 
-        <com.gqfyanshi.widget.SelectPeopleLayout
+        <com.gqfyanshi.widget.SelectAttrLayout
             android:id="@+id/selectPeopleLayout1"
             android:layout_width="@dimen/trans_190px"
             android:layout_height="@dimen/trans_35px">
 
-        </com.gqfyanshi.widget.SelectPeopleLayout>
+        </com.gqfyanshi.widget.SelectAttrLayout>
 
         <Space
             android:layout_width="@dimen/trans_30px"

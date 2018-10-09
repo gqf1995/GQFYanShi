@@ -129,7 +129,7 @@ public class TBSActivity extends BaseDataBindActivity<TBSDelegate, TBSBinder> im
         fileName = intent.getStringExtra("fileName");
         url = intent.getStringExtra("url");
         if (!url.contains("http")) {
-            url = AppConst.app2BaseUrl + url;
+            url = AppConst.app2BaseUrl +"/"+ url;
         }
     }
 
