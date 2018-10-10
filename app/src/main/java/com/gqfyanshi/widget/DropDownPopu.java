@@ -59,7 +59,7 @@ public class DropDownPopu {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 popupWindow.setElevation(4);
             }
-            popupWindow.setBackgroundDrawable(CommonUtils.getDrawable(R.color.colorPrimary));
+            popupWindow.setBackgroundDrawable(CommonUtils.getDrawable(R.drawable.shape_grey_border_radiu5));
             adapter = new DropDownAdapter(context, data);
             recyclerview.setLayoutManager(new LinearLayoutManager(context) {
                 @Override

@@ -6,10 +6,14 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.bumptech.glide.request.RequestOptions;
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
 import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
+import com.fivefivelike.mybaselibrary.utils.ToastUtil;
 import com.fivefivelike.mybaselibrary.utils.UiHeplUtils;
+import com.fivefivelike.mybaselibrary.utils.glide.GlideUtils;
+import com.gqfyanshi.base.AppConst;
 import com.gqfyanshi.entity.bean.DocumentBean;
 import com.gqfyanshi.mvp.databinder.DocumentInfoBinder;
 import com.gqfyanshi.mvp.delegate.DocumentInfoDelegate;
@@ -128,11 +132,33 @@ public class DocumentInfoActivity extends BaseDataBindActivity<DocumentInfoDeleg
                         );
                     }
                 });
+
+                viewDelegate.viewHolder.lin_postil.setVisibility(
+                        TextUtils.isEmpty(documentInfoBean.getPostilAddress()) ? View.GONE : View.VISIBLE
+                );
+                GlideUtils.loadImage(AppConst.app2BaseUrl + "/" + documentInfoBean.getPostilAddress(),
+                        viewDelegate.viewHolder.iv_piv, new RequestOptions());
+                viewDelegate.viewHolder.iv_piv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        List<String> data = new ArrayList<>();
+                        data.add(AppConst.app2BaseUrl + "/" + documentInfoBean.getPostilAddress());
+                        UiHeplUtils.showBigImg(
+                                viewDelegate.getActivity(), data, 0
+                        );
+                    }
+                });
+
                 break;
             case 0x124:
                 initToolbar(new ToolbarBuilder().setTitle("文件详情"));
                 viewDelegate.getmToolbarRightImg1().setVisibility(View.GONE);
                 viewDelegate.getmToolbarRightImg2().setVisibility(View.GONE);
+                isEdit = false;
+                viewDelegate.viewHolder.ink.setVisibility(View.GONE);
+                viewDelegate.viewHolder.lin_edit.setVisibility(View.GONE);
+                ToastUtil.show("签批成功");
+                addRequest(binder.document_detailDocumnet(id, "", this));
                 break;
         }
     }

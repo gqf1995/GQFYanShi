@@ -61,6 +61,19 @@ public class NoticeInspectorReceiveAdapter extends CommonAdapter<DocumentBean> {
         tv2.setText(s.getTitle());
         tv3.setText(s.getCreatetime());
 
+        //文章状态 00-发布 01-待审核 02-已删除
+
+        if ("00".equals(s.getStatus())) {
+            tv4.setText("发布");
+        }
+        if ("01".equals(s.getStatus())) {
+            tv4.setText("待审核");
+        }
+        if ("02".equals(s.getStatus())) {
+            tv4.setText("已删除");
+        }
+
+
         tv5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -58,12 +58,24 @@ public class NoticeConferenceRoomReservationAdapter extends CommonAdapter<Docume
         tv6 = holder.getView(R.id.tv6);
         tv7 = holder.getView(R.id.tv7);
 
+        //状态 00-待审核 01-审核通过 02-审核失败
+
         tv1.setText(s.getId());
         tv2.setText(s.getDepartmentName());
         tv3.setText(s.getUsername());
         tv4.setText(s.getPurpose());
         tv5.setText(s.getBegin_time() + "-" + s.getEnd_time());
-        tv6.setText(s.getStatus());
+        if ("00".equals(s.getStatus())) {
+            tv6.setText("待审核");
+        }
+        if ("01".equals(s.getStatus())) {
+            tv6.setText("审核通过");
+        }
+        if ("02".equals(s.getStatus())) {
+            tv6.setText("审核失败");
+        }
+
+
         tv7.setText("详情");
         tv7.setTextColor(CommonUtils.getColor(R.color.mark_color));
         tv7.setOnClickListener(new View.OnClickListener() {

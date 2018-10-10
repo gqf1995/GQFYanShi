@@ -33,6 +33,15 @@ public class DocumentBean {
     String begin_time;
     String end_time;
     String postilTime;
+    String postilAddress;
+
+    public String getPostilAddress() {
+        return postilAddress;
+    }
+
+    public void setPostilAddress(String postilAddress) {
+        this.postilAddress = postilAddress;
+    }
 
     public String getPostilTime() {
         return postilTime;

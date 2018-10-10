@@ -272,7 +272,6 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                             startActivity(new Intent(getActivity(), NoticeGovernmentPublicMsgSendActivity.class));
                         } else if ("/workInfo/govWorkInfoSend".equals(((MainLeftBean) value).getUrl())) {
                             //公开信息发送
-                            // TODO: 2018/9/23  
                             AddDocumentActivity.startAct(viewDelegate.getActivity(),
                                     "32", "");
                         } else if ("/workInfo/govWorkInfoReceive".equals(((MainLeftBean) value).getUrl())) {
@@ -288,8 +287,8 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                         //领导动态
                         else if ("/leader/addIndex".equals(((MainLeftBean) value).getUrl())) {
                             //领导动态
-                            // TODO: 2018/9/23  
-                            startActivity(new Intent(getActivity(), AddDynamicLeadershipActivity.class));
+                            startActivity(new Intent(getActivity(),
+                                    AddDynamicLeadershipActivity.class));
                         }
                         //邮件发送
                         else if ("/email/emailForm".equals(((MainLeftBean) value).getUrl())) {

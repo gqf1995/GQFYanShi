@@ -1,6 +1,7 @@
 package com.gqfyanshi.adapter;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ public class NoticePublicMsgReceiveAdapter extends CommonAdapter<DocumentBean> {
     private TextView tv3;
     private TextView tv4;
     private TextView tv5;
+    private TextView tv6;
 
     DefaultClickLinsener defaultClickLinsener;
 
@@ -53,8 +55,34 @@ public class NoticePublicMsgReceiveAdapter extends CommonAdapter<DocumentBean> {
         tv3 = holder.getView(R.id.tv3);
         tv4 = holder.getView(R.id.tv4);
         tv5 = holder.getView(R.id.tv5);
+        tv6 = holder.getView(R.id.tv6);
 
+        tv1.setText(s.getId());
+        tv2.setText(s.getTitle());
+        tv3.setText(s.getCreatetime());
+        //文章状态 00-发布 01-待审核 02-已删除
 
+        if ("00".equals(s.getStatus())) {
+            tv4.setText("发布");
+        }
+        if ("01".equals(s.getStatus())) {
+            tv4.setText("待审核");
+        }
+        if ("02".equals(s.getStatus())) {
+            tv4.setText("已删除");
+        }
+        tv5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultClickLinsener.onClick(v, position, null);
+            }
+        });
+        tv6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultClickLinsener.onClick(v, position, null);
+            }
+        });
 
     }
 

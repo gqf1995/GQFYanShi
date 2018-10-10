@@ -13,7 +13,7 @@ import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.NoticeOutBoxAdapter;
 import com.gqfyanshi.entity.bean.DocumentBean;
 import com.gqfyanshi.mvp.activity.add.AddEmailActivity;
-import com.gqfyanshi.mvp.activity.file.EmailInfoActivity;
+import com.gqfyanshi.mvp.activity.file.DocumentInfoActivity;
 import com.gqfyanshi.mvp.databinder.NoticeInboxBinder;
 import com.gqfyanshi.mvp.delegate.NoticeInboxDelegate;
 
@@ -80,7 +80,7 @@ public class NoticeOutboxActivity extends BaseDataBindActivity<NoticeInboxDelega
                 public void onClick(View view, int position, Object item) {
                     if (view.getId() == R.id.tv6) {
                         //详情
-                        EmailInfoActivity.startAct(viewDelegate.getActivity(),
+                        DocumentInfoActivity.startAct(viewDelegate.getActivity(),
                                 adapter.getDatas().get(position).getId());
                     } else {
                         //删除

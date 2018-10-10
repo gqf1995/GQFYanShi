@@ -91,9 +91,28 @@ public class SelectPeopleLayout extends FrameLayout {
         et_attributes1.setText(selectPeople.toString());
     }
 
+    StringBuffer selectId;
+
+    public String getSelectId() {
+        selectId = new StringBuffer();
+        for (int i = 0; i < treeBean.size(); i++) {
+            getSelect(treeBean.get(i));
+        }
+        return selectId.toString();
+    }
+
+    private void getId(TreeBean treeBean) {
+        if (treeBean.isSelect && ListUtils.isEmpty(treeBean.getChildNodes())) {
+            selectId.append(treeBean.getId()).append(",");
+        }
+        for (int i = 0; i < treeBean.getChildNodes().size(); i++) {
+            getSelect(treeBean.getChildNodes().get(i));
+        }
+    }
+
     private void getSelect(TreeBean treeBean) {
         if (treeBean.isSelect && ListUtils.isEmpty(treeBean.getChildNodes())) {
-            selectPeople.append(treeBean.getText());
+            selectPeople.append(treeBean.getText()).append(",");
         }
         for (int i = 0; i < treeBean.getChildNodes().size(); i++) {
             getSelect(treeBean.getChildNodes().get(i));

@@ -56,6 +56,7 @@ public class DocumentInfoBinder extends BaseDataBind<DocumentInfoDelegate> {
                 .setRequestMode(HttpRequest.RequestMode.POST)
                 .setParameterMode(HttpRequest.ParameterMode.KeyValue)
                 .setRequestObj(baseMap)
+                .setFileMap(fileMap)
                 .setRequestCallback(requestCallback)
                 .build()
                 .RxSendRequest();

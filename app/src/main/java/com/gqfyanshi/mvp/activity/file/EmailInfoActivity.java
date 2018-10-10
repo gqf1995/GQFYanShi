@@ -46,7 +46,7 @@ public class EmailInfoActivity extends BaseDataBindActivity<DocumentInfoDelegate
     private void getIntentData() {
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
-        addRequest(binder.email_emailInfo(id, "", this));
+        addRequest(binder.document_detailDocumnet(id, "", this));
     }
 
     DocumentBean documentInfoBean;
