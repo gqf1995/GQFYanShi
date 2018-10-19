@@ -156,4 +156,17 @@ public class HttpUrl {
      * 签批图片上传
      */
     public String document_postil = AppConst.app2BaseUrl + "/document/postil";
+    /**
+     * 请假
+     */
+    public String leave_saveLeave = AppConst.app2BaseUrl + "/leave/saveLeave";
+    /**
+     * 请假签批
+     */
+    public String leave_postil = AppConst.app2BaseUrl + "/leave/postil";
+    /**
+     * 请假详情
+     */
+    public String leave_detailLeave = AppConst.app2BaseUrl + "/leave/detailLeave";
+
 }

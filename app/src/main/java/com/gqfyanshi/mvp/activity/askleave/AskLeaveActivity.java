@@ -46,8 +46,44 @@ public class AskLeaveActivity extends BaseDataBindActivity<AskLeaveDelegate, Ask
                     ToastUtil.show("请输入请假内容");
                     return;
                 }
-
-
+                if (TextUtils.isEmpty(viewDelegate.viewHolder.et_attributes4.getText().toString())) {
+                    ToastUtil.show("请输入外出人姓名");
+                    return;
+                }
+                if (TextUtils.isEmpty(viewDelegate.viewHolder.et_attributes5.getText().toString())) {
+                    ToastUtil.show("请输入外出人职务");
+                    return;
+                }
+                if (TextUtils.isEmpty(viewDelegate.viewHolder.et_attributes6.getText().toString())) {
+                    ToastUtil.show("请输入外出人电话");
+                    return;
+                }
+                if (TextUtils.isEmpty(viewDelegate.viewHolder.et_attributes7.getText().toString())) {
+                    ToastUtil.show("请输入日常工作领导姓名");
+                    return;
+                }
+                if (TextUtils.isEmpty(viewDelegate.viewHolder.et_attributes8.getText().toString())) {
+                    ToastUtil.show("请输入日常工作领导职务");
+                    return;
+                }
+                if (TextUtils.isEmpty(viewDelegate.viewHolder.et_attributes9.getText().toString())) {
+                    ToastUtil.show("请输入日常工作领导电话");
+                    return;
+                }
+                addRequest(binder.leave_saveLeave(
+                        viewDelegate.viewHolder.et_attributes3.getText().toString(),
+                        viewDelegate.viewHolder.selectTimeLayout1.getSelectTime().toString(),
+                        viewDelegate.viewHolder.selectTimeLayout2.getSelectTime().toString(),
+                        viewDelegate.viewHolder.et_attributes4.getText().toString(),
+                        viewDelegate.viewHolder.et_attributes5.getText().toString(),
+                        viewDelegate.viewHolder.et_attributes6.getText().toString(),
+                        viewDelegate.viewHolder.et_attributes7.getText().toString(),
+                        viewDelegate.viewHolder.et_attributes8.getText().toString(),
+                        viewDelegate.viewHolder.et_attributes9.getText().toString(),
+                        viewDelegate.viewHolder.et_input1.getText().toString(),
+                        "",
+                        "10",
+                        AskLeaveActivity.this));
             }
         });
     }
