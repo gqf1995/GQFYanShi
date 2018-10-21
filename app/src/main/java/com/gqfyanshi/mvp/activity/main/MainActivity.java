@@ -36,6 +36,7 @@ public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder>
         super.bindEvenListener();
         initToolbar(new ToolbarBuilder().setTitle("偃师市党政办公平台")
                 .setmRightImg1(CommonUtils.getString(R.string.ic_tixing)));
+        // TODO: 2018/10/20  带签批文件
         viewDelegate.getmToolbarBack().setText(CommonUtils.getString(R.string.ic_daohang));
         viewDelegate.getmToolbarBackLin().setOnClickListener(new View.OnClickListener() {
             @Override

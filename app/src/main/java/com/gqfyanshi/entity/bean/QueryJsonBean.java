@@ -33,6 +33,23 @@ public class QueryJsonBean {
     private String endTime;
     private String status;
     private String sDepartment;
+    private String userId;
+
+    public String getsDepartment() {
+        return sDepartment;
+    }
+
+    public void setsDepartment(String sDepartment) {
+        this.sDepartment = sDepartment;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getModelId() {
         return modelId;

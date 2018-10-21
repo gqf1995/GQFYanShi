@@ -1,6 +1,7 @@
 package com.gqfyanshi.mvp.delegate;
 
 import android.graphics.Color;
+import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
@@ -60,6 +61,8 @@ public class DocumentInfoDelegate extends BaseDelegate {
         public TextView tv_content;
         public LinearLayout lin_content;
         public LinearLayout lin_edit;
+        public LinearLayout lin_nestedScrollView;
+        public NestedScrollView nestedScrollView;
         public PennableLayout ink;
         public FrameLayout fl_root;
 
@@ -76,6 +79,8 @@ public class DocumentInfoDelegate extends BaseDelegate {
             this.tv_content = (TextView) rootView.findViewById(R.id.tv_content);
             this.lin_content = (LinearLayout) rootView.findViewById(R.id.lin_content);
             this.lin_edit = (LinearLayout) rootView.findViewById(R.id.lin_edit);
+            this.lin_nestedScrollView = (LinearLayout) rootView.findViewById(R.id.lin_nestedScrollView);
+            this.nestedScrollView = (NestedScrollView) rootView.findViewById(R.id.nestedScrollView);
             this.ink = (PennableLayout) rootView.findViewById(R.id.ink);
             this.fl_root = (FrameLayout) rootView.findViewById(R.id.fl_root);
         }

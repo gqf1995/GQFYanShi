@@ -5,9 +5,15 @@ import android.view.View;
 
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
 import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
+import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ToastUtil;
+import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
+import com.gqfyanshi.entity.bean.LeaveTypeBean;
 import com.gqfyanshi.mvp.databinder.AskLeaveBinder;
 import com.gqfyanshi.mvp.delegate.AskLeaveDelegate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AskLeaveActivity extends BaseDataBindActivity<AskLeaveDelegate, AskLeaveBinder> {
 
@@ -26,6 +32,7 @@ public class AskLeaveActivity extends BaseDataBindActivity<AskLeaveDelegate, Ask
     protected void bindEvenListener() {
         super.bindEvenListener();
         initToolbar(new ToolbarBuilder().setTitle("请假"));
+        addRequest(binder.leave_getLeaveType(this));
         viewDelegate.viewHolder.recycler_view.setVisibility(View.GONE);
         viewDelegate.viewHolder.tv_commit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,15 +90,32 @@ public class AskLeaveActivity extends BaseDataBindActivity<AskLeaveDelegate, Ask
                         viewDelegate.viewHolder.et_input1.getText().toString(),
                         "",
                         "10",
+                        list.get(selectTypePosition).getDict_value(),
                         AskLeaveActivity.this));
             }
         });
     }
 
+    List<LeaveTypeBean> list;
+    int selectTypePosition = 0;
 
     @Override
     protected void onServiceSuccess(String data, String info, int status, int requestCode) {
         switch (requestCode) {
+            case 0x125:
+                list = GsonUtil.getInstance().toList(data, LeaveTypeBean.class);
+                List<String> datas = new ArrayList<>();
+                for (int i = 0; i < list.size(); i++) {
+                    datas.add(list.get(i).getRemark());
+                }
+                viewDelegate.viewHolder.selectAttrLayout1.setDatas(datas);
+                viewDelegate.viewHolder.selectAttrLayout1.setDefaultClickLinsener(new DefaultClickLinsener() {
+                    @Override
+                    public void onClick(View view, int position, Object item) {
+                        selectTypePosition = position;
+                    }
+                });
+                break;
         }
     }
 

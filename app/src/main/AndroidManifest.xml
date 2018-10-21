@@ -106,6 +106,8 @@
         <activity android:name=".mvp.activity.notice.city.NoticeCityPublicMsgReceiveActivity"/>
         <activity android:name=".mvp.activity.notice.city.NoticeCityMgsStatisticalActivity"/>
         <activity android:name=".mvp.activity.notice.document.NoticeReceiveOfficialDocumentActivity"/>
+        <activity android:name=".mvp.activity.notice.askleave.NoticeMyAskLeaveActivity"/>
+        <activity android:name=".mvp.activity.notice.askleave.NoticeAskLeaveActivity"/>
         <activity android:name=".mvp.activity.file.TBSActivity"/>
         <activity
             android:name=".mvp.activity.main.Scrawl"
@@ -119,6 +121,7 @@
         <activity android:name=".mvp.activity.add.AddAttrDocumentActivity"/>
         <activity android:name=".mvp.activity.add.AddEmailActivity"/>
         <activity android:name=".mvp.activity.askleave.AskLeaveActivity"/>
+        <activity android:name=".mvp.activity.askleave.AskLeaveResultActivity"/>
     </application>
 
 </manifest>

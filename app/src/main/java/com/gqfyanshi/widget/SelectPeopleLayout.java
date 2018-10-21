@@ -82,7 +82,11 @@ public class SelectPeopleLayout extends FrameLayout {
         });
         this.addView(rootView);
     }
-
+    public void setShowEdit(String text) {
+        et_attributes1.setEnabled(false);
+        et_attributes1.setText(text);
+        lin_attributes1.setOnClickListener(null);
+    }
     private void showSelect() {
         selectPeople = new StringBuffer();
         for (int i = 0; i < treeBean.size(); i++) {

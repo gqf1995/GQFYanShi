@@ -71,4 +71,10 @@ public class SelectTimeLayout extends FrameLayout {
         this.selectTime = selectTime;
         et_time1.setText(selectTime);
     }
+
+    public void setShowTime(String selectTime) {
+        et_time1.setText(selectTime);
+        et_time1.setEnabled(false);
+        lin_select_time1.setOnClickListener(null);
+    }
 }

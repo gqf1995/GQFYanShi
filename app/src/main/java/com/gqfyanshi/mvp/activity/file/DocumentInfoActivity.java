@@ -3,8 +3,10 @@ package com.gqfyanshi.mvp.activity.file;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ScrollView;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
@@ -43,7 +45,7 @@ public class DocumentInfoActivity extends BaseDataBindActivity<DocumentInfoDeleg
         initToolbar(new ToolbarBuilder().setTitle("文件详情")
                 .setmRightImg1("签批"));
     }
-
+    Handler mHandler = new Handler();
     @Override
     protected void clickRightIv() {
         super.clickRightIv();
@@ -65,6 +67,17 @@ public class DocumentInfoActivity extends BaseDataBindActivity<DocumentInfoDeleg
             viewDelegate.viewHolder.lin_edit.setVisibility(View.VISIBLE);
             initToolbar(new ToolbarBuilder().setTitle("文件详情")
                     .setmRightImg1("完成").setmRightImg2("取消"));
+            viewDelegate.viewHolder.nestedScrollView.fullScroll(ScrollView.FOCUS_DOWN);
+            mHandler.post(new Runnable() {
+                public void run() {
+                    int offset = viewDelegate.viewHolder.lin_nestedScrollView.getMeasuredHeight()
+                            - viewDelegate.viewHolder.nestedScrollView.getHeight();
+                    if (offset < 0) {
+                        offset = 0;
+                    }
+                    viewDelegate.viewHolder.nestedScrollView.scrollTo(0, offset);
+                }
+            });
         }
     }
 

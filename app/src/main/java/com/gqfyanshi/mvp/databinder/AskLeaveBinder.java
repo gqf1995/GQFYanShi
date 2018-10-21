@@ -18,7 +18,7 @@ public class AskLeaveBinder extends BaseDataBind<AskLeaveDelegate> {
         super(viewDelegate);
     }
 
-    public Disposable document_postil(
+    public Disposable leave_postil(
             String id,
             String img,
             RequestCallback requestCallback) {
@@ -28,7 +28,7 @@ public class AskLeaveBinder extends BaseDataBind<AskLeaveDelegate> {
         fileMap.put("img", new File(img));
         return new HttpRequest.Builder()
                 .setRequestCode(0x124)
-                .setRequestUrl(HttpUrl.getIntance().document_postil)
+                .setRequestUrl(HttpUrl.getIntance().leave_postil)
                 .setShowDialog(true)
                 .setDialog(viewDelegate.getNetConnectDialog())
                 .setRequestName("签批")
@@ -41,6 +41,40 @@ public class AskLeaveBinder extends BaseDataBind<AskLeaveDelegate> {
                 .RxSendRequest();
     }
 
+    public Disposable leave_detailLeave(
+            String id,
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        baseMap.put("id", id);
+        return new HttpRequest.Builder()
+                .setRequestCode(0x123)
+                .setRequestUrl(HttpUrl.getIntance().leave_detailLeave)
+                .setShowDialog(true)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("请假详情")
+                .setRequestMode(HttpRequest.RequestMode.POST)
+                .setParameterMode(HttpRequest.ParameterMode.Json)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
+    public Disposable leave_getLeaveType(
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        return new HttpRequest.Builder()
+                .setRequestCode(0x125)
+                .setRequestUrl(HttpUrl.getIntance().leave_getLeaveType)
+                .setShowDialog(true)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("请假类型")
+                .setRequestMode(HttpRequest.RequestMode.GET)
+                .setParameterMode(HttpRequest.ParameterMode.KeyValue)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
     /**
      * {
      * "department":"单位名称",
@@ -69,6 +103,7 @@ public class AskLeaveBinder extends BaseDataBind<AskLeaveDelegate> {
             String reason,
             String remark,
             String sendeeGroupId,
+            String type,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
         baseMap.put("id", department);
@@ -83,6 +118,7 @@ public class AskLeaveBinder extends BaseDataBind<AskLeaveDelegate> {
         baseMap.put("reason", reason);
         baseMap.put("remark", remark);
         baseMap.put("sendeeGroupId", sendeeGroupId);
+        baseMap.put("type", type);
         return new HttpRequest.Builder()
                 .setRequestCode(0x124)
                 .setRequestUrl(HttpUrl.getIntance().leave_saveLeave)

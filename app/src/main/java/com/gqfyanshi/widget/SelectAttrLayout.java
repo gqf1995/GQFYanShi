@@ -87,4 +87,11 @@ public class SelectAttrLayout extends FrameLayout {
         });
         this.addView(rootView);
     }
+
+    public void setShowEdit(String text) {
+        et_attributes1.setEnabled(false);
+        et_attributes1.setText(text);
+        lin_attributes1.setOnClickListener(null);
+    }
+
 }

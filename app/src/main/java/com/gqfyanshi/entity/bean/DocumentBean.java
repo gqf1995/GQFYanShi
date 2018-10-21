@@ -35,78 +35,6 @@ public class DocumentBean {
     String postilTime;
     String postilAddress;
 
-    public String getPostilAddress() {
-        return postilAddress;
-    }
-
-    public void setPostilAddress(String postilAddress) {
-        this.postilAddress = postilAddress;
-    }
-
-    public String getPostilTime() {
-        return postilTime;
-    }
-
-    public void setPostilTime(String postilTime) {
-        this.postilTime = postilTime;
-    }
-
-    public String getBegin_time() {
-        return begin_time;
-    }
-
-    public void setBegin_time(String begin_time) {
-        this.begin_time = begin_time;
-    }
-
-    public String getEnd_time() {
-        return end_time;
-    }
-
-    public void setEnd_time(String end_time) {
-        this.end_time = end_time;
-    }
-
-    public String getPurpose() {
-        return purpose;
-    }
-
-    public void setPurpose(String purpose) {
-        this.purpose = purpose;
-    }
-
-    public String getDepartmentName() {
-        return departmentName;
-    }
-
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
-    }
-
-    public String getIsRead() {
-        return isRead;
-    }
-
-    public void setIsRead(String isRead) {
-        this.isRead = isRead;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getId() {
         return id;
     }
@@ -265,5 +193,77 @@ public class DocumentBean {
 
     public void setDepartment_id(String department_id) {
         this.department_id = department_id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(String isRead) {
+        this.isRead = isRead;
+    }
+
+    public String getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
+    public String getBegin_time() {
+        return begin_time;
+    }
+
+    public void setBegin_time(String begin_time) {
+        this.begin_time = begin_time;
+    }
+
+    public String getEnd_time() {
+        return end_time;
+    }
+
+    public void setEnd_time(String end_time) {
+        this.end_time = end_time;
+    }
+
+    public String getPostilTime() {
+        return postilTime;
+    }
+
+    public void setPostilTime(String postilTime) {
+        this.postilTime = postilTime;
+    }
+
+    public String getPostilAddress() {
+        return postilAddress;
+    }
+
+    public void setPostilAddress(String postilAddress) {
+        this.postilAddress = postilAddress;
     }
 }

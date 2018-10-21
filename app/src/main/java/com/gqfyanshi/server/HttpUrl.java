@@ -168,5 +168,12 @@ public class HttpUrl {
      * 请假详情
      */
     public String leave_detailLeave = AppConst.app2BaseUrl + "/leave/detailLeave";
-
+    /**
+     * 请假类型
+     */
+    public String leave_getLeaveType = AppConst.app2BaseUrl + "/leave/getLeaveType";
+    /**
+     * 请假列表
+     */
+    public String leave_getLeaveList = AppConst.app2BaseUrl + "/leave/getLeaveList";
 }

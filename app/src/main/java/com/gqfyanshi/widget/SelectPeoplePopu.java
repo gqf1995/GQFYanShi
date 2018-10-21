@@ -139,27 +139,28 @@ public class SelectPeoplePopu extends BasePopupWindow {
             tvValue.setText(value.text);
 
             final ImageView iconView = (ImageView) view.findViewById(R.id.icon);
-            iconView.setWillNotDraw(!value.isSelect);
-
+            iconView.setImageResource(value.isSelect ? R.drawable.weixuanzhongkaobei : R.drawable.weixuanzhong2);
 
             iconView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (selectType == 0) {
-                        value.isSelect = !value.isSelect;
-                        v.setWillNotDraw(!value.isSelect);
-                        select(node, value.isSelect);
-                        selectFather(node, value.isSelect);
-                        if (defaultClickLinsener != null) {
-                            defaultClickLinsener.onClick(v, 0, value);
-                        }
-                    } else if (selectType == 1) {
-                        if (ListUtils.isEmpty(value.getChildNodes())) {
+                    if (v instanceof ImageView) {
+                        if (selectType == 0) {
                             value.isSelect = !value.isSelect;
-                            v.setWillNotDraw(!value.isSelect);
+                            ((ImageView) v).setImageResource(value.isSelect ? R.drawable.weixuanzhongkaobei : R.drawable.weixuanzhong2);
                             select(node, value.isSelect);
+                            selectFather(node, value.isSelect);
                             if (defaultClickLinsener != null) {
                                 defaultClickLinsener.onClick(v, 0, value);
+                            }
+                        } else if (selectType == 1) {
+                            if (ListUtils.isEmpty(value.getChildNodes())) {
+                                value.isSelect = !value.isSelect;
+                                ((ImageView) v).setImageResource(value.isSelect ? R.drawable.weixuanzhongkaobei : R.drawable.weixuanzhong2);
+                                select(node, value.isSelect);
+                                if (defaultClickLinsener != null) {
+                                    defaultClickLinsener.onClick(v, 0, value);
+                                }
                             }
                         }
                     }
@@ -191,14 +192,16 @@ public class SelectPeoplePopu extends BasePopupWindow {
                 Object value = parent.getValue();
                 if (value instanceof TreeBean) {
                     ((TreeBean) value).isSelect = isSelectAll;
-                    parent.getViewHolder().getView().findViewById(R.id.icon).setWillNotDraw(!((TreeBean) value).isSelect);
+                    ((ImageView)parent.getViewHolder().getView().findViewById(R.id.icon))
+                            .setImageResource(((TreeBean) value).isSelect ? R.drawable.weixuanzhongkaobei : R.drawable.weixuanzhong2);
                     selectFather(parent, isSelectAll);
                 }
             } else {
                 Object value = node.getValue();
                 if (value instanceof TreeBean) {
                     ((TreeBean) value).isSelect = isSelect;
-                    node.getViewHolder().getView().findViewById(R.id.icon).setWillNotDraw(!((TreeBean) value).isSelect);
+                    ((ImageView)node.getViewHolder().getView().findViewById(R.id.icon))
+                            .setImageResource(((TreeBean) value).isSelect ? R.drawable.weixuanzhongkaobei : R.drawable.weixuanzhong2);
                 }
             }
         }
@@ -210,8 +213,8 @@ public class SelectPeoplePopu extends BasePopupWindow {
                     Object value = node.getChildren().get(i).getValue();
                     if (value instanceof TreeBean) {
                         ((TreeBean) value).isSelect = isSelect;
-                        node.getChildren().get(i).getViewHolder().getView().findViewById(R.id.icon)
-                                .setWillNotDraw(!((TreeBean) value).isSelect);
+                        ((ImageView)node.getChildren().get(i).getViewHolder().getView().findViewById(R.id.icon))
+                        .setImageResource(((TreeBean) value).isSelect ? R.drawable.weixuanzhongkaobei : R.drawable.weixuanzhong2);
                     }
                     select(node.getChildren().get(i), isSelect);
                 }

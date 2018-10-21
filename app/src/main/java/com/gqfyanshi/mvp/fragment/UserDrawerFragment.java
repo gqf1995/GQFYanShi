@@ -19,6 +19,7 @@ import com.gqfyanshi.mvp.activity.add.AddInspectorNoticeActivity;
 import com.gqfyanshi.mvp.activity.add.AddPublicInformationActivity;
 import com.gqfyanshi.mvp.activity.add.AddSendMailActivity;
 import com.gqfyanshi.mvp.activity.askleave.AskForLeaveAActivity;
+import com.gqfyanshi.mvp.activity.askleave.AskLeaveActivity;
 import com.gqfyanshi.mvp.activity.file.FileCupboardActivity;
 import com.gqfyanshi.mvp.activity.main.MainLinsener;
 import com.gqfyanshi.mvp.activity.notice.NoticeAddressBookActivity;
@@ -30,6 +31,8 @@ import com.gqfyanshi.mvp.activity.notice.NoticeReportActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeWorkMsgActivity;
 import com.gqfyanshi.mvp.activity.notice.announcement.NoticeDefaultActivity;
 import com.gqfyanshi.mvp.activity.notice.announcement.NoticeMeetingActivity;
+import com.gqfyanshi.mvp.activity.notice.askleave.NoticeAskLeaveActivity;
+import com.gqfyanshi.mvp.activity.notice.askleave.NoticeMyAskLeaveActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticeCityInspectorReceiveActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticeCityInspectorSendActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticeCityManuscriptsReceiveActivity;
@@ -346,6 +349,18 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                         //信息公告
                         else if ("/infoNotice".equals(((MainLeftBean) value).getUrl())) {
                             //信息公告发送
+                        }
+
+                        //请假
+                        else if (63 == (((MainLeftBean) value).getId())) {
+                            //发起请假
+                            startActivity(new Intent(getActivity(), AskLeaveActivity.class));
+                        } else if (64 == (((MainLeftBean) value).getId())) {
+                            //我的请假
+                            startActivity(new Intent(getActivity(), NoticeMyAskLeaveActivity.class));
+                        } else if (65 == (((MainLeftBean) value).getId())) {
+                            //我的审批
+                            startActivity(new Intent(getActivity(), NoticeAskLeaveActivity.class));
                         }
                     }
                 }
