@@ -38,6 +38,7 @@ public class AskleaveBean extends DocumentBean {
     private String startTime;
     private String endTime;
     private String department;
+
     /**
      * id : 2
      * postils : [{"contentId":2,"name":"人大办","id":10,"postilAddress":"upload/leave/10.sql"},{"contentId":2,"name":"人大办","id":10,"postilAddress":"upload/leave/10.sql"}]

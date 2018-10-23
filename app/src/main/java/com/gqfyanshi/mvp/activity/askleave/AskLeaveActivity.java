@@ -9,6 +9,7 @@ import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ToastUtil;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.entity.bean.LeaveTypeBean;
+import com.gqfyanshi.entity.bean.TreeBean;
 import com.gqfyanshi.mvp.databinder.AskLeaveBinder;
 import com.gqfyanshi.mvp.delegate.AskLeaveDelegate;
 
@@ -33,6 +34,7 @@ public class AskLeaveActivity extends BaseDataBindActivity<AskLeaveDelegate, Ask
         super.bindEvenListener();
         initToolbar(new ToolbarBuilder().setTitle("请假"));
         addRequest(binder.leave_getLeaveType(this));
+        addRequest(binder.leave_getUserTree(this));
         viewDelegate.viewHolder.recycler_view.setVisibility(View.GONE);
         viewDelegate.viewHolder.tv_commit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +91,7 @@ public class AskLeaveActivity extends BaseDataBindActivity<AskLeaveDelegate, Ask
                         viewDelegate.viewHolder.et_attributes9.getText().toString(),
                         viewDelegate.viewHolder.et_input1.getText().toString(),
                         "",
-                        "10",
+                        viewDelegate.viewHolder.selectPeopleLayout.getSelectId(),
                         list.get(selectTypePosition).getDict_value(),
                         AskLeaveActivity.this));
             }
@@ -115,6 +117,10 @@ public class AskLeaveActivity extends BaseDataBindActivity<AskLeaveDelegate, Ask
                         selectTypePosition = position;
                     }
                 });
+                break;
+            case 0x130:
+                List<TreeBean> treeBean = GsonUtil.getInstance().toList(data, TreeBean.class);
+                viewDelegate.viewHolder.selectPeopleLayout.setTreeBean(treeBean);
                 break;
         }
     }

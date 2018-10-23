@@ -91,24 +91,24 @@ public class SelectPeoplePopu extends BasePopupWindow {
 
     //递归获取所有书签节点
     public void getTree(List<TreeBean> bookmarks, TreeNode parent) {
-        for (int i = 0, n = bookmarks.size(); i < n; ++i) {
-            TreeNode child = new TreeNode(bookmarks.get(i))
-                    .setViewHolder(new BookMarkTreeItemHolder(context)
-                            .setSelectType(selectType)
-                            .setDefaultClickLinsener(new DefaultClickLinsener() {
-                                @Override
-                                public void onClick(View view, int position, Object item) {
-                                    if (defaultClickLinsener != null) {
-                                        defaultClickLinsener.onClick(view, position, item);
+            for (int i = 0, n = bookmarks.size(); i < n; ++i) {
+                TreeNode child = new TreeNode(bookmarks.get(i))
+                        .setViewHolder(new BookMarkTreeItemHolder(context)
+                                .setSelectType(selectType)
+                                .setDefaultClickLinsener(new DefaultClickLinsener() {
+                                    @Override
+                                    public void onClick(View view, int position, Object item) {
+                                        if (defaultClickLinsener != null) {
+                                            defaultClickLinsener.onClick(view, position, item);
+                                        }
                                     }
-                                }
-                            }));
-            if (!ListUtils.isEmpty(bookmarks.get(i).getChildNodes())) {
-                getTree(bookmarks.get(i).getChildNodes(), child);
+                                }));
+                if (!ListUtils.isEmpty(bookmarks.get(i).getChildNodes())) {
+                    getTree(bookmarks.get(i).getChildNodes(), child);
+                }
+                parent.addChild(child);
             }
-            parent.addChild(child);
-        }
-    }
+     }
 
     public static class BookMarkTreeItemHolder extends TreeNode.BaseNodeViewHolder<TreeBean> {
         private TextView tvValue;
@@ -192,7 +192,7 @@ public class SelectPeoplePopu extends BasePopupWindow {
                 Object value = parent.getValue();
                 if (value instanceof TreeBean) {
                     ((TreeBean) value).isSelect = isSelectAll;
-                    ((ImageView)parent.getViewHolder().getView().findViewById(R.id.icon))
+                    ((ImageView) parent.getViewHolder().getView().findViewById(R.id.icon))
                             .setImageResource(((TreeBean) value).isSelect ? R.drawable.weixuanzhongkaobei : R.drawable.weixuanzhong2);
                     selectFather(parent, isSelectAll);
                 }
@@ -200,7 +200,7 @@ public class SelectPeoplePopu extends BasePopupWindow {
                 Object value = node.getValue();
                 if (value instanceof TreeBean) {
                     ((TreeBean) value).isSelect = isSelect;
-                    ((ImageView)node.getViewHolder().getView().findViewById(R.id.icon))
+                    ((ImageView) node.getViewHolder().getView().findViewById(R.id.icon))
                             .setImageResource(((TreeBean) value).isSelect ? R.drawable.weixuanzhongkaobei : R.drawable.weixuanzhong2);
                 }
             }
@@ -213,8 +213,8 @@ public class SelectPeoplePopu extends BasePopupWindow {
                     Object value = node.getChildren().get(i).getValue();
                     if (value instanceof TreeBean) {
                         ((TreeBean) value).isSelect = isSelect;
-                        ((ImageView)node.getChildren().get(i).getViewHolder().getView().findViewById(R.id.icon))
-                        .setImageResource(((TreeBean) value).isSelect ? R.drawable.weixuanzhongkaobei : R.drawable.weixuanzhong2);
+                        ((ImageView) node.getChildren().get(i).getViewHolder().getView().findViewById(R.id.icon))
+                                .setImageResource(((TreeBean) value).isSelect ? R.drawable.weixuanzhongkaobei : R.drawable.weixuanzhong2);
                     }
                     select(node.getChildren().get(i), isSelect);
                 }

@@ -350,7 +350,6 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                         else if ("/infoNotice".equals(((MainLeftBean) value).getUrl())) {
                             //信息公告发送
                         }
-
                         //请假
                         else if (63 == (((MainLeftBean) value).getId())) {
                             //发起请假

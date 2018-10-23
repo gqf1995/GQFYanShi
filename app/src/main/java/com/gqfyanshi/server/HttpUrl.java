@@ -153,6 +153,10 @@ public class HttpUrl {
      */
     public String leader_getModelTree = AppConst.app2BaseUrl + "/leader/getModelTree";
     /**
+     * 获取部门人员树型对象
+     */
+    public String leave_getUserTree = AppConst.app2BaseUrl + "/leave/getUserTree";
+    /**
      * 签批图片上传
      */
     public String document_postil = AppConst.app2BaseUrl + "/document/postil";

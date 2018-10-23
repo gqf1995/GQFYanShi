@@ -82,11 +82,13 @@ public class SelectPeopleLayout extends FrameLayout {
         });
         this.addView(rootView);
     }
+
     public void setShowEdit(String text) {
         et_attributes1.setEnabled(false);
         et_attributes1.setText(text);
         lin_attributes1.setOnClickListener(null);
     }
+
     private void showSelect() {
         selectPeople = new StringBuffer();
         for (int i = 0; i < treeBean.size(); i++) {
@@ -100,7 +102,7 @@ public class SelectPeopleLayout extends FrameLayout {
     public String getSelectId() {
         selectId = new StringBuffer();
         for (int i = 0; i < treeBean.size(); i++) {
-            getSelect(treeBean.get(i));
+            getId(treeBean.get(i));
         }
         return selectId.toString();
     }
@@ -110,9 +112,10 @@ public class SelectPeopleLayout extends FrameLayout {
             selectId.append(treeBean.getId()).append(",");
         }
         for (int i = 0; i < treeBean.getChildNodes().size(); i++) {
-            getSelect(treeBean.getChildNodes().get(i));
+            getId(treeBean.getChildNodes().get(i));
         }
     }
+
 
     private void getSelect(TreeBean treeBean) {
         if (treeBean.isSelect && ListUtils.isEmpty(treeBean.getChildNodes())) {

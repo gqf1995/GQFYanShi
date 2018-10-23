@@ -40,7 +40,22 @@ public class AskLeaveBinder extends BaseDataBind<AskLeaveDelegate> {
                 .build()
                 .RxSendRequest();
     }
-
+    public Disposable leave_getUserTree(
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        return new HttpRequest.Builder()
+                .setRequestCode(0x130)
+                .setRequestUrl(HttpUrl.getIntance().leave_getUserTree)
+                .setShowDialog(false)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("获取部门人员树型对象")
+                .setRequestMode(HttpRequest.RequestMode.GET)
+                .setParameterMode(HttpRequest.ParameterMode.KeyValue)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
     public Disposable leave_detailLeave(
             String id,
             RequestCallback requestCallback) {
@@ -65,7 +80,7 @@ public class AskLeaveBinder extends BaseDataBind<AskLeaveDelegate> {
         return new HttpRequest.Builder()
                 .setRequestCode(0x125)
                 .setRequestUrl(HttpUrl.getIntance().leave_getLeaveType)
-                .setShowDialog(true)
+                .setShowDialog(false)
                 .setDialog(viewDelegate.getNetConnectDialog())
                 .setRequestName("请假类型")
                 .setRequestMode(HttpRequest.RequestMode.GET)
@@ -106,7 +121,7 @@ public class AskLeaveBinder extends BaseDataBind<AskLeaveDelegate> {
             String type,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
-        baseMap.put("id", department);
+        baseMap.put("department", department);
         baseMap.put("startTime", startTime);
         baseMap.put("endTime", endTime);
         baseMap.put("outLName", outLName);

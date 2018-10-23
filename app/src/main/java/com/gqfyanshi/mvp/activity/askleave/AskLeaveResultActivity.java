@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.blankj.utilcode.util.ObjectUtils;
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
 import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
@@ -17,6 +18,7 @@ import com.fivefivelike.mybaselibrary.utils.UiHeplUtils;
 import com.gqfyanshi.adapter.ShowPngAdapter;
 import com.gqfyanshi.base.AppConst;
 import com.gqfyanshi.entity.bean.AskleaveBean;
+import com.gqfyanshi.entity.bean.LeaveTypeBean;
 import com.gqfyanshi.entity.bean.UserLoginBean;
 import com.gqfyanshi.mvp.databinder.AskLeaveBinder;
 import com.gqfyanshi.mvp.delegate.AskLeaveDelegate;
@@ -140,7 +142,8 @@ public class AskLeaveResultActivity extends BaseDataBindActivity<AskLeaveDelegat
         switch (requestCode) {
             case 0x123:
                 documentInfoBean = GsonUtil.getInstance().toObj(data, "doc", AskleaveBean.class);
-                viewDelegate.viewHolder.et_attributes3.setText(documentInfoBean.getDepartmentName() + "");
+                addRequest(binder.leave_getLeaveType(this));
+                viewDelegate.viewHolder.et_attributes3.setText(documentInfoBean.getDepartment() + "");
                 viewDelegate.viewHolder.et_attributes4.setText(documentInfoBean.getOutLName());
                 viewDelegate.viewHolder.et_attributes5.setText(documentInfoBean.getOutLPosition());
                 viewDelegate.viewHolder.et_attributes6.setText(documentInfoBean.getOutLPhoneNum());
@@ -200,6 +203,18 @@ public class AskLeaveResultActivity extends BaseDataBindActivity<AskLeaveDelegat
                 viewDelegate.viewHolder.lin_edit.setVisibility(View.GONE);
                 ToastUtil.show("签批成功");
                 addRequest(binder.leave_detailLeave(id, this));
+                break;
+            case 0x125:
+                List<LeaveTypeBean> list = GsonUtil.getInstance().toList(data, LeaveTypeBean.class);
+                if (!ListUtils.isEmpty(list)) {
+                    for (int i = 0; i < list.size(); i++) {
+                        if (ObjectUtils.equals(list.get(i).getDict_value(),
+                                documentInfoBean.getType())) {
+                            viewDelegate.viewHolder.selectAttrLayout1.setShowEdit(
+                                    list.get(i).getRemark());
+                        }
+                    }
+                }
                 break;
         }
     }
