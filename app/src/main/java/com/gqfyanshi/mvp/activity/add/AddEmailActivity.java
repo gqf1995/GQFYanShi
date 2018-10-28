@@ -77,7 +77,7 @@ public class AddEmailActivity extends BaseDataBindActivity<AddDocumentDelegate, 
         addRequest(binder.email_emailForm(
                 viewDelegate.viewHolder.et_attributes.getText().toString(),
                 viewDelegate.viewHolder.et_attributes.getText().toString(),
-                "10",
+                viewDelegate.viewHolder.selectPeopleLayout1.getSelectId(),
                 img,
                 viewDelegate.viewHolder.et_input.getText().toString(),
                 oldFileName,

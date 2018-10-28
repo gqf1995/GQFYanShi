@@ -83,7 +83,7 @@ public class AddInspectorActivity extends BaseDataBindActivity<AddDocumentDelega
                         viewDelegate.viewHolder.et_attributes.getText().toString() : viewDelegate.viewHolder.et_attributes3.getText().toString(),
                 viewDelegate.viewHolder.et_attributes.getText().toString(),
                 type,
-                "10",
+                viewDelegate.viewHolder.selectPeopleLayout1.getSelectId(),
                 img,
                 viewDelegate.viewHolder.et_input.getText().toString(),
                 id,

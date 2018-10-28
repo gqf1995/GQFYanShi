@@ -122,6 +122,10 @@
         <activity android:name=".mvp.activity.add.AddEmailActivity"/>
         <activity android:name=".mvp.activity.askleave.AskLeaveActivity"/>
         <activity android:name=".mvp.activity.askleave.AskLeaveResultActivity"/>
+        <activity android:name=".mvp.activity.approval.ApprovalActivity"/>
+        <activity android:name=".mvp.activity.approval.ApprovalDetailActivity"/>
+        <activity android:name=".mvp.activity.notice.approval.NoticeApprovalActivity"/>
+        <activity android:name=".mvp.activity.notice.approval.NoticeMyApprovalActivity"/>
     </application>
 
 </manifest>

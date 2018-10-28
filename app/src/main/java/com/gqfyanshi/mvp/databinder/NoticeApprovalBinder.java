@@ -3,31 +3,38 @@ package com.gqfyanshi.mvp.databinder;
 import com.fivefivelike.mybaselibrary.base.BaseDataBind;
 import com.fivefivelike.mybaselibrary.http.HttpRequest;
 import com.fivefivelike.mybaselibrary.http.RequestCallback;
-import com.gqfyanshi.mvp.delegate.MsgDelegate;
+import com.gqfyanshi.entity.bean.QueryJsonBean;
+import com.gqfyanshi.mvp.delegate.NoticeApprovalDelegate;
 import com.gqfyanshi.server.HttpUrl;
 
 import io.reactivex.disposables.Disposable;
 
-public class MsgBinder extends BaseDataBind<MsgDelegate> {
+public class NoticeApprovalBinder extends BaseDataBind<NoticeApprovalDelegate> {
 
-    public MsgBinder(MsgDelegate viewDelegate) {
+    public NoticeApprovalBinder(NoticeApprovalDelegate viewDelegate) {
         super(viewDelegate);
     }
 
-    public Disposable getLoginedUserInfo(
+    public Disposable fileSign_getFileSignList(
+            QueryJsonBean queryJsonBean,
+            int pageNumber,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
+        baseMap.put("queryJsonBean",queryJsonBean);
+        baseMap.put("pageSize",10);
+        baseMap.put("pageNumber",pageNumber);
         return new HttpRequest.Builder()
                 .setRequestCode(0x123)
-                .setRequestUrl(HttpUrl.getIntance().getLoginedUserInfo)
+                .setRequestUrl(HttpUrl.getIntance().fileSign_getFileSignList)
                 .setShowDialog(false)
                 .setDialog(viewDelegate.getNetConnectDialog())
-                .setRequestName("登陆后获取菜单")
+                .setRequestName("文件签批列表")
                 .setRequestMode(HttpRequest.RequestMode.POST)
-                .setParameterMode(HttpRequest.ParameterMode.KeyValue)
+                .setParameterMode(HttpRequest.ParameterMode.Json)
                 .setRequestObj(baseMap)
                 .setRequestCallback(requestCallback)
                 .build()
                 .RxSendRequest();
     }
+
 }

@@ -180,4 +180,20 @@ public class HttpUrl {
      * 请假列表
      */
     public String leave_getLeaveList = AppConst.app2BaseUrl + "/leave/getLeaveList";
+    /**
+     * 文件签批保存
+     */
+    public String fileSign_saveFileSign = AppConst.app2BaseUrl + "/fileSign/saveFileSign";
+    /**
+     * 文件签批详情
+     */
+    public String fileSign_detailFileSign = AppConst.app2BaseUrl + "/fileSign/detailFileSign";
+    /**
+     * 文件签批列表
+     */
+    public String fileSign_getFileSignList = AppConst.app2BaseUrl + "/fileSign/getFileSignList";
+    /**
+     * 文件签批
+     */
+    public String fileSign_postil = AppConst.app2BaseUrl + "/fileSign/postil";
 }

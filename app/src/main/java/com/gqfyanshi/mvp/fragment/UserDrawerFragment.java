@@ -18,6 +18,7 @@ import com.gqfyanshi.mvp.activity.add.AddEmailActivity;
 import com.gqfyanshi.mvp.activity.add.AddInspectorNoticeActivity;
 import com.gqfyanshi.mvp.activity.add.AddPublicInformationActivity;
 import com.gqfyanshi.mvp.activity.add.AddSendMailActivity;
+import com.gqfyanshi.mvp.activity.approval.ApprovalActivity;
 import com.gqfyanshi.mvp.activity.askleave.AskForLeaveAActivity;
 import com.gqfyanshi.mvp.activity.askleave.AskLeaveActivity;
 import com.gqfyanshi.mvp.activity.file.FileCupboardActivity;
@@ -31,6 +32,8 @@ import com.gqfyanshi.mvp.activity.notice.NoticeReportActivity;
 import com.gqfyanshi.mvp.activity.notice.NoticeWorkMsgActivity;
 import com.gqfyanshi.mvp.activity.notice.announcement.NoticeDefaultActivity;
 import com.gqfyanshi.mvp.activity.notice.announcement.NoticeMeetingActivity;
+import com.gqfyanshi.mvp.activity.notice.approval.NoticeApprovalActivity;
+import com.gqfyanshi.mvp.activity.notice.approval.NoticeMyApprovalActivity;
 import com.gqfyanshi.mvp.activity.notice.askleave.NoticeAskLeaveActivity;
 import com.gqfyanshi.mvp.activity.notice.askleave.NoticeMyAskLeaveActivity;
 import com.gqfyanshi.mvp.activity.notice.city.NoticeCityInspectorReceiveActivity;
@@ -360,6 +363,17 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                         } else if (65 == (((MainLeftBean) value).getId())) {
                             //我的审批
                             startActivity(new Intent(getActivity(), NoticeAskLeaveActivity.class));
+                        }
+                        //文章签批
+                        else if (67 == (((MainLeftBean) value).getId())) {
+                            //发起签批
+                            startActivity(new Intent(getActivity(), ApprovalActivity.class));
+                        } else if (68 == (((MainLeftBean) value).getId())) {
+                            //我发起的签批
+                            startActivity(new Intent(getActivity(), NoticeMyApprovalActivity.class));
+                        } else if (69 == (((MainLeftBean) value).getId())) {
+                            //我审核的签批
+                            startActivity(new Intent(getActivity(), NoticeApprovalActivity.class));
                         }
                     }
                 }

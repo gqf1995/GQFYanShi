@@ -1,0 +1,109 @@
+package com.gqfyanshi.mvp.activity.approval;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+
+import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
+import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
+import com.fivefivelike.mybaselibrary.utils.GsonUtil;
+import com.fivefivelike.mybaselibrary.utils.ToastUtil;
+import com.gqfyanshi.entity.bean.ApprovalBean;
+import com.gqfyanshi.entity.bean.TreeBean;
+import com.gqfyanshi.mvp.databinder.ApprovalBinder;
+import com.gqfyanshi.mvp.delegate.ApprovalDelegate;
+
+import java.util.List;
+
+public class ApprovalActivity extends BaseDataBindActivity<ApprovalDelegate, ApprovalBinder> {
+
+    @Override
+    protected Class<ApprovalDelegate> getDelegateClass() {
+        return ApprovalDelegate.class;
+    }
+
+    @Override
+    public ApprovalBinder getDataBinder(ApprovalDelegate viewDelegate) {
+        return new ApprovalBinder(viewDelegate);
+    }
+
+
+    @Override
+    protected void bindEvenListener() {
+        super.bindEvenListener();
+        getIntentData();
+        initToolbar(new ToolbarBuilder().setTitle("中共偃师市委发文签")
+                .setmRightImg1("保存发送"));
+        addRequest(binder.leave_getUserTree(this));
+
+    }
+
+    @Override
+    protected void clickRightIv() {
+        super.clickRightIv();
+        if (TextUtils.isEmpty(viewDelegate.viewHolder.selectPeopleLayout.getSelectId())) {
+            ToastUtil.show("请选择签批人");
+            return;
+        }
+        addRequest(binder.fileSign_saveFileSign(
+                viewDelegate.viewHolder.et_num.getText().toString(),
+                viewDelegate.viewHolder.et_title.getText().toString(),
+                viewDelegate.viewHolder.selectPeopleLayout.getSelectId(),
+                viewDelegate.viewHolder.et_jinji.getText().toString(),
+                viewDelegate.viewHolder.et_miji.getText().toString(),
+                viewDelegate.viewHolder.et_fanwei.getText().toString(),
+                viewDelegate.viewHolder.et_danwei.getText().toString(),
+                viewDelegate.viewHolder.et_nigao.getText().toString(),
+                viewDelegate.viewHolder.et_hegao.getText().toString(),
+                viewDelegate.viewHolder.et_niban.getText().toString(),
+                viewDelegate.viewHolder.et_hefa.getText().toString(),
+                viewDelegate.viewHolder.et_huiqian.getText().toString(),
+                "", this
+        ));
+    }
+
+    public static void startAct(Activity activity,
+                                String json,
+                                int requestCode) {
+        Intent intent = new Intent(activity, ApprovalActivity.class);
+        intent.putExtra("json", json);
+        activity.startActivityForResult(intent, requestCode);
+    }
+
+    private String json;
+
+    private void getIntentData() {
+        Intent intent = getIntent();
+        json = intent.getStringExtra("json");
+        if (!TextUtils.isEmpty(json)) {
+            documentInfoBean = GsonUtil.getInstance().toObj(json, ApprovalBean.class);
+            viewDelegate.viewHolder.et_num.setText(documentInfoBean.getName());
+            viewDelegate.viewHolder.et_title.setText(documentInfoBean.getTitle());
+            viewDelegate.viewHolder.et_jinji.setText(documentInfoBean.getPriority());
+            viewDelegate.viewHolder.et_miji.setText(documentInfoBean.getSecurity());
+            viewDelegate.viewHolder.et_fanwei.setText(documentInfoBean.getScope());
+            viewDelegate.viewHolder.et_danwei.setText(documentInfoBean.getSponsor());
+            viewDelegate.viewHolder.et_nigao.setText(documentInfoBean.getDraftDoc());
+            viewDelegate.viewHolder.et_hegao.setText(documentInfoBean.getVerifyDoc());
+            viewDelegate.viewHolder.et_niban.setText(documentInfoBean.getOpinion());
+            viewDelegate.viewHolder.et_hefa.setText(documentInfoBean.getVerifySend());
+            viewDelegate.viewHolder.et_huiqian.setText(documentInfoBean.getCounterSign());
+        }
+    }
+
+    ApprovalBean documentInfoBean;
+
+    @Override
+    protected void onServiceSuccess(String data, String info, int status, int requestCode) {
+        switch (requestCode) {
+            case 0x123:
+                setResult(RESULT_OK);
+                break;
+            case 0x130:
+                List<TreeBean> treeBean = GsonUtil.getInstance().toList(data, TreeBean.class);
+                viewDelegate.viewHolder.selectPeopleLayout.setTreeBean(treeBean);
+                break;
+        }
+    }
+
+}

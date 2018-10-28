@@ -23,6 +23,7 @@ public class ShowPngAdapter extends CommonAdapter<AskleaveBean.PostilsBean> {
 
     private ImageView iv_piv;
     private TextView tv_name;
+    private TextView tv_time;
 
     public ShowPngAdapter(Context context, List<AskleaveBean.PostilsBean> datas) {
         super(context, R.layout.adapter_show_png, datas);
@@ -39,6 +40,7 @@ public class ShowPngAdapter extends CommonAdapter<AskleaveBean.PostilsBean> {
     protected void convert(ViewHolder holder, AskleaveBean.PostilsBean s, final int position) {
         iv_piv = holder.getView(R.id.iv_piv);
         tv_name = holder.getView(R.id.tv_name);
+        tv_time = holder.getView(R.id.tv_time);
         GlideUtils.loadImage(AppConst.app2BaseUrl + "/" + s.getPostilAddress(), iv_piv, new RequestOptions());
 
         tv_name.setText(s.getName());

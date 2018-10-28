@@ -80,7 +80,7 @@ public class AddMeetActivity extends BaseDataBindActivity<AddDocumentDelegate, A
                         viewDelegate.viewHolder.et_attributes.getText().toString() : viewDelegate.viewHolder.et_attributes3.getText().toString(),
                 viewDelegate.viewHolder.et_attributes.getText().toString(),
                 type,
-                "10",
+                viewDelegate.viewHolder.selectPeopleLayout1.getSelectId(),
                 img,
                 viewDelegate.viewHolder.et_input.getText().toString(),
                 id,
