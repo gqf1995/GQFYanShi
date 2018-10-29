@@ -3,6 +3,7 @@ package com.gqfyanshi.mvp.activity.approval;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.view.View;
 
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
 import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
@@ -12,6 +13,8 @@ import com.gqfyanshi.entity.bean.ApprovalBean;
 import com.gqfyanshi.entity.bean.TreeBean;
 import com.gqfyanshi.mvp.databinder.ApprovalBinder;
 import com.gqfyanshi.mvp.delegate.ApprovalDelegate;
+import com.leon.lfilepickerlibrary.LFilePicker;
+import com.leon.lfilepickerlibrary.utils.Constant;
 
 import java.util.List;
 
@@ -45,6 +48,18 @@ public class ApprovalActivity extends BaseDataBindActivity<ApprovalDelegate, App
             ToastUtil.show("请选择签批人");
             return;
         }
+        if (TextUtils.isEmpty(viewDelegate.viewHolder.et_attributes2.getText().toString())) {
+            //上传文章
+            saveDocument();
+        } else {
+            //上传文章 文件
+            addRequest(binder.document_saveFile(filePath, ApprovalActivity.this));
+        }
+
+
+    }
+
+    private void saveDocument() {
         addRequest(binder.fileSign_saveFileSign(
                 viewDelegate.viewHolder.et_num.getText().toString(),
                 viewDelegate.viewHolder.et_title.getText().toString(),
@@ -58,7 +73,16 @@ public class ApprovalActivity extends BaseDataBindActivity<ApprovalDelegate, App
                 viewDelegate.viewHolder.et_niban.getText().toString(),
                 viewDelegate.viewHolder.et_hefa.getText().toString(),
                 viewDelegate.viewHolder.et_huiqian.getText().toString(),
-                "", this
+                "",
+                viewDelegate.viewHolder.et_chaosong.getText().toString(),
+                viewDelegate.viewHolder.et_yin.getText().toString(),
+                viewDelegate.viewHolder.et_zhuguan.getText().toString(),
+                viewDelegate.viewHolder.et_shenhe.getText().toString(),
+                viewDelegate.viewHolder.et_qianfa.getText().toString(),
+                viewDelegate.viewHolder.selectTimeLayout1.getSelectTime(),
+                img,
+                oldFileName,
+                this
         ));
     }
 
@@ -88,8 +112,46 @@ public class ApprovalActivity extends BaseDataBindActivity<ApprovalDelegate, App
             viewDelegate.viewHolder.et_niban.setText(documentInfoBean.getOpinion());
             viewDelegate.viewHolder.et_hefa.setText(documentInfoBean.getVerifySend());
             viewDelegate.viewHolder.et_huiqian.setText(documentInfoBean.getCounterSign());
+            viewDelegate.viewHolder.et_yin.setText(documentInfoBean.getNum());
+            viewDelegate.viewHolder.et_zhuguan.setText(documentInfoBean.getLeaderOpinion());
+            viewDelegate.viewHolder.et_shenhe.setText(documentInfoBean.getAudit());
+            viewDelegate.viewHolder.et_qianfa.setText(documentInfoBean.getIssue());
+            viewDelegate.viewHolder.et_huiqian.setText(documentInfoBean.getCounterSign());
+        }
+
+        viewDelegate.viewHolder.et_attributes2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new LFilePicker()
+                        .withActivity(viewDelegate.getActivity())
+                        .withRequestCode(1000)
+                        .withMutilyMode(false)
+                        .withChooseMode(true)
+                        .start();
+            }
+        });
+
+    }
+
+    String img = "";
+    String oldFileName = "";
+    String filePath;
+
+    private void changeHeader(String path) {
+        filePath = path;
+        viewDelegate.viewHolder.et_attributes2.setText(filePath);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == 1000) {
+                List<String> list = data.getStringArrayListExtra(Constant.RESULT_INFO);
+                changeHeader(list.get(0));
+            }
         }
     }
+
 
     ApprovalBean documentInfoBean;
 
@@ -98,6 +160,12 @@ public class ApprovalActivity extends BaseDataBindActivity<ApprovalDelegate, App
         switch (requestCode) {
             case 0x123:
                 setResult(RESULT_OK);
+                break;
+            case 0x124:
+                //附件上传成功
+                img = GsonUtil.getInstance().getValue(data, "filePath");
+                oldFileName = GsonUtil.getInstance().getValue(data, "oldFileName");
+                saveDocument();
                 break;
             case 0x130:
                 List<TreeBean> treeBean = GsonUtil.getInstance().toList(data, TreeBean.class);

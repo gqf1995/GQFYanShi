@@ -158,49 +158,5 @@ public class AskleaveBean extends DocumentBean {
         this.postils = postils;
     }
 
-    public static class PostilsBean {
-        /**
-         * contentId : 2
-         * name : 人大办
-         * id : 10
-         * postilAddress : upload/leave/10.sql
-         */
 
-        private int contentId;
-        private String name;
-        private int id;
-        private String postilAddress;
-
-        public int getContentId() {
-            return contentId;
-        }
-
-        public void setContentId(int contentId) {
-            this.contentId = contentId;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public String getPostilAddress() {
-            return postilAddress;
-        }
-
-        public void setPostilAddress(String postilAddress) {
-            this.postilAddress = postilAddress;
-        }
-    }
 }

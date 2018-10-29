@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ObjectUtils;
 import com.fivefivelike.mybaselibrary.utils.CommonUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.R;
@@ -28,6 +29,7 @@ public class NoticeApprovalAdapter extends CommonAdapter<ApprovalBean> {
     private TextView tv4;
     private TextView tv5;
     private TextView tv6;
+    private TextView tv7;
     DefaultClickLinsener defaultClickLinsener;
 
     public void setDefaultClickLinsener(DefaultClickLinsener defaultClickLinsener) {
@@ -55,6 +57,7 @@ public class NoticeApprovalAdapter extends CommonAdapter<ApprovalBean> {
         tv4 = holder.getView(R.id.tv4);
         tv5 = holder.getView(R.id.tv5);
         tv6 = holder.getView(R.id.tv6);
+        tv7 = holder.getView(R.id.tv7);
 
         tv1.setText(s.getId() + "");
 
@@ -63,6 +66,14 @@ public class NoticeApprovalAdapter extends CommonAdapter<ApprovalBean> {
         tv4.setText(s.getUserName());
 
         tv5.setText(s.getCTime());
+
+        if (ObjectUtils.equals("00", s.getStatus())) {
+            tv7.setText("未签批");
+        } else if (ObjectUtils.equals("01", s.getStatus())) {
+            tv7.setText("已签批");
+        } else if (ObjectUtils.equals("02", s.getStatus())) {
+            tv7.setText("待签批");
+        }
 
         tv6.setOnClickListener(new View.OnClickListener() {
             @Override

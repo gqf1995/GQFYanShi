@@ -49,6 +49,14 @@ public class ApprovalBinder extends BaseDataBind<ApprovalDelegate> {
             String verifySend,
             String counterSign,
             String status,
+            String copyTo,
+            String num,
+            String leaderOpinion,
+            String audit,
+            String issue,
+            String cTime,
+            String img,
+            String fileName,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
         baseMap.put("name", name);
@@ -64,6 +72,14 @@ public class ApprovalBinder extends BaseDataBind<ApprovalDelegate> {
         baseMap.put("verifySend", verifySend);
         baseMap.put("counterSign", counterSign);
         baseMap.put("status", status);
+        baseMap.put("copyTo", copyTo);
+        baseMap.put("num", num);
+        baseMap.put("leaderOpinion", leaderOpinion);
+        baseMap.put("audit", audit);
+        baseMap.put("issue", issue);
+        baseMap.put("cTime", cTime);
+        baseMap.put("fileAddress", img);
+        baseMap.put("fileName", fileName);
         return new HttpRequest.Builder()
                 .setRequestCode(0x123)
                 .setRequestUrl(HttpUrl.getIntance().fileSign_saveFileSign)
@@ -77,7 +93,26 @@ public class ApprovalBinder extends BaseDataBind<ApprovalDelegate> {
                 .build()
                 .RxSendRequest();
     }
-
+    public Disposable document_saveFile(
+            String file,
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        Map<String, Object> fileMap = new HashMap<>();
+        fileMap.put("file", new File(file));
+        return new HttpRequest.Builder()
+                .setRequestCode(0x124)
+                .setRequestUrl(HttpUrl.getIntance().document_saveFile)
+                .setShowDialog(true)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("上传文件")
+                .setRequestMode(HttpRequest.RequestMode.POST)
+                .setParameterMode(HttpRequest.ParameterMode.KeyValue)
+                .setRequestObj(baseMap)
+                .setFileMap(fileMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
     public Disposable fileSign_saveFileSign(
             String id,
             RequestCallback requestCallback) {
@@ -113,6 +148,7 @@ public class ApprovalBinder extends BaseDataBind<ApprovalDelegate> {
                 .build()
                 .RxSendRequest();
     }
+
     public Disposable fileSign_postil(
             String id,
             String img,

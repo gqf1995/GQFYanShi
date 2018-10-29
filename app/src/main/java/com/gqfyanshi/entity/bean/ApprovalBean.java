@@ -1,5 +1,7 @@
 package com.gqfyanshi.entity.bean;
 
+import java.util.List;
+
 /**
  * Created by 郭青枫 on 2018/10/28.
  */
@@ -37,6 +39,44 @@ public class ApprovalBean extends DocumentBean {
     private String verifyDoc;
     private String scope;
     private String uTime;
+    /**
+     * copyTo : 抄送
+     * num : 1
+     * leaderOpinion : 主管领导意见
+     * audit : 审核
+     * issue : 签发
+     */
+
+    private String copyTo;
+    private String num;
+    private String leaderOpinion;
+    private String audit;
+    private String issue;
+    private List<PostilsBean> postils;
+
+    public List<PostilsBean> getPostils() {
+        return postils;
+    }
+
+    public void setPostils(List<PostilsBean> postils) {
+        this.postils = postils;
+    }
+
+    public String getcTime() {
+        return cTime;
+    }
+
+    public void setcTime(String cTime) {
+        this.cTime = cTime;
+    }
+
+    public String getuTime() {
+        return uTime;
+    }
+
+    public void setuTime(String uTime) {
+        this.uTime = uTime;
+    }
 
     public String getSendeeId() {
         return sendeeId;
@@ -150,4 +190,43 @@ public class ApprovalBean extends DocumentBean {
         this.uTime = uTime;
     }
 
+    public String getCopyTo() {
+        return copyTo;
+    }
+
+    public void setCopyTo(String copyTo) {
+        this.copyTo = copyTo;
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
+    }
+
+    public String getLeaderOpinion() {
+        return leaderOpinion;
+    }
+
+    public void setLeaderOpinion(String leaderOpinion) {
+        this.leaderOpinion = leaderOpinion;
+    }
+
+    public String getAudit() {
+        return audit;
+    }
+
+    public void setAudit(String audit) {
+        this.audit = audit;
+    }
+
+    public String getIssue() {
+        return issue;
+    }
+
+    public void setIssue(String issue) {
+        this.issue = issue;
+    }
 }

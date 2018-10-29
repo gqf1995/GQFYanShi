@@ -130,10 +130,12 @@ public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder>
                 String docMsg = GsonUtil.getInstance().getValue(data, "docMsg");
                 String normalMsg = GsonUtil.getInstance().getValue(data, "normalMsg");
                 String leaverMsg = GsonUtil.getInstance().getValue(data, "leaverMsg");
+                String fileSignMsg = GsonUtil.getInstance().getValue(data, "fileSignMsg");
                 if (
                         !ObjectUtils.equals("0", meetMsg) ||
                                 !ObjectUtils.equals("0", docMsg) ||
                                 !ObjectUtils.equals("0", normalMsg) ||
+                                !ObjectUtils.equals("0", fileSignMsg) ||
                                 !ObjectUtils.equals("0", leaverMsg)
                         ) {
                     viewDelegate.getViewImgPoint().setVisibility(View.VISIBLE);
@@ -143,7 +145,7 @@ public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder>
                 break;
             case 0x124:
                 if (
-                        !ObjectUtils.equals("0", GsonUtil.getInstance().getValue(data, "leaverMsg"))
+                        !ObjectUtils.equals("0", GsonUtil.getInstance().getValue(data, "fileSignMsg"))
                         ) {
                     CircleDialogHelper.initDefaultDialog(viewDelegate.getActivity(), "您有新的待签批文件", null)
                             .setPositive("去查看", new View.OnClickListener() {

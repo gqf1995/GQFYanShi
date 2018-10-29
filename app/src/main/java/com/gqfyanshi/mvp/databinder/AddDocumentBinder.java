@@ -34,9 +34,9 @@ public class AddDocumentBinder extends BaseDataBind<AddDocumentDelegate> {
         baseMap.put("type", type);
         baseMap.put("sendeeGroupId", sendeeGroupId);
         baseMap.put("img", img);
-        baseMap.put("fileAddress", img);
         baseMap.put("content", content);
         baseMap.put("modelId", modelId);
+        baseMap.put("fileAddress", img);
         baseMap.put("fileName", fileName);
         return new HttpRequest.Builder()
                 .setRequestCode(0x124)

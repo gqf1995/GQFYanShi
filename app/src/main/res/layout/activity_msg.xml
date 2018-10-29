@@ -38,9 +38,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="1"
             android:paddingLeft="@dimen/trans_5px"
             android:paddingRight="@dimen/trans_5px"
+            android:text="1"
             android:textColor="@color/white"
             android:textSize="@dimen/text_trans_17px"
             app:btnCornerRadius="@dimen/trans_499px"
@@ -50,12 +50,13 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/xiangqing"
             android:layout_marginLeft="@dimen/trans_10px"
+            android:src="@drawable/xiangqing"
             />
 
 
     </LinearLayout>
+
     <Space
         android:layout_width="wrap_content"
         android:layout_height="@dimen/trans_10px"/>
@@ -86,9 +87,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="1"
             android:paddingLeft="@dimen/trans_5px"
             android:paddingRight="@dimen/trans_5px"
+            android:text="1"
             android:textColor="@color/white"
             android:textSize="@dimen/text_trans_17px"
             app:btnCornerRadius="@dimen/trans_499px"
@@ -98,12 +99,13 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/xiangqing"
             android:layout_marginLeft="@dimen/trans_10px"
+            android:src="@drawable/xiangqing"
             />
 
 
     </LinearLayout>
+
     <Space
         android:layout_width="wrap_content"
         android:layout_height="@dimen/trans_10px"/>
@@ -134,9 +136,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="1"
             android:paddingLeft="@dimen/trans_5px"
             android:paddingRight="@dimen/trans_5px"
+            android:text="1"
             android:textColor="@color/white"
             android:textSize="@dimen/text_trans_17px"
             app:btnCornerRadius="@dimen/trans_499px"
@@ -146,12 +148,13 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/xiangqing"
             android:layout_marginLeft="@dimen/trans_10px"
+            android:src="@drawable/xiangqing"
             />
 
 
     </LinearLayout>
+
     <Space
         android:layout_width="wrap_content"
         android:layout_height="@dimen/trans_10px"/>
@@ -182,9 +185,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="1"
             android:paddingLeft="@dimen/trans_5px"
             android:paddingRight="@dimen/trans_5px"
+            android:text="1"
             android:textColor="@color/white"
             android:textSize="@dimen/text_trans_17px"
             app:btnCornerRadius="@dimen/trans_499px"
@@ -194,8 +197,57 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/xiangqing"
             android:layout_marginLeft="@dimen/trans_10px"
+            android:src="@drawable/xiangqing"
+            />
+
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/trans_10px"/>
+
+    <LinearLayout
+        android:id="@+id/lin_msg5"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/trans_60px"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/trans_18px"
+        android:paddingRight="@dimen/trans_20px">
+
+
+        <TextView
+            android:id="@+id/tv_title5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="请假列表"
+            android:textColor="@color/color_font1"
+            android:textSize="@dimen/text_trans_18px"/>
+
+
+        <com.fivefivelike.mybaselibrary.view.RoundButton
+            android:id="@+id/tv_num5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="@dimen/trans_5px"
+            android:paddingRight="@dimen/trans_5px"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_trans_17px"
+            app:btnCornerRadius="@dimen/trans_499px"
+            app:btnSolidColor="@color/increasing_color"/>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/trans_10px"
+            android:src="@drawable/xiangqing"
             />
 
 

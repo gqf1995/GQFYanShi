@@ -4,16 +4,25 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Handler;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
 import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
+import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.ToastUtil;
 import com.fivefivelike.mybaselibrary.utils.UiHeplUtils;
+import com.gqfyanshi.adapter.ShowPngAdapter;
+import com.gqfyanshi.base.AppConst;
 import com.gqfyanshi.entity.bean.ApprovalBean;
+import com.gqfyanshi.entity.bean.UserLoginBean;
+import com.gqfyanshi.mvp.activity.file.TBSActivity;
 import com.gqfyanshi.mvp.databinder.ApprovalBinder;
 import com.gqfyanshi.mvp.delegate.ApprovalDelegate;
+import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +63,10 @@ public class ApprovalDetailActivity extends BaseDataBindActivity<ApprovalDelegat
         viewDelegate.viewHolder.et_yin.setEnabled(false);
         viewDelegate.viewHolder.et_zhuguan.setEnabled(false);
         addRequest(binder.fileSign_saveFileSign(id, this));
+        viewDelegate.viewHolder.lin2.setVisibility(View.VISIBLE);
+        viewDelegate.viewHolder.lin_rcv.setVisibility(View.VISIBLE);
+
+
     }
 
     @Override
@@ -136,6 +149,7 @@ public class ApprovalDetailActivity extends BaseDataBindActivity<ApprovalDelegat
 
     String json;
     ApprovalBean documentInfoBean;
+    ShowPngAdapter showPngAdapter;
 
     @Override
     protected void onServiceSuccess(String data, String info, int status, int requestCode) {
@@ -154,10 +168,69 @@ public class ApprovalDetailActivity extends BaseDataBindActivity<ApprovalDelegat
                 viewDelegate.viewHolder.et_niban.setText(documentInfoBean.getOpinion());
                 viewDelegate.viewHolder.et_hefa.setText(documentInfoBean.getVerifySend());
                 viewDelegate.viewHolder.et_huiqian.setText(documentInfoBean.getCounterSign());
-                viewDelegate.viewHolder.selectPeopleLayout.setShowEdit(documentInfoBean.getDepartmentName());
+                //                viewDelegate.viewHolder.selectPeopleLayout.setShowEdit(
+                //                        documentInfoBean.getDepartmentName());
+                viewDelegate.viewHolder.et_yin.setText(documentInfoBean.getNum());
+                viewDelegate.viewHolder.et_zhuguan.setText(documentInfoBean.getLeaderOpinion());
+                viewDelegate.viewHolder.et_shenhe.setText(documentInfoBean.getAudit());
+                viewDelegate.viewHolder.et_qianfa.setText(documentInfoBean.getIssue());
+                viewDelegate.viewHolder.et_huiqian.setText(documentInfoBean.getCounterSign());
+
+                String departName = GsonUtil.getInstance().getValue(data, "departName");
+                viewDelegate.viewHolder.selectPeopleLayout.setShowEdit(departName);
+                viewDelegate.viewHolder.tv_people.setText(departName + "");
+
+
+                if (!ListUtils.isEmpty(documentInfoBean.getPostils())) {
+                    viewDelegate.viewHolder.lin_rcv.setVisibility(View.VISIBLE);
+                    showPngAdapter = new ShowPngAdapter(this, documentInfoBean.getPostils());
+                    showPngAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                            List<String> data = new ArrayList<>();
+                            for (int i = 0; i < documentInfoBean.getPostils().size(); i++) {
+                                data.add(AppConst.app2BaseUrl + "/" + documentInfoBean.getPostils().get(i).getPostilAddress());
+                            }
+                            UiHeplUtils.showBigImg(
+                                    viewDelegate.getActivity(), data, position
+                            );
+                        }
+
+                        @Override
+                        public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+                            return false;
+                        }
+                    });
+                    viewDelegate.viewHolder.recycler_view.setVisibility(View.VISIBLE);
+                    viewDelegate.viewHolder.recycler_view.setLayoutManager(new GridLayoutManager(this, 5) {
+                        @Override
+                        public boolean canScrollVertically() {
+                            return false;
+                        }
+                    });
+                    viewDelegate.viewHolder.recycler_view.setAdapter(showPngAdapter);
+                    for (int i = 0; i < documentInfoBean.getPostils().size(); i++) {
+                        if (UserLoginBean.getUserId().equals(documentInfoBean.getPostils().get(i).getId())) {
+                            viewDelegate.getmToolbarRightImg1().setVisibility(View.GONE);
+                            viewDelegate.getmToolbarRightImg2().setVisibility(View.GONE);
+                        }
+                    }
+                }
+                viewDelegate.viewHolder.lin_file.setVisibility(TextUtils.isEmpty(documentInfoBean.getFile_name()) ? View.GONE : View.VISIBLE);
+                viewDelegate.viewHolder.et_attributes2.setText(documentInfoBean.getFile_name() + "(点击查看)");
+                viewDelegate.viewHolder.et_attributes2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        TBSActivity.startAct(
+                                viewDelegate.getActivity(),
+                                documentInfoBean.getFile_name(),
+                                documentInfoBean.getFile_address()
+                        );
+                    }
+                });
                 break;
             case 0x124:
-                initToolbar(new ToolbarBuilder().setTitle("请假详情"));
+                initToolbar(new ToolbarBuilder().setTitle("中共偃师市委发文签"));
                 viewDelegate.getmToolbarRightImg1().setVisibility(View.GONE);
                 viewDelegate.getmToolbarRightImg2().setVisibility(View.GONE);
                 isEdit = false;

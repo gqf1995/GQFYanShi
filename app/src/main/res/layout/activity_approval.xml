@@ -436,6 +436,75 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/lin_file"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/trans_30px"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/trans_20px"
+                        android:paddingRight="@dimen/trans_20px">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/trans_10px"
+                            android:text="附件"
+                            android:textColor="@color/color_font1"
+                            android:textSize="@dimen/text_trans_18px"/>
+
+                        <LinearLayout
+                            android:id="@+id/lin_attributes2"
+                            android:layout_width="@dimen/trans_410px"
+                            android:layout_height="@dimen/trans_35px"
+                            android:background="@drawable/shape_grey_border_radiu5"
+                            android:clickable="true"
+                            android:descendantFocusability="blocksDescendants"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/et_attributes2"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@null"
+                                android:clickable="false"
+                                android:enabled="false"
+                                android:gravity="center_vertical"
+                                android:hint="点击添加附件"
+                                android:paddingLeft="@dimen/trans_5px"
+                                android:text=""
+                                android:textColor="@color/color_font1"
+                                android:textColorHint="@color/color_font3"
+                                android:textSize="@dimen/text_trans_16px"/>
+
+
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -585,6 +654,69 @@
                         android:textSize="@dimen/text_trans_18px"/>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/lin2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/trans_30px"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingLeft="@dimen/trans_20px"
+                        android:text="签批人"
+                        android:textColor="@color/color_font1"
+                        android:textSize="@dimen/text_trans_18px"/>
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/trans_20px"/>
+
+                    <TextView
+                        android:id="@+id/tv_people"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/trans_20px"
+                        android:layout_marginRight="@dimen/trans_20px"
+                        android:gravity="left|top"
+                        android:text=""
+                        android:textColor="@color/color_font2"
+                        android:textSize="@dimen/text_trans_18px"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_rcv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/trans_20px"
+                        android:layout_marginTop="@dimen/trans_20px"
+                        android:gravity="center"
+                        android:text="签批内容"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/text_trans_18px"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/trans_25px"
+                        android:paddingRight="@dimen/trans_25px"/>
+                </LinearLayout>
+
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/trans_50px"/>
@@ -593,10 +725,10 @@
                     android:id="@+id/lin_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/trans_50px"
                     android:orientation="vertical"
                     android:paddingLeft="@dimen/trans_20px"
                     android:paddingRight="@dimen/trans_20px"
-                    android:layout_marginBottom="@dimen/trans_50px"
                     android:visibility="gone">
 
                     <TextView
@@ -619,6 +751,7 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
 
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>

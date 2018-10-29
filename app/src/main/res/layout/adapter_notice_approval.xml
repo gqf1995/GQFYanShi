@@ -83,6 +83,21 @@
         android:background="@color/base_mask"/>
 
     <TextView
+        android:id="@+id/tv7"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:paddingLeft="@dimen/trans_5px"
+        android:paddingRight="@dimen/trans_5px"
+        android:textColor="@color/color_font2"
+        android:textSize="@dimen/text_trans_16px"/>
+
+    <View
+        android:layout_width="@dimen/trans_1px"
+        android:layout_height="match_parent"
+        android:background="@color/base_mask"/>
+    <TextView
         android:id="@+id/tv6"
         android:layout_width="0dp"
         android:layout_height="match_parent"

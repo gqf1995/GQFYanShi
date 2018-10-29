@@ -1,10 +1,12 @@
 package com.gqfyanshi.mvp.delegate;
 
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.ebensz.eink.api.PennableLayout;
 import com.fivefivelike.mybaselibrary.base.BaseDelegate;
@@ -42,11 +44,18 @@ public class ApprovalDelegate extends BaseDelegate {
         public EditText et_chaosong;
         public SelectTimeLayout selectTimeLayout1;
         public EditText et_yin;
+        public TextView et_attributes2;
+        public LinearLayout lin_attributes2;
+        public LinearLayout lin_file;
         public EditText et_niban;
         public EditText et_huiqian;
         public EditText et_zhuguan;
         public EditText et_shenhe;
         public EditText et_qianfa;
+        public TextView tv_people;
+        public LinearLayout lin2;
+        public RecyclerView recycler_view;
+        public LinearLayout lin_rcv;
         public LinearLayout lin_edit;
         public LinearLayout lin_nestedScrollView;
         public NestedScrollView nestedScrollView;
@@ -69,11 +78,18 @@ public class ApprovalDelegate extends BaseDelegate {
             this.et_chaosong = (EditText) rootView.findViewById(R.id.et_chaosong);
             this.selectTimeLayout1 = (SelectTimeLayout) rootView.findViewById(R.id.selectTimeLayout1);
             this.et_yin = (EditText) rootView.findViewById(R.id.et_yin);
+            this.et_attributes2 = (TextView) rootView.findViewById(R.id.et_attributes2);
+            this.lin_attributes2 = (LinearLayout) rootView.findViewById(R.id.lin_attributes2);
+            this.lin_file = (LinearLayout) rootView.findViewById(R.id.lin_file);
             this.et_niban = (EditText) rootView.findViewById(R.id.et_niban);
             this.et_huiqian = (EditText) rootView.findViewById(R.id.et_huiqian);
             this.et_zhuguan = (EditText) rootView.findViewById(R.id.et_zhuguan);
             this.et_shenhe = (EditText) rootView.findViewById(R.id.et_shenhe);
             this.et_qianfa = (EditText) rootView.findViewById(R.id.et_qianfa);
+            this.tv_people = (TextView) rootView.findViewById(R.id.tv_people);
+            this.lin2 = (LinearLayout) rootView.findViewById(R.id.lin2);
+            this.recycler_view = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+            this.lin_rcv = (LinearLayout) rootView.findViewById(R.id.lin_rcv);
             this.lin_edit = (LinearLayout) rootView.findViewById(R.id.lin_edit);
             this.lin_nestedScrollView = (LinearLayout) rootView.findViewById(R.id.lin_nestedScrollView);
             this.nestedScrollView = (NestedScrollView) rootView.findViewById(R.id.nestedScrollView);
