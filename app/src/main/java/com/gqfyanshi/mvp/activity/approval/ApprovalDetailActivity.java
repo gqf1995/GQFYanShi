@@ -174,7 +174,7 @@ public class ApprovalDetailActivity extends BaseDataBindActivity<ApprovalDelegat
                 viewDelegate.viewHolder.et_zhuguan.setText(documentInfoBean.getLeaderOpinion());
                 viewDelegate.viewHolder.et_shenhe.setText(documentInfoBean.getAudit());
                 viewDelegate.viewHolder.et_qianfa.setText(documentInfoBean.getIssue());
-                viewDelegate.viewHolder.et_huiqian.setText(documentInfoBean.getCounterSign());
+                viewDelegate.viewHolder.et_chaosong.setText(documentInfoBean.getCopyTo());
 
                 String departName = GsonUtil.getInstance().getValue(data, "departName");
                 viewDelegate.viewHolder.selectPeopleLayout.setShowEdit(departName);
@@ -216,7 +216,9 @@ public class ApprovalDetailActivity extends BaseDataBindActivity<ApprovalDelegat
                         }
                     }
                 }
-                viewDelegate.viewHolder.lin_file.setVisibility(TextUtils.isEmpty(documentInfoBean.getFile_name()) ? View.GONE : View.VISIBLE);
+                viewDelegate.viewHolder.lin_file.setVisibility(
+                        TextUtils.isEmpty(documentInfoBean.getFile_name())
+                                ? View.GONE : View.VISIBLE);
                 viewDelegate.viewHolder.et_attributes2.setText(documentInfoBean.getFile_name() + "(点击查看)");
                 viewDelegate.viewHolder.et_attributes2.setOnClickListener(new View.OnClickListener() {
                     @Override

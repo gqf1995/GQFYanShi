@@ -116,10 +116,10 @@ public class ApprovalActivity extends BaseDataBindActivity<ApprovalDelegate, App
             viewDelegate.viewHolder.et_zhuguan.setText(documentInfoBean.getLeaderOpinion());
             viewDelegate.viewHolder.et_shenhe.setText(documentInfoBean.getAudit());
             viewDelegate.viewHolder.et_qianfa.setText(documentInfoBean.getIssue());
-            viewDelegate.viewHolder.et_huiqian.setText(documentInfoBean.getCounterSign());
+            viewDelegate.viewHolder.et_chaosong.setText(documentInfoBean.getCopyTo());
         }
 
-        viewDelegate.viewHolder.et_attributes2.setOnClickListener(new View.OnClickListener() {
+        viewDelegate.viewHolder.lin_attributes2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new LFilePicker()
@@ -160,6 +160,7 @@ public class ApprovalActivity extends BaseDataBindActivity<ApprovalDelegate, App
         switch (requestCode) {
             case 0x123:
                 setResult(RESULT_OK);
+                onBackPressed();
                 break;
             case 0x124:
                 //附件上传成功
