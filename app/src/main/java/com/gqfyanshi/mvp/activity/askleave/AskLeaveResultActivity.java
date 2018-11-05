@@ -15,6 +15,7 @@ import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.ToastUtil;
 import com.fivefivelike.mybaselibrary.utils.UiHeplUtils;
+import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.adapter.ShowPngAdapter;
 import com.gqfyanshi.base.AppConst;
 import com.gqfyanshi.entity.bean.AskleaveBean;
@@ -161,6 +162,16 @@ public class AskLeaveResultActivity extends BaseDataBindActivity<AskLeaveDelegat
                 if (!ListUtils.isEmpty(documentInfoBean.getPostils())) {
                     viewDelegate.viewHolder.lin_rcv.setVisibility(View.VISIBLE);
                     showPngAdapter = new ShowPngAdapter(this, documentInfoBean.getPostils());
+                    showPngAdapter.setDefaultClickLinsener(new DefaultClickLinsener() {
+                        @Override
+                        public void onClick(View view, int position, Object item) {
+                            if (UserLoginBean.getUserId().equals("" + documentInfoBean.getPostils().get(position).getUserId())) {
+                                addRequest(binder.fileSign_delPostil(documentInfoBean.getPostils().get(position).getId() + "", AskLeaveResultActivity.this));
+                            } else {
+                                ToastUtil.show("您没有权限删除他人签批");
+                            }
+                        }
+                    });
                     showPngAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
@@ -187,11 +198,13 @@ public class AskLeaveResultActivity extends BaseDataBindActivity<AskLeaveDelegat
                     });
                     viewDelegate.viewHolder.recycler_view.setAdapter(showPngAdapter);
                     for (int i = 0; i < documentInfoBean.getPostils().size(); i++) {
-                        if (UserLoginBean.getUserId().equals(documentInfoBean.getPostils().get(i).getId())) {
+                        if (UserLoginBean.getUserId().equals("" + documentInfoBean.getPostils().get(i).getUserId())) {
                             viewDelegate.getmToolbarRightImg1().setVisibility(View.GONE);
                             viewDelegate.getmToolbarRightImg2().setVisibility(View.GONE);
                         }
                     }
+                }else {
+                    viewDelegate.viewHolder.lin_rcv.setVisibility(View.GONE);
                 }
                 break;
             case 0x124:
@@ -215,6 +228,9 @@ public class AskLeaveResultActivity extends BaseDataBindActivity<AskLeaveDelegat
                         }
                     }
                 }
+                break;
+            case 0x131:
+                addRequest(binder.leave_detailLeave(id, this));
                 break;
         }
     }

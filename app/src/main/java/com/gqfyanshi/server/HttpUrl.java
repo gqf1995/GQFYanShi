@@ -196,4 +196,8 @@ public class HttpUrl {
      * 文件签批
      */
     public String fileSign_postil = AppConst.app2BaseUrl + "/fileSign/postil";
+    /**
+     * 删除签批信息
+     */
+    public String fileSign_delPostil = AppConst.app2BaseUrl + "/fileSign/delPostil";
 }

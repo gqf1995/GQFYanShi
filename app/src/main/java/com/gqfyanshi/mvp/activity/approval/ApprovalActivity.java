@@ -55,8 +55,6 @@ public class ApprovalActivity extends BaseDataBindActivity<ApprovalDelegate, App
             //上传文章 文件
             addRequest(binder.document_saveFile(filePath, ApprovalActivity.this));
         }
-
-
     }
 
     private void saveDocument() {

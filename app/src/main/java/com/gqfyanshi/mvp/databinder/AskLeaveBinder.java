@@ -56,6 +56,24 @@ public class AskLeaveBinder extends BaseDataBind<AskLeaveDelegate> {
                 .build()
                 .RxSendRequest();
     }
+    public Disposable fileSign_delPostil(
+            String id,
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        baseMap.put("id", id);
+        return new HttpRequest.Builder()
+                .setRequestCode(0x131)
+                .setRequestUrl(HttpUrl.getIntance().fileSign_delPostil)
+                .setShowDialog(false)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("删除签批信息")
+                .setRequestMode(HttpRequest.RequestMode.POST)
+                .setParameterMode(HttpRequest.ParameterMode.Json)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
     public Disposable leave_detailLeave(
             String id,
             RequestCallback requestCallback) {

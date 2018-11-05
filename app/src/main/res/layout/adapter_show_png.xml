@@ -36,4 +36,16 @@
         android:text="123123"
         android:textColor="@color/color_font2"
         android:textSize="@dimen/text_trans_16px"/>
+
+    <TextView
+        android:id="@+id/tv_delect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="@dimen/trans_20px"
+        android:text="删除"
+        android:textColor="@color/mark_color"
+        android:textSize="@dimen/text_trans_15px"/>
+
+
 </LinearLayout>

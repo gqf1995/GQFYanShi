@@ -77,7 +77,7 @@ public class ApprovalBinder extends BaseDataBind<ApprovalDelegate> {
         baseMap.put("leaderOpinion", leaderOpinion);
         baseMap.put("audit", audit);
         baseMap.put("issue", issue);
-        baseMap.put("cTime", cTime);
+        baseMap.put("issuedTime", cTime);
         baseMap.put("fileAddress", img);
         baseMap.put("fileName", fileName);
         return new HttpRequest.Builder()
@@ -93,6 +93,7 @@ public class ApprovalBinder extends BaseDataBind<ApprovalDelegate> {
                 .build()
                 .RxSendRequest();
     }
+
     public Disposable document_saveFile(
             String file,
             RequestCallback requestCallback) {
@@ -113,14 +114,15 @@ public class ApprovalBinder extends BaseDataBind<ApprovalDelegate> {
                 .build()
                 .RxSendRequest();
     }
-    public Disposable fileSign_saveFileSign(
+
+    public Disposable fileSign_detailFileSign(
             String id,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
         baseMap.put("id", id);
         return new HttpRequest.Builder()
                 .setRequestCode(0x123)
-                .setRequestUrl(HttpUrl.getIntance().fileSign_saveFileSign)
+                .setRequestUrl(HttpUrl.getIntance().fileSign_detailFileSign)
                 .setShowDialog(true)
                 .setDialog(viewDelegate.getNetConnectDialog())
                 .setRequestName("文件签批详情")
@@ -149,6 +151,25 @@ public class ApprovalBinder extends BaseDataBind<ApprovalDelegate> {
                 .RxSendRequest();
     }
 
+    public Disposable fileSign_delPostil(
+            String id,
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        baseMap.put("id", id);
+        return new HttpRequest.Builder()
+                .setRequestCode(0x131)
+                .setRequestUrl(HttpUrl.getIntance().fileSign_delPostil)
+                .setShowDialog(false)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("删除签批信息")
+                .setRequestMode(HttpRequest.RequestMode.POST)
+                .setParameterMode(HttpRequest.ParameterMode.Json)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
+
     public Disposable fileSign_postil(
             String id,
             String img,
@@ -171,4 +192,5 @@ public class ApprovalBinder extends BaseDataBind<ApprovalDelegate> {
                 .build()
                 .RxSendRequest();
     }
+
 }

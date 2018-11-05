@@ -84,12 +84,11 @@
 
     <TextView
         android:id="@+id/tv7"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
         android:layout_height="match_parent"
         android:gravity="center"
         android:text=""
-        android:paddingLeft="@dimen/trans_5px"
-        android:paddingRight="@dimen/trans_5px"
         android:textColor="@color/color_font2"
         android:textSize="@dimen/text_trans_16px"/>
 

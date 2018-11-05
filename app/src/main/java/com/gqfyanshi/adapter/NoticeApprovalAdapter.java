@@ -67,12 +67,16 @@ public class NoticeApprovalAdapter extends CommonAdapter<ApprovalBean> {
 
         tv5.setText(s.getCTime());
 
+        tv7.setVisibility(View.VISIBLE);
         if (ObjectUtils.equals("00", s.getStatus())) {
             tv7.setText("未签批");
         } else if (ObjectUtils.equals("01", s.getStatus())) {
             tv7.setText("已签批");
         } else if (ObjectUtils.equals("02", s.getStatus())) {
             tv7.setText("待签批");
+        } else {
+            tv7.setText("未签批");
+            tv7.setVisibility(View.INVISIBLE);
         }
 
         tv6.setOnClickListener(new View.OnClickListener() {

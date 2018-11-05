@@ -15,6 +15,7 @@ import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.ToastUtil;
 import com.fivefivelike.mybaselibrary.utils.UiHeplUtils;
+import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.adapter.ShowPngAdapter;
 import com.gqfyanshi.base.AppConst;
 import com.gqfyanshi.entity.bean.ApprovalBean;
@@ -61,11 +62,12 @@ public class ApprovalDetailActivity extends BaseDataBindActivity<ApprovalDelegat
         viewDelegate.viewHolder.et_shenhe.setEnabled(false);
         viewDelegate.viewHolder.et_title.setEnabled(false);
         viewDelegate.viewHolder.et_yin.setEnabled(false);
+        viewDelegate.viewHolder.et_miji.setEnabled(false);
         viewDelegate.viewHolder.et_zhuguan.setEnabled(false);
-        addRequest(binder.fileSign_saveFileSign(id, this));
+        addRequest(binder.fileSign_detailFileSign(id, this));
         viewDelegate.viewHolder.lin2.setVisibility(View.VISIBLE);
         viewDelegate.viewHolder.lin_rcv.setVisibility(View.VISIBLE);
-
+        viewDelegate.viewHolder.selectTimeLayout1.setShowTime("");
 
     }
 
@@ -155,8 +157,8 @@ public class ApprovalDetailActivity extends BaseDataBindActivity<ApprovalDelegat
     protected void onServiceSuccess(String data, String info, int status, int requestCode) {
         switch (requestCode) {
             case 0x123:
-                json = data;
-                documentInfoBean = GsonUtil.getInstance().toObj(data, ApprovalBean.class);
+                json = GsonUtil.getInstance().getValue(data, "doc");
+                documentInfoBean = GsonUtil.getInstance().toObj(data, "doc", ApprovalBean.class);
                 viewDelegate.viewHolder.et_num.setText(documentInfoBean.getName());
                 viewDelegate.viewHolder.et_title.setText(documentInfoBean.getTitle());
                 viewDelegate.viewHolder.et_jinji.setText(documentInfoBean.getPriority());
@@ -175,6 +177,7 @@ public class ApprovalDetailActivity extends BaseDataBindActivity<ApprovalDelegat
                 viewDelegate.viewHolder.et_shenhe.setText(documentInfoBean.getAudit());
                 viewDelegate.viewHolder.et_qianfa.setText(documentInfoBean.getIssue());
                 viewDelegate.viewHolder.et_chaosong.setText(documentInfoBean.getCopyTo());
+                viewDelegate.viewHolder.selectTimeLayout1.setShowTime(documentInfoBean.getIssuedTime());
 
                 String departName = GsonUtil.getInstance().getValue(data, "departName");
                 viewDelegate.viewHolder.selectPeopleLayout.setShowEdit(departName);
@@ -184,6 +187,16 @@ public class ApprovalDetailActivity extends BaseDataBindActivity<ApprovalDelegat
                 if (!ListUtils.isEmpty(documentInfoBean.getPostils())) {
                     viewDelegate.viewHolder.lin_rcv.setVisibility(View.VISIBLE);
                     showPngAdapter = new ShowPngAdapter(this, documentInfoBean.getPostils());
+                    showPngAdapter.setDefaultClickLinsener(new DefaultClickLinsener() {
+                        @Override
+                        public void onClick(View view, int position, Object item) {
+                            if (UserLoginBean.getUserId().equals("" + documentInfoBean.getPostils().get(position).getUserId())) {
+                                addRequest(binder.fileSign_delPostil(documentInfoBean.getPostils().get(position).getId() + "", ApprovalDetailActivity.this));
+                            } else {
+                                ToastUtil.show("您没有权限删除他人签批");
+                            }
+                        }
+                    });
                     showPngAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
@@ -210,17 +223,19 @@ public class ApprovalDetailActivity extends BaseDataBindActivity<ApprovalDelegat
                     });
                     viewDelegate.viewHolder.recycler_view.setAdapter(showPngAdapter);
                     for (int i = 0; i < documentInfoBean.getPostils().size(); i++) {
-                        if (UserLoginBean.getUserId().equals(documentInfoBean.getPostils().get(i).getId())) {
+                        if (!isMy && UserLoginBean.getUserId().equals("" + documentInfoBean.getPostils().get(i).getUserId())) {
                             viewDelegate.getmToolbarRightImg1().setVisibility(View.GONE);
                             viewDelegate.getmToolbarRightImg2().setVisibility(View.GONE);
                         }
                     }
+                } else {
+                    viewDelegate.viewHolder.lin_rcv.setVisibility(View.GONE);
                 }
                 viewDelegate.viewHolder.lin_file.setVisibility(
                         TextUtils.isEmpty(documentInfoBean.getFile_name())
                                 ? View.GONE : View.VISIBLE);
                 viewDelegate.viewHolder.et_attributes2.setText(documentInfoBean.getFile_name() + "(点击查看)");
-                viewDelegate.viewHolder.et_attributes2.setOnClickListener(new View.OnClickListener() {
+                viewDelegate.viewHolder.lin_file.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         TBSActivity.startAct(
@@ -239,7 +254,10 @@ public class ApprovalDetailActivity extends BaseDataBindActivity<ApprovalDelegat
                 viewDelegate.viewHolder.ink.setVisibility(View.GONE);
                 viewDelegate.viewHolder.lin_edit.setVisibility(View.GONE);
                 ToastUtil.show("签批成功");
-                addRequest(binder.fileSign_saveFileSign(id, this));
+                addRequest(binder.fileSign_detailFileSign(id, this));
+                break;
+            case 0x131:
+                addRequest(binder.fileSign_detailFileSign(id, this));
                 break;
         }
     }

@@ -19,7 +19,7 @@ public class NoticePublicMsgSendBinder extends BaseDataBind<NoticePublicMsgSendD
             int pageNumber,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
-        baseMap.put("queryJsonBean", queryJsonBean);
+        baseMap.put("queryJson", queryJsonBean);
         baseMap.put("pageSize", 10);
         baseMap.put("pageNumber", pageNumber);
         return new HttpRequest.Builder()

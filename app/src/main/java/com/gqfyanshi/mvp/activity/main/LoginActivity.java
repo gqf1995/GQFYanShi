@@ -36,6 +36,8 @@ public class LoginActivity extends BaseDataBindActivity<LoginDelegate, LoginBind
     protected void bindEvenListener() {
         super.bindEvenListener();
         viewDelegate.viewHolder.tv_phone.setText("15896559159");
+        viewDelegate.viewHolder.tv_code.setText("231231");
+        viewDelegate.viewHolder.tv_img_code.setText("21312");
         //viewDelegate.viewHolder.tv_phone.setText("17396360301");
         isSelect = SaveUtil.getInstance().getBoolean("login_save");
         if (!isSelect) {
@@ -70,9 +72,11 @@ public class LoginActivity extends BaseDataBindActivity<LoginDelegate, LoginBind
                 }
                 if (TextUtils.isEmpty(viewDelegate.viewHolder.tv_code.getText().toString())) {
                     ToastUtil.show("请输入验证码");
+                    return;
                 }
                 if (TextUtils.isEmpty(viewDelegate.viewHolder.tv_img_code.getText().toString())) {
                     ToastUtil.show("请输入图形验证码");
+                    return;
                 }
                 addRequest(binder.doLogin(
                         viewDelegate.viewHolder.tv_phone.getText().toString(),

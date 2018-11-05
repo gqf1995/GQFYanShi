@@ -31,6 +31,7 @@ public class ApprovalBean extends DocumentBean {
     private String cTime;
     private String priority;
     private String userName;
+    private String issuedTime;
     private int userId;
     private String verifySend;
     private String opinion;
@@ -53,6 +54,14 @@ public class ApprovalBean extends DocumentBean {
     private String audit;
     private String issue;
     private List<PostilsBean> postils;
+
+    public String getIssuedTime() {
+        return issuedTime;
+    }
+
+    public void setIssuedTime(String issuedTime) {
+        this.issuedTime = issuedTime;
+    }
 
     public List<PostilsBean> getPostils() {
         return postils;

@@ -38,8 +38,8 @@ public class LoginBinder extends BaseDataBind<LoginDelegate> {
             RequestCallback requestCallback) {
         getBaseMapWithUid();
         baseMap.put("phoneNum", phoneNum);
-        baseMap.put("randomCode", "21312");
-        baseMap.put("loginNum", "231231");
+        baseMap.put("randomCode", randomCode);
+        baseMap.put("loginNum",loginNum);
         return new HttpRequest.Builder()
                 .setRequestCode(0x124)
                 .setRequestUrl(HttpUrl.getIntance().doLogin)

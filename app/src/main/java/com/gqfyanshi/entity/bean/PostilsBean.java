@@ -9,7 +9,16 @@ public class PostilsBean {
     private String name;
     private String cTime;
     private int id;
+    private int userId;
     private String postilAddress;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public String getcTime() {
         return cTime;
