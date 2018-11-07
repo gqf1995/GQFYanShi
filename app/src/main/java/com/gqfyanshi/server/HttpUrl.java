@@ -200,4 +200,12 @@ public class HttpUrl {
      * 删除签批信息
      */
     public String fileSign_delPostil = AppConst.app2BaseUrl + "/fileSign/delPostil";
+    /**
+     * 删除签批
+     */
+    public String fileSign_delFileSign = AppConst.app2BaseUrl + "/fileSign/delFileSign";
+    /**
+     * 删除请假
+     */
+    public String leave_delLeave = AppConst.app2BaseUrl + "/leave/delLeave";
 }

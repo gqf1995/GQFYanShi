@@ -30,6 +30,7 @@ public class NoticeApprovalAdapter extends CommonAdapter<ApprovalBean> {
     private TextView tv5;
     private TextView tv6;
     private TextView tv7;
+    private TextView tv8;
     DefaultClickLinsener defaultClickLinsener;
 
     public void setDefaultClickLinsener(DefaultClickLinsener defaultClickLinsener) {
@@ -58,6 +59,7 @@ public class NoticeApprovalAdapter extends CommonAdapter<ApprovalBean> {
         tv5 = holder.getView(R.id.tv5);
         tv6 = holder.getView(R.id.tv6);
         tv7 = holder.getView(R.id.tv7);
+        tv8 = holder.getView(R.id.tv8);
 
         tv1.setText(s.getId() + "");
 
@@ -85,7 +87,12 @@ public class NoticeApprovalAdapter extends CommonAdapter<ApprovalBean> {
                 defaultClickLinsener.onClick(v, position, null);
             }
         });
-
+        tv8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultClickLinsener.onClick(v, position, null);
+            }
+        });
     }
 
 }

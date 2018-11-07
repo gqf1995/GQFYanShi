@@ -8,6 +8,7 @@ import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
+import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.NoticeApprovalAdapter;
 import com.gqfyanshi.entity.bean.ApprovalBean;
 import com.gqfyanshi.entity.bean.QueryJsonBean;
@@ -77,7 +78,11 @@ public class NoticeMyApprovalActivity extends BaseDataBindActivity<NoticeApprova
             adapter.setDefaultClickLinsener(new DefaultClickLinsener() {
                 @Override
                 public void onClick(View view, int position, Object item) {
-                    ApprovalDetailActivity.startAct(viewDelegate.getActivity(), adapter.getDatas().get(position).getId(), true);
+                    if(view.getId()== R.id.tv6){
+                        ApprovalDetailActivity.startAct(viewDelegate.getActivity(), adapter.getDatas().get(position).getId(), true);
+                    }else {
+                        addRequest(binder.fileSign_delFileSign(adapter.getDatas().get(position).getId(),NoticeMyApprovalActivity.this));
+                    }
                 }
             });
             viewDelegate.viewHolder.recycler_view.setAdapter(adapter);
@@ -96,6 +101,9 @@ public class NoticeMyApprovalActivity extends BaseDataBindActivity<NoticeApprova
                 initList(list);
                 int total = Integer.parseInt(GsonUtil.getInstance().getValue(data, "total"));
                 viewDelegate.viewHolder.pageChangeView.setMaxPage(total);
+                break;
+            case 0x124:
+                onRefush( viewDelegate.viewHolder.pageChangeView.getNowPage());
                 break;
         }
     }

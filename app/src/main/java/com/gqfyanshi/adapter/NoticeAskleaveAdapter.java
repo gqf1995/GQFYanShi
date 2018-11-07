@@ -27,6 +27,7 @@ public class NoticeAskleaveAdapter extends CommonAdapter<AskleaveBean> {
     private TextView tv3;
     private TextView tv4;
     private TextView tv5;
+    private TextView tv6;
     DefaultClickLinsener defaultClickLinsener;
 
     public void setDefaultClickLinsener(DefaultClickLinsener defaultClickLinsener) {
@@ -65,7 +66,12 @@ public class NoticeAskleaveAdapter extends CommonAdapter<AskleaveBean> {
                 defaultClickLinsener.onClick(v, position, null);
             }
         });
-
+        tv6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultClickLinsener.onClick(v, position, null);
+            }
+        });
     }
 
 }

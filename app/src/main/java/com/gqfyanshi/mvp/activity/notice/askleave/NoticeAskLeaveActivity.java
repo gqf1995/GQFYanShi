@@ -8,10 +8,12 @@ import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
+import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.NoticeAskleaveAdapter;
 import com.gqfyanshi.entity.bean.AskleaveBean;
 import com.gqfyanshi.entity.bean.QueryJsonBean;
 import com.gqfyanshi.mvp.activity.askleave.AskLeaveResultActivity;
+import com.gqfyanshi.mvp.activity.notice.approval.NoticeMyApprovalActivity;
 import com.gqfyanshi.mvp.databinder.NoticeAskLeaveBinder;
 import com.gqfyanshi.mvp.delegate.NoticeAskLeaveDelegate;
 
@@ -73,7 +75,11 @@ public class NoticeAskLeaveActivity extends BaseDataBindActivity<NoticeAskLeaveD
             adapter.setDefaultClickLinsener(new DefaultClickLinsener() {
                 @Override
                 public void onClick(View view, int position, Object item) {
-                    AskLeaveResultActivity.startAct(viewDelegate.getActivity(),adapter.getDatas().get(position).getId(),false);
+                    if(view.getId()== R.id.tv5){
+                        AskLeaveResultActivity.startAct(viewDelegate.getActivity(),adapter.getDatas().get(position).getId(),false);
+                    }else {
+                        addRequest(binder.leave_delLeave(adapter.getDatas().get(position).getId(),NoticeAskLeaveActivity.this));
+                    }
                 }
             });
             viewDelegate.viewHolder.recycler_view.setAdapter(adapter);
@@ -92,6 +98,9 @@ public class NoticeAskLeaveActivity extends BaseDataBindActivity<NoticeAskLeaveD
                 initList(list);
                 int total = Integer.parseInt(GsonUtil.getInstance().getValue(data, "total"));
                 viewDelegate.viewHolder.pageChangeView.setMaxPage(total);
+                break;
+            case 0x124:
+                onRefush( viewDelegate.viewHolder.pageChangeView.getNowPage());
                 break;
         }
     }

@@ -37,4 +37,21 @@ public class NoticeAskLeaveBinder extends BaseDataBind<NoticeAskLeaveDelegate> {
                 .build()
                 .RxSendRequest();
     }
+    public Disposable leave_delLeave(
+            String id,
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        return new HttpRequest.Builder()
+                .setRequestCode(0x124)
+                .setRequestUrl(HttpUrl.getIntance().leave_delLeave+"/"+id)
+                .setShowDialog(false)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("删除请假")
+                .setRequestMode(HttpRequest.RequestMode.GET)
+                .setParameterMode(HttpRequest.ParameterMode.KeyValue)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
 }

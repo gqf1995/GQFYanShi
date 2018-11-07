@@ -235,7 +235,7 @@ public class ApprovalDetailActivity extends BaseDataBindActivity<ApprovalDelegat
                         TextUtils.isEmpty(documentInfoBean.getFile_name())
                                 ? View.GONE : View.VISIBLE);
                 viewDelegate.viewHolder.et_attributes2.setText(documentInfoBean.getFile_name() + "(点击查看)");
-                viewDelegate.viewHolder.lin_file.setOnClickListener(new View.OnClickListener() {
+                viewDelegate.viewHolder.lin_attributes2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         TBSActivity.startAct(

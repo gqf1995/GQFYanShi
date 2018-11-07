@@ -36,5 +36,21 @@ public class NoticeApprovalBinder extends BaseDataBind<NoticeApprovalDelegate> {
                 .build()
                 .RxSendRequest();
     }
-
+    public Disposable fileSign_delFileSign(
+            String id,
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        return new HttpRequest.Builder()
+                .setRequestCode(0x124)
+                .setRequestUrl(HttpUrl.getIntance().fileSign_delFileSign+"/"+id)
+                .setShowDialog(false)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("删除文件")
+                .setRequestMode(HttpRequest.RequestMode.GET)
+                .setParameterMode(HttpRequest.ParameterMode.KeyValue)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
 }
