@@ -25,6 +25,17 @@
             android:src="@drawable/xinjianwenjianjia"
             />
 
+        <ImageView
+            android:id="@+id/iv_file"
+            android:layout_width="@dimen/trans_25px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/trans_20px"
+            android:layout_marginRight="@dimen/trans_20px"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/add_file_upload"
+            />
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -53,7 +64,8 @@
                 android:background="@null"
                 android:gravity="center_vertical|left"
                 android:imeOptions="actionSearch"
-                android:maxLines="1"
+                android:lines="1"
+                android:singleLine="true"
                 android:text=""
                 android:textColor="@color/color_font1"
                 android:textSize="@dimen/text_trans_18px"/>
@@ -61,6 +73,16 @@
 
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/iv_add_people"
+            android:layout_width="@dimen/trans_25px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/trans_20px"
+            android:layout_marginRight="@dimen/trans_20px"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/add_share_people"
+            />
 
     </LinearLayout>
 

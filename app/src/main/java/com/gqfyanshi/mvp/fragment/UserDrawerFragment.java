@@ -375,6 +375,10 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
                             //我审核的签批
                             startActivity(new Intent(getActivity(), NoticeApprovalActivity.class));
                         }
+                        //文件柜
+                        else if (72 == (((MainLeftBean) value).getId())) {
+                            startActivity(new Intent(getActivity(), FileCupboardActivity.class));
+                        }
                     }
                 }
             }

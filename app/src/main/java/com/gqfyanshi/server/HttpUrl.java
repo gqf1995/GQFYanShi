@@ -208,4 +208,24 @@ public class HttpUrl {
      * 删除请假
      */
     public String leave_delLeave = AppConst.app2BaseUrl + "/leave/delLeave";
+    /**
+     * 获取文件或文件夹列表
+     */
+    public String fileCabinet_getFileList = AppConst.app2BaseUrl + "/fileCabinet/getFileList";
+    /**
+     * 保存文件夹
+     */
+    public String fileCabinet_createFold = AppConst.app2BaseUrl + "/fileCabinet/createFold";
+    /**
+     * 删除文件
+     */
+    public String fileCabinet_delFile = AppConst.app2BaseUrl + "/fileCabinet/delFile";
+    /**
+     * 上传文件柜
+     */
+    public String fileCabinet_upFile = AppConst.app2BaseUrl + "/fileCabinet/upFile";
+    /**
+     * 保存共享成员
+     */
+    public String fileCabinet_editFoldSeedeeId = AppConst.app2BaseUrl + "/fileCabinet/editFoldSeedeeId";
 }

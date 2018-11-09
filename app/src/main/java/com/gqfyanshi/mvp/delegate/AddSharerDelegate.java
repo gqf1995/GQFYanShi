@@ -1,9 +1,10 @@
 package com.gqfyanshi.mvp.delegate;
 
-import com.gqfyanshi.R;
-import com.fivefivelike.mybaselibrary.base.BaseDelegate;
-
 import android.view.View;
+import android.widget.RelativeLayout;
+
+import com.fivefivelike.mybaselibrary.base.BaseDelegate;
+import com.gqfyanshi.R;
 
 public class AddSharerDelegate extends BaseDelegate {
     public ViewHolder viewHolder;
@@ -22,9 +23,12 @@ public class AddSharerDelegate extends BaseDelegate {
     public static class ViewHolder {
         public View rootView;
 
+        public RelativeLayout contentView;
+
         public ViewHolder(View rootView) {
             this.rootView = rootView;
 
+            this.contentView = (RelativeLayout) rootView.findViewById(R.id.contentView);
         }
 
     }
