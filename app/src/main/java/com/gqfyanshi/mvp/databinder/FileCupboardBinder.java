@@ -102,7 +102,7 @@ public class FileCupboardBinder extends BaseDataBind<FileCupboardDelegate> {
         fileMap.put("file", new File(file));
         return new HttpRequest.Builder()
                 .setRequestCode(0x124)
-                .setRequestUrl(HttpUrl.getIntance().fileCabinet_upFile + "?" + lastFold + "=" + lastFold)
+                .setRequestUrl(HttpUrl.getIntance().fileCabinet_upFile + "?" + "lastFold" + "=" + lastFold)
                 .setShowDialog(true)
                 .setDialog(viewDelegate.getNetConnectDialog())
                 .setRequestName("上传文件")

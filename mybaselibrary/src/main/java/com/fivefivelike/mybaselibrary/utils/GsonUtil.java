@@ -106,8 +106,8 @@ public class GsonUtil {
      * @return
      */
     public <T> T toObj(String json, Class<T> clazz) {
-        //String string = toJson(JSON.parseObject(json, clazz));//转换一遍  保证空值
-        return JSON.parseObject(json, clazz);
+        String string = toJson(JSON.parseObject(json, clazz));//转换一遍  保证空值
+        return JSON.parseObject(string, clazz);
     }
 
     public <T> T toObjNoNull(String json, Class<T> clazz) {

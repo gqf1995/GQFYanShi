@@ -1,5 +1,6 @@
 package com.gqfyanshi.mvp.activity.notice.approval;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
@@ -90,7 +91,13 @@ public class NoticeApprovalActivity extends BaseDataBindActivity<NoticeApprovalD
         viewDelegate.viewHolder.recycler_view.setVisibility(ListUtils.isEmpty(list) ? View.GONE : View.VISIBLE);
         viewDelegate.viewHolder.tv_nodata.setVisibility(!ListUtils.isEmpty(list) ? View.GONE : View.VISIBLE);
     }
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            onRefush( viewDelegate.viewHolder.pageChangeView.getNowPage());
+        }
+    }
     @Override
     protected void onServiceSuccess(String data, String info, int status, int requestCode) {
         switch (requestCode) {

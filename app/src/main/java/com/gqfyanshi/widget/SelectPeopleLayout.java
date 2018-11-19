@@ -16,6 +16,7 @@ import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.R;
 import com.gqfyanshi.entity.bean.TreeBean;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -70,6 +71,10 @@ public class SelectPeopleLayout extends FrameLayout {
                         selectPeoplePopu = new SelectPeoplePopu(mContext);
                         selectPeoplePopu.setSelectType(selectType);
                         selectPeoplePopu.setTreeBean(treeBean);
+                        selectId=new StringBuffer();
+                        if (!ListUtils.isEmpty(alreadySelectId)) {
+                            selectPeoplePopu.setAlreadySelectId(alreadySelectId);
+                        }
                         selectPeoplePopu.setDefaultClickLinsener(new DefaultClickLinsener() {
                             @Override
                             public void onClick(View view, int position, Object item) {
@@ -84,10 +89,21 @@ public class SelectPeopleLayout extends FrameLayout {
         this.addView(rootView);
     }
 
+    List<String> alreadySelectId;
+
+    public void setAlreadySelectId(String id) {
+        alreadySelectId = Arrays.asList(id.split(","));
+        selectId = new StringBuffer(id);
+    }
+
     public void setShowEdit(String text) {
         et_attributes1.setEnabled(false);
         et_attributes1.setText(text);
         lin_attributes1.setOnClickListener(null);
+    }
+
+    public void setShowEditEnabled(String text) {
+        et_attributes1.setText(text);
     }
 
     private void showSelect() {
@@ -101,6 +117,11 @@ public class SelectPeopleLayout extends FrameLayout {
     StringBuffer selectId;
 
     public String getSelectId() {
+
+        if (!TextUtils.isEmpty(selectId.toString())) {
+            return selectId.toString();
+        }
+
         selectId = new StringBuffer();
         for (int i = 0; i < treeBean.size(); i++) {
             getId(treeBean.get(i));

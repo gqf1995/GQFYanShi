@@ -76,6 +76,7 @@ public class ApprovalDetailActivity extends BaseDataBindActivity<ApprovalDelegat
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == 0x123) {
+                setResult(RESULT_OK);
                 onBackPressed();
             }
         }
@@ -85,7 +86,7 @@ public class ApprovalDetailActivity extends BaseDataBindActivity<ApprovalDelegat
     protected void clickRightIv() {
         super.clickRightIv();
         if (isMy) {
-            ApprovalActivity.startAct(this, json, 0x123);
+            ApprovalActivity.startAct(this, json,departName, 0x123);
         } else {
             if (isEdit) {
                 if (documentInfoBean != null) {
@@ -152,7 +153,7 @@ public class ApprovalDetailActivity extends BaseDataBindActivity<ApprovalDelegat
     String json;
     ApprovalBean documentInfoBean;
     ShowPngAdapter showPngAdapter;
-
+    String departName;
     @Override
     protected void onServiceSuccess(String data, String info, int status, int requestCode) {
         switch (requestCode) {
@@ -179,7 +180,8 @@ public class ApprovalDetailActivity extends BaseDataBindActivity<ApprovalDelegat
                 viewDelegate.viewHolder.et_chaosong.setText(documentInfoBean.getCopyTo());
                 viewDelegate.viewHolder.selectTimeLayout1.setShowTime(documentInfoBean.getIssuedTime());
 
-                String departName = GsonUtil.getInstance().getValue(data, "departName");
+
+                departName = GsonUtil.getInstance().getValue(data, "departName");
                 viewDelegate.viewHolder.selectPeopleLayout.setShowEdit(departName);
                 viewDelegate.viewHolder.tv_people.setText(departName + "");
 

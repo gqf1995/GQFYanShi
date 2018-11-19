@@ -86,17 +86,21 @@ public class ApprovalActivity extends BaseDataBindActivity<ApprovalDelegate, App
 
     public static void startAct(Activity activity,
                                 String json,
+                                String departName,
                                 int requestCode) {
         Intent intent = new Intent(activity, ApprovalActivity.class);
         intent.putExtra("json", json);
+        intent.putExtra("departName", departName);
         activity.startActivityForResult(intent, requestCode);
     }
 
     private String json;
+    private String departName;
 
     private void getIntentData() {
         Intent intent = getIntent();
         json = intent.getStringExtra("json");
+        departName = intent.getStringExtra("departName");
         if (!TextUtils.isEmpty(json)) {
             documentInfoBean = GsonUtil.getInstance().toObj(json, ApprovalBean.class);
             viewDelegate.viewHolder.et_num.setText(documentInfoBean.getName());
@@ -115,6 +119,14 @@ public class ApprovalActivity extends BaseDataBindActivity<ApprovalDelegate, App
             viewDelegate.viewHolder.et_shenhe.setText(documentInfoBean.getAudit());
             viewDelegate.viewHolder.et_qianfa.setText(documentInfoBean.getIssue());
             viewDelegate.viewHolder.et_chaosong.setText(documentInfoBean.getCopyTo());
+
+            viewDelegate.viewHolder.selectTimeLayout1.setSelectTime(documentInfoBean.getIssuedTime());
+            viewDelegate.viewHolder.et_attributes2.setText(documentInfoBean.getFile_name() + "");
+            if (!TextUtils.isEmpty(departName)) {
+                viewDelegate.viewHolder.selectPeopleLayout.setShowEditEnabled(departName);
+                viewDelegate.viewHolder.selectPeopleLayout.setAlreadySelectId(documentInfoBean.getSendeeId());
+            }
+
         }
 
         viewDelegate.viewHolder.lin_attributes2.setOnClickListener(new View.OnClickListener() {

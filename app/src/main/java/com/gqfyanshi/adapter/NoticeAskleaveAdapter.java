@@ -54,6 +54,7 @@ public class NoticeAskleaveAdapter extends CommonAdapter<AskleaveBean> {
         tv3 = holder.getView(R.id.tv3);
         tv4 = holder.getView(R.id.tv4);
         tv5 = holder.getView(R.id.tv5);
+        tv6 = holder.getView(R.id.tv6);
 
         tv1.setText(s.getId() + "");
         tv2.setText(s.getOutLName());

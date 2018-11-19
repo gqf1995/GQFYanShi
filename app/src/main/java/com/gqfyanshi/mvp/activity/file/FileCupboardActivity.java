@@ -219,7 +219,7 @@ public class FileCupboardActivity extends BaseDataBindActivity<FileCupboardDeleg
                 "是否上传文件?", filePath, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        addRequest(binder.fileCabinet_upFile(fileItemBean == null ? "" : fileItemBean.getPath(), filePath, FileCupboardActivity.this));
+                        addRequest(binder.fileCabinet_upFile(filePath,fileItemBean == null ? "" : fileItemBean.getPath(),  FileCupboardActivity.this));
                     }
                 }
         ).show();

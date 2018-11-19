@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ObjectUtils;
 import com.fivefivelike.mybaselibrary.utils.CommonUtils;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
 import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
@@ -37,6 +38,11 @@ public class SelectPeoplePopu extends BasePopupWindow {
     }
 
     DefaultClickLinsener defaultClickLinsener;
+    List<String> alreadySelectId;
+
+    public void setAlreadySelectId(List<String> alreadySelectId) {
+        this.alreadySelectId = alreadySelectId;
+    }
 
     public void setDefaultClickLinsener(DefaultClickLinsener defaultClickLinsener) {
         this.defaultClickLinsener = defaultClickLinsener;
@@ -92,6 +98,14 @@ public class SelectPeoplePopu extends BasePopupWindow {
     //递归获取所有书签节点
     public void getTree(List<TreeBean> bookmarks, TreeNode parent) {
             for (int i = 0, n = bookmarks.size(); i < n; ++i) {
+
+                for (int j = 0; j < alreadySelectId.size(); j++) {
+                    if (ObjectUtils.equals(alreadySelectId.get(j), bookmarks.get(i).getId())) {
+                        bookmarks.get(i).isSelect = true;
+                        break;
+                    }
+                }
+
                 TreeNode child = new TreeNode(bookmarks.get(i))
                         .setViewHolder(new BookMarkTreeItemHolder(context)
                                 .setSelectType(selectType)
