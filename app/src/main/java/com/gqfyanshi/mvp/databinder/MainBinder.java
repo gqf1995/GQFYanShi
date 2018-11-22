@@ -30,6 +30,7 @@ public class MainBinder extends BaseDataBind<MainDelegate> {
                 .build()
                 .RxSendRequest();
     }
+
     public Disposable getInfo(
             RequestCallback requestCallback) {
         getBaseMapWithUid();
@@ -40,6 +41,23 @@ public class MainBinder extends BaseDataBind<MainDelegate> {
                 .setDialog(viewDelegate.getNetConnectDialog())
                 .setRequestName("登陆后获取菜单")
                 .setRequestMode(HttpRequest.RequestMode.POST)
+                .setParameterMode(HttpRequest.ParameterMode.KeyValue)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
+
+    public Disposable getAppVersion(
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        return new HttpRequest.Builder()
+                .setRequestCode(0x125)
+                .setRequestUrl(HttpUrl.getIntance().getAppVersion)
+                .setShowDialog(false)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("版本更新")
+                .setRequestMode(HttpRequest.RequestMode.GET)
                 .setParameterMode(HttpRequest.ParameterMode.KeyValue)
                 .setRequestObj(baseMap)
                 .setRequestCallback(requestCallback)

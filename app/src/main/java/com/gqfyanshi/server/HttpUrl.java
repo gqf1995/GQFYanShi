@@ -228,4 +228,8 @@ public class HttpUrl {
      * 保存共享成员
      */
     public String fileCabinet_editFoldSeedeeId = AppConst.app2BaseUrl + "/fileCabinet/editFoldSeedeeId";
+    /**
+     * 版本更新
+     */
+    public String getAppVersion = AppConst.app2BaseUrl + "/getAppVersion";
 }

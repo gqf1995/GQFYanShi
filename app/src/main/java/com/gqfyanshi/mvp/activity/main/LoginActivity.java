@@ -35,9 +35,9 @@ public class LoginActivity extends BaseDataBindActivity<LoginDelegate, LoginBind
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
-        viewDelegate.viewHolder.tv_phone.setText("15896559159");
-        viewDelegate.viewHolder.tv_code.setText("231231");
-        viewDelegate.viewHolder.tv_img_code.setText("21312");
+        //viewDelegate.viewHolder.tv_phone.setText("15896559159");
+        //viewDelegate.viewHolder.tv_code.setText("231231");
+        //viewDelegate.viewHolder.tv_img_code.setText("21312");
         //viewDelegate.viewHolder.tv_phone.setText("17396360301");
         isSelect = SaveUtil.getInstance().getBoolean("login_save");
         if (!isSelect) {

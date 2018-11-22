@@ -1,5 +1,6 @@
 package com.gqfyanshi.mvp.activity.main;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +9,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.View;
 
+import com.blankj.utilcode.util.ActivityUtils;
+import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.circledialog.CircleDialogHelper;
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
@@ -15,12 +18,25 @@ import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.CommonUtils;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.ListUtils;
+import com.fivefivelike.mybaselibrary.utils.SaveUtil;
+import com.fivefivelike.mybaselibrary.utils.UiHeplUtils;
+import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
+import com.fivefivelike.mybaselibrary.utils.glide.GlideCacheUtil;
+import com.fivefivelike.mybaselibrary.view.dialog.NetWorkDialog;
 import com.gqfyanshi.R;
+import com.gqfyanshi.entity.AppVersion;
 import com.gqfyanshi.mvp.activity.notice.approval.NoticeApprovalActivity;
 import com.gqfyanshi.mvp.databinder.MainBinder;
 import com.gqfyanshi.mvp.delegate.MainDelegate;
+import com.gqfyanshi.mvp.dialog.UpdateDialog;
 import com.gqfyanshi.mvp.fragment.ReceivinOofficialDocumentsFragment;
 import com.gqfyanshi.mvp.fragment.UserDrawerFragment;
+import com.gqfyanshi.server.UpdateService;
+import com.yanzhenjie.permission.Action;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.Permission;
+
+import java.util.List;
 
 public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder> implements MainLinsener {
 
@@ -156,8 +172,71 @@ public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder>
                             })
                             .show();
                 }
+                addRequest(binder.getAppVersion(this));
+                break;
+            case 0x125:
+                appVersion = GsonUtil.getInstance().toObj(data, AppVersion.class);
+                version();
                 break;
         }
+    }
+
+    AppVersion appVersion;
+
+    private void version() {
+        if (UiHeplUtils.compareVersion(appVersion.getApp_version(),
+                AppUtils.getAppVersionName()) == 1
+                && !SaveUtil.getInstance().getBoolean("isUpdataCancel" + AppUtils.getAppVersionName())) {
+            new UpdateDialog(MainActivity.this)
+                    .setAppVersion(appVersion)
+                    .setDefaultClickLinsener(new DefaultClickLinsener() {
+                        @Override
+                        public void onClick(View view, int position, Object item) {
+                            if (position == 0) {
+                                //取消
+                                ActivityUtils.finishAllActivities();
+                            } else if (position == 1) {
+                                //确认
+                                updataApp();
+                            }
+                        }
+                    }).showDialog();
+            GlideCacheUtil.getInstance().clearImageAllCache();
+        }
+    }
+
+    private void updataApp() {
+        AndPermission.with(this)
+                .permission(Permission.WRITE_EXTERNAL_STORAGE,
+                        Permission.READ_EXTERNAL_STORAGE)
+                .onGranted(new Action<List<String>>() {
+                    @Override
+                    public void onAction(List<String> permissions) {
+                        UpdateService.
+                                Builder.create(appVersion.getApp_version())
+                                .setStoreDir("update")
+                                .setIcoResId(R.drawable.add_file_upload)
+                                .setDownloadSuccessNotificationFlag(Notification.DEFAULT_ALL)
+                                .setDownloadErrorNotificationFlag(Notification.DEFAULT_ALL)
+                                .setAppVersion(appVersion)
+                                .build(MainActivity.this);
+                        if (appVersion.isMustUpdate()) {
+                            NetWorkDialog netConnectDialog = viewDelegate.getNetConnectDialog("正在更新。。。", false);
+                            netConnectDialog.showDialog(true);
+                        }
+                    }
+                })
+                .onDenied(new Action<List<String>>() {
+                    @Override
+                    public void onAction(List<String> permissions) {
+                        CircleDialogHelper.initDefaultToastDialog(MainActivity.this, CommonUtils.getString(R.string.str_permission_read_write), new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ActivityUtils.finishAllActivities();
+                            }
+                        });
+                    }
+                }).start();
     }
 
     @Override
