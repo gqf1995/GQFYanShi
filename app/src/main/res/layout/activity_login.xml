@@ -294,6 +294,7 @@
 
 
                                     <TextView
+                                        android:id="@+id/tv_change_img"
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
                                         android:paddingLeft="@dimen/trans_5px"

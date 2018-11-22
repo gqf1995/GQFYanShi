@@ -14,22 +14,22 @@ public class LoginBinder extends BaseDataBind<LoginDelegate> {
         super(viewDelegate);
     }
 
-    public Disposable pictureCheckCode(
-            RequestCallback requestCallback) {
-        getBaseMapWithUid();
-        return new HttpRequest.Builder()
-                .setRequestCode(0x123)
-                .setRequestUrl(HttpUrl.getIntance().pictureCheckCode)
-                .setShowDialog(false)
-                .setDialog(viewDelegate.getNetConnectDialog())
-                .setRequestName("获取验证码")
-                .setRequestMode(HttpRequest.RequestMode.GET)
-                .setParameterMode(HttpRequest.ParameterMode.KeyValue)
-                .setRequestObj(baseMap)
-                .setRequestCallback(requestCallback)
-                .build()
-                .RxSendRequest();
-    }
+//    public Disposable pictureCheckCode(
+//            RequestCallback requestCallback) {
+//        getBaseMapWithUid();
+//        return new HttpRequest.Builder()
+//                .setRequestCode(0x123)
+//                .setRequestUrl(HttpUrl.getIntance().pictureCheckCode)
+//                .setShowDialog(false)
+//                .setDialog(viewDelegate.getNetConnectDialog())
+//                .setRequestName("获取验证码")
+//                .setRequestMode(HttpRequest.RequestMode.GET)
+//                .setParameterMode(HttpRequest.ParameterMode.KeyValue)
+//                .setRequestObj(baseMap)
+//                .setRequestCallback(requestCallback)
+//                .build()
+//                .RxSendRequest();
+//    }
 
     public Disposable doLogin(
             String phoneNum,
@@ -53,7 +53,22 @@ public class LoginBinder extends BaseDataBind<LoginDelegate> {
                 .build()
                 .RxSendRequest();
     }
-
+    public Disposable pictureCheckCode(
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        return new HttpRequest.Builder()
+                .setRequestCode(0x125)
+                .setRequestUrl(HttpUrl.getIntance().pictureCheckCode)
+                .setShowDialog(false)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("登录")
+                .setRequestMode(HttpRequest.RequestMode.GET)
+                .setParameterMode(HttpRequest.ParameterMode.KeyValue)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
     public Disposable sendPhoneCode(
             String phoneNum,
             RequestCallback requestCallback) {

@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.fivefivelike.mybaselibrary.R;
@@ -32,7 +33,11 @@ public class GlideUtils {
     public static String getBaseUrl() {
         return BASE_URL + "/avatar/";
     }
-
+    public static RequestOptions  getNoCacheRO(){
+        return new RequestOptions()
+                .skipMemoryCache(true)
+                .diskCacheStrategy(DiskCacheStrategy.NONE);
+    }
     //http://forotc.com/avatar/23.png
     public static void loadImage(String url, ImageView icon) {
         if (icon == null) {

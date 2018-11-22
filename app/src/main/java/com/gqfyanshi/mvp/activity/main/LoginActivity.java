@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.bumptech.glide.request.RequestOptions;
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
 import com.fivefivelike.mybaselibrary.utils.SaveUtil;
@@ -35,7 +34,7 @@ public class LoginActivity extends BaseDataBindActivity<LoginDelegate, LoginBind
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
-        //viewDelegate.viewHolder.tv_phone.setText("15896559159");
+        viewDelegate.viewHolder.tv_phone.setText("15896559159");
         //viewDelegate.viewHolder.tv_code.setText("231231");
         //viewDelegate.viewHolder.tv_img_code.setText("21312");
         //viewDelegate.viewHolder.tv_phone.setText("17396360301");
@@ -49,8 +48,19 @@ public class LoginActivity extends BaseDataBindActivity<LoginDelegate, LoginBind
         GlideUtils.loadImage(
                 HttpUrl.getIntance().pictureCheckCode,
                 viewDelegate.viewHolder.iv_img_code,
-                new RequestOptions()
+                GlideUtils.getNoCacheRO()
         );
+        addRequest(binder.pictureCheckCode(this));
+        viewDelegate.viewHolder.tv_change_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GlideUtils.loadImage(
+                        HttpUrl.getIntance().pictureCheckCode,
+                        viewDelegate.viewHolder.iv_img_code,
+                        GlideUtils.getNoCacheRO()
+                );
+            }
+        });
         viewDelegate.viewHolder.lin_select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
