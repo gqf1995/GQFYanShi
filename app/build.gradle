@@ -70,4 +70,5 @@ dependencies {
     compile(name:'inkutils', ext:'aar')
     compile(name:'recognizer', ext:'aar')
     compile(name:'utils', ext:'aar')
+    compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
 }

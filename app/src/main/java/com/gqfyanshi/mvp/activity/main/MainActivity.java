@@ -63,7 +63,7 @@ public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder>
                 viewDelegate.viewHolder.main_drawer_layout.openDrawer(Gravity.LEFT);
             }
         });
-        addRequest(binder.getInfo(this));
+        addRequest(binder.getAppVersion(this));
     }
 
     @Override
@@ -172,9 +172,9 @@ public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder>
                             })
                             .show();
                 }
-                addRequest(binder.getAppVersion(this));
                 break;
             case 0x125:
+                addRequest(binder.getInfo(this));
                 appVersion = GsonUtil.getInstance().toObj(data, AppVersion.class);
                 version();
                 break;

@@ -76,6 +76,7 @@ public class UpdateDialog extends BaseDialog implements DialogInterface.OnCancel
                 dismiss();
             }
         });
+        tv_http.setText("点击下载");
         tv_http.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
