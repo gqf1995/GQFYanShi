@@ -26,7 +26,7 @@ public class HttpUrl {
     /**
      * 登录
      */
-    public String doLogin = AppConst.app2BaseUrl + "/doLogin";
+    public String doLogin = AppConst.app2BaseUrl + "/doLoginNew";
     /**
      * 获取验证码
      */

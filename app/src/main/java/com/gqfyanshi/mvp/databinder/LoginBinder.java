@@ -35,11 +35,13 @@ public class LoginBinder extends BaseDataBind<LoginDelegate> {
             String phoneNum,
             String randomCode,
             String loginNum,
+            String uuIdkeys,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
         baseMap.put("phoneNum", phoneNum);
         baseMap.put("randomCode", randomCode);
         baseMap.put("loginNum",loginNum);
+        baseMap.put("uuIdkeys",uuIdkeys);
         return new HttpRequest.Builder()
                 .setRequestCode(0x124)
                 .setRequestUrl(HttpUrl.getIntance().doLogin)
@@ -82,6 +84,22 @@ public class LoginBinder extends BaseDataBind<LoginDelegate> {
                 .setRequestName("发送手机短信验证码")
                 .setRequestMode(HttpRequest.RequestMode.POST)
                 .setParameterMode(HttpRequest.ParameterMode.Json)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
+    public Disposable getAppVersion(
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        return new HttpRequest.Builder()
+                .setRequestCode(0x126)
+                .setRequestUrl(HttpUrl.getIntance().getAppVersion)
+                .setShowDialog(false)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("版本更新")
+                .setRequestMode(HttpRequest.RequestMode.GET)
+                .setParameterMode(HttpRequest.ParameterMode.KeyValue)
                 .setRequestObj(baseMap)
                 .setRequestCallback(requestCallback)
                 .build()

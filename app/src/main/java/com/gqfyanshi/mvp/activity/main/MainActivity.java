@@ -174,7 +174,6 @@ public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder>
                 }
                 break;
             case 0x125:
-                addRequest(binder.getInfo(this));
                 appVersion = GsonUtil.getInstance().toObj(data, AppVersion.class);
                 version();
                 break;
@@ -202,6 +201,8 @@ public class MainActivity extends BaseDataBindActivity<MainDelegate, MainBinder>
                         }
                     }).showDialog();
             GlideCacheUtil.getInstance().clearImageAllCache();
+        }else {
+            addRequest(binder.getInfo(this));
         }
     }
 
