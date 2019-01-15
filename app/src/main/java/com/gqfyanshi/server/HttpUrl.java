@@ -28,6 +28,10 @@ public class HttpUrl {
      */
     public String doLogin = AppConst.app2BaseUrl + "/doLoginNew";
     /**
+     * 登录
+     */
+    public String doLogin2 = AppConst.app2BaseUrl + "/doLogin";
+    /**
      * 获取验证码
      */
     public String pictureCheckCode = AppConst.app2BaseUrl + "/pictureCheckCode";

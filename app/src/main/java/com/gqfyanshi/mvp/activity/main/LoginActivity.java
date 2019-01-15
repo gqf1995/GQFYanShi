@@ -4,7 +4,6 @@ import android.app.Notification;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -39,6 +38,7 @@ import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 public class LoginActivity extends BaseDataBindActivity<LoginDelegate, LoginBinder> {
@@ -49,6 +49,7 @@ public class LoginActivity extends BaseDataBindActivity<LoginDelegate, LoginBind
     }
 
     boolean isSelect = false;
+    boolean isNeedSn = true;
 
     @Override
     public LoginBinder getDataBinder(LoginDelegate viewDelegate) {
@@ -120,6 +121,31 @@ public class LoginActivity extends BaseDataBindActivity<LoginDelegate, LoginBind
 
     String ANDROID_ID;
 
+    //通过反射获取ro.serialno
+    public static String getSerialNumber() {
+
+        String serial = "";
+
+        try {
+
+            Class<?> c = Class.forName("android.os.SystemProperties");
+
+            Method get = c.getMethod("get", String.class);
+
+            serial = (String) get.invoke(c, "gsm.scril.sn");
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+        return serial;
+
+    }
+
+    int click = 0;
+
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
@@ -128,8 +154,20 @@ public class LoginActivity extends BaseDataBindActivity<LoginDelegate, LoginBind
         //viewDelegate.viewHolder.tv_img_code.setText("21312");
         //viewDelegate.viewHolder.tv_phone.setText("17396360301");
         addRequest(binder.getAppVersion(this));
-        ANDROID_ID = Settings.System.getString(getContentResolver(), Settings.System.ANDROID_ID);
+        ANDROID_ID = getSerialNumber();
+        viewDelegate.viewHolder.iv_fly.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                click++;
+                if (click == 10) {
+                    isNeedSn = false;
+                    ToastUtil.show("已不需要绑定设备");
+                }
+            }
+        });
         Log.i("ANDROID_ID", ANDROID_ID);
+        //        String sn = System.getProperty("persist.sys.sn");
+        //        Log.i("ANDROID_ID", sn);
 
         isSelect = SaveUtil.getInstance().getBoolean("login_save");
         if (!isSelect) {
@@ -173,13 +211,22 @@ public class LoginActivity extends BaseDataBindActivity<LoginDelegate, LoginBind
                 //                    ToastUtil.show("请输入图形验证码");
                 //                    return;
                 //                }
-                addRequest(binder.doLogin(
-                        viewDelegate.viewHolder.tv_phone.getText().toString(),
-                        viewDelegate.viewHolder.tv_img_code.getText().toString(),
-                        viewDelegate.viewHolder.tv_code.getText().toString(),
-                        ANDROID_ID,
-                        LoginActivity.this
-                ));
+                if (isNeedSn) {
+                    addRequest(binder.doLogin(
+                            viewDelegate.viewHolder.tv_phone.getText().toString(),
+                            viewDelegate.viewHolder.tv_img_code.getText().toString(),
+                            viewDelegate.viewHolder.tv_code.getText().toString(),
+                            ANDROID_ID,
+                            LoginActivity.this
+                    ));
+                } else {
+                    addRequest(binder.doLogin(
+                            viewDelegate.viewHolder.tv_phone.getText().toString(),
+                            viewDelegate.viewHolder.tv_img_code.getText().toString(),
+                            viewDelegate.viewHolder.tv_code.getText().toString(),
+                            LoginActivity.this
+                    ));
+                }
             }
         });
         viewDelegate.viewHolder.tv_send_code.setOnClickListener(new View.OnClickListener() {

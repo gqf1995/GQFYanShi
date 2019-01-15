@@ -55,6 +55,28 @@ public class LoginBinder extends BaseDataBind<LoginDelegate> {
                 .build()
                 .RxSendRequest();
     }
+    public Disposable doLogin(
+            String phoneNum,
+            String randomCode,
+            String loginNum,
+            RequestCallback requestCallback) {
+        getBaseMapWithUid();
+        baseMap.put("phoneNum", phoneNum);
+        baseMap.put("randomCode", randomCode);
+        baseMap.put("loginNum",loginNum);
+        return new HttpRequest.Builder()
+                .setRequestCode(0x124)
+                .setRequestUrl(HttpUrl.getIntance().doLogin2)
+                .setShowDialog(false)
+                .setDialog(viewDelegate.getNetConnectDialog())
+                .setRequestName("登录")
+                .setRequestMode(HttpRequest.RequestMode.POST)
+                .setParameterMode(HttpRequest.ParameterMode.Json)
+                .setRequestObj(baseMap)
+                .setRequestCallback(requestCallback)
+                .build()
+                .RxSendRequest();
+    }
     public Disposable pictureCheckCode(
             RequestCallback requestCallback) {
         getBaseMapWithUid();

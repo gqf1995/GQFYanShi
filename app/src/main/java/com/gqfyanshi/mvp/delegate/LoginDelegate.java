@@ -38,6 +38,7 @@ public class LoginDelegate extends BaseDelegate {
         public LinearLayout lin_select;
         public RoundButton tv_login;
         public LinearLayout lin_login;
+        public ImageView iv_fly;
 
         public ViewHolder(View rootView) {
             this.rootView = rootView;
@@ -52,6 +53,7 @@ public class LoginDelegate extends BaseDelegate {
             this.lin_select = (LinearLayout) rootView.findViewById(R.id.lin_select);
             this.tv_login = (RoundButton) rootView.findViewById(R.id.tv_login);
             this.lin_login = (LinearLayout) rootView.findViewById(R.id.lin_login);
+            this.iv_fly = (ImageView) rootView.findViewById(R.id.iv_fly);
         }
 
     }
