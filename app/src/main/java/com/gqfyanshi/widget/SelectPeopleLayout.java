@@ -16,6 +16,7 @@ import com.fivefivelike.mybaselibrary.utils.callback.DefaultClickLinsener;
 import com.gqfyanshi.R;
 import com.gqfyanshi.entity.bean.TreeBean;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -70,11 +71,13 @@ public class SelectPeopleLayout extends FrameLayout {
                     if (selectPeoplePopu == null) {
                         selectPeoplePopu = new SelectPeoplePopu(mContext);
                         selectPeoplePopu.setSelectType(selectType);
-                        selectPeoplePopu.setTreeBean(treeBean);
-                        selectId=new StringBuffer();
+                        selectId = new StringBuffer();
                         if (!ListUtils.isEmpty(alreadySelectId)) {
                             selectPeoplePopu.setAlreadySelectId(alreadySelectId);
+                        } else {
+                            selectPeoplePopu.setAlreadySelectId(alreadySelectId = new ArrayList<>());
                         }
+                        selectPeoplePopu.setTreeBean(treeBean);
                         selectPeoplePopu.setDefaultClickLinsener(new DefaultClickLinsener() {
                             @Override
                             public void onClick(View view, int position, Object item) {
