@@ -36,6 +36,7 @@ public class ApprovalBinder extends BaseDataBind<ApprovalDelegate> {
 }
      */
     public Disposable fileSign_saveFileSign(
+            String id,
             String name,
             String title,
             String sendeeId,
@@ -59,6 +60,7 @@ public class ApprovalBinder extends BaseDataBind<ApprovalDelegate> {
             String fileName,
             RequestCallback requestCallback) {
         getBaseMapWithUid();
+        baseMap.put("id", id);
         baseMap.put("name", name);
         baseMap.put("title", title);
         baseMap.put("sendeeId", sendeeId);

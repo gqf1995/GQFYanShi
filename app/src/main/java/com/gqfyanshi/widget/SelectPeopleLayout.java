@@ -119,6 +119,10 @@ public class SelectPeopleLayout extends FrameLayout {
 
     StringBuffer selectId;
 
+    public boolean isSelectIdNull(){
+        return selectId==null;
+    }
+
     public String getSelectId() {
 
         if (!TextUtils.isEmpty(selectId.toString())) {

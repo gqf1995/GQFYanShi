@@ -32,6 +32,7 @@ public class NoticeSendOfficialDocumentDelegate extends BaseDelegate {
 
         public EditText et_attributes;
         public LinearLayout lin_attributes;
+        public LinearLayout lin_add;
         public EditText et_attributes2;
         public LinearLayout lin_attributes2;
         public SelectAttrLayout selectPeopleLayout1;
@@ -50,6 +51,7 @@ public class NoticeSendOfficialDocumentDelegate extends BaseDelegate {
             this.lin_attributes = (LinearLayout) rootView.findViewById(R.id.lin_attributes);
             this.et_attributes2 = (EditText) rootView.findViewById(R.id.et_attributes2);
             this.lin_attributes2 = (LinearLayout) rootView.findViewById(R.id.lin_attributes2);
+            this.lin_add = (LinearLayout) rootView.findViewById(R.id.lin_add);
             this.selectPeopleLayout1 = (SelectAttrLayout) rootView.findViewById(R.id.selectPeopleLayout1);
             this.selectTimeLayout1 = (SelectTimeLayout) rootView.findViewById(R.id.selectTimeLayout1);
             this.selectTimeLayout2 = (SelectTimeLayout) rootView.findViewById(R.id.selectTimeLayout2);

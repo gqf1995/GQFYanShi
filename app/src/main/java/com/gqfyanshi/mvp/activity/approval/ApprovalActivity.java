@@ -44,6 +44,10 @@ public class ApprovalActivity extends BaseDataBindActivity<ApprovalDelegate, App
     @Override
     protected void clickRightIv() {
         super.clickRightIv();
+        if (viewDelegate.viewHolder.selectPeopleLayout.isSelectIdNull()) {
+            ToastUtil.show("请选择签批人");
+            return;
+        }
         if (TextUtils.isEmpty(viewDelegate.viewHolder.selectPeopleLayout.getSelectId())) {
             ToastUtil.show("请选择签批人");
             return;
@@ -59,6 +63,7 @@ public class ApprovalActivity extends BaseDataBindActivity<ApprovalDelegate, App
 
     private void saveDocument() {
         addRequest(binder.fileSign_saveFileSign(
+                id,
                 viewDelegate.viewHolder.et_num.getText().toString(),
                 viewDelegate.viewHolder.et_title.getText().toString(),
                 viewDelegate.viewHolder.selectPeopleLayout.getSelectId(),
@@ -96,6 +101,7 @@ public class ApprovalActivity extends BaseDataBindActivity<ApprovalDelegate, App
 
     private String json;
     private String departName;
+    private String id;
 
     private void getIntentData() {
         Intent intent = getIntent();
@@ -103,6 +109,7 @@ public class ApprovalActivity extends BaseDataBindActivity<ApprovalDelegate, App
         departName = intent.getStringExtra("departName");
         if (!TextUtils.isEmpty(json)) {
             documentInfoBean = GsonUtil.getInstance().toObj(json, ApprovalBean.class);
+            id=documentInfoBean.getId();
             viewDelegate.viewHolder.et_num.setText(documentInfoBean.getName());
             viewDelegate.viewHolder.et_title.setText(documentInfoBean.getTitle());
             viewDelegate.viewHolder.et_jinji.setText(documentInfoBean.getPriority());

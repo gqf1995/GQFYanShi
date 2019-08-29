@@ -50,6 +50,7 @@ public class NoticeReceiveOfficialDocumentActivity extends BaseDataBindActivity<
         getIntentData();
         initToolbar(new ToolbarBuilder().setTitle("公文接收"));
         onRefush(1);
+        viewDelegate.viewHolder.lin_add.setVisibility(View.GONE);
     }
 
     //        文件字号： name
