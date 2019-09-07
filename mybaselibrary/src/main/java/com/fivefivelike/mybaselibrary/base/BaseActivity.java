@@ -3,6 +3,7 @@ package com.fivefivelike.mybaselibrary.base;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -75,6 +76,7 @@ public abstract class BaseActivity<T extends BaseDelegate> extends ActivityPrese
         //友盟推送
 
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // 禁用横屏
     }
 
     public void setStatusBarLightOrNight() {

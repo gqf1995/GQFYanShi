@@ -38,6 +38,7 @@ public class NoticeApprovalDelegate extends BaseDelegate {
         public RoundButton tv_search;
         public RecyclerView recycler_view;
         public TextView tv_nodata;
+        public TextView tv_status;
         public PageChangeView pageChangeView;
 
         public ViewHolder(View rootView) {
@@ -52,6 +53,7 @@ public class NoticeApprovalDelegate extends BaseDelegate {
             this.tv_search = (RoundButton) rootView.findViewById(R.id.tv_search);
             this.recycler_view = (RecyclerView) rootView.findViewById(R.id.recycler_view);
             this.tv_nodata = (TextView) rootView.findViewById(R.id.tv_nodata);
+            this.tv_status = (TextView) rootView.findViewById(R.id.tv_status);
             this.pageChangeView = (PageChangeView) rootView.findViewById(R.id.pageChangeView);
         }
 
