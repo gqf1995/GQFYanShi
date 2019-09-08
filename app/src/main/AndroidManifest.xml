@@ -126,6 +126,8 @@
         <activity android:name=".mvp.activity.approval.ApprovalDetailActivity"/>
         <activity android:name=".mvp.activity.notice.approval.NoticeApprovalActivity"/>
         <activity android:name=".mvp.activity.notice.approval.NoticeMyApprovalActivity"/>
+        <activity android:name=".mvp.activity.ReceiveSignActivity"/>
+        <activity android:name=".mvp.activity.SendSignActivity"/>
     </application>
 
 </manifest>

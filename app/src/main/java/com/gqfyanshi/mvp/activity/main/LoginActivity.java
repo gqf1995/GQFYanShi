@@ -153,6 +153,12 @@ public class LoginActivity extends BaseDataBindActivity<LoginDelegate, LoginBind
         //viewDelegate.viewHolder.tv_code.setText("231231");
         //viewDelegate.viewHolder.tv_img_code.setText("21312");
         //viewDelegate.viewHolder.tv_phone.setText("17396360301");
+        String token = SaveUtil.getInstance().getString("uid");
+        if(!TextUtils.isEmpty(token)){
+            startActivity(new Intent(this,MainActivity.class));
+            finish();
+            return;
+        }
         addRequest(binder.getAppVersion(this));
         ANDROID_ID = getSerialNumber();
         viewDelegate.viewHolder.iv_fly.setOnClickListener(new View.OnClickListener() {

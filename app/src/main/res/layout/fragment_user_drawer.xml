@@ -18,9 +18,38 @@
     <RelativeLayout
         android:id="@+id/contentView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         />
+    <LinearLayout
+        android:id="@+id/lin_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/trans_20px"
+        android:paddingLeft="@dimen/trans_30px"
+        android:paddingTop="@dimen/trans_20px">
 
+        <ImageView
+            android:id="@+id/iv_logout"
+            android:layout_width="@dimen/trans_15px"
+            android:layout_height="@dimen/trans_15px"
+            android:layout_marginRight="@dimen/trans_10px"
+            android:scaleType="centerInside"
+            android:src="@drawable/xiangqing"
+            android:visibility="invisible"
+            />
+
+        <TextView
+            android:id="@+id/tv_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="退出登录"
+            android:textColor="@color/color_font1"
+            android:textSize="@dimen/text_trans_18px"/>
+
+    </LinearLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -1393,7 +1422,36 @@
                     android:textSize="@dimen/text_trans_18px"/>
 
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lin_module13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/trans_20px"
+                android:paddingLeft="@dimen/trans_30px"
+                android:paddingTop="@dimen/trans_20px">
 
+                <ImageView
+                    android:id="@+id/iv_module13"
+                    android:layout_width="@dimen/trans_15px"
+                    android:layout_height="@dimen/trans_15px"
+                    android:layout_marginRight="@dimen/trans_10px"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/xiangqing"
+                    android:visibility="invisible"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_module13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="退出登录"
+                    android:textColor="@color/color_font1"
+                    android:textSize="@dimen/text_trans_18px"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
