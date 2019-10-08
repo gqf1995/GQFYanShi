@@ -12,7 +12,6 @@ import com.ebensz.eink.api.PennableLayout;
 import com.fivefivelike.mybaselibrary.base.BaseDelegate;
 import com.gqfyanshi.R;
 import com.gqfyanshi.widget.SelectPeopleLayout;
-import com.gqfyanshi.widget.SelectTimeLayout;
 
 public class ReceiveSignDelegate extends BaseDelegate {
     public ViewHolder viewHolder;
@@ -30,15 +29,13 @@ public class ReceiveSignDelegate extends BaseDelegate {
 
     public static class ViewHolder {
         public View rootView;
-        public View view_line;
-        public LinearLayout layout_title_bar;
         public EditText et_keshi;
         public EditText et_dianhua;
-        public SelectTimeLayout selectTimeLayout1;
+        public EditText et_shijian;
         public EditText et_bianhao;
         public EditText et_laiwendanwei;
         public EditText et_yuanwenhao;
-        public SelectTimeLayout selectTimeLayout2;
+        public EditText et_shouwenshijian;
         public EditText et_fenshu;
         public EditText et_miji;
         public EditText et_biaoti;
@@ -49,11 +46,18 @@ public class ReceiveSignDelegate extends BaseDelegate {
         public EditText et_beizhu;
         public TextView tv_people;
         public LinearLayout lin2;
+        public TextView tv_look_people;
+        public LinearLayout lin3;
         public SelectPeopleLayout selectPeopleLayout;
         public SelectPeopleLayout selectLookPeopleLayout;
         public TextView et_attributes2;
         public LinearLayout lin_attributes2;
         public RecyclerView rv_file;
+        public LinearLayout lin4;
+        public RecyclerView recycler_view;
+        public LinearLayout lin_rcv;
+        public TextView tv_edit_title;
+        public LinearLayout lin_edit;
         public LinearLayout lin_nestedScrollView;
         public NestedScrollView nestedScrollView;
         public PennableLayout ink;
@@ -61,15 +65,13 @@ public class ReceiveSignDelegate extends BaseDelegate {
 
         public ViewHolder(View rootView) {
             this.rootView = rootView;
-            this.view_line = (View) rootView.findViewById(R.id.view_line);
-            this.layout_title_bar = (LinearLayout) rootView.findViewById(R.id.layout_title_bar);
             this.et_keshi = (EditText) rootView.findViewById(R.id.et_keshi);
             this.et_dianhua = (EditText) rootView.findViewById(R.id.et_dianhua);
-            this.selectTimeLayout1 = (SelectTimeLayout) rootView.findViewById(R.id.selectTimeLayout1);
+            this.et_shijian = (EditText) rootView.findViewById(R.id.et_shijian);
             this.et_bianhao = (EditText) rootView.findViewById(R.id.et_bianhao);
             this.et_laiwendanwei = (EditText) rootView.findViewById(R.id.et_laiwendanwei);
             this.et_yuanwenhao = (EditText) rootView.findViewById(R.id.et_yuanwenhao);
-            this.selectTimeLayout2 = (SelectTimeLayout) rootView.findViewById(R.id.selectTimeLayout2);
+            this.et_shouwenshijian = (EditText) rootView.findViewById(R.id.et_shouwenshijian);
             this.et_fenshu = (EditText) rootView.findViewById(R.id.et_fenshu);
             this.et_miji = (EditText) rootView.findViewById(R.id.et_miji);
             this.et_biaoti = (EditText) rootView.findViewById(R.id.et_biaoti);
@@ -80,11 +82,18 @@ public class ReceiveSignDelegate extends BaseDelegate {
             this.et_beizhu = (EditText) rootView.findViewById(R.id.et_beizhu);
             this.tv_people = (TextView) rootView.findViewById(R.id.tv_people);
             this.lin2 = (LinearLayout) rootView.findViewById(R.id.lin2);
+            this.tv_look_people = (TextView) rootView.findViewById(R.id.tv_look_people);
+            this.lin3 = (LinearLayout) rootView.findViewById(R.id.lin3);
             this.selectPeopleLayout = (SelectPeopleLayout) rootView.findViewById(R.id.selectPeopleLayout);
             this.selectLookPeopleLayout = (SelectPeopleLayout) rootView.findViewById(R.id.selectLookPeopleLayout);
             this.et_attributes2 = (TextView) rootView.findViewById(R.id.et_attributes2);
             this.lin_attributes2 = (LinearLayout) rootView.findViewById(R.id.lin_attributes2);
             this.rv_file = (RecyclerView) rootView.findViewById(R.id.rv_file);
+            this.lin4 = (LinearLayout) rootView.findViewById(R.id.lin4);
+            this.recycler_view = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+            this.lin_rcv = (LinearLayout) rootView.findViewById(R.id.lin_rcv);
+            this.tv_edit_title = (TextView) rootView.findViewById(R.id.tv_edit_title);
+            this.lin_edit = (LinearLayout) rootView.findViewById(R.id.lin_edit);
             this.lin_nestedScrollView = (LinearLayout) rootView.findViewById(R.id.lin_nestedScrollView);
             this.nestedScrollView = (NestedScrollView) rootView.findViewById(R.id.nestedScrollView);
             this.ink = (PennableLayout) rootView.findViewById(R.id.ink);

@@ -44,7 +44,7 @@ public class NoticeMyApprovalActivity extends BaseDataBindActivity<NoticeApprova
                 onRefush(1);
             }
         });
-        viewDelegate.viewHolder.tv_status.setVisibility(View.GONE);
+        //viewDelegate.viewHolder.tv_status.setVisibility(View.GONE);
     }
 
     Class zlass = ApprovalBean.class;

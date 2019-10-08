@@ -138,7 +138,7 @@ public class NoticeReceiveOfficialDocumentActivity extends BaseDataBindActivity<
 
     private void onRefush(int pageNumber) {
         QueryJsonBean queryJsonBean = new QueryJsonBean();
-        queryJsonBean.setModelId("6");
+        queryJsonBean.setModelId("5");
         queryJsonBean.setName(name);
         queryJsonBean.setTitle(title);
         queryJsonBean.setType(type);
@@ -165,6 +165,7 @@ public class NoticeReceiveOfficialDocumentActivity extends BaseDataBindActivity<
                 }
             });
             adapter = new NoticeReceiveOfficialDocumentAdapter(this, list);
+            adapter.setShowDelect(false);
             adapter.setDefaultClickLinsener(new DefaultClickLinsener() {
                 @Override
                 public void onClick(View view, int position, Object item) {

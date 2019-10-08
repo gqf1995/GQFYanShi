@@ -42,8 +42,7 @@ public class DocumentInfoActivity extends BaseDataBindActivity<DocumentInfoDeleg
     protected void bindEvenListener() {
         super.bindEvenListener();
         getIntentData();
-        initToolbar(new ToolbarBuilder().setTitle("文件详情")
-                .setmRightImg1("签批"));
+        initToolbar(new ToolbarBuilder().setTitle("文件详情"));
     }
     Handler mHandler = new Handler();
     @Override

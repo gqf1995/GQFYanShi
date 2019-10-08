@@ -51,7 +51,7 @@ public class ShowPngAdapter extends CommonAdapter<PostilsBean> {
         tv_name = holder.getView(R.id.tv_name);
         tv_time = holder.getView(R.id.tv_time);
         tv_delect = holder.getView(R.id.tv_delect);
-        GlideUtils.loadImage(AppConst.app2BaseUrl + "/" + s.getPostilAddress(), iv_piv, new RequestOptions());
+        GlideUtils.loadImage(AppConst.fileUrl + "/" + s.getPostilAddress(), iv_piv, new RequestOptions());
         tv_time.setText(s.getcTime());
         tv_name.setText(s.getName());
 

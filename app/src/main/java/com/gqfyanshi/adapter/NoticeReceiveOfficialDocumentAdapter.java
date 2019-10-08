@@ -29,6 +29,12 @@ public class NoticeReceiveOfficialDocumentAdapter extends CommonAdapter<Document
     private TextView tv5;
     private TextView tv6;
 
+    boolean isShowDelect=true;
+
+    public void setShowDelect(boolean showDelect) {
+        isShowDelect = showDelect;
+    }
+
     DefaultClickLinsener defaultClickLinsener;
 
     public void setDefaultClickLinsener(DefaultClickLinsener defaultClickLinsener) {
@@ -74,6 +80,8 @@ public class NoticeReceiveOfficialDocumentAdapter extends CommonAdapter<Document
                 defaultClickLinsener.onClick(v, position, null);
             }
         });
+
+        tv6.setVisibility(isShowDelect?View.VISIBLE:View.GONE);
     }
 
 }

@@ -129,7 +129,7 @@ public class TBSActivity extends BaseDataBindActivity<TBSDelegate, TBSBinder> im
         fileName = intent.getStringExtra("fileName");
         url = intent.getStringExtra("url");
         if (!url.contains("http")) {
-            url = AppConst.app2BaseUrl +"/"+ url;
+            url = AppConst.fileUrl +"/"+ url;
         }
     }
 
@@ -226,12 +226,17 @@ public class TBSActivity extends BaseDataBindActivity<TBSDelegate, TBSBinder> im
         Bundle bundle = new Bundle();
         bundle.putString("filePath", filePath);
         bundle.putString("tempPath", tbsReaderTemp);
-        boolean result = mTbsReaderView.preOpen(getFileType(fileName), false);
-        if (result) {
-            mTbsReaderView.openFile(bundle);
-        } else {
-
+        if(TextUtils.isEmpty(fileName)||getFileType(fileName)==null||mTbsReaderView==null){
+            return;
         }
+        try{
+            boolean result = mTbsReaderView.preOpen(getFileType(fileName), false);
+            if (result) {
+                mTbsReaderView.openFile(bundle);
+            } else {
+
+            }
+        }catch (Exception e){}
     }
 
     private String getFileType(String paramString) {

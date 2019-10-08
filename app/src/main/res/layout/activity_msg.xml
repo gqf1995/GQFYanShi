@@ -18,6 +18,7 @@
         android:layout_height="@dimen/trans_60px"
         android:background="@color/white"
         android:gravity="center_vertical"
+        android:visibility="gone"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/trans_18px"
         android:paddingRight="@dimen/trans_20px">
@@ -59,6 +60,7 @@
 
     <Space
         android:layout_width="wrap_content"
+        android:visibility="gone"
         android:layout_height="@dimen/trans_10px"/>
 
     <LinearLayout
@@ -215,6 +217,7 @@
         android:background="@color/white"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:visibility="gone"
         android:paddingLeft="@dimen/trans_18px"
         android:paddingRight="@dimen/trans_20px">
 

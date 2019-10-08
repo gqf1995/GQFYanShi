@@ -17,9 +17,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 
 import com.biv.view.BigImageView;
+import com.bumptech.glide.Glide;
 import com.fivefivelike.mybaselibrary.R;
 import com.fivefivelike.mybaselibrary.utils.logger.KLog;
 import com.fivefivelike.mybaselibrary.view.ProgressPieIndicator;
@@ -160,6 +160,7 @@ public class BigImageviewActivity extends BaseActivity<BigImageveiwDelegate> {
         finishStr += "(" + count + " / " + mPathList.size() + ")";
         mFinishMenuItem.setTitle(finishStr);
     }
+
 
     /**
      * Initialize ViewPager.

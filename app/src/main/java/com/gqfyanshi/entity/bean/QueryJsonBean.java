@@ -31,9 +31,18 @@ public class QueryJsonBean {
     private String purpose;
     private String beginTime;
     private String endTime;
+    private String startTime;
     private String status;
     private String sDepartment;
     private String userId;
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
 
     public String getsDepartment() {
         return sDepartment;

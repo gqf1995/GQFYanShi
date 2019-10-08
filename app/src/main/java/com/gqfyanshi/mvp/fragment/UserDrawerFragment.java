@@ -3,8 +3,6 @@ package com.gqfyanshi.mvp.fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.circledialog.CircleDialogHelper;
 import com.fivefivelike.mybaselibrary.base.BaseDataBindFragment;
@@ -89,68 +87,8 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
         super.bindEvenListener();
         addRequest(binder.getLoginedUserInfo(this));
 
-        viewDelegate.setOnClickListener(this,
-                R.id.lin_module1,//通知公告
-                R.id.lin_mod1_content1,//--会议通知
-                R.id.lin_mod1_content2,//--一般性公告
-                R.id.lin_module2,//公文流转
-                R.id.lin_mod2_content1,//--公文发送
-                R.id.lin_mod2_content2,//--公文接收
-                R.id.lin_mod2_content3,//--请假
-                R.id.lin_module3,//文件柜
-                R.id.lin_module4,//市委信息工作
-                R.id.lin_mod4_content1,//--约稿性发送
-                R.id.lin_mod4_content2,//--约稿性接收
-                R.id.lin_mod4_content3,//--信息统计
-                R.id.lin_mod4_content4,//--信息发送
-                R.id.lin_mod4_content5,//--工作信息发布
-                R.id.lin_mod4_content6,//--要情汇报
-                R.id.lin_mod4_content7,//--领导参阅
-                R.id.lin_mod4_content8,//--紧急信息
-                R.id.lin_module5,//政府信息工作
-                R.id.lin_mod5_content1,//--约稿性发送
-                R.id.lin_mod5_content2,//--约稿性接收
-                R.id.lin_mod5_content3,//--信息统计
-                R.id.lin_mod5_content4,//--信息发送
-                R.id.lin_mod5_content5,//--市长专报
-                R.id.lin_mod5_content6,//--决策参考
-                R.id.lin_mod5_content7,//--紧急信息
-                R.id.lin_module6,//市委督查工作
-                R.id.lin_mod6_content1,//--公开信息发布
-                R.id.lin_mod6_content2,//--公开信息发送
-                R.id.lin_mod6_content3,//--公开信息接收
-                R.id.lin_mod6_content4,//--督查通知发布  //
-                R.id.lin_mod6_content5,//--督查通知发送
-                R.id.lin_mod6_content6,//--督查通知接收
-                R.id.lin_module7,//政府督查工作
-                R.id.lin_mod7_content1,//--公开信息发布
-                R.id.lin_mod7_content2,//--公开信息发送
-                R.id.lin_mod7_content3,//--公开信息接收
-                R.id.lin_mod7_content4,//--督查通知发送
-                R.id.lin_mod7_content5,//--督查通知接收
-                R.id.lin_module8,//领导动态
-                R.id.lin_module9,//邮件发送
-                R.id.lin_mod9_content1,//--邮件发送
-                R.id.lin_mod9_content2,//--发件箱
-                R.id.lin_mod9_content3,//--收件箱
-                R.id.lin_module10,//会议室预约
-                R.id.lin_module11,//电子通讯录
-                R.id.lin_module12,//意见箱
-                R.id.lin_module13,//退出登录
-                R.id.lin_logout//退出登录
-        );
-    }
 
-    private void showAndHide(LinearLayout lin_content, ImageView imageView) {
-        if (lin_content.getVisibility() == View.VISIBLE) {
-            imageView.setImageResource(R.drawable.xiangqing);
-            lin_content.setVisibility(View.GONE);
-        } else {
-            imageView.setImageResource(R.drawable.xiala2);
-            lin_content.setVisibility(View.VISIBLE);
-        }
     }
-
 
     List<MainLeftBean> leftBeans;
 
@@ -384,6 +322,7 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
             }
         });
         viewDelegate.viewHolder.contentView.addView(treeView.getView());
+        treeView.expandAll();
     }
 
     @Override

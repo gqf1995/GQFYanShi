@@ -13,7 +13,7 @@ import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.NoticeApprovalAdapter;
 import com.gqfyanshi.entity.bean.ApprovalBean;
 import com.gqfyanshi.entity.bean.QueryJsonBean;
-import com.gqfyanshi.mvp.activity.approval.ApprovalDetailActivity;
+import com.gqfyanshi.mvp.activity.ReceiveSignDetailActivity;
 import com.gqfyanshi.mvp.databinder.NoticeApprovalBinder;
 import com.gqfyanshi.mvp.delegate.NoticeApprovalDelegate;
 
@@ -43,7 +43,7 @@ public class NoticeApprovalActivity extends BaseDataBindActivity<NoticeApprovalD
                 onRefush(1);
             }
         });
-        viewDelegate.viewHolder.tv_status.setVisibility(View.GONE);
+        //viewDelegate.viewHolder.tv_status.setVisibility(View.GONE);
     }
 
     Class zlass = ApprovalBean.class;
@@ -52,8 +52,8 @@ public class NoticeApprovalActivity extends BaseDataBindActivity<NoticeApprovalD
         QueryJsonBean queryJsonBean = new QueryJsonBean();
         queryJsonBean.setName(viewDelegate.viewHolder.et_attributes.getText().toString());
         queryJsonBean.setTitle(viewDelegate.viewHolder.et_attributes2.getText().toString());
-        queryJsonBean.setCreatetime(viewDelegate.viewHolder.selectTimeLayout1.getSelectTime());
-        queryJsonBean.setUpdatetime(viewDelegate.viewHolder.selectTimeLayout2.getSelectTime());
+        queryJsonBean.setStartTime(viewDelegate.viewHolder.selectTimeLayout1.getSelectTime());
+        queryJsonBean.setEndTime(viewDelegate.viewHolder.selectTimeLayout2.getSelectTime());
         addRequest(binder.fileSign_getFileSignList(queryJsonBean, pageNumber, this));
         viewDelegate.viewHolder.pageChangeView.setNowPage(pageNumber);
     }
@@ -79,7 +79,7 @@ public class NoticeApprovalActivity extends BaseDataBindActivity<NoticeApprovalD
                 @Override
                 public void onClick(View view, int position, Object item) {
                     if(view.getId()== R.id.tv6){
-                        ApprovalDetailActivity.startAct(viewDelegate.getActivity(), adapter.getDatas().get(position).getId(), false);
+                        ReceiveSignDetailActivity.startAct(viewDelegate.getActivity(), adapter.getDatas().get(position).getId(), false);
                     }else {
                         addRequest(binder.fileSign_delFileSign(adapter.getDatas().get(position).getId(),NoticeApprovalActivity.this));
                     }

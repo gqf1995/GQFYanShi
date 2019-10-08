@@ -404,7 +404,7 @@ public class BigImageView extends FrameLayout implements ImageLoader.Callback {
 
     @UiThread
     private void doShowImage(File image) {
-        Glide.with(getContext()).load(image).into(mImageView);
+        Glide.with(getContext().getApplicationContext()).load(image).into(mImageView);
         if (mFailureImageView != null) {
             mFailureImageView.setVisibility(GONE);
         }
