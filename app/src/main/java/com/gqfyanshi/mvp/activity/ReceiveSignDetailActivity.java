@@ -169,7 +169,7 @@ public class ReceiveSignDetailActivity extends BaseDataBindActivity<ReceiveSignD
                 viewDelegate.viewHolder.et_keshi.setText(s.getDepartment());
                 viewDelegate.viewHolder.et_beizhu.setText(s.getRemark());
                 viewDelegate.viewHolder.et_shouwenshijian.setText(s.getIssuedTime());
-                viewDelegate.viewHolder.tv_edit_title.setText("手写签批区: 签批文件《" + s.getTitle() + "》");
+                viewDelegate.viewHolder.tv_edit_title.setText("手写签批区:  字号"+s.getFile_no()+" 签批文件《" + s.getTitle() + "》");
 
                 departName = GsonUtil.getInstance().getValue(data, "departName");
                 viewDelegate.viewHolder.tv_people.setText(departName + "");

@@ -1,34 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:orientation="vertical">
+
     <TextView
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingBottom="@dimen/trans_20px"
         android:paddingLeft="@dimen/trans_30px"
         android:paddingTop="@dimen/trans_60px"
+        android:paddingBottom="@dimen/trans_20px"
         android:text="更多"
         android:textColor="@color/color_font1"
-        android:textSize="@dimen/text_trans_30px"/>
+        android:textSize="@dimen/text_trans_22px" />
+
+    <TextView
+        android:id="@+id/tv_division"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="@dimen/trans_30px"
+        android:paddingBottom="@dimen/trans_20px"
+        android:text="更多"
+        android:textColor="@color/color_font3"
+        android:textSize="@dimen/text_trans_16px" />
+
+    <TextView
+        android:id="@+id/tv_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="@dimen/trans_30px"
+        android:paddingBottom="@dimen/trans_20px"
+        android:text="更多"
+        android:textColor="@color/color_font3"
+        android:textSize="@dimen/text_trans_16px" />
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="@dimen/trans_30px"
+        android:paddingBottom="@dimen/trans_20px"
+        android:text="更多"
+        android:textColor="@color/color_font3"
+        android:textSize="@dimen/text_trans_16px" />
+
+
     <RelativeLayout
         android:id="@+id/contentView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:id="@+id/lin_logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/trans_20px"
         android:paddingLeft="@dimen/trans_30px"
-        android:paddingTop="@dimen/trans_20px">
+        android:paddingTop="@dimen/trans_20px"
+        android:paddingBottom="@dimen/trans_20px">
 
         <ImageView
             android:id="@+id/iv_logout"
@@ -37,8 +75,7 @@
             android:layout_marginRight="@dimen/trans_10px"
             android:scaleType="centerInside"
             android:src="@drawable/xiangqing"
-            android:visibility="invisible"
-            />
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/tv_logout"
@@ -47,7 +84,7 @@
             android:gravity="center"
             android:text="退出登录"
             android:textColor="@color/color_font1"
-            android:textSize="@dimen/text_trans_18px"/>
+            android:textSize="@dimen/text_trans_18px" />
 
     </LinearLayout>
 
@@ -67,12 +104,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:paddingBottom="@dimen/trans_20px"
                 android:paddingLeft="@dimen/trans_30px"
                 android:paddingTop="@dimen/trans_60px"
+                android:paddingBottom="@dimen/trans_20px"
                 android:text="更多"
                 android:textColor="@color/color_font1"
-                android:textSize="@dimen/text_trans_30px"/>
+                android:textSize="@dimen/text_trans_30px" />
 
 
             <LinearLayout
@@ -81,9 +118,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/trans_20px"
                 android:paddingLeft="@dimen/trans_30px"
-                android:paddingTop="@dimen/trans_20px">
+                android:paddingTop="@dimen/trans_20px"
+                android:paddingBottom="@dimen/trans_20px">
 
                 <ImageView
                     android:id="@+id/iv_module1"
@@ -91,8 +128,7 @@
                     android:layout_height="@dimen/trans_15px"
                     android:layout_marginRight="@dimen/trans_10px"
                     android:scaleType="centerInside"
-                    android:src="@drawable/xiangqing"
-                    />
+                    android:src="@drawable/xiangqing" />
 
                 <TextView
                     android:id="@+id/tv_module1"
@@ -101,7 +137,7 @@
                     android:gravity="center"
                     android:text="通知公告"
                     android:textColor="@color/color_font1"
-                    android:textSize="@dimen/text_trans_18px"/>
+                    android:textSize="@dimen/text_trans_18px" />
 
             </LinearLayout>
 
@@ -119,16 +155,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -136,7 +171,7 @@
                         android:gravity="center"
                         android:text="会议通知"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -146,16 +181,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -163,7 +197,7 @@
                         android:gravity="center"
                         android:text="一般性公告"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -175,9 +209,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/trans_20px"
                 android:paddingLeft="@dimen/trans_30px"
-                android:paddingTop="@dimen/trans_20px">
+                android:paddingTop="@dimen/trans_20px"
+                android:paddingBottom="@dimen/trans_20px">
 
                 <ImageView
                     android:id="@+id/iv_module2"
@@ -185,8 +219,7 @@
                     android:layout_height="@dimen/trans_15px"
                     android:layout_marginRight="@dimen/trans_10px"
                     android:scaleType="centerInside"
-                    android:src="@drawable/xiangqing"
-                    />
+                    android:src="@drawable/xiangqing" />
 
                 <TextView
                     android:id="@+id/tv_module2"
@@ -195,7 +228,7 @@
                     android:gravity="center"
                     android:text="公文流转"
                     android:textColor="@color/color_font1"
-                    android:textSize="@dimen/text_trans_18px"/>
+                    android:textSize="@dimen/text_trans_18px" />
 
             </LinearLayout>
 
@@ -213,16 +246,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -230,7 +262,7 @@
                         android:gravity="center"
                         android:text="公文发送"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -240,16 +272,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -257,7 +288,7 @@
                         android:gravity="center"
                         android:text="公文接收"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -267,16 +298,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -284,7 +314,7 @@
                         android:gravity="center"
                         android:text="请假"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -296,9 +326,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/trans_20px"
                 android:paddingLeft="@dimen/trans_30px"
-                android:paddingTop="@dimen/trans_20px">
+                android:paddingTop="@dimen/trans_20px"
+                android:paddingBottom="@dimen/trans_20px">
 
                 <ImageView
                     android:id="@+id/iv_module3"
@@ -307,8 +337,7 @@
                     android:layout_marginRight="@dimen/trans_10px"
                     android:scaleType="centerInside"
                     android:src="@drawable/xiangqing"
-                    android:visibility="invisible"
-                    />
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/tv_module3"
@@ -317,7 +346,7 @@
                     android:gravity="center"
                     android:text="文件柜"
                     android:textColor="@color/color_font1"
-                    android:textSize="@dimen/text_trans_18px"/>
+                    android:textSize="@dimen/text_trans_18px" />
 
             </LinearLayout>
 
@@ -327,9 +356,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/trans_20px"
                 android:paddingLeft="@dimen/trans_30px"
-                android:paddingTop="@dimen/trans_20px">
+                android:paddingTop="@dimen/trans_20px"
+                android:paddingBottom="@dimen/trans_20px">
 
                 <ImageView
                     android:id="@+id/iv_module4"
@@ -337,8 +366,7 @@
                     android:layout_height="@dimen/trans_15px"
                     android:layout_marginRight="@dimen/trans_10px"
                     android:scaleType="centerInside"
-                    android:src="@drawable/xiangqing"
-                    />
+                    android:src="@drawable/xiangqing" />
 
                 <TextView
                     android:id="@+id/tv_module4"
@@ -347,7 +375,7 @@
                     android:gravity="center"
                     android:text="市委信息工作"
                     android:textColor="@color/color_font1"
-                    android:textSize="@dimen/text_trans_18px"/>
+                    android:textSize="@dimen/text_trans_18px" />
 
             </LinearLayout>
 
@@ -365,16 +393,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -382,7 +409,7 @@
                         android:gravity="center"
                         android:text="约稿性发送"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -392,16 +419,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -409,7 +435,7 @@
                         android:gravity="center"
                         android:text="约稿性接收"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -419,16 +445,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -436,7 +461,7 @@
                         android:gravity="center"
                         android:text="信息统计"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -446,16 +471,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -463,7 +487,7 @@
                         android:gravity="center"
                         android:text="信息发送"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -473,16 +497,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -490,7 +513,7 @@
                         android:gravity="center"
                         android:text="工作信息发布"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -500,16 +523,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -517,7 +539,7 @@
                         android:gravity="center"
                         android:text="要情汇报"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -527,16 +549,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -544,7 +565,7 @@
                         android:gravity="center"
                         android:text="领导参阅"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -554,16 +575,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -571,7 +591,7 @@
                         android:gravity="center"
                         android:text="紧急信息"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -582,9 +602,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/trans_20px"
                 android:paddingLeft="@dimen/trans_30px"
-                android:paddingTop="@dimen/trans_20px">
+                android:paddingTop="@dimen/trans_20px"
+                android:paddingBottom="@dimen/trans_20px">
 
                 <ImageView
                     android:id="@+id/iv_module5"
@@ -592,8 +612,7 @@
                     android:layout_height="@dimen/trans_15px"
                     android:layout_marginRight="@dimen/trans_10px"
                     android:scaleType="centerInside"
-                    android:src="@drawable/xiangqing"
-                    />
+                    android:src="@drawable/xiangqing" />
 
                 <TextView
                     android:id="@+id/tv_module5"
@@ -602,7 +621,7 @@
                     android:gravity="center"
                     android:text="政府信息工作"
                     android:textColor="@color/color_font1"
-                    android:textSize="@dimen/text_trans_18px"/>
+                    android:textSize="@dimen/text_trans_18px" />
 
             </LinearLayout>
 
@@ -620,16 +639,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -637,7 +655,7 @@
                         android:gravity="center"
                         android:text="约稿性发送"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -647,16 +665,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -664,7 +681,7 @@
                         android:gravity="center"
                         android:text="约稿性接收"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -674,16 +691,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -691,7 +707,7 @@
                         android:gravity="center"
                         android:text="信息统计"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -701,16 +717,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -718,7 +733,7 @@
                         android:gravity="center"
                         android:text="信息发送"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -728,16 +743,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -745,7 +759,7 @@
                         android:gravity="center"
                         android:text="市长专报"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -755,16 +769,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -772,7 +785,7 @@
                         android:gravity="center"
                         android:text="决策参考"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -782,16 +795,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -799,7 +811,7 @@
                         android:gravity="center"
                         android:text="紧急信息"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -810,9 +822,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/trans_20px"
                 android:paddingLeft="@dimen/trans_30px"
-                android:paddingTop="@dimen/trans_20px">
+                android:paddingTop="@dimen/trans_20px"
+                android:paddingBottom="@dimen/trans_20px">
 
                 <ImageView
                     android:id="@+id/iv_module6"
@@ -820,8 +832,7 @@
                     android:layout_height="@dimen/trans_15px"
                     android:layout_marginRight="@dimen/trans_10px"
                     android:scaleType="centerInside"
-                    android:src="@drawable/xiangqing"
-                    />
+                    android:src="@drawable/xiangqing" />
 
                 <TextView
                     android:id="@+id/tv_module6"
@@ -830,7 +841,7 @@
                     android:gravity="center"
                     android:text="市委督查工作"
                     android:textColor="@color/color_font1"
-                    android:textSize="@dimen/text_trans_18px"/>
+                    android:textSize="@dimen/text_trans_18px" />
 
             </LinearLayout>
 
@@ -848,16 +859,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -865,7 +875,7 @@
                         android:gravity="center"
                         android:text="公开信息发布"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -875,16 +885,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -892,7 +901,7 @@
                         android:gravity="center"
                         android:text="公开信息发送"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -902,16 +911,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -919,7 +927,7 @@
                         android:gravity="center"
                         android:text="公开信息接收"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -929,16 +937,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -946,7 +953,7 @@
                         android:gravity="center"
                         android:text="督查通知发布"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -956,16 +963,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -973,7 +979,7 @@
                         android:gravity="center"
                         android:text="督查通知发送"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -983,16 +989,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1000,7 +1005,7 @@
                         android:gravity="center"
                         android:text="督查通知接收"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -1011,9 +1016,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/trans_20px"
                 android:paddingLeft="@dimen/trans_30px"
-                android:paddingTop="@dimen/trans_20px">
+                android:paddingTop="@dimen/trans_20px"
+                android:paddingBottom="@dimen/trans_20px">
 
                 <ImageView
                     android:id="@+id/iv_module7"
@@ -1021,8 +1026,7 @@
                     android:layout_height="@dimen/trans_15px"
                     android:layout_marginRight="@dimen/trans_10px"
                     android:scaleType="centerInside"
-                    android:src="@drawable/xiangqing"
-                    />
+                    android:src="@drawable/xiangqing" />
 
                 <TextView
                     android:id="@+id/tv_module7"
@@ -1031,7 +1035,7 @@
                     android:gravity="center"
                     android:text="政府督查工作"
                     android:textColor="@color/color_font1"
-                    android:textSize="@dimen/text_trans_18px"/>
+                    android:textSize="@dimen/text_trans_18px" />
 
             </LinearLayout>
 
@@ -1049,16 +1053,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1066,7 +1069,7 @@
                         android:gravity="center"
                         android:text="公开信息发布"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -1076,16 +1079,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1093,7 +1095,7 @@
                         android:gravity="center"
                         android:text="公开信息发送"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -1103,16 +1105,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1120,7 +1121,7 @@
                         android:gravity="center"
                         android:text="公开信息接收"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -1130,16 +1131,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1147,7 +1147,7 @@
                         android:gravity="center"
                         android:text="督查通知发送"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -1157,16 +1157,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1174,7 +1173,7 @@
                         android:gravity="center"
                         android:text="督查通知接收"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -1185,9 +1184,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/trans_20px"
                 android:paddingLeft="@dimen/trans_30px"
-                android:paddingTop="@dimen/trans_20px">
+                android:paddingTop="@dimen/trans_20px"
+                android:paddingBottom="@dimen/trans_20px">
 
                 <ImageView
                     android:id="@+id/iv_module8"
@@ -1196,8 +1195,7 @@
                     android:layout_marginRight="@dimen/trans_10px"
                     android:scaleType="centerInside"
                     android:src="@drawable/xiangqing"
-                    android:visibility="invisible"
-                    />
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/tv_module8"
@@ -1206,7 +1204,7 @@
                     android:gravity="center"
                     android:text="领导动态"
                     android:textColor="@color/color_font1"
-                    android:textSize="@dimen/text_trans_18px"/>
+                    android:textSize="@dimen/text_trans_18px" />
 
             </LinearLayout>
 
@@ -1216,9 +1214,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/trans_20px"
                 android:paddingLeft="@dimen/trans_30px"
-                android:paddingTop="@dimen/trans_20px">
+                android:paddingTop="@dimen/trans_20px"
+                android:paddingBottom="@dimen/trans_20px">
 
                 <ImageView
                     android:id="@+id/iv_module9"
@@ -1226,8 +1224,7 @@
                     android:layout_height="@dimen/trans_15px"
                     android:layout_marginRight="@dimen/trans_10px"
                     android:scaleType="centerInside"
-                    android:src="@drawable/xiangqing"
-                    />
+                    android:src="@drawable/xiangqing" />
 
                 <TextView
                     android:id="@+id/tv_module9"
@@ -1236,7 +1233,7 @@
                     android:gravity="center"
                     android:text="邮件发送"
                     android:textColor="@color/color_font1"
-                    android:textSize="@dimen/text_trans_18px"/>
+                    android:textSize="@dimen/text_trans_18px" />
 
             </LinearLayout>
 
@@ -1254,16 +1251,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1271,7 +1267,7 @@
                         android:gravity="center"
                         android:text="邮件发送"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -1281,16 +1277,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1298,7 +1293,7 @@
                         android:gravity="center"
                         android:text="发件箱"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
 
@@ -1308,16 +1303,15 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="@dimen/trans_10px"
-                    android:paddingTop="@dimen/trans_10px">
+                    android:paddingTop="@dimen/trans_10px"
+                    android:paddingBottom="@dimen/trans_10px">
 
                     <ImageView
                         android:layout_width="@dimen/trans_15px"
                         android:layout_height="@dimen/trans_15px"
                         android:layout_marginRight="@dimen/trans_10px"
                         android:scaleType="fitXY"
-                        android:src="@drawable/wenjain"
-                        />
+                        android:src="@drawable/wenjain" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1325,7 +1319,7 @@
                         android:gravity="center"
                         android:text="收件箱"
                         android:textColor="@color/color_font2"
-                        android:textSize="@dimen/text_trans_16px"/>
+                        android:textSize="@dimen/text_trans_16px" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -1336,9 +1330,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/trans_20px"
                 android:paddingLeft="@dimen/trans_30px"
-                android:paddingTop="@dimen/trans_20px">
+                android:paddingTop="@dimen/trans_20px"
+                android:paddingBottom="@dimen/trans_20px">
 
                 <ImageView
                     android:id="@+id/iv_module10"
@@ -1347,8 +1341,7 @@
                     android:layout_marginRight="@dimen/trans_10px"
                     android:scaleType="centerInside"
                     android:src="@drawable/xiangqing"
-                    android:visibility="invisible"
-                    />
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/tv_module10"
@@ -1357,7 +1350,7 @@
                     android:gravity="center"
                     android:text="会议室预约"
                     android:textColor="@color/color_font1"
-                    android:textSize="@dimen/text_trans_18px"/>
+                    android:textSize="@dimen/text_trans_18px" />
 
             </LinearLayout>
 
@@ -1367,9 +1360,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/trans_20px"
                 android:paddingLeft="@dimen/trans_30px"
-                android:paddingTop="@dimen/trans_20px">
+                android:paddingTop="@dimen/trans_20px"
+                android:paddingBottom="@dimen/trans_20px">
 
                 <ImageView
                     android:id="@+id/iv_module11"
@@ -1378,8 +1371,7 @@
                     android:layout_marginRight="@dimen/trans_10px"
                     android:scaleType="centerInside"
                     android:src="@drawable/xiangqing"
-                    android:visibility="invisible"
-                    />
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/tv_module11"
@@ -1388,7 +1380,7 @@
                     android:gravity="center"
                     android:text="电子通讯录"
                     android:textColor="@color/color_font1"
-                    android:textSize="@dimen/text_trans_18px"/>
+                    android:textSize="@dimen/text_trans_18px" />
 
             </LinearLayout>
 
@@ -1398,9 +1390,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/trans_20px"
                 android:paddingLeft="@dimen/trans_30px"
-                android:paddingTop="@dimen/trans_20px">
+                android:paddingTop="@dimen/trans_20px"
+                android:paddingBottom="@dimen/trans_20px">
 
                 <ImageView
                     android:id="@+id/iv_module12"
@@ -1409,8 +1401,7 @@
                     android:layout_marginRight="@dimen/trans_10px"
                     android:scaleType="centerInside"
                     android:src="@drawable/xiangqing"
-                    android:visibility="invisible"
-                    />
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/tv_module12"
@@ -1419,18 +1410,19 @@
                     android:gravity="center"
                     android:text="意见箱"
                     android:textColor="@color/color_font1"
-                    android:textSize="@dimen/text_trans_18px"/>
+                    android:textSize="@dimen/text_trans_18px" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/lin_module13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/trans_20px"
                 android:paddingLeft="@dimen/trans_30px"
-                android:paddingTop="@dimen/trans_20px">
+                android:paddingTop="@dimen/trans_20px"
+                android:paddingBottom="@dimen/trans_20px">
 
                 <ImageView
                     android:id="@+id/iv_module13"
@@ -1439,8 +1431,7 @@
                     android:layout_marginRight="@dimen/trans_10px"
                     android:scaleType="centerInside"
                     android:src="@drawable/xiangqing"
-                    android:visibility="invisible"
-                    />
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/tv_module13"
@@ -1449,7 +1440,7 @@
                     android:gravity="center"
                     android:text="退出登录"
                     android:textColor="@color/color_font1"
-                    android:textSize="@dimen/text_trans_18px"/>
+                    android:textSize="@dimen/text_trans_18px" />
 
             </LinearLayout>
 

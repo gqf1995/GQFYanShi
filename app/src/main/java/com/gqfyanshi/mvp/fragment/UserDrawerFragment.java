@@ -12,6 +12,7 @@ import com.fivefivelike.mybaselibrary.utils.SaveUtil;
 import com.gqfyanshi.R;
 import com.gqfyanshi.adapter.MainLeftTreeItemHolder;
 import com.gqfyanshi.entity.bean.MainLeftBean;
+import com.gqfyanshi.entity.bean.UserLoginBean;
 import com.gqfyanshi.mvp.activity.add.AddDocumentActivity;
 import com.gqfyanshi.mvp.activity.add.AddDynamicLeadershipActivity;
 import com.gqfyanshi.mvp.activity.add.AddEmailActivity;
@@ -81,13 +82,17 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
         super.onAttach(activity);
         mainLinsener = (MainLinsener) activity;
     }
-
+    UserLoginBean loginInfo;
     @Override
     protected void bindEvenListener() {
         super.bindEvenListener();
         addRequest(binder.getLoginedUserInfo(this));
-
-
+         loginInfo = UserLoginBean.getLoginInfo();
+        viewDelegate.viewHolder.tv_name.setText("您好 "+loginInfo.getName());
+        viewDelegate.viewHolder.tv_division.setText("部门："+loginInfo.getUser_division());
+        viewDelegate.viewHolder.tv_position.setText("职位："+loginInfo.getUser_position());
+        viewDelegate.viewHolder.tv_phone.setText("手机："+loginInfo.getPhone_num());
+        viewDelegate.viewHolder.lin_logout.setOnClickListener(this);
     }
 
     List<MainLeftBean> leftBeans;

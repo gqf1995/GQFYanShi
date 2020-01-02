@@ -36,7 +36,7 @@ public class NoticeApprovalActivity extends BaseDataBindActivity<NoticeApprovalD
     protected void bindEvenListener() {
         super.bindEvenListener();
         initToolbar(new ToolbarBuilder().setTitle("我的审批"));
-        onRefush(1);
+
         viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +44,12 @@ public class NoticeApprovalActivity extends BaseDataBindActivity<NoticeApprovalD
             }
         });
         //viewDelegate.viewHolder.tv_status.setVisibility(View.GONE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onRefush(viewDelegate.viewHolder.pageChangeView.getNowPage());
     }
 
     Class zlass = ApprovalBean.class;

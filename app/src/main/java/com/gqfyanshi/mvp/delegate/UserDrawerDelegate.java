@@ -23,9 +23,17 @@ public class UserDrawerDelegate extends BaseDelegate {
     }
 
 
-    public static class ViewHolder {
+    public static
+    class ViewHolder {
         public View rootView;
+        public TextView tv_name;
+        public TextView tv_division;
+        public TextView tv_position;
+        public TextView tv_phone;
         public RelativeLayout contentView;
+        public ImageView iv_logout;
+        public TextView tv_logout;
+        public LinearLayout lin_logout;
         public ImageView iv_module1;
         public TextView tv_module1;
         public LinearLayout lin_module1;
@@ -103,10 +111,20 @@ public class UserDrawerDelegate extends BaseDelegate {
         public ImageView iv_module12;
         public TextView tv_module12;
         public LinearLayout lin_module12;
+        public ImageView iv_module13;
+        public TextView tv_module13;
+        public LinearLayout lin_module13;
 
         public ViewHolder(View rootView) {
             this.rootView = rootView;
+            this.tv_name = (TextView) rootView.findViewById(R.id.tv_name);
+            this.tv_division = (TextView) rootView.findViewById(R.id.tv_division);
+            this.tv_position = (TextView) rootView.findViewById(R.id.tv_position);
+            this.tv_phone = (TextView) rootView.findViewById(R.id.tv_phone);
             this.contentView = (RelativeLayout) rootView.findViewById(R.id.contentView);
+            this.iv_logout = (ImageView) rootView.findViewById(R.id.iv_logout);
+            this.tv_logout = (TextView) rootView.findViewById(R.id.tv_logout);
+            this.lin_logout = (LinearLayout) rootView.findViewById(R.id.lin_logout);
             this.iv_module1 = (ImageView) rootView.findViewById(R.id.iv_module1);
             this.tv_module1 = (TextView) rootView.findViewById(R.id.tv_module1);
             this.lin_module1 = (LinearLayout) rootView.findViewById(R.id.lin_module1);
@@ -184,6 +202,9 @@ public class UserDrawerDelegate extends BaseDelegate {
             this.iv_module12 = (ImageView) rootView.findViewById(R.id.iv_module12);
             this.tv_module12 = (TextView) rootView.findViewById(R.id.tv_module12);
             this.lin_module12 = (LinearLayout) rootView.findViewById(R.id.lin_module12);
+            this.iv_module13 = (ImageView) rootView.findViewById(R.id.iv_module13);
+            this.tv_module13 = (TextView) rootView.findViewById(R.id.tv_module13);
+            this.lin_module13 = (LinearLayout) rootView.findViewById(R.id.lin_module13);
         }
 
     }

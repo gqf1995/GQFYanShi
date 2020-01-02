@@ -77,12 +77,16 @@ public class NoticeApprovalAdapter extends CommonAdapter<ApprovalBean> {
 //        }
         if (ObjectUtils.equals("00", s.getStatus())) {
             tv7.setText("未签批");
+            tv7.setTextColor(CommonUtils.getColor(R.color.redb));
         } else if (ObjectUtils.equals("01", s.getStatus())) {
             tv7.setText("已签批");
+            tv7.setTextColor(CommonUtils.getColor(R.color.color_blue));
         } else if (ObjectUtils.equals("02", s.getStatus())) {
             tv7.setText("待签批");
+            tv7.setTextColor(CommonUtils.getColor(R.color.redb));
         } else {
             tv7.setText("未签批");
+            tv7.setTextColor(CommonUtils.getColor(R.color.redb));
             tv7.setVisibility(View.INVISIBLE);
         }
 

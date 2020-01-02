@@ -49,10 +49,13 @@ public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<Not
         });
         getIntentData();
         initToolbar(new ToolbarBuilder().setTitle("公文发送"));
-        onRefush(1);
         viewDelegate.viewHolder.lin_add.setVisibility(View.GONE);
     }
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onRefush(viewDelegate.viewHolder.pageChangeView.getNowPage());
+    }
     //        文件字号： name
     //        文件名称：title
     //        发布时间：createtime/updatetime
