@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ScrollView;
 
 import com.bumptech.glide.request.RequestOptions;
+import com.ebensz.eink.api.PennableLayout;
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
 import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
@@ -79,7 +80,7 @@ public class DocumentInfoActivity extends BaseDataBindActivity<DocumentInfoDeleg
             });
         }
     }
-
+    PennableLayout pennableLayout;
     @Override
     protected void clickRightIv1() {
         super.clickRightIv1();
@@ -89,6 +90,8 @@ public class DocumentInfoActivity extends BaseDataBindActivity<DocumentInfoDeleg
         initToolbar(new ToolbarBuilder().setTitle("文件详情")
                 .setmRightImg1("签批"));
         viewDelegate.getmToolbarRightImg2().setVisibility(View.GONE);
+
+
     }
 
     public static void startAct(Activity activity,

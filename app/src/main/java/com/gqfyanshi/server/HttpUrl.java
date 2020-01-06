@@ -62,7 +62,8 @@ public class HttpUrl {
     /**
      * 会议通知信息列表
      */
-    public String notice_sendList = AppConst.app2BaseUrl + "/notice/sendList";
+    //public String notice_sendList = AppConst.app2BaseUrl + "/notice/sendList";
+    public String notice_sendList = AppConst.app2BaseUrl + "/document/sendList";
     /**
      * 市委信息统计
      */

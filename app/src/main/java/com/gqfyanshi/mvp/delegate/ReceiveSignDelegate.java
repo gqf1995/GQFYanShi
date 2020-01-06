@@ -15,7 +15,6 @@ import com.gqfyanshi.widget.SelectPeopleLayout;
 
 public class ReceiveSignDelegate extends BaseDelegate {
     public ViewHolder viewHolder;
-
     @Override
     public void initView() {
         viewHolder = new ViewHolder(getRootView());

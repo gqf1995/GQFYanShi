@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.ebensz.eink.api.PennableLayout;
 import com.fivefivelike.mybaselibrary.base.BaseDataBindActivity;
 import com.fivefivelike.mybaselibrary.entity.ToolbarBuilder;
 import com.fivefivelike.mybaselibrary.utils.GsonUtil;
@@ -41,7 +42,7 @@ public class ReceiveSignDetailActivity extends BaseDataBindActivity<ReceiveSignD
     public ReceiveSignBinder getDataBinder(ReceiveSignDelegate viewDelegate) {
         return new ReceiveSignBinder(viewDelegate);
     }
-
+    PennableLayout pennableLayout;
 
     @Override
     protected void bindEvenListener() {

@@ -43,6 +43,7 @@ public class NoticeDefaultActivity extends BaseDataBindActivity<NoticeDefaultDel
                 );
             }
         });
+        viewDelegate.viewHolder.tv_add.setVisibility(View.GONE);
         onRefush(1);
         viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +58,7 @@ public class NoticeDefaultActivity extends BaseDataBindActivity<NoticeDefaultDel
     private void onRefush(int pageNumber) {
         QueryJsonBean queryJsonBean = new QueryJsonBean();
         queryJsonBean.setModelId("3");
-        queryJsonBean.setType("02");
+        queryJsonBean.setType("04");
         queryJsonBean.setTitle(viewDelegate.viewHolder.et_attributes.getText().toString());
         queryJsonBean.setCreatetime(viewDelegate.viewHolder.selectTimeLayout1.getSelectTime());
         queryJsonBean.setUpdatetime(viewDelegate.viewHolder.selectTimeLayout2.getSelectTime());
