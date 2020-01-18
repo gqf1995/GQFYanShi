@@ -43,7 +43,7 @@ public class NoticeDefaultActivity extends BaseDataBindActivity<NoticeDefaultDel
                 );
             }
         });
-        viewDelegate.viewHolder.tv_add.setVisibility(View.GONE);
+        viewDelegate.viewHolder.lin_add.setVisibility(View.GONE);
         onRefush(1);
         viewDelegate.viewHolder.tv_search.setOnClickListener(new View.OnClickListener() {
             @Override

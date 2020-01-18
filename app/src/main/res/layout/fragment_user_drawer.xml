@@ -11,7 +11,6 @@
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:paddingLeft="@dimen/trans_30px"
         android:paddingTop="@dimen/trans_60px"
         android:paddingBottom="@dimen/trans_20px"
@@ -28,6 +27,7 @@
         android:paddingLeft="@dimen/trans_30px"
         android:paddingBottom="@dimen/trans_20px"
         android:text="更多"
+        android:visibility="gone"
         android:textColor="@color/color_font3"
         android:textSize="@dimen/text_trans_16px" />
 

@@ -7,8 +7,10 @@ public class AppConst {
 
 
     //http://47.98.56.206:1913/symbol/info?name=testCoin.
-    public static final String app2BaseUrl = "http://192.168.0.106:8081/municipal/app";
-    //public static final String app2BaseUrl = "http://47.92.164.4:8081/municipal/app";
+    //public static final String app2BaseUrl = "http://192.168.0.106:8081/municipal/app";
+
+    public static final String app2BaseUrl = "http://47.92.164.4:8081/municipal/app";
+
     public static final String fileUrl = "http://47.92.164.4:8081/municipal";
     public static final String serviceId = "";//BuildConfig.serviceId;// "KEFU151728371459995";
     public static final String wsAddress ="";// BuildConfig.wsAddress;// "ws:" + "//ws.blz.bicoin.com.cn/ws/";

@@ -88,7 +88,7 @@ public class UserDrawerFragment extends BaseDataBindFragment<UserDrawerDelegate,
         super.bindEvenListener();
         addRequest(binder.getLoginedUserInfo(this));
          loginInfo = UserLoginBean.getLoginInfo();
-        viewDelegate.viewHolder.tv_name.setText("您好 "+loginInfo.getName());
+        viewDelegate.viewHolder.tv_name.setText(loginInfo.getName());
         viewDelegate.viewHolder.tv_division.setText("部门："+loginInfo.getUser_division());
         viewDelegate.viewHolder.tv_position.setText("职位："+loginInfo.getUser_position());
         viewDelegate.viewHolder.tv_phone.setText("手机："+loginInfo.getPhone_num());

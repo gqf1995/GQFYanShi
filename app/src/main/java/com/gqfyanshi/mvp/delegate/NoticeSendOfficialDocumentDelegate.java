@@ -42,6 +42,7 @@ public class NoticeSendOfficialDocumentDelegate extends BaseDelegate {
         public TextView tv_add;
         public RecyclerView recycler_view;
         public TextView tv_nodata;
+        public TextView tv3;
         public PageChangeView pageChangeView;
 
         public ViewHolder(View rootView) {
@@ -59,6 +60,7 @@ public class NoticeSendOfficialDocumentDelegate extends BaseDelegate {
             this.tv_add = (TextView) rootView.findViewById(R.id.tv_add);
             this.recycler_view = (RecyclerView) rootView.findViewById(R.id.recycler_view);
             this.tv_nodata = (TextView) rootView.findViewById(R.id.tv_nodata);
+            this.tv3 = (TextView) rootView.findViewById(R.id.tv3);
             this.pageChangeView = (PageChangeView) rootView.findViewById(R.id.pageChangeView);
         }
 

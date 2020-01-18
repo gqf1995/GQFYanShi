@@ -50,6 +50,7 @@ public class NoticeSendOfficialDocumentActivity extends BaseDataBindActivity<Not
         getIntentData();
         initToolbar(new ToolbarBuilder().setTitle("公文发送"));
         viewDelegate.viewHolder.lin_add.setVisibility(View.GONE);
+        viewDelegate.viewHolder.tv3.setText("文件字号");
     }
     @Override
     protected void onResume() {

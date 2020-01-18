@@ -31,6 +31,7 @@ public class NoticeDefaultDelegate extends BaseDelegate {
 
         public EditText et_attributes;
         public LinearLayout lin_attributes;
+        public LinearLayout lin_add;
         public SelectTimeLayout selectTimeLayout1;
         public SelectTimeLayout selectTimeLayout2;
         public RoundButton tv_search;
@@ -44,6 +45,7 @@ public class NoticeDefaultDelegate extends BaseDelegate {
 
             this.et_attributes = (EditText) rootView.findViewById(R.id.et_attributes);
             this.lin_attributes = (LinearLayout) rootView.findViewById(R.id.lin_attributes);
+            this.lin_add = (LinearLayout) rootView.findViewById(R.id.lin_add);
             this.selectTimeLayout1 = (SelectTimeLayout) rootView.findViewById(R.id.selectTimeLayout1);
             this.selectTimeLayout2 = (SelectTimeLayout) rootView.findViewById(R.id.selectTimeLayout2);
             this.tv_search = (RoundButton) rootView.findViewById(R.id.tv_search);

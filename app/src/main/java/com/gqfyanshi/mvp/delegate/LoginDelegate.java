@@ -33,6 +33,7 @@ public class LoginDelegate extends BaseDelegate {
         public EditText tv_img_code;
         public ImageView iv_img_code;
         public TextView tv_change_img;
+        public TextView tv_no;
         public LinearLayout lin_change;
         public ImageView iv_select;
         public LinearLayout lin_select;
@@ -48,6 +49,7 @@ public class LoginDelegate extends BaseDelegate {
             this.tv_img_code = (EditText) rootView.findViewById(R.id.tv_img_code);
             this.iv_img_code = (ImageView) rootView.findViewById(R.id.iv_img_code);
             this.tv_change_img = (TextView) rootView.findViewById(R.id.tv_change_img);
+            this.tv_no = (TextView) rootView.findViewById(R.id.tv_no);
             this.lin_change = (LinearLayout) rootView.findViewById(R.id.lin_change);
             this.iv_select = (ImageView) rootView.findViewById(R.id.iv_select);
             this.lin_select = (LinearLayout) rootView.findViewById(R.id.lin_select);

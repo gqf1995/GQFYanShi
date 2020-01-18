@@ -161,6 +161,7 @@ public class LoginActivity extends BaseDataBindActivity<LoginDelegate, LoginBind
         }
         addRequest(binder.getAppVersion(this));
         ANDROID_ID = getSerialNumber();
+        viewDelegate.viewHolder.tv_no.setText("设备号："+ANDROID_ID+"");
         viewDelegate.viewHolder.iv_fly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

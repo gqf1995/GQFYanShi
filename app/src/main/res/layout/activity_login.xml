@@ -400,9 +400,23 @@
     </LinearLayout>
 
 
-    <Space
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="150"/>
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:layout_weight="150">
+        <TextView
+            android:id="@+id/tv_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="bottom|center_horizontal"
+            android:paddingBottom="@dimen/trans_50px"
+            android:text="123"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_trans_20px" />
+
+    </LinearLayout>
 
 </LinearLayout>
